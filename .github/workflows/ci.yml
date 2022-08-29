@@ -3,12 +3,10 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'docs/**'
   # allow manual build here:
   # https://github.com/vipm-io/docs/actions/workflows/ci.yml
   workflow_dispatch:
-  
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
