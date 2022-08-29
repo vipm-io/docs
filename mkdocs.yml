@@ -1,9 +1,12 @@
-site_name: VIPM Developer Docs
+site_name: Developer Docs
 
 theme:
   name: material
   logo: assets/logo.png
   favicon: assets/favicon.png
+
+  palette:
+    primary: white
 
 extra:
   social:
