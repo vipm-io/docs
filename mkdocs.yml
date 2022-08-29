@@ -2,3 +2,10 @@ site_name: VIPM Developer Docs
 
 theme:
   name: material
+
+extra:
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/vipm
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/showcase/vi-package-manager/
