@@ -7,6 +7,10 @@ theme:
 
   palette:
     primary: white
+    accent: deep orange
+
+  font:
+    text: Roboto
 
 extra:
   social:
