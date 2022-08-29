@@ -3,6 +3,7 @@ site_name: VIPM Developer Docs
 theme:
   name: material
   logo: assets/logo.png
+  favicon: assets/favicon.png
 
 extra:
   social:
