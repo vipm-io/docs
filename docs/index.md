@@ -1,9 +1,3 @@
-# Welcome to VIPM Developer Docs
+# VIPM Desktop
 
-## Using VIPM Desktop
-
-* .
-
-## VIPM Community Repository
-
-* .
+# VIPM Community Repository
