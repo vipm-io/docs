@@ -1,4 +1,7 @@
 site_name: Developer Docs
+site_url: https://docs.vipm.io
+repo_name: vipm-io/docs
+edit_uri: edit/master/docs/
 
 theme:
   name: material
@@ -24,5 +27,3 @@ extra:
 
 copyright: Copyright &copy; 2022 VIPM Community Contributors
 
-repo_name: vipm-io/docs
-edit_uri: edit/master/docs/
