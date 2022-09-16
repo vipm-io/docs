@@ -8,7 +8,7 @@ https://forums.vipm.io/topic/6423-announcing-the-vipm-2022-for-mac-and-linux-pub
 Community Support Forum:
 https://forums.vipm.io/forum/89-vipm-2022-for-macos-and-linux-public-beta/
 
-# Install the LabVIEW 2019 for Linux Runtime Engine (or LabVIEW development environment)
+## Install the LabVIEW 2019 for Linux Runtime Engine (or LabVIEW development environment)
 
 Installing VIPM 2022 for Linux requires intalling the LabVIEW 2019 Runtime Engine.
 
