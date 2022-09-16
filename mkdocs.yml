@@ -4,6 +4,8 @@ theme:
   name: material
   logo: assets/logo.png
   favicon: assets/favicon.png
+  icon:
+    edit: material/file-edit-outline
 
   palette:
     primary: white
@@ -20,3 +22,5 @@ extra:
       link: https://www.linkedin.com/showcase/vi-package-manager/
 
 copyright: Copyright &copy; 2022 VIPM Community Contributors
+
+edit_uri: edit/master/docs/
