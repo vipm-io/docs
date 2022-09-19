@@ -2,6 +2,7 @@ site_name: Developer Docs
 site_url: https://docs.vipm.io
 repo_name: vipm-io/docs
 edit_uri: edit/master/docs/
+repo_url: https://github.com/vipm-io/docs
 
 theme:
   name: material
