@@ -2,11 +2,10 @@
 
 This document is for collecting information on how to successfully install VIPM 2022 on Ubuntu Linux.
 
-Download VIPM 2022 beta for Linux here:
-https://forums.vipm.io/topic/6423-announcing-the-vipm-2022-for-mac-and-linux-public-beta/
+Useful Links:
 
-Community Support Forum:
-https://forums.vipm.io/forum/89-vipm-2022-for-macos-and-linux-public-beta/
+- [Download VIPM 2022 beta for Linux](https://forums.vipm.io/topic/6423-announcing-the-vipm-2022-for-mac-and-linux-public-beta/)
+- [Community Support Forum for VIPM 2022 beta for Linux and Mac](https://forums.vipm.io/forum/89-vipm-2022-for-macos-and-linux-public-beta/)
 
 ## Install the LabVIEW 2019 for Linux Runtime Engine (or LabVIEW development environment)
 
