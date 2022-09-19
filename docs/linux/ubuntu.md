@@ -21,4 +21,4 @@ This can be accomplished by deing either of the following:
 
 Either of the above steps will require use of the `alien` command-line tool which can handle rpm packages by converting them to .deb packages.
 
-See: https://wiki.ubuntu.com/LabVIEW
+See: [https://wiki.ubuntu.com/LabVIEW](https://wiki.ubuntu.com/LabVIEW)
