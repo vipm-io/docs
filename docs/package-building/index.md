@@ -1,3 +1,3 @@
 # Package Building
 
-This section includes information about package building. Expand the tree (left sidebar) to see the sections.
+This section includes information about package building. Expand the tree (left sidebar) to see the various topics (sub-sections).
