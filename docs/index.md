@@ -1,5 +1,8 @@
 # VIPM Desktop
 
+## Issue Tracker
+- [VIPM Desktop Issues]([url](https://github.com/vipm-io/vipm-desktop-issues))
+
 ## Downloading VIPM
 
 You can download VIPM from the following locations:
