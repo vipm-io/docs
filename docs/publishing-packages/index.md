@@ -2,7 +2,9 @@
 
 ## Submitting New Packages
 
-...
+Have a new package you want to share?
+
+Please visit the [VIPM Community Publishing](https://www.vipm.io/publish/) page to learn more about how to become a package publisher and share your LabVIEW tools with the community.
 
 ## Releasing New Versions of Packages
 
