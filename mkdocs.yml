@@ -25,6 +25,8 @@ extra:
       link: https://twitter.com/vipm
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/showcase/vi-package-manager/
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/uyXwAz4B63
 
-copyright: Copyright &copy; 2022 VIPM Community Contributors
+copyright: Copyright &copy; 2024 VIPM Community Contributors
 
