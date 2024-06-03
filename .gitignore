@@ -1,2 +1,9 @@
+# Python Virtual Environment
 .venv/
+
+# Build docs site
 site/
+
+# IDE Meta-data
+.vscode/
+.idea/
