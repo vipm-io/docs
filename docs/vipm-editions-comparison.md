@@ -1,4 +1,4 @@
-# VIPM License Comparison
+# VIPM Edition Comparison
 
 VI Package Manager (VIPM) is available in multiple editions to serve different needs within the LabVIEW development community. This guide compares the features and capabilities of each edition to help you select the most appropriate version for your requirements.
 
