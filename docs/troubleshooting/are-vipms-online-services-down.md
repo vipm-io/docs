@@ -11,8 +11,7 @@ title: Are VIPM's Online Services Down?
 - Unable to browse or download packages
 
 ## Resolution
-Check the current status of VIPM services at:
-**https://status.vipm.io/**
+Check the current status of VIPM services at [**status.vipm.io**](https://status.vipm.io/).
 
 This page shows real-time status for:
 - Online Activation Service
