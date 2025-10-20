@@ -1,17 +1,22 @@
-# VIPM Preview - Coming Soon
+# VIPM Preview (Coming Soon)
 
-## Updates Coming Soon
+We're preparing to share **VIPM 2026Q1 Preview 1**.
 
-We're preparing to share exciting updates about the **VI Package Manager (VIPM) Preview** release.
+## What's New
 
-Stay tuned for:
+### Linux Package Distribution
 
-- New features and improvements
-- Installation instructions
-- Documentation and resources
-- Release notes
+VIPM is now available as native Linux packages for seamless installation and updates:
+- **DEB Packages** - Native support for Debian-based distributions (Ubuntu, Debian, Linux Mint, and derivatives)
+- **RPM Packages** - Native support for Red Hat-based distributions (RHEL, Fedora, CentOS, Rocky Linux, and derivatives)
 
-Check back soon for more information!
+### VIPM Command Line Interface (CLI)
+
+The new VIPM CLI brings powerful automation capabilities to your package management workflows. Install, update, and remove packages from the command line, integrate VIPM operations into build scripts and CI/CD pipelines, and automate package management tasks across multiple systems.
+
+### New HTTP Client (Preview)
+
+VIPM now includes a modernized HTTP client for improved package repository communication and download performance. This preview feature lays the groundwork for enhanced reliability and future capabilities.
 
 ---
 
