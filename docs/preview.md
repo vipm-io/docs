@@ -7,7 +7,9 @@ We're preparing to share **VIPM 2026Q1 Preview 1**.
 ### Linux Package Distribution
 
 VIPM is now available as native Linux packages for seamless installation and updates:
+
 - **DEB Packages** - Native support for Debian-based distributions (Ubuntu, Debian, Linux Mint, and derivatives)
+
 - **RPM Packages** - Native support for Red Hat-based distributions (RHEL, Fedora, CentOS, Rocky Linux, and derivatives)
 
 ### VIPM Command Line Interface (CLI)
