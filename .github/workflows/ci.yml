@@ -93,29 +93,27 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - name: Comment PR with artifact info
+      - name: Comment on PR
         uses: actions/github-script@v7
         with:
           script: |
-            const comment = `## ✅ Documentation Build Successful
+            const comment = `## Documentation Build Successful
             
-            The documentation has been successfully built for this PR in both online and offline formats!
+            Built in both online and offline formats.
             
-            ### 🌐 Online Version (GitHub Pages)
-            📦 **Artifact:** \`site-online-pr-${{ github.event.pull_request.number }}\`
+            **Online Version (GitHub Pages)**
+            - Artifact: \`site-online-pr-${{ github.event.pull_request.number }}\`
             - Use with a web server: \`python -m http.server\`
             
-            ### 💾 Offline Version (for VIPM distribution)
-            📦 **Artifact:** \`vipm-help-offline-${{ github.event.pull_request.number }}.zip\`
+            **Offline Version (for VIPM distribution)**
+            - Artifact: \`vipm-help-offline-${{ github.event.pull_request.number }}.zip\`
             - Works by double-clicking \`index.html\`
-            - Ready to bundle with VIPM installer
             
-            🔗 **Download artifacts from:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            **Download artifacts:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
             
-            #### To preview offline docs locally:
+            **To test offline:**
             1. Download \`vipm-help-offline-${{ github.event.pull_request.number }}.zip\`
-            2. Extract the zip file
-            3. Double-click \`index.html\` to open in browser`;
+            2. Extract and open \`index.html\``;
             
             github.rest.issues.createComment({
               issue_number: context.issue.number,
