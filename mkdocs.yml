@@ -28,5 +28,6 @@ extra:
     - icon: fontawesome/brands/discord
       link: https://discord.gg/uyXwAz4B63
 
-copyright: Copyright &copy; 2024 VIPM Community Contributors
+hooks:
+  - hooks.py
 
