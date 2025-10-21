@@ -16,9 +16,9 @@ VIPM is now available as native Linux packages for seamless installation and upd
 
 The new VIPM CLI brings powerful automation capabilities to your package management workflows. Install, update, and remove packages from the command line, integrate VIPM operations into build scripts and CI/CD pipelines, and automate package management tasks across multiple systems.
 
-### New HTTP Client (Preview)
+### Faster Downloads and Improved Stability (Preview Feature)
 
-VIPM now includes a modernized HTTP client for improved package repository communication and download performance. This preview feature lays the groundwork for enhanced reliability and future capabilities.
+VIPM now uses a modernized HTTP client for improved package repository communication and download performance. This preview feature lays the groundwork for enhanced reliability and future capabilities.
 
 ---
 
