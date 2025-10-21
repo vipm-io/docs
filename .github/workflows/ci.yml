@@ -3,18 +3,76 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
   # allow manual build here:
   # https://github.com/vipm-io/docs/actions/workflows/ci.yml
   workflow_dispatch:
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
           cache: 'pip'
-      - run: pip install mkdocs-material
+      - run: pip install -r requirements.txt
+      - run: mkdocs build --strict
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-pr-${{ github.event.pull_request.number || github.run_number }}
+          path: site/
+          retention-days: 7
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+          cache: 'pip'
+      - run: pip install -r requirements.txt
       - run: mkdocs gh-deploy --force
+
+  comment-preview:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'pull_request'
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Comment PR with artifact info
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const comment = `## ✅ Documentation Build Successful
+            
+            The documentation has been successfully built for this PR!
+            
+            📦 **Built Site Artifact:** Available in the workflow run
+            🔗 **Workflow Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            
+            You can download the built site artifact from the workflow run to preview the changes locally.
+            
+            To preview locally:
+            1. Download the \`site-pr-${{ github.event.pull_request.number }}\` artifact from the workflow run
+            2. Extract the zip file
+            3. Open \`index.html\` in your browser or serve with \`python -m http.server\``;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
