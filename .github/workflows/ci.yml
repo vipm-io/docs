@@ -17,12 +17,15 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
         with:
-          python-version: 3.x
-          cache: 'pip'
-      - run: pip install -r requirements.txt
-      - run: mkdocs build --strict
+          enable-cache: true
+      - name: Set up Python
+        run: uv python install
+      - name: Sync dependencies
+        run: uv sync
+      - run: uv run mkdocs build --strict
       - name: Upload site artifact
         uses: actions/upload-artifact@v4
         with:
@@ -38,12 +41,15 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
         with:
-          python-version: 3.x
-          cache: 'pip'
-      - run: pip install -r requirements.txt
-      - run: mkdocs gh-deploy --force
+          enable-cache: true
+      - name: Set up Python
+        run: uv python install
+      - name: Sync dependencies
+        run: uv sync
+      - run: uv run mkdocs gh-deploy --force
 
   comment-preview:
     runs-on: ubuntu-latest
