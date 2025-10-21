@@ -20,22 +20,15 @@ jobs:
       UV_CACHE_DIR: /tmp/.uv-cache
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
         with:
-          python-version: 3.x
-      - name: Restore uv cache
-        uses: actions/cache@v4
-        with:
-          path: /tmp/.uv-cache
-          key: uv-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            uv-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
-            uv-${{ runner.os }}
-      - run: uv venv
-      - run: uv pip install -r requirements.txt
+          enable-cache: true
+      - name: Set up Python
+        run: uv python install
+      - name: Sync dependencies
+        run: uv sync
       - run: uv run mkdocs build --strict
-      - name: Minimize uv cache
-        run: uv cache prune --ci
       - name: Upload site artifact
         uses: actions/upload-artifact@v4
         with:
@@ -54,22 +47,15 @@ jobs:
       UV_CACHE_DIR: /tmp/.uv-cache
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
         with:
-          python-version: 3.x
-      - name: Restore uv cache
-        uses: actions/cache@v4
-        with:
-          path: /tmp/.uv-cache
-          key: uv-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            uv-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
-            uv-${{ runner.os }}
-      - run: uv venv
-      - run: uv pip install -r requirements.txt
+          enable-cache: true
+      - name: Set up Python
+        run: uv python install
+      - name: Sync dependencies
+        run: uv sync
       - run: uv run mkdocs gh-deploy --force
-      - name: Minimize uv cache
-        run: uv cache prune --ci
 
   comment-preview:
     runs-on: ubuntu-latest

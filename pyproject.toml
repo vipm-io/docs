@@ -1,0 +1,8 @@
+[project]
+name = "vipm-io-docs"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+dependencies = [
+    "mkdocs-material>=9.5.21",
+]
