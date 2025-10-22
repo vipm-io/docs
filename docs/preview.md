@@ -2,7 +2,12 @@
 
 We're preparing to share **VIPM 2026Q1 Preview 1**.
 
+> **Installation & Feedback:** Instructions for installing the preview release and information about where to provide feedback will be posted here soon.
+
 ## What's New
+
+### LabVIEW 2026 Support
+This preview release has been tested with LabVIEW 2026 Beta and includes full LabVIEW 2026 support. You can access the LabVIEW 2026 Beta at the [LabVIEW Beta forum](https://forums.ni.com/t5/LabVIEW-Beta/ct-p/7035).
 
 ### Linux Package Distribution
 
