@@ -27,6 +27,6 @@ VIPM now uses a modernized HTTP client for improved package repository communica
 
 ---
 
-**Page last edited:** October 21, 2025
+**Page last edited:** October 22, 2025
 
 ---
