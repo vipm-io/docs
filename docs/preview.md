@@ -9,7 +9,7 @@ We're preparing to share **VIPM 2026Q1 Preview 1**.
 ### LabVIEW 2026 Support
 This preview release has been tested with LabVIEW 2026 Beta and includes full LabVIEW 2026 support. You can access the LabVIEW 2026 Beta at the [LabVIEW Beta forum](https://forums.ni.com/t5/LabVIEW-Beta/ct-p/7035).
 
-### Linux Package Distribution
+### Improved Support for Installing VIPM on Linux
 
 VIPM is now available as native Linux packages for seamless installation and updates:
 
