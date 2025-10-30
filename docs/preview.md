@@ -1,8 +1,22 @@
-# VIPM Preview (Coming Soon)
+# VIPM 2026Q1 Preview 1
 
-We're preparing to share **VIPM 2026Q1 Preview 1**.
+## Installation & Feedback
 
-> **Installation & Feedback:** Instructions for installing the preview release and information about where to provide feedback will be posted here soon.
+### Windows
+Download the Windows Installer [here](https://packages.jki.net/vipm/preview/vipm-setup-latest-preview.exe)
+
+### Linux
+
+#### Debian-based distributions (Ubuntu, Debian, Linux Mint, and derivatives)
+- Download [here](https://packages.jki.net/vipm/preview/vipm_latest_amd64.deb)
+- Or via a one command install `wget -O /tmp/vipm.deb https://packages.jki.net/vipm/preview/vipm_latest_amd64.deb && sudo dpkg -i /tmp/vipm.deb && rm /tmp/vipm.deb`
+
+#### Red Hat-based distributions (RHEL, Fedora, CentOS, Rocky Linux, and derivatives)
+- Download [here](https://packages.jki.net/vipm/preview/vipm_latest_amd64.rpm)
+- Or via a one command install `wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_amd64.rpm && sudo dpkg -i /tmp/vipm.rpm && rm /tmp/vipm.rpm`
+
+### Feedback
+Report issues on [GitHub](https://github.com/vipm-io/vipm-desktop-issues/issues) or join us on [Discord](https://discord.gg/nw4krt2r)
 
 ## What's New
 
@@ -27,6 +41,6 @@ VIPM now uses a modernized HTTP client for improved package repository communica
 
 ---
 
-**Page last edited:** October 22, 2025
+**Page last edited:** October 30, 2025
 
 ---
