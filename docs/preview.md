@@ -39,8 +39,16 @@ The new VIPM CLI brings powerful automation capabilities to your package managem
 
 VIPM now uses a modernized HTTP client for improved package repository communication and download performance. This preview feature lays the groundwork for enhanced reliability and future capabilities.
 
+### Bug Fixes and Usability Improvements
+Various bug and usability fixes including:
+* LabVIEW Libraries (lvlib) that contain support files now correctly point to the correct location. Thank you to GitHub users @NatanBiesmans and @AlexanderElbert for reporting this issue.
+* Improved Linux workflows. Thank you to GitHub users @pesmith8a and @JamesMc86 for reporting this issue.
+* Fixed issue where similar VIPB destination names become linked. Thank you to GitHub user @qalldredge for reporting this issue.
+* "Place folder contents in destination" now works for support files. Thank you to GitHub user @Sdusing7 for reporting this issue.
+    > This is a preview feature. Enable this through Options > Preview Features and select "[Bug Fix] Place Folder Contents for Non-LabVIEW Files".
+
 ---
 
-**Page last edited:** October 30, 2025
+**Page last edited:** October 31, 2025
 
 ---
