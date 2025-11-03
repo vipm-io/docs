@@ -8,12 +8,12 @@ Download the Windows Installer [here](https://packages.jki.net/vipm/preview/vipm
 ### Linux
 
 #### Debian-based distributions (Ubuntu, Debian, Linux Mint, and derivatives)
-- Download [here](https://packages.jki.net/vipm/preview/vipm_latest_amd64.deb)
-- Or via a one command install `wget -O /tmp/vipm.deb https://packages.jki.net/vipm/preview/vipm_latest_amd64.deb && sudo dpkg -i /tmp/vipm.deb && rm /tmp/vipm.deb`
+- Download [here](https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.deb)
+- Or via a one command install `wget -O /tmp/vipm.deb https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.deb && sudo dpkg -i /tmp/vipm.deb && rm /tmp/vipm.deb`
 
 #### Red Hat-based distributions (RHEL, Fedora, CentOS, Rocky Linux, and derivatives)
-- Download [here](https://packages.jki.net/vipm/preview/vipm_latest_amd64.rpm)
-- Or via a one command install `wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_amd64.rpm && sudo dpkg -i /tmp/vipm.rpm && rm /tmp/vipm.rpm`
+- Download [here](https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm)
+- Or via a one command install `wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm && sudo dpkg -i /tmp/vipm.rpm && rm /tmp/vipm.rpm`
 
 ### Feedback
 Report issues on [GitHub](https://github.com/vipm-io/vipm-desktop-issues/issues) or join us on [Discord](https://discord.gg/nw4krt2r)
