@@ -49,9 +49,29 @@ Various bug and usability fixes including:
 * Fixed issue where similar VIPB destination names become linked. Thank you to GitHub user @qalldredge for reporting this issue.
 * "Place folder contents in destination" now works for support files. Thank you to GitHub user @Sdusing7 for reporting this issue.
     > This is a preview feature. Enable this through Options > Preview Features and select "[Bug Fix] Place Folder Contents for Non-LabVIEW Files".
+    
+## Known Issues
+
+| Issue | Status |
+|-------|--------|
+| Default menu files removed from libraries during build | Fix in review |
 
 ---
 
-**Page last edited:** October 31, 2025
+## Thank You to Our Community
+
+Thank you to everyone who has been testing the VIPM 2026Q1 Preview! Your feedback and testing efforts are invaluable in helping us improve the product.
+
+Please continue to report any issues you encounter:
+
+**Feedback**
+- Report issues on [GitHub](https://github.com)
+- Join us on [Discord](https://discord.com)
+
+We appreciate your ongoing support and contributions to making VIPM better for the entire LabVIEW community!
+
+---
+
+**Page last edited:** November 04, 2025
 
 ---
