@@ -43,6 +43,7 @@ VIPM now uses a modernized HTTP client for improved package repository communica
 
 ### Bug Fixes and Usability Improvements
 Various bug and usability fixes including:
+
 * LabVIEW Libraries (lvlib) that contain support files now correctly point to the correct location. Thank you to GitHub users @NatanBiesmans and @AlexanderElbert for reporting this issue.
 * Improved Linux workflows. Thank you to GitHub users @pesmith8a and @JamesMc86 for reporting this issue.
 * Fixed issue where similar VIPB destination names become linked. Thank you to GitHub user @qalldredge for reporting this issue.
