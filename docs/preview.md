@@ -48,7 +48,8 @@ Various bug and usability fixes including:
 * Improved Linux workflows. Thank you to GitHub users @pesmith8a and @JamesMc86 for reporting this issue.
 * Fixed issue where similar VIPB destination names become linked. Thank you to GitHub user @qalldredge for reporting this issue.
 * "Place folder contents in destination" now works for support files. Thank you to GitHub user @Sdusing7 for reporting this issue.
-    > This is a preview feature. Enable this through Options > Preview Features and select "[Bug Fix] Place Folder Contents for Non-LabVIEW Files".
+
+  > This is a preview feature. Enable this through Options > Preview Features and select "[Bug Fix] Place Folder Contents for Non-LabVIEW Files".
     
 ## Known Issues
 
