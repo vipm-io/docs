@@ -99,7 +99,7 @@ If issues persist, check:
 
 ## References
 
-- Jim Kring's Forum Post: https://forums.vipm.io/topic/6643-file-and-permissions-issues-on-ubuntu-linux/
+- Jim Kring's [Forum Post](https://forums.vipm.io/topic/6643-file-and-permissions-issues-on-ubuntu-linux/)
 
 ---
 
