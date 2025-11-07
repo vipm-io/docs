@@ -1,5 +1,7 @@
 # VIPM 2026Q1 Preview 1
 
+Watch our [overview video](https://www.youtube.com/watch?v=2vHFfQF0agc) to see the new features and improvements in this preview release.
+
 ## Installation & Feedback
 
 ### Windows
