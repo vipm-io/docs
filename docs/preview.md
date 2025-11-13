@@ -1,4 +1,4 @@
-# VIPM 2026Q1 Preview 1
+# VIPM 2026Q1 Preview 2
 
 Watch our [overview video](https://www.youtube.com/watch?v=2vHFfQF0agc) to see the new features and improvements in this preview release.
 
@@ -21,6 +21,16 @@ Download the Windows Installer [here](https://packages.jki.net/vipm/preview/vipm
 Report issues on [GitHub](https://github.com/vipm-io/vipm-desktop-issues/issues) or join us on [Discord](https://discord.gg/GCB7QQyzsP)
 
 ## What's New
+
+### Updates in Preview 2
+This release includes several important improvements and fixes:
+
+- **VI Package building officially supported on Linux**: Build .vip packages natively on Linux systems
+- **Multi-platform .vipb files**: Package build files (.vipb) now work seamlessly across Windows and Linux
+- **Improved Linux support for RHEL**: Native RPM packages for Red Hat Enterprise Linux and derivatives
+- **Fixed .dragon and .vip installation**: Resolved issues with VIPM CLI when installing .dragon and .vip files
+- **Case-insensitive library name handling**: VIPM now handles internal library name changes in a case-insensitive manner
+- **LabVIEW Class default menu support**: Re-added support for LabVIEW Class default menu items
 
 ### LabVIEW 2026 Support
 This preview release has been tested with LabVIEW 2026 Beta and includes full LabVIEW 2026 support. You can access the LabVIEW 2026 Beta at the [LabVIEW Beta forum](https://forums.ni.com/t5/LabVIEW-Beta/ct-p/7035).
@@ -53,12 +63,6 @@ Various bug and usability fixes including:
 
   > This is a preview feature. Enable this through Options > Preview Features and select "[Bug Fix] Place Folder Contents for Non-LabVIEW Files".
     
-## Known Issues
-
-| Issue | Status |
-|-------|--------|
-| Default menu files removed from libraries during build | Fix in review |
-
 ---
 
 ## Thank You to Our Community
