@@ -1,11 +1,12 @@
-# VIPM 2026Q1 Preview 1
+# VIPM 2026Q1 Preview 2
 
 Watch our [overview video](https://www.youtube.com/watch?v=2vHFfQF0agc) to see the new features and improvements in this preview release.
 
 ## Installation & Feedback
 
 ### Windows
-Download the Windows Installer [here](https://packages.jki.net/vipm/preview/vipm-setup-latest-preview.exe)
+- Download the Windows Installer [here](https://packages.jki.net/vipm/preview/vipm-setup-latest-preview.exe)
+- Or via a one command install `curl.exe -L https://packages.jki.net/vipm/preview/vipm-setup-latest-preview.exe -o %TEMP%\vipm-setup.exe && start /wait %TEMP%\vipm-setup.exe /quiet /norestart && del %TEMP%\vipm-setup.exe`
 
 ### Linux
 
@@ -15,12 +16,25 @@ Download the Windows Installer [here](https://packages.jki.net/vipm/preview/vipm
 
 #### Red Hat-based distributions (RHEL, Fedora, CentOS, Rocky Linux, and derivatives)
 - Download [here](https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm)
-- Or via a one command install `wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm && sudo dpkg -i /tmp/vipm.rpm && rm /tmp/vipm.rpm`
+- Or via one command install:
+  - **RHEL 8+ / Fedora / Rocky Linux / AlmaLinux (dnf):** `wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm && sudo dnf install -y --nogpgcheck /tmp/vipm.rpm && rm /tmp/vipm.rpm`
+  - **RHEL 7 / CentOS 7 (yum):**: `wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm && sudo yum install -y --nogpgcheck /tmp/vipm.rpm && rm /tmp/vipm.rpm`
+  - **openSUSE (zypper):** `wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm && sudo zypper --non-interactive install --no-recommends --allow-unsigned-rpm /tmp/vipm.rpm && rm /tmp/vipm.rpm`
 
 ### Feedback
 Report issues on [GitHub](https://github.com/vipm-io/vipm-desktop-issues/issues) or join us on [Discord](https://discord.gg/GCB7QQyzsP)
 
 ## What's New
+
+### Updates in Preview 2
+This release includes several important improvements and fixes:
+
+- **VI Package building officially supported on Linux**: Build .vip packages natively on Linux systems
+- **Multi-platform .vipb files**: Package build files (.vipb) now work seamlessly across Windows and Linux
+- **Improved Linux support for RHEL**: Native RPM packages for Red Hat Enterprise Linux and derivatives
+- **Fixed .dragon and .vip installation**: Resolved issues with VIPM CLI when installing .dragon and .vip files
+- **Case-insensitive library name handling**: VIPM now handles internal library name changes in a case-insensitive manner
+- **LabVIEW Class default menu support**: Re-added support for LabVIEW Class default menu items
 
 ### LabVIEW 2026 Support
 This preview release has been tested with LabVIEW 2026 Beta and includes full LabVIEW 2026 support. You can access the LabVIEW 2026 Beta at the [LabVIEW Beta forum](https://forums.ni.com/t5/LabVIEW-Beta/ct-p/7035).
@@ -53,12 +67,6 @@ Various bug and usability fixes including:
 
   > This is a preview feature. Enable this through Options > Preview Features and select "[Bug Fix] Place Folder Contents for Non-LabVIEW Files".
     
-## Known Issues
-
-| Issue | Status |
-|-------|--------|
-| Default menu files removed from libraries during build | Fix in review |
-
 ---
 
 ## Thank You to Our Community
@@ -74,6 +82,6 @@ We appreciate your ongoing support and contributions to making VIPM better for t
 
 ---
 
-**Page last edited:** November 05, 2025
+**Page last edited:** November 13, 2025
 
 ---
