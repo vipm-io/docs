@@ -5,7 +5,8 @@ Watch our [overview video](https://www.youtube.com/watch?v=2vHFfQF0agc) to see t
 ## Installation & Feedback
 
 ### Windows
-Download the Windows Installer [here](https://packages.jki.net/vipm/preview/vipm-setup-latest-preview.exe)
+- Download the Windows Installer [here](https://packages.jki.net/vipm/preview/vipm-setup-latest-preview.exe)
+- Or via a one command install `curl.exe -L https://packages.jki.net/vipm/preview/vipm-setup-latest-preview.exe -o %TEMP%\vipm-setup.exe && start /wait %TEMP%\vipm-setup.exe /quiet /norestart && del %TEMP%\vipm-setup.exe`
 
 ### Linux
 
@@ -15,7 +16,10 @@ Download the Windows Installer [here](https://packages.jki.net/vipm/preview/vipm
 
 #### Red Hat-based distributions (RHEL, Fedora, CentOS, Rocky Linux, and derivatives)
 - Download [here](https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm)
-- Or via a one command install `wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm && sudo dnf install -y /tmp/vipm.rpm && rm /tmp/vipm.rpm`
+- Or via one command install:
+  - **RHEL 8+ / Fedora / Rocky Linux / AlmaLinux (dnf):** `wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm && sudo dnf install -y --nogpgcheck /tmp/vipm.rpm && rm /tmp/vipm.rpm`
+  - **RHEL 7 / CentOS 7 (yum):**: `wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm && sudo yum install -y --nogpgcheck /tmp/vipm.rpm && rm /tmp/vipm.rpm`
+  - **openSUSE (zypper):** `wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm && sudo zypper --non-interactive install --no-recommends --allow-unsigned-rpm /tmp/vipm.rpm && rm /tmp/vipm.rpm`
 
 ### Feedback
 Report issues on [GitHub](https://github.com/vipm-io/vipm-desktop-issues/issues) or join us on [Discord](https://discord.gg/GCB7QQyzsP)
