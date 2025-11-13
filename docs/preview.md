@@ -15,7 +15,7 @@ Download the Windows Installer [here](https://packages.jki.net/vipm/preview/vipm
 
 #### Red Hat-based distributions (RHEL, Fedora, CentOS, Rocky Linux, and derivatives)
 - Download [here](https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm)
-- Or via a one command install `wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm && sudo dpkg -i /tmp/vipm.rpm && rm /tmp/vipm.rpm`
+- Or via a one command install `wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm && sudo dnf install -y /tmp/vipm.rpm && rm /tmp/vipm.rpm`
 
 ### Feedback
 Report issues on [GitHub](https://github.com/vipm-io/vipm-desktop-issues/issues) or join us on [Discord](https://discord.gg/GCB7QQyzsP)
