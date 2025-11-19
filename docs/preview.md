@@ -1,4 +1,4 @@
-# VIPM 2026Q1 Preview 2
+# VIPM 2026Q1 Preview 3
 
 Watch our [overview video](https://www.youtube.com/watch?v=2vHFfQF0agc) to see the new features and improvements in this preview release.
 
@@ -18,7 +18,7 @@ Watch our [overview video](https://www.youtube.com/watch?v=2vHFfQF0agc) to see t
 - Download [here](https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm)
 - Or via one command install:
   - **RHEL 8+ / Fedora / Rocky Linux / AlmaLinux (dnf):** `wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm && sudo dnf install -y --nogpgcheck /tmp/vipm.rpm && rm /tmp/vipm.rpm`
-  - **RHEL 7 / CentOS 7 (yum):**: `wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm && sudo yum install -y --nogpgcheck /tmp/vipm.rpm && rm /tmp/vipm.rpm`
+  - **RHEL 7 / CentOS 7 (yum):** `wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm && sudo yum install -y --nogpgcheck /tmp/vipm.rpm && rm /tmp/vipm.rpm`
   - **openSUSE (zypper):** `wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm && sudo zypper --non-interactive install --no-recommends --allow-unsigned-rpm /tmp/vipm.rpm && rm /tmp/vipm.rpm`
 
 ### Feedback
@@ -26,8 +26,21 @@ Report issues on [GitHub](https://github.com/vipm-io/vipm-desktop-issues/issues)
 
 ## What's New
 
+### Updates in Preview 3
+This release focuses on polish and bug fixes based on community feedback:
+
+**VIPM Desktop Improvements:**
+- **Fixed "Search Online" button alignment**: Corrected alignment of the "Search Online" button in the window that appears when no packages are available for search results
+- **Fixed destination deletion text issue**: Resolved issue where deleting a custom VI Package Builder destination would leave previously selected text white
+- **Improved installer window behavior**: The Updates Installer window now stays visible instead of hiding to the System Tray, making installation progress clearly visible
+
+**VIPM CLI Improvements:**
+- **Fixed `vipm about` initialization error**: The `vipm about` command now prints all fields and outputs a warning when VIPM Desktop is not fully initialized (such as on first startup)
+- **Added Global Options to command help**: Running `--help` for individual commands (e.g., `vipm build --help`) now displays Global Options in addition to command-specific options
+- **Fixed LabVIEW version reporting**: The `vipm build LVPROJ_FILE` command now correctly reports the LabVIEW version being used
+- **Fixed output line formatting**: Resolved issue where `vipm build LVPROJ_FILE` output would sometimes garble multiple lines together into a single line
+
 ### Updates in Preview 2
-This release includes several important improvements and fixes:
 
 - **VI Package building officially supported on Linux**: Build .vip packages natively on Linux systems
 - **Multi-platform .vipb files**: Package build files (.vipb) now work seamlessly across Windows and Linux
@@ -82,6 +95,6 @@ We appreciate your ongoing support and contributions to making VIPM better for t
 
 ---
 
-**Page last edited:** November 13, 2025
+**Page last edited:** November 19, 2025
 
 ---
