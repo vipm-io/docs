@@ -30,11 +30,13 @@ Report issues on [GitHub](https://github.com/vipm-io/vipm-desktop-issues/issues)
 This release focuses on polish and bug fixes based on community feedback:
 
 **VIPM Desktop Improvements:**
+
 - **Fixed "Search Online" button alignment**: Corrected alignment of the "Search Online" button in the window that appears when no packages are available for search results
 - **Fixed destination deletion text issue**: Resolved issue where deleting a custom VI Package Builder destination would leave previously selected text white
 - **Improved installer window behavior**: The Updates Installer window now stays visible instead of hiding to the System Tray, making installation progress clearly visible
 
 **VIPM CLI Improvements:**
+
 - **Fixed `vipm about` initialization error**: The `vipm about` command now prints all fields and outputs a warning when VIPM Desktop is not fully initialized (such as on first startup)
 - **Added Global Options to command help**: Running `--help` for individual commands (e.g., `vipm build --help`) now displays Global Options in addition to command-specific options
 - **Fixed LabVIEW version reporting**: The `vipm build LVPROJ_FILE` command now correctly reports the LabVIEW version being used
