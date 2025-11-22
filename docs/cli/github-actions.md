@@ -11,6 +11,8 @@ Using VIPM in CI/CD pipelines allows you to:
 - Validate package installations in different LabVIEW versions
 - Ensure reproducible builds with consistent package versions
 
+Need full command syntax while building workflows? Refer to the [CLI Command Reference](command-reference.md).
+
 ### Related Topics
 
 - [VIPM CLI Overview](index.md) — general CLI concepts and sample commands
@@ -252,6 +254,6 @@ For complete working examples, visit:
 ## Additional Resources
 
 - [Docker and Containers Guide](docker.md)
-- [VIPM CLI Reference](index.md)
+- [CLI Command Reference](command-reference.md)
 - [NI LabVIEW for Containers](https://github.com/ni/labview-for-containers)
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)

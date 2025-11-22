@@ -109,8 +109,8 @@ Add `--labview-version` to focus on a specific LabVIEW release if you have more 
 
 - Need container guidance? Continue to [Docker and Containers](docker.md).
 - Automating CI builds? Jump to [GitHub Actions and CI/CD](github-actions.md).
-- Looking for command syntax, options, and exit codes? See the upcoming [CLI Command Reference](command-reference.md) once published.
-- Troubleshooting installs? Refer to the (planned) `docs/cli/troubleshooting.md` page or the main [troubleshooting index](../troubleshooting/index.md).
+- Looking for command syntax, options, and exit codes? Read the [CLI Command Reference](command-reference.md).
+- Troubleshooting installs? Use the main [troubleshooting index](../troubleshooting/index.md) while the CLI-specific guide is in progress.
 
 ## Quick Troubleshooting Tips
 

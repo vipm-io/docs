@@ -21,7 +21,7 @@ This proposal outlines recommended improvements to the VIPM CLI documentation st
 |----|-------------|-------|-------|--------|
 | 1 | Fix `github-actions.md` header typo and add cross-links | _Unassigned_ | `docs/cli/github-actions.md` | ✅ Done |
 | 2 | Standardize CLI example formatting in `index.md` and `docker.md` | _Unassigned_ | `docs/cli/index.md`, `docs/cli/docker.md` | ✅ Done |
-| 3 | Draft consolidated command reference | _Unassigned_ | `docs/cli/command-reference.md` (new) | ⚪ Not Started |
+| 3 | Draft consolidated command reference | _Unassigned_ | `docs/cli/command-reference.md` (new) | 🟠 In Progress |
 | 4 | Draft quick-start/getting-started guide | _Unassigned_ | `docs/cli/getting-started.md` (new) | ✅ Done |
 
 _Update the tables above each time we complete or add scope so this document stays the single source of truth._
@@ -37,6 +37,12 @@ _Update the tables above each time we complete or add scope so this document sta
 | 2025-11-22 | Added `AGENTS.md` onboarding notes | ✅ | Captured repo workflow guidance (planning, testing, communication) for future contributors |
 | 2025-11-22 | Created initial `docs/cli/getting-started.md` outline | ✅ | Drafted step-by-step quick start (verify CLI, refresh list, install, list packages, next steps) |
 | 2025-11-22 | Linked quick-start guide in nav + expanded troubleshooting tips | ✅ | `docs/cli/index.md`, `docs/cli/getting-started.md`, and `mkdocs.yml` updated so the new guide is discoverable and includes built-in help guidance |
+| 2025-11-22 | Added placeholder `docs/cli/command-reference.md` | 🟠 | Stub page unblocks cross-links while Phase 2 content is authored |
+| 2025-11-22 | Authored initial command reference sections | 🟠 | Added global options + detailed entries for install, uninstall, list, package-list-refresh, activate, build, version, about |
+| 2025-11-22 | Documented `vipm search` command | 🟠 | Command reference now includes syntax, options, and examples for search |
+| 2025-11-22 | Reduced duplicated examples across CLI docs | ✅ | Streamlined `docs/cli/index.md` and `docs/cli/docker.md`; both now point to the command reference instead of repeating full command walkthroughs |
+| 2025-11-22 | Clarified CLI index navigation | ✅ | Updated `docs/cli/index.md` Getting Started section to explicitly link to downstream topic pages |
+| 2025-11-22 | Synced CLI pages with command reference availability | ✅ | Updated `docs/cli/index.md`, `docs/cli/getting-started.md`, `docs/cli/docker.md`, and `docs/cli/github-actions.md` to reference the live command reference and current troubleshooting guidance |
 
 ## Decision Register
 
