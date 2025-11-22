@@ -57,40 +57,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Activate VIPM
-        run: |
-          vipm vipm-activate \
-            --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" \
-            --name "${{ secrets.VIPM_FULL_NAME }}" \
-            --email "${{ secrets.VIPM_EMAIL }}"
-      
-      - name: Refresh package list
-        run: vipm package-list-refresh
-      
-      - name: Install project dependencies
-        run: vipm install project.vipc
-      
-      - name: List installed packages
-        run: vipm list --installed
-```
-
-### Installing VIPM on Ubuntu Runners
-
-If you're not using the NI LabVIEW container and need to install VIPM on an Ubuntu runner, add an installation step using the commands from the [VIPM 2026Q1 Preview](../preview.md):
-
-```yaml
-name: VIPM CI
-
-on: [push, pull_request]
-
-jobs:
-  install-packages:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
       - name: Install VIPM
         run: |
           wget -O /tmp/vipm.deb https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.deb
@@ -109,11 +75,10 @@ jobs:
       
       - name: Install project dependencies
         run: vipm install project.vipc
+      
+      - name: List installed packages
+        run: vipm list --installed
 ```
-
-For other Linux distributions (RHEL, Fedora, CentOS, etc.), see the [VIPM 2026Q1 Preview installation instructions](../preview.md).
-
-**Note:** Using the NI LabVIEW container (as shown in the basic example above) is the recommended approach as it includes both LabVIEW and VIPM pre-installed.
 
 ### Installing Specific Packages
 
