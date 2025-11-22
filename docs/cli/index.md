@@ -1,64 +1,64 @@
+title: Overview
+
 # Using VIPM via Command-Line Interface (CLI)
 
 VIPM includes a powerful command-line interface (CLI) that enables automation, integration with CI/CD pipelines, and usage in containerized environments.
-
-## CLI Features
-
-The VIPM CLI provides commands for:
-
-- **Package Management**: Install, uninstall, and list VI packages
-- **Package Building**: Build VI packages from `.vipb` build specifications
-- **Activation**: Activate VIPM Pro licenses
-- **Repository Management**: Refresh package lists from repositories
-
-## Use Cases
-
-The VIPM CLI is particularly useful for:
-
-- **Continuous Integration/Continuous Deployment (CI/CD)**: Automate package installation and builds in GitHub Actions, GitLab CI, or other CI/CD platforms
-- **Docker Containers**: Use VIPM in containerized LabVIEW environments
-- **Automation Scripts**: Create scripts to manage LabVIEW dependencies and build processes
-- **Headless Environments**: Work with VIPM on systems without a graphical interface
-
-## Topics
-
-Explore the following topics to learn more about using VIPM CLI:
-
-- [Docker and Containers](docker.md) - Learn how to use VIPM in Docker containers with LabVIEW
-- [GitHub Actions and CI/CD](github-actions.md) - Integrate VIPM into your CI/CD workflows
-
 ## Example Commands
 
-Here are some common VIPM CLI commands:
+Use these quick snippets to verify your environment, then jump to the [CLI Command Reference](command-reference.md) for full syntax, options, exit codes, and troubleshooting tips.
 
 ```bash
-# Activate VIPM Pro
-vipm vipm-activate --serial-number "YOUR-SERIAL" --name "Your Name" --email "your@email.com"
+# Activate VIPM Pro (optional)
 
-# Refresh package list
+
+# Refresh package list so installs see the latest metadata
 vipm package-list-refresh
 
-# Install a package
-vipm install oglib_boolean
-
-# Install multiple packages
+# Install packages by name or from a .vipc file
 vipm install oglib_boolean oglib_numeric
-
-# Install from a VI Package Configuration file
 vipm install path/to/project.vipc
 
-# List installed packages
+# Inspect installed packages or files
 vipm list --installed
+vipm list project.vipc
 
-# Uninstall a package
+# Build a VI package (requires .vipb or .lvproj)
+```
+```
+Listing installed packages
+Found <n> packages:
+	<Package Name> (<id> vX.Y.Z)
+```
+
+### Uninstall a Package
+
+```bash
 vipm uninstall oglib_boolean
+```
 
-# Build a VI package
+Expected output:
+
+```
+Uninstalling 1 package
+✓ Uninstalled 1 package ...
+```
+
+### Build a VI Package
+
+```bash
 vipm build path/to/package.vipb
 ```
 
+Typical outcome: VIPM validates the build specification, produces a `.vip` artifact, and reports the output location.
+
 ## Getting Started
 
-To start using VIPM CLI, ensure you have VIPM installed on your system. The CLI is included with all editions of VIPM.
+To start using VIPM CLI, ensure you have VIPM installed on your system. The CLI ships with every edition of VIPM Desktop.
 
-For detailed examples and use cases, check out the topic pages listed above.
+Next, walk through the [Getting Started guide](getting-started.md) for first-run verification, then dive into [Docker](docker.md) or [GitHub Actions](github-actions.md) when you need environment-specific workflows.
+
+## Next Steps
+
+- First time using the CLI? Follow the [Getting Started guide](getting-started.md).
+- Ready for containers? Head to [Docker and Containers](docker.md) for environment setup tips.
+- Automating builds? Explore [GitHub Actions and CI/CD](github-actions.md) for workflow samples.

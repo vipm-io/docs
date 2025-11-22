@@ -47,6 +47,8 @@ nav:
     - building-packages/vi-packages-build-templates.md
   - CLI:
     - cli/index.md
+    - cli/getting-started.md
+    - cli/command-reference.md
     - cli/docker.md
     - cli/github-actions.md
   - Linux:

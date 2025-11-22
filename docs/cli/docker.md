@@ -1,3 +1,5 @@
+title: Docker Containers
+
 # Using VIPM in Docker Containers
 
 VIPM can be used in Docker containers to manage LabVIEW packages in containerized environments. This is particularly useful for CI/CD pipelines, automated testing, and reproducible builds.
@@ -10,6 +12,11 @@ VIPM works with NI's official LabVIEW container images, allowing you to:
 - Automate package installation in CI/CD pipelines
 - Create reproducible build environments
 - Build VI packages in containers
+
+### Related Topics
+
+- [VIPM CLI Overview](index.md) — feature summary and example commands
+- [GitHub Actions and CI/CD](github-actions.md) — integrate container workflows into automation
 
 ## Docker Examples Repository
 
@@ -52,132 +59,35 @@ docker compose run --rm vipm-labview
 
 ## VIPM CLI Commands in Containers
 
-Once inside a running container, you can use VIPM CLI commands to manage packages.
+Once inside a running container, use the same CLI commands described in the [CLI Command Reference](command-reference.md). The examples below highlight container-specific considerations:
 
-### Activate VIPM
+- **Activate VIPM Pro** (required today). Use environment variables from your `.env` file:
 
-Currently, using VIPM inside containers requires activating VIPM Pro. Support for VIPM Community Edition and VIPM Free Edition is being worked on.
+  ```bash
+  vipm activate --serial-number "$VIPM_SERIAL_NUMBER" --name "$VIPM_FULL_NAME" --email "$VIPM_EMAIL"
+  ```
 
-```bash
-vipm vipm-activate --serial-number "$VIPM_SERIAL_NUMBER" --name "$VIPM_FULL_NAME" --email "$VIPM_EMAIL"
-```
+- **Refresh metadata** before every install to avoid stale caches when containers are rebuilt frequently:
 
-Expected output:
-```
-✓ Activation succeeded!
-```
+  ```bash
+  vipm package-list-refresh
+  ```
 
-### Refresh Package List
+- **Install packages or `.vipc` files`** just like on desktop. If you have multiple LabVIEW versions in the container image, pair your command with `--labview-version` (and `--labview-bitness` when needed).
 
-Refresh VIPM's package metadata from the vipm.io community repository:
+  ```bash
+  vipm install oglib_boolean
+  vipm install project.vipc
+  ```
 
-```bash
-vipm package-list-refresh
-```
+- **List/verify installations** to confirm the container state before running builds or tests:
 
-Expected output:
-```
-✓ Package list refreshed successfully
-```
+  ```bash
+  vipm list --installed
+  ls -al /usr/local/natinst/LabVIEW-2025-64/user.lib/_OpenG.lib
+  ```
 
-### List Installed Packages
-
-Check which packages are installed in LabVIEW:
-
-```bash
-vipm list --installed
-```
-
-Example output:
-```
-Listing installed packages
-Auto-detected LabVIEW 2025 (64-bit)
-Found 0 packages:
-```
-
-**Note**: If you have multiple LabVIEW versions installed, specify the version using `--labview-version`.
-
-### Install a Package
-
-Install a single package:
-
-```bash
-vipm install oglib_boolean
-```
-
-Example output:
-```
-Installing 1 package
-Auto-detected LabVIEW 2025 (64-bit)
-install: 100 (1/1; 100%) - Installation complete
-✓ Installed 1 package from LabVIEW 2025 (64-bit) in 23.5s
-Successfully installed 1 package:
-  OpenG Boolean Library (oglib_boolean v6.0.0.9)
-```
-
-### Install Multiple Packages
-
-Install multiple packages in one command:
-
-```bash
-vipm install oglib_boolean oglib_numeric
-```
-
-Example output:
-```
-Installing 2 packages
-Auto-detected LabVIEW 2025 (64-bit)
-install: 100 (1/1; 100%) - Installation complete
-✓ Installed 2 packages from LabVIEW 2025 (64-bit) in 28.5s
-Successfully installed 2 packages:
-  OpenG Boolean Library (oglib_boolean v6.0.0.9)
-  OpenG Numeric Library (oglib_numeric v6.0.0.9)
-```
-
-### Install from VI Package Configuration File
-
-Use a `.vipc` file to install all project dependencies:
-
-```bash
-vipm install path/to/project.vipc
-```
-
-### Uninstall a Package
-
-Remove an installed package:
-
-```bash
-vipm uninstall oglib_boolean
-```
-
-Example output:
-```
-Uninstalling 1 package
-Auto-detected LabVIEW 2025 (64-bit)
-validate: 100 (1/1; 100%) - Validation complete
-Uninstalling oglib_boolean v6.0.0.9...
-uninstall: 100 (1/1; 100%) - Uninstall complete
-✓ Uninstalled 1 package from LabVIEW 2025 (64-bit) in 10.3s
-Successfully uninstalled 1 package:
-  OpenG Boolean Library (oglib_boolean v6.0.0.9)
-```
-
-### Verify Installation
-
-You can verify package installation by checking the LabVIEW directory. For example, OpenG packages are installed in:
-
-```bash
-ls -al /usr/local/natinst/LabVIEW-2025-64/user.lib/_OpenG.lib
-```
-
-Example output:
-```
-total 16
-drwxr-xr-x 4 root root 4096 Nov 11 21:19 .
-drwxr-xr-x 1 root root 4096 Nov 11 21:19 ..
-drwxr-xr-x 3 root root 4096 Nov 11 21:19 boolean
-drwxr-xr-x 3 root root 4096 Nov 11 21:19 numeric
-```
+> 💡 Because containers are often ephemeral, script these commands in your Docker entrypoint or CI workflow so every run activates, refreshes, installs, and verifies automatically.
 
 ## Building VI Packages in Containers
 
@@ -185,6 +95,12 @@ You can build VI packages from `.vipb` build specifications:
 
 ```bash
 vipm build path/to/your_package.vipb
+```
+
+Expected output:
+```
+Building VI Package from path/to/your_package.vipb
+✓ Build completed: builds/your_package.vip
 ```
 
 **Note**: Package building on Linux is currently under development and may have some limitations. Check the [VIPM 2026 Q1 Preview](https://docs.vipm.io/preview/) for the latest updates.
@@ -204,3 +120,4 @@ Using VIPM in containers is ideal for:
 - [NI LabVIEW Docker Hub](https://hub.docker.com/r/nationalinstruments/labview)
 - [LabVIEW for Containers GitHub](https://github.com/ni/labview-for-containers)
 - [GitHub Actions and CI/CD Guide](github-actions.md)
+- [CLI Command Reference](command-reference.md)
