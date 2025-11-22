@@ -107,108 +107,6 @@ To build VI packages as part of your CI pipeline:
     path: builds/*.vip
 ```
 
-## CI/CD Best Practices
-
-### Use Docker Containers
-
-For consistent builds, use NI's official LabVIEW container:
-
-```yaml
-container:
-  image: nationalinstruments/labview:2025-64bit
-```
-
-### Cache Package Installations
-
-To speed up builds, cache installed packages:
-
-```yaml
-- name: Cache VIPM packages
-  uses: actions/cache@v4
-  with:
-    path: |
-      /usr/local/natinst/LabVIEW-*/user.lib
-      /usr/local/natinst/LabVIEW-*/vi.lib
-    key: ${{ runner.os }}-vipm-${{ hashFiles('project.vipc') }}
-```
-
-### Validate Installation
-
-Always verify that packages installed correctly:
-
-```yaml
-- name: Verify package installation
-  run: |
-    vipm list --installed
-    # Add additional verification commands as needed
-```
-
-### Matrix Builds
-
-Test against multiple LabVIEW versions:
-
-```yaml
-strategy:
-  matrix:
-    labview-version: ['2024-64bit', '2025-64bit']
-
-container:
-  image: nationalinstruments/labview:${{ matrix.labview-version }}
-```
-
-## Other CI/CD Platforms
-
-While this guide focuses on GitHub Actions, VIPM CLI works with other CI/CD platforms:
-
-### GitLab CI
-
-```yaml
-image: nationalinstruments/labview:latest
-
-install_packages:
-  script:
-    - vipm vipm-activate --serial-number "$VIPM_SERIAL_NUMBER" --name "$VIPM_FULL_NAME" --email "$VIPM_EMAIL"
-    - vipm package-list-refresh
-    - vipm install project.vipc
-```
-
-### Jenkins
-
-```groovy
-pipeline {
-    agent {
-        docker {
-            image 'nationalinstruments/labview:latest'
-        }
-    }
-    stages {
-        stage('Install Packages') {
-            steps {
-                sh 'vipm vipm-activate --serial-number "${VIPM_SERIAL_NUMBER}" --name "${VIPM_FULL_NAME}" --email "${VIPM_EMAIL}"'
-                sh 'vipm package-list-refresh'
-                sh 'vipm install project.vipc'
-            }
-        }
-    }
-}
-```
-
-### Azure Pipelines
-
-```yaml
-pool:
-  vmImage: 'ubuntu-latest'
-
-container: nationalinstruments/labview:latest
-
-steps:
-- script: |
-    vipm vipm-activate --serial-number "$(VIPM_SERIAL_NUMBER)" --name "$(VIPM_FULL_NAME)" --email "$(VIPM_EMAIL)"
-    vipm package-list-refresh
-    vipm install project.vipc
-  displayName: 'Install VIPM Packages'
-```
-
 ## Common Workflow Patterns
 
 ### Complete Build and Test Workflow
@@ -227,13 +125,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Setup VIPM
+      - name: Install VIPM
+        run: |
+          wget -O /tmp/vipm.deb https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.deb
+          sudo dpkg -i /tmp/vipm.deb
+          rm /tmp/vipm.deb
+      
+      - name: Activate VIPM
         run: |
           vipm vipm-activate \
             --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" \
             --name "${{ secrets.VIPM_FULL_NAME }}" \
             --email "${{ secrets.VIPM_EMAIL }}"
-          vipm package-list-refresh
+      
+      - name: Refresh package list
+        run: vipm package-list-refresh
       
       - name: Install dependencies
         run: vipm install project.vipc
@@ -271,7 +177,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Setup VIPM
+      - name: Install VIPM
+        run: |
+          wget -O /tmp/vipm.deb https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.deb
+          sudo dpkg -i /tmp/vipm.deb
+          rm /tmp/vipm.deb
+      
+      - name: Activate VIPM
         run: |
           vipm vipm-activate \
             --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" \
