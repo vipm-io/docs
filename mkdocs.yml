@@ -31,3 +31,8 @@ extra:
 hooks:
   - hooks.py
 
+plugins:
+  - redirects:
+      redirect_maps:
+        'report-a-problem.md': 'support.md'
+
