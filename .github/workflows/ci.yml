@@ -54,7 +54,9 @@ jobs:
   comment-preview:
     runs-on: ubuntu-latest
     needs: build
-    if: github.event_name == 'pull_request'
+    # disable since its very noisy in PR comments history
+    if: false
+    #if: github.event_name == 'pull_request'
     permissions:
       pull-requests: write
     steps:
