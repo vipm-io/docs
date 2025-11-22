@@ -36,3 +36,33 @@ plugins:
       redirect_maps:
         'report-a-problem.md': 'support.md'
 
+nav:
+  - Home: index.md
+  - VIPM 2026Q1 Preview 3: preview.md
+  - Support: support.md
+  - VIPM Edition Comparison: vipm-editions-comparison.md
+  - Building packages:
+    - building-packages/index.md
+    - building-packages/building-vi-packages-that-depend-on-other-software.md
+    - building-packages/vi-packages-build-templates.md
+  - CLI:
+    - cli/index.md
+    - cli/docker.md
+    - cli/github-actions.md
+  - Linux:
+    - linux/ubuntu.md
+    - linux/VIPM Linux Crash on Package Installation - Permission Fix.md
+  - Publishing packages:
+    - publishing-packages/index.md
+  - Release notes:
+    - release-notes/index.md
+    - release-notes/2025.3.1.md
+    - release-notes/2025.3.md
+    - release-notes/2024.3.md
+    - release-notes/2024.1.md
+    - release-notes/2023.3.md
+    - release-notes/2023.1.md
+  - Troubleshooting:
+    - troubleshooting/index.md
+    - troubleshooting/are-vipms-online-services-down.md
+
