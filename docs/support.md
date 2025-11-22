@@ -4,6 +4,8 @@ title: Support
 
 # Support
 
+## Community Resources
+
 To **report a problem** with VIPM, please visit the [VIPM Desktop Issue Tracker](https://github.com/vipm-io/vipm-desktop-issues).
 
 To **request a feature** (or upvote an existing request), please visit the [VIPM Idea Exchange](https://forums.vipm.io/forum/84-vipm-idea-exchange/).
@@ -14,4 +16,4 @@ Join our **Discord server** to connect with the VIPM community, get help, share 
 
 ## VIPM Professional Support
 
-If you are a **VIPM Professional customer**, you have access to priority support. Please visit [support.vipm.io](https://support.vipm.io) to submit support tickets and get assistance from our team.
+If you are a **VIPM Professional customer**, you have access to priority support. Please visit [support.vipm.io](https://support.vipm.io) to submit support tickets and get assistance from our team. To purchase a VIPM Professional license with support, visit [vipm.io/get](https://www.vipm.io/get/)
