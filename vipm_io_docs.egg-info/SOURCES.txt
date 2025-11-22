@@ -1,8 +1,0 @@
-README.md
-hooks.py
-pyproject.toml
-vipm_io_docs.egg-info/PKG-INFO
-vipm_io_docs.egg-info/SOURCES.txt
-vipm_io_docs.egg-info/dependency_links.txt
-vipm_io_docs.egg-info/requires.txt
-vipm_io_docs.egg-info/top_level.txt
