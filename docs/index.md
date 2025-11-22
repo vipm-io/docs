@@ -21,6 +21,14 @@ The following are some specialized installation guides:
 
 All VIPM Community and NI Tools Network packages are searchable on [vipm.io](https://www.vipm.io) and are also searchable within [VIPM Desktop](https://www.vipm.io/desktop/versions/).
 
+## Using VIPM CLI, Docker, and CI/CD
+
+Learn how to use VIPM in automated workflows, containers, and CI/CD pipelines:
+
+- [Command-Line Interface (CLI)](cli/) - Use VIPM from the command line for automation
+- [Docker and Containers](cli/docker.md) - Run VIPM in containerized environments
+- [GitHub Actions and CI/CD](cli/github-actions.md) - Integrate VIPM into your CI/CD workflows
+
 ## Need Help or Support?
 
 Visit our **[Support page](support.md)** for help resources including:
