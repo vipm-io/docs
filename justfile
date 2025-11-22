@@ -2,4 +2,7 @@
 
 # build and server locally, with live reload
 dev:
-    uv run mkdocs serve
+    uv run mkdocs serve --livereload
+
+build:
+    uv run mkdocs build

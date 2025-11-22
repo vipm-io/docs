@@ -1,3 +1,5 @@
+title: Docker Containers
+
 # Using VIPM in Docker Containers
 
 VIPM can be used in Docker containers to manage LabVIEW packages in containerized environments. This is particularly useful for CI/CD pipelines, automated testing, and reproducible builds.
@@ -10,6 +12,11 @@ VIPM works with NI's official LabVIEW container images, allowing you to:
 - Automate package installation in CI/CD pipelines
 - Create reproducible build environments
 - Build VI packages in containers
+
+### Related Topics
+
+- [VIPM CLI Overview](index.md) — feature summary and example commands
+- [GitHub Actions and CI/CD](github-actions.md) — integrate container workflows into automation
 
 ## Docker Examples Repository
 
@@ -88,7 +95,7 @@ Check which packages are installed in LabVIEW:
 vipm list --installed
 ```
 
-Example output:
+Expected output:
 ```
 Listing installed packages
 Auto-detected LabVIEW 2025 (64-bit)
@@ -105,7 +112,7 @@ Install a single package:
 vipm install oglib_boolean
 ```
 
-Example output:
+Expected output:
 ```
 Installing 1 package
 Auto-detected LabVIEW 2025 (64-bit)
@@ -123,7 +130,7 @@ Install multiple packages in one command:
 vipm install oglib_boolean oglib_numeric
 ```
 
-Example output:
+Expected output:
 ```
 Installing 2 packages
 Auto-detected LabVIEW 2025 (64-bit)
@@ -142,6 +149,12 @@ Use a `.vipc` file to install all project dependencies:
 vipm install path/to/project.vipc
 ```
 
+Expected output:
+```
+Installing packages from configuration file project.vipc
+✓ Installed N packages ...
+```
+
 ### Uninstall a Package
 
 Remove an installed package:
@@ -150,7 +163,7 @@ Remove an installed package:
 vipm uninstall oglib_boolean
 ```
 
-Example output:
+Expected output:
 ```
 Uninstalling 1 package
 Auto-detected LabVIEW 2025 (64-bit)
@@ -170,7 +183,7 @@ You can verify package installation by checking the LabVIEW directory. For examp
 ls -al /usr/local/natinst/LabVIEW-2025-64/user.lib/_OpenG.lib
 ```
 
-Example output:
+Expected output:
 ```
 total 16
 drwxr-xr-x 4 root root 4096 Nov 11 21:19 .
@@ -185,6 +198,12 @@ You can build VI packages from `.vipb` build specifications:
 
 ```bash
 vipm build path/to/your_package.vipb
+```
+
+Expected output:
+```
+Building VI Package from path/to/your_package.vipb
+✓ Build completed: builds/your_package.vip
 ```
 
 **Note**: Package building on Linux is currently under development and may have some limitations. Check the [VIPM 2026 Q1 Preview](https://docs.vipm.io/preview/) for the latest updates.
