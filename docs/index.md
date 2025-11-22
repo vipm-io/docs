@@ -21,10 +21,12 @@ The following are some specialized installation guides:
 
 All VIPM Community and NI Tools Network packages are searchable on [vipm.io](https://www.vipm.io) and are also searchable within [VIPM Desktop](https://www.vipm.io/desktop/versions/).
 
-## Sending Us Your Feedback
+## Need Help or Support?
 
-The following links provide ways for you to send your feedback and discuss VIPM with others.
+Visit our **[Support page](support.md)** for help resources including:
 
-- [Questions and Discussion](https://forums.vipm.io/forum/5-vi-package-manager-vipm/)
-- [Request a Feature](https://forums.vipm.io/forum/84-vipm-idea-exchange/)
-- [Support](support.md)
+- Community discussion forums
+- Discord server for real-time community help
+- Feature requests and idea exchange
+- Issue tracking
+- VIPM Professional customer support
