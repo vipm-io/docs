@@ -276,14 +276,9 @@ jobs:
         run: vipm build source/MyPackage.vipb
       
       - name: Upload to Release
-        uses: actions/upload-release-asset@v1
+        run: gh release upload ${{ github.event.release.tag_name }} builds/*.vip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./builds/MyPackage-1.0.0.vip
-          asset_name: MyPackage-1.0.0.vip
-          asset_content_type: application/octet-stream
 ```
 
 ## Troubleshooting
