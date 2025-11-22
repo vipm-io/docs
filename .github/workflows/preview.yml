@@ -1,0 +1,44 @@
+name: Deploy PR previews
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+concurrency: preview-${{ github.ref }}
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        if: github.event.action != 'closed'
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        if: github.event.action != 'closed'
+        run: uv python install
+
+      - name: Sync dependencies
+        if: github.event.action != 'closed'
+        run: uv sync
+
+      - name: Build documentation
+        if: github.event.action != 'closed'
+        run: uv run mkdocs build --strict
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./site/
