@@ -107,6 +107,18 @@ To build VI packages as part of your CI pipeline:
     path: builds/*.vip
 ```
 
+### Caching VIPM Package Downloads
+
+To speed up builds, cache VIPM's package downloads:
+
+```yaml
+- name: Cache VIPM packages
+  uses: actions/cache@v4
+  with:
+    path: /usr/local/jki/vipm/cache/
+    key: ${{ runner.os }}-vipm-${{ hashFiles('project.vipc') }}
+```
+
 ## Common Workflow Patterns
 
 ### Complete Build and Test Workflow
