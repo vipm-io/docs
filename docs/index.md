@@ -27,4 +27,4 @@ The following links provide ways for you to send your feedback and discuss VIPM 
 
 - [Questions and Discussion](https://forums.vipm.io/forum/5-vi-package-manager-vipm/)
 - [Request a Feature](https://forums.vipm.io/forum/84-vipm-idea-exchange/)
-- [Report a Problem](report-a-problem.md)
+- [Support](support.md)
