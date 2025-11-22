@@ -1,4 +1,4 @@
-# Using VIPM in GitHub Actions and CI/CD
+ko# Using VIPM in GitHub Actions and CI/CD
 
 VIPM's command-line interface enables seamless integration with CI/CD platforms like GitHub Actions, enabling automated package management, building, and testing of LabVIEW projects.
 
@@ -87,9 +87,10 @@ To install specific packages instead of using a `.vipc` file:
 ```yaml
 - name: Install required packages
   run: |
-    vipm install oglib_boolean
-    vipm install oglib_numeric
-    vipm install jki_lib_state_machine
+    vipm install \
+      oglib_boolean \
+      oglib_numeric \
+      jki_lib_state_machine
 ```
 
 ### Building VI Packages
@@ -116,6 +117,7 @@ To speed up builds, cache VIPM's package downloads:
   uses: actions/cache@v4
   with:
     path: |
+      /usr/local/natinst/LABVIEW*/
       /usr/local/jki/vipm/cache/
       /usr/local/jki/vipm/db/
     key: ${{ runner.os }}-vipm-${{ hashFiles('project.vipc') }}
