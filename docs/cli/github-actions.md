@@ -115,7 +115,9 @@ To speed up builds, cache VIPM's package downloads:
 - name: Cache VIPM packages
   uses: actions/cache@v4
   with:
-    path: /usr/local/jki/vipm/cache/
+    path: |
+      /usr/local/jki/vipm/cache/
+      /usr/local/jki/vipm/db/
     key: ${{ runner.os }}-vipm-${{ hashFiles('project.vipc') }}
 ```
 
