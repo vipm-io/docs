@@ -219,7 +219,7 @@ Expected output:
 
 ## `vipm activate`
 
-Activates VIPM Pro. Legacy scripts may use `vipm vipm-activate`; both map to the same functionality.
+Activates VIPM Pro. Legacy scripts may use `vipm activate`; both map to the same functionality.
 
 ### Syntax
 

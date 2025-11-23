@@ -133,7 +133,7 @@ docs/cli/
 │   ├── uninstall.md                  # vipm uninstall command
 │   ├── list.md                       # vipm list command
 │   ├── build.md                      # vipm build command
-│   ├── vipm-activate.md              # vipm vipm-activate command
+│   ├── vipm-activate.md              # vipm activate command
 │   └── package-list-refresh.md       # vipm package-list-refresh command
 │
 ├── guides/                           # Task-oriented guides

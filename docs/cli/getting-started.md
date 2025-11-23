@@ -34,7 +34,7 @@ Tip: `vipm help` prints the global command list, and `vipm <command> --help` sho
 If you need Pro features (building packages, scripting, etc.), activate once per machine:
 
 ```bash
-vipm vipm-activate \
+vipm activate \
   --serial-number "YOUR-SERIAL" \
   --name "Your Name" \
   --email "your@email.com"
@@ -115,7 +115,7 @@ Add `--labview-version` to focus on a specific LabVIEW release if you have more 
 ## Quick Troubleshooting Tips
 
 - **CLI not found**: Use the VIPM terminal shortcut installed with VIPM or add the install directory (for example, `C:/Program Files/JKI/VIPM` or `/usr/local/jki/vipm`) to your PATH.
-- **Activation fails**: Confirm the serial number, name, and email match your VIPM account exactly; rerun `vipm vipm-activate` after updating secrets or environment variables.
+- **Activation fails**: Confirm the serial number, name, and email match your VIPM account exactly; rerun `vipm activate` after updating secrets or environment variables.
 - **Package install fails**: Refresh metadata (`vipm package-list-refresh`) and double-check the package ID; add `--labview-version` when multiple LabVIEW versions are installed.
 - **Network issues**: Configure proxy variables (`http_proxy`, `https_proxy`) or use an internal repository mirror if the build machine cannot reach `vipm.io`.
 
