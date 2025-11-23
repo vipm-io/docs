@@ -124,7 +124,7 @@ To speed up builds, cache VIPM's package downloads:
   uses: actions/cache@v4
   with:
     path: |
-      /usr/local/natinst/LABVIEW*/
+      /usr/local/natinst/LabVIEW*/
       /usr/local/jki/vipm/cache/
       /usr/local/jki/vipm/db/
     key: ${{ runner.os }}-vipm-${{ hashFiles('project.vipc') }}
