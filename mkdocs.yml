@@ -31,6 +31,12 @@ extra:
 hooks:
   - hooks.py
 
+markdown_extensions:
+  - admonition
+  - pymdownx.snippets:
+      base_path: docs/.snippets
+      check_paths: true
+
 plugins:
   - redirects:
       redirect_maps:
@@ -52,6 +58,7 @@ nav:
     - cli/docker.md
     - cli/github-actions.md
   - Linux:
+    - linux/index.md
     - linux/ubuntu.md
     - linux/VIPM Linux Crash on Package Installation - Permission Fix.md
   - Publishing packages:
