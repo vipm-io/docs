@@ -1,3 +1,5 @@
+title: Overview
+
 # VIPM on Linux
 
 Welcome to the VIPM Linux documentation! VIPM (VI Package Manager) is now available for Linux with modern installers and powerful command-line tools.
