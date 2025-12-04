@@ -1,3 +1,5 @@
+title: Overview
+
 # Publishing Packages
 
 ## Submitting New Packages
@@ -41,3 +43,5 @@ If you still do not receive an email, it could mean there was a problem -- if th
 On your [My Published Packages](https://www.vipm.io/publish/my-packages/) page (as shown below) you can check on the status of newly released packages, release new versions of packages, and view statistics .
 
 ![My Published Packages page](../assets/my-published-packages.png)
+
+--8<-- "need-help.md"

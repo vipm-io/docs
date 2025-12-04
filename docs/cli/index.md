@@ -2,7 +2,10 @@ title: Overview
 
 # Using VIPM via Command-Line Interface (CLI)
 
+--8<-- "preview-available.md"
+
 VIPM includes a powerful command-line interface (CLI) that enables automation, integration with CI/CD pipelines, and usage in containerized environments.
+
 ## Example Commands
 
 Use these quick snippets to verify your environment, then jump to the [CLI Command Reference](command-reference.md) for full syntax, options, exit codes, and troubleshooting tips.
@@ -62,3 +65,5 @@ Next, walk through the [Getting Started guide](getting-started.md) for first-run
 - First time using the CLI? Follow the [Getting Started guide](getting-started.md).
 - Ready for containers? Head to [Docker and Containers](docker.md) for environment setup tips.
 - Automating builds? Explore [GitHub Actions and CI/CD](github-actions.md) for workflow samples.
+
+--8<-- "need-help.md"
