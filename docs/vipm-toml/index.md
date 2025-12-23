@@ -13,7 +13,7 @@ title: Overview
 
 `vipm.toml` is a modern, human-readable configuration file for managing your LabVIEW project's dependencies and builds.
 
-Ready to dive in? Jump to the **[vipm.toml Getting Started guide →](vipm-toml/getting-started.md)**
+Ready to dive in? Jump to the **[vipm.toml Getting Started guide →](getting-started.md)**
 
 ## First look at `vipm.toml`
 
