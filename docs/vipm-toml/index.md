@@ -658,3 +658,5 @@ For detailed documentation on all CLI commands, see the [CLI Command Reference](
 | `vipm build [name]` | Build targets defined in vipm.toml (`--all`, `--debug`, `--version-number`) |
 | `vipm clean [name]` | Remove build output directories (`--all`, `--dry-run`) |
 | `vipm list [file]` | List packages from vipm.toml or installed (`--installed`, `--dev`, `--no-dev`) |
+
+--8<-- "need-help.md"
