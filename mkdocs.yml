@@ -47,6 +47,7 @@ nav:
   - VIPM 2026Q1 Preview 3: preview.md
   - vipm.toml (Preview):
     - vipm-toml/index.md
+    - vipm-toml/getting-started.md
   - Support: support.md
   - VIPM Edition Comparison: vipm-editions-comparison.md
   - Building packages:

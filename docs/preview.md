@@ -72,7 +72,7 @@ Once installed, try out VIPM CLI by opening a terminal and typing `vipm`.
 
 Manage your LabVIEW project's dependencies and builds with a modern, human-readable `vipm.toml` configuration file. Features include declarative dependency management, reproducible builds via lock files, and seamless CI/CD integration.
 
-**[Read the vipm.toml Quick Start Guide →](vipm-toml/index.md)**
+**[Get started with vipm.toml →](vipm-toml/getting-started.md)**
 
 ### Faster Downloads and Improved Stability (Preview Feature)
 
