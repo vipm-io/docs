@@ -8,6 +8,9 @@ title: Getting Started
     `vipm.toml` support requires **VIPM Desktop 2026 Q1 Preview** or later.
     This feature is not available in stable releases. See the [Preview page](../preview.md) for installation instructions.
 
+!!! note "Community and Professional Edition Features"
+    Most `vipm.toml` commands require **VIPM Community Edition (with public repositories) or VIPM Professional**. Use `vipm help` or `vipm <command> --help` for more details about the commands for which this applies.
+
 This guide walks you through using `vipm.toml` to manage your LabVIEW project's dependencies and builds.
 
 > **TL;DR** - Quick start for experienced users:
