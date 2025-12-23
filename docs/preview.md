@@ -87,7 +87,9 @@ Various bug and usability fixes including:
 * "Place folder contents in destination" now works for support files. Thank you to GitHub user @Sdusing7 for reporting this issue.
 
   > This is a preview feature. Enable this through Options > Preview Features and select "[Bug Fix] Place Folder Contents for Non-LabVIEW Files".
-    
+
+--8<-- "need-help.md"    
+
 ---
 
 ## Thank You to Our Community

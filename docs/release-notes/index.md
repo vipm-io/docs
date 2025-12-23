@@ -13,3 +13,5 @@ Please select a release from the navbar on the left or choose from one of the it
 ## Past Releases
 
 - [See Past Release Notes](https://support.vipm.io/hc/en-us/sections/202763943-VIPM-Release-Notes)
+
+--8<-- "need-help.md"

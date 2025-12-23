@@ -1,5 +1,7 @@
 # Installing VIPM 2022 on Ubuntu
 
+--8<-- "preview-available.md"
+
 This document is for collecting information on how to successfully install VIPM 2022 on Ubuntu Linux.
 
 Useful Links:

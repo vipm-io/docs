@@ -1,5 +1,7 @@
 # VIPM Linux Crash on Package Installation - Permission Fix
 
+--8<-- "preview-available.md"
+
 ## Problem
 
 VIPM crashes with segmentation fault when installing packages on Linux:
