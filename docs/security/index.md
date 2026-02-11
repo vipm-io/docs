@@ -12,15 +12,27 @@ The CRA introduces mandatory security requirements for software products sold in
 
 !!! tip "Need help with CRA compliance?"
     JKI provides security consulting and tooling for LabVIEW-based systems.
-    [Learn more at jki.net/cra](https://jki.net/cra/){ .md-button }
+
+    [Learn More about CRA Compliance and LabVIEW](https://jki.net/cra/){ .md-button }
+
+### Does the CRA apply to open source packages?
+
+The CRA includes an exemption for open source software that is made available without commercial activity. If you publish a package under an open source license (e.g. MIT, BSD, Apache) and are not selling it or placing it on the market as part of a commercial offering, you would likely fall under that exemption.
+
+However, if a company incorporates open source components into a commercial product sold in the EU, that company becomes responsible for CRA compliance of the overall product — including its open source dependencies. So while open source maintainers may be exempt, commercial distributors using those components are not.
+
+The CRA is still being interpreted across EU member states, and guidance continues to evolve. If your distribution model includes paid support, bundled commercial offerings, or distribution as part of a larger product, the analysis may be different. Contact [security@jki.net](mailto:security@jki.net) if you'd like to discuss your specific situation.
 
 ## Static Analysis Tools and SBOM Generation for LabVIEW Software
 
 The [JKI Security Suite](https://jki.net/security/) provides static analysis for LabVIEW applications — scanning for vulnerabilities, identifying broken VIs, and tagging findings by CWE severity for triage and remediation. It integrates into CI/CD pipelines for continuous security validation and helps organizations meet requirements such as NIST 800-53, NASA NPR 7150.2, and DISA STIG.
 
-VIPM also supports **Software Bill of Materials (SBOM)** generation for LabVIEW software, giving packages publishers a machine-readable inventory of their LabVIEW software components and dependencies. SBOMs are a key requirement of the [EU Cyber Resilience Act](https://jki.net/cra/) and are increasingly expected across regulated industries. Combined with static analysis, SBOM generation gives teams visibility into both the code they write and the components they depend on. 
+!!! tip "Looking for Security Tools?"
+    JKI provides LabVIEW tools for analysis and SBOM generation for LabVIEW software and applications.
 
-[Learn more at jki.net/security](https://jki.net/security/){ .md-button }
+    [Learn More about Security Tools for LabVIEW](https://jki.net/cra/){ .md-button }
+
+VIPM also supports **Software Bill of Materials (SBOM)** generation for LabVIEW software, giving packages publishers a machine-readable inventory of their LabVIEW software components and dependencies. SBOMs are a key requirement of the [EU Cyber Resilience Act](https://jki.net/cra/) and are increasingly expected across regulated industries. Combined with static analysis, SBOM generation gives teams visibility into both the code they write and the components they depend on. 
 
 ## Contact
 
