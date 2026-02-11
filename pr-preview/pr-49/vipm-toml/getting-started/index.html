@@ -1,0 +1,3116 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.vipm.io/vipm-toml/getting-started/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../vipm-editions-comparison/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Getting Started - Developer Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#getting-started-with-vipmtoml" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://vipm.io" title="Developer Docs" class="md-header__button md-logo" aria-label="Developer Docs" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Developer Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Getting Started
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vipm-io/docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vipm-io/docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://vipm.io" title="Developer Docs" class="md-nav__button md-logo" aria-label="Developer Docs" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    Developer Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vipm-io/docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vipm-io/docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../preview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VIPM 2026Q1 Preview 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vipm.toml (Preview)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    vipm.toml (Preview)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-vipmtoml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is vipm.toml?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-vipmlock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is vipm.lock?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-new-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a New Project
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a New Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialize-a-vipmtoml-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initialize a vipm.toml File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-generated-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Generated File
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Managing Dependencies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding Dependencies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes-on-vipm-add" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes on vipm add
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removing Dependencies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Removing Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes-on-vipm-remove" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes on vipm remove
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lock-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lock Files
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lock Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-a-lock-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generating a Lock File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-lock-file-sync-for-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking Lock File Sync (for CI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lock-file-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lock File Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-your-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building Your Project
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building Your Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defining Builds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running Builds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-build-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Build Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-output-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build Output Directories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-substitution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variable Substitution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variable Substitution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cleaning-build-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cleaning Build Outputs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Example
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complete Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typical-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typical Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cicd-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI/CD Workflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub Actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitlab-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitLab CI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jenkins-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jenkins Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Need Help?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vipm-editions-comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VIPM Edition Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building packages
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Building packages
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../building-packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Packages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../building-packages/building-vi-packages-that-depend-on-other-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building VI Packages that Depend on other Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../building-packages/vi-packages-build-templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VI Package Build Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publishing packages
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Publishing packages
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publishing-packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CLI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/command-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Command Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker Containers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/github-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub Actions and CI/CD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/ubuntu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installing VIPM 2022 on Ubuntu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/VIPM%20Linux%20Crash%20on%20Package%20Installation%20-%20Permission%20Fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VIPM Linux Crash on Package Installation - Permission Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Release notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2025.3.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VIPM 2025.3f1 for Windows - Release Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2025.3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VIPM 2025.3 Release Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2024.3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VIPM 2024.3 Release Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2024.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VIPM 2024.1 Release Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2023.3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VIPM 2023.3 Release Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2023.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VIPM 2023.1 Release Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Troubleshooting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Issues
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/are-vipms-online-services-down/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Are VIPM's Online Services Down?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-vipmtoml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is vipm.toml?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-vipmlock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is vipm.lock?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-new-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a New Project
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a New Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialize-a-vipmtoml-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initialize a vipm.toml File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-generated-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Generated File
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Managing Dependencies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding Dependencies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes-on-vipm-add" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes on vipm add
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removing Dependencies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Removing Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes-on-vipm-remove" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes on vipm remove
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lock-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lock Files
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lock Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-a-lock-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generating a Lock File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-lock-file-sync-for-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking Lock File Sync (for CI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lock-file-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lock File Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-your-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building Your Project
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building Your Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defining Builds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running Builds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-build-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Build Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-output-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build Output Directories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-substitution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variable Substitution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variable Substitution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cleaning-build-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cleaning Build Outputs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Example
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complete Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typical-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typical Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cicd-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI/CD Workflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub Actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitlab-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitLab CI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jenkins-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jenkins Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Need Help?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="getting-started-with-vipmtoml">Getting Started with vipm.toml</h1>
+<div class="admonition warning">
+<p class="admonition-title">Preview Feature</p>
+<p><code>vipm.toml</code> support requires <strong>VIPM Desktop 2026 Q1 Preview</strong> or later.
+This feature is not available in stable releases. See the <a href="../../preview/">Preview page</a> for installation instructions.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Community and Professional Edition Features</p>
+<p>Most <code>vipm.toml</code> commands require <strong>VIPM Community Edition (with public repositories) or VIPM Professional</strong>. Use <code>vipm help</code> or <code>vipm &lt;command&gt; --help</code> for more details about the commands for which this applies.</p>
+</div>
+<p>This guide walks you through using <code>vipm.toml</code> to manage your LabVIEW project's dependencies and builds.</p>
+<blockquote>
+<p><strong>TL;DR</strong> - Quick start for experienced users:</p>
+<p><code>bash
+vipm init                          # Create vipm.toml
+vipm add oglib_array oglib_error   # Add dependencies
+vipm install                       # Install packages to LabVIEW
+vipm build                         # Build your project</code></p>
+</blockquote>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#what-is-vipmtoml">What is vipm.toml?</a></li>
+<li><a href="#what-is-vipmlock">What is vipm.lock?</a></li>
+<li><a href="#creating-a-new-project">Creating a New Project</a></li>
+<li><a href="#managing-dependencies">Managing Dependencies</a></li>
+<li><a href="#lock-files">Lock Files</a></li>
+<li><a href="#building-your-project">Building Your Project</a></li>
+<li><a href="#cleaning-build-outputs">Cleaning Build Outputs</a></li>
+<li><a href="#complete-example">Complete Example</a></li>
+<li><a href="#cicd-workflows">CI/CD Workflows</a></li>
+<li><a href="#command-reference">Command Reference</a></li>
+</ul>
+<hr />
+<h2 id="what-is-vipmtoml">What is vipm.toml?</h2>
+<p><code>vipm.toml</code> is a configuration file that defines your LabVIEW project's metadata, dependencies, and build specifications in a human-readable format. It replaces or works alongside traditional <code>.vipc</code> and <code>.dragon</code> files.</p>
+<p>Benefits:</p>
+<ul>
+<li><strong>Human-readable</strong> - Easy to edit and review in version control</li>
+<li><strong>Declarative Dependencies</strong> - Specify what packages your project needs</li>
+<li><strong>Easy-to-use Build System</strong> - Define build specifications in one place</li>
+<li><strong>Reproducible Builds</strong> - Automatically tracks ALL your project's dependencies (and transitive dependencies)</li>
+<li><strong>Git, Version Control Friendly</strong> - Easy to diff/merge the file</li>
+</ul>
+<h2 id="what-is-vipmlock">What is vipm.lock?</h2>
+<p><code>vipm.lock</code> is a file that gets automatically generated and maintained as you use your <code>vipm.toml</code> file. It is also a configuration file in a human-readable (and git source control friendly) format, but it should not be manually edited. We'll talk about more about that later, in the <a href="#lock-files">Lock Files</a> section.</p>
+<hr />
+<h2 id="creating-a-new-project">Creating a New Project</h2>
+<h3 id="initialize-a-vipmtoml-file">Initialize a vipm.toml File</h3>
+<p>Use <code>vipm init</code> to create a new <code>vipm.toml</code> file:</p>
+<pre><code class="language-bash"># Create vipm.toml in current directory
+vipm init
+
+# Create vipm.toml in a specific directory
+vipm init path/to/project
+
+# Create with a custom project name
+vipm init --name my-labview-project
+</code></pre>
+<p>The <code>init</code> command will:</p>
+<ul>
+<li>Create a minimal <code>vipm.toml</code> with a <code>[project]</code> section</li>
+<li>Detect the LabVIEW version from existing <code>.lvproj</code> files (if present)</li>
+<li>Fail if <code>vipm.toml</code> already exists (use <code>--force</code> to overwrite)</li>
+</ul>
+<p>Example output:</p>
+<pre><code class="language-bash">$ vipm init --name my-labview-project
+Created vipm.toml
+</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use <code>vipm init --force</code> to overwrite an existing <code>vipm.toml</code> file. This will replace the file without prompting.</p>
+</div>
+<h3 id="example-generated-file">Example Generated File</h3>
+<pre><code class="language-toml">[project]
+name = &quot;my-labview-project&quot;
+version = &quot;0.1.0&quot;
+labview-version = &quot;2024&quot;
+</code></pre>
+<hr />
+<h2 id="managing-dependencies">Managing Dependencies</h2>
+<h3 id="adding-dependencies">Adding Dependencies</h3>
+<p>Use <code>vipm add</code> to add packages to your <code>vipm.toml</code>:</p>
+<pre><code class="language-bash"># Add a package (uses latest available version)
+vipm add oglib_array
+
+# Add a package with a specific version
+vipm add oglib_array@6.0.1.20
+
+# Add multiple packages at once
+vipm add oglib_array oglib_error jki_lib_state_machine
+
+# Add as a dev dependency (testing frameworks, etc.)
+vipm add --dev caraya
+
+# Add and immediately install (also updates vipm.lock)
+vipm add --install oglib_array
+</code></pre>
+<p>After adding dependencies, your <code>vipm.toml</code> will look like:</p>
+<pre><code class="language-toml">[project]
+name = &quot;my-labview-project&quot;
+version = &quot;0.1.0&quot;
+labview-version = &quot;2024&quot;
+
+[dependencies]
+oglib_array = &quot;6.0.1.20&quot;
+oglib_error = &quot;5.0.0.27&quot;
+jki_lib_state_machine = &quot;2.0.0.50&quot;
+
+[dev-dependencies]
+caraya = &quot;1.4.5.165&quot;
+</code></pre>
+<h4 id="notes-on-vipm-add">Notes on <code>vipm add</code></h4>
+<ul>
+<li>Requires an existing <code>vipm.toml</code> file (use <code>vipm init</code> first)</li>
+<li>Searches parent directories for <code>vipm.toml</code>, so you can run it from subdirectories</li>
+<li>Preserves comments and formatting in your existing file</li>
+<li>Automatically creates or updates <code>vipm.lock</code> (like Cargo)</li>
+<li>Does NOT install packages by default—use <code>vipm install</code> after adding, or use <code>--install</code></li>
+</ul>
+<h3 id="removing-dependencies">Removing Dependencies</h3>
+<p>Use <code>vipm remove</code> to remove packages from your <code>vipm.toml</code>:</p>
+<pre><code class="language-bash"># Remove a package
+vipm remove oglib_array
+
+# Remove multiple packages
+vipm remove oglib_array oglib_error
+
+# Remove from dev dependencies
+vipm remove --dev caraya
+</code></pre>
+<h4 id="notes-on-vipm-remove">Notes on <code>vipm remove</code></h4>
+<ul>
+<li>Only removes the package from <code>vipm.toml</code>—does NOT uninstall it from LabVIEW</li>
+<li>Automatically updates <code>vipm.lock</code> if it exists (does not create it)</li>
+<li>Use <code>vipm uninstall &lt;package&gt;</code> if you also want to remove it from LabVIEW</li>
+<li>Returns an error if the package isn't found in the manifest</li>
+</ul>
+<h3 id="installing-dependencies">Installing Dependencies</h3>
+<p>Use <code>vipm install</code> to install all dependencies declared in <code>vipm.toml</code>:</p>
+<pre><code class="language-bash"># Install from vipm.toml in current directory
+vipm install
+
+# Install from a specific vipm.toml file
+vipm install ./path/to/vipm.toml
+
+# Install including dev dependencies
+vipm install --dev
+
+# Explicitly skip dev dependencies
+vipm install --no-dev
+
+# Upgrade packages to latest version if already installed
+vipm install --upgrade
+</code></pre>
+<p>When run without arguments, <code>vipm install</code> searches for manifest files in this order:</p>
+<ol>
+<li><code>vipm.toml</code> (highest priority)</li>
+<li><code>.dragon</code> file</li>
+<li><code>.vipc</code> file</li>
+</ol>
+<p>The <code>labview-version</code> from <code>vipm.toml</code> is used automatically when installing.</p>
+<hr />
+<h2 id="lock-files">Lock Files</h2>
+<p>The <code>vipm.lock</code> file captures exact versions of all installed packages, ensuring reproducible builds.</p>
+<h3 id="generating-a-lock-file">Generating a Lock File</h3>
+<pre><code class="language-bash"># Generate/update vipm.lock from vipm.toml (includes dev dependencies by default)
+vipm lock
+
+# Exclude dev dependencies from the lock file
+vipm lock --no-dev
+
+# Continue with incomplete lock file when specs cannot be fetched
+vipm lock --best-effort
+</code></pre>
+<h3 id="checking-lock-file-sync-for-ci">Checking Lock File Sync (for CI)</h3>
+<pre><code class="language-bash"># Check if vipm.lock is in sync with vipm.toml
+# Exit code 0 = in sync, Exit code 1 = out of sync
+vipm lock --check
+</code></pre>
+<h3 id="lock-file-format">Lock File Format</h3>
+<p>The <code>vipm.lock</code> file is a TOML file that records:</p>
+<ul>
+<li>Schema version and revision</li>
+<li>Timestamp of last update</li>
+<li>Target LabVIEW version</li>
+<li>List of <strong>all</strong> packages (including transitive dependencies) with their exact versions, sources, checksums, and dependency relationships</li>
+</ul>
+<p>For example, if you add <code>oglib_array</code> and <code>jki_lib_caraya</code> to your <code>vipm.toml</code>, the lock file will contain those packages plus all of their transitive dependencies:</p>
+<pre><code class="language-toml"># This file is automatically generated by vipm.
+# It is not intended for manual editing.
+
+version = 1
+revision = 0
+updated-at = &quot;2025-12-15T20:04:18.569393980Z&quot;
+requires-labview = &quot;2020&quot;
+
+[[package]]
+name = &quot;jki_lib_caraya&quot;
+version = &quot;1.4.4.148&quot;
+checksum = &quot;sha256:eb861e25b23f3f3150f50cef8d7737a26d3acfc4af94538b27c72e88c8ea064f&quot;
+dependencies = [
+    &quot;jki_lib_state_machine&quot;,
+    &quot;jki_rsc_toolkits_palette&quot;,
+    &quot;labview_open_source_lib_epoch_datetime&quot;,
+    &quot;oglib_array&quot;,
+    &quot;oglib_error&quot;,
+    &quot;oglib_file&quot;,
+    &quot;oglib_lvdata&quot;,
+    &quot;oglib_string&quot;,
+]
+resolution-source = &quot;repo&quot;
+
+[package.source]
+vipm-repo = &quot;http://www.jkisoft.com/packages&quot;
+
+[[package]]
+name = &quot;oglib_array&quot;
+version = &quot;6.0.1.20&quot;
+checksum = &quot;sha256:c80e5d1cd70d694f8e61d094d57f0c2c69571cb2261c2ff54bd9605d82b96faa&quot;
+resolution-source = &quot;repo&quot;
+
+[package.source]
+vipm-repo = &quot;http://www.jkisoft.com/packages&quot;
+
+# ... plus 9 more transitive dependencies (jki_lib_state_machine,
+#     jki_rsc_toolkits_palette, oglib_error, oglib_file, etc.)
+
+[metadata]
+</code></pre>
+<p>Key fields for each package:</p>
+<ul>
+<li><code>name</code> / <code>version</code> - Exact package identifier</li>
+<li><code>checksum</code> - SHA-256 or MD5 hash for integrity verification</li>
+<li><code>dependencies</code> - List of packages this one depends on</li>
+<li><code>resolution-source</code> - Where the package info was resolved from (<code>"repo"</code> or <code>"installed"</code>)</li>
+<li><code>[package.source]</code> - The repository URL where the package can be downloaded</li>
+</ul>
+<h3 id="best-practices">Best Practices</h3>
+<ul>
+<li><strong>Commit <code>vipm.lock</code></strong> to version control for reproducible builds</li>
+<li><strong>Run <code>vipm lock --check</code></strong> in CI to ensure lock file stays synchronized</li>
+<li><strong>Regenerate with <code>vipm lock</code></strong> after modifying dependencies</li>
+</ul>
+<hr />
+<h2 id="building-your-project">Building Your Project</h2>
+<p>The <code>vipm build</code> command can build artifacts defined in <code>vipm.toml</code>.</p>
+<h3 id="defining-builds">Defining Builds</h3>
+<p>Add build specifications to your <code>vipm.toml</code>:</p>
+<pre><code class="language-toml">[project]
+name = &quot;my-labview-project&quot;
+version = &quot;1.0.0&quot;
+labview-version = &quot;2024&quot;
+
+# Packed library build
+[build.my_library]
+type = &quot;ppl&quot;
+top-level-library = &quot;src/MyLibrary.lvlib&quot;
+
+# Executable build
+[build.my_app]
+type = &quot;exe&quot;
+startup-vi = &quot;src/Main.vi&quot;
+
+# Build for a different LabVIEW version
+[build.legacy_library]
+type = &quot;ppl&quot;
+top-level-library = &quot;src/LegacyLib.lvlib&quot;
+labview-version = &quot;2020&quot;      # Override project default
+labview-bitness = 32          # Override project default
+
+# Wrap an existing .lvproj build spec
+[build.legacy_build]
+type = &quot;lvproj&quot;
+path = &quot;MyProject.lvproj&quot;
+spec = &quot;Release Build&quot;
+target = &quot;My Computer&quot;
+
+# Wrap an existing .vipb file
+[build.my_package]
+type = &quot;vipb&quot;
+path = &quot;Package.vipb&quot;
+</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Individual builds can override <code>labview-version</code> and <code>labview-bitness</code> from <code>[project]</code>. This is useful when you need to build the same library for multiple LabVIEW versions.</p>
+</div>
+<h3 id="running-builds">Running Builds</h3>
+<pre><code class="language-bash"># Build all default targets
+vipm build
+
+# Build a specific target
+vipm build my_library
+
+# Build all targets (including non-default)
+vipm build --all
+
+# Build with a specific version number
+vipm build my_app --version-number 2.1.0
+
+# Build with a specific build number (4th component)
+vipm build my_app --build-number 42
+</code></pre>
+<h3 id="supported-build-types">Supported Build Types</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Alias</th>
+<th>Description</th>
+<th>Required Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>packed-library</code></td>
+<td><code>ppl</code></td>
+<td>Packed Project Library (.lvlibp)</td>
+<td><code>top-level-library</code></td>
+</tr>
+<tr>
+<td><code>executable</code></td>
+<td><code>exe</code></td>
+<td>Standalone application (.exe/.app)</td>
+<td><code>startup-vi</code></td>
+</tr>
+<tr>
+<td><code>lvproj</code></td>
+<td>—</td>
+<td>Build from existing .lvproj</td>
+<td><code>path</code>, <code>spec</code></td>
+</tr>
+<tr>
+<td><code>vipb</code></td>
+<td>—</td>
+<td>Build from existing .vipb</td>
+<td><code>path</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="build-output-directories">Build Output Directories</h3>
+<p>By default, builds output to <code>builds/{build_name}/</code>. You can customize this:</p>
+<pre><code class="language-toml">[project]
+name = &quot;my-project&quot;
+builds-dir = &quot;dist&quot;  # All builds go under dist/ instead of builds/
+
+[build.my_library]
+type = &quot;ppl&quot;
+top-level-library = &quot;src/MyLib.lvlib&quot;
+output-name = &quot;MyLibrary&quot;           # Custom output filename
+# Output: dist/my_library/
+
+[build.release]
+type = &quot;exe&quot;
+startup-vi = &quot;src/Main.vi&quot;
+output-dir = &quot;releases&quot;              # Explicit override
+# Output: releases/
+</code></pre>
+<h3 id="variable-substitution">Variable Substitution</h3>
+<p>You can use variables in <code>output-dir</code> and <code>output-name</code> fields using <code>${VAR_NAME}</code> syntax. This reduces duplication and enables dynamic, portable build configurations.</p>
+<h4 id="supported-variables">Supported Variables</h4>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>${LABVIEW_VERSION}</code></td>
+<td>Target LabVIEW version year</td>
+<td><code>2024</code></td>
+</tr>
+<tr>
+<td><code>${LABVIEW_BITNESS}</code></td>
+<td>Target bitness (32 or 64)</td>
+<td><code>64</code></td>
+</tr>
+<tr>
+<td><code>${PROJECT_NAME}</code></td>
+<td>From <code>[project].name</code></td>
+<td><code>my-project</code></td>
+</tr>
+<tr>
+<td><code>${PROJECT_VERSION}</code></td>
+<td>From <code>[project].version</code></td>
+<td><code>1.0.0</code></td>
+</tr>
+<tr>
+<td><code>${BUILD_NAME}</code></td>
+<td>Current build target name</td>
+<td><code>my_library</code></td>
+</tr>
+<tr>
+<td><code>${BUILDS_DIR}</code></td>
+<td>From <code>[project].builds-dir</code></td>
+<td><code>builds</code></td>
+</tr>
+<tr>
+<td><code>${OS_NAME}</code></td>
+<td>Operating system</td>
+<td><code>linux</code>, <code>windows</code>, <code>macos</code></td>
+</tr>
+<tr>
+<td><code>${ARCH}</code></td>
+<td>CPU architecture</td>
+<td><code>x86_64</code>, <code>aarch64</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="example">Example</h4>
+<pre><code class="language-toml">[project]
+name = &quot;my-library&quot;
+version = &quot;1.0.0&quot;
+labview-version = &quot;2024&quot;
+
+[build.ppl]
+type = &quot;packed-library&quot;
+top-level-library = &quot;src/MyLib.lvlib&quot;
+output-name = &quot;MyLib_${LABVIEW_VERSION}_${LABVIEW_BITNESS}bit.lvlibp&quot;
+</code></pre>
+<p>With LabVIEW 2024 64-bit on Linux, this resolves to:</p>
+<ul>
+<li>output file: <code>builds/packed-library/MyLib_2024_64bit.lvlibp</code></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Variable substitution is especially useful when building the same project for multiple LabVIEW versions/bitnesses and operating systems, as the output paths automatically reflect the target version.</p>
+</div>
+<h3 id="build-dependencies">Build Dependencies</h3>
+<p>Use the <code>depends-on</code> field to specify that one build must complete before another. This is useful when:</p>
+<ul>
+<li>A VI package (<code>.vipb</code>) needs a packed library to be built first</li>
+<li>An executable depends on libraries built by other build specs</li>
+<li>You want to ensure a specific build order</li>
+</ul>
+<pre><code class="language-toml">[build.core_library]
+type = &quot;ppl&quot;
+top-level-library = &quot;src/CoreLib.lvlib&quot;
+
+[build.ui_library]
+type = &quot;ppl&quot;
+top-level-library = &quot;src/UILib.lvlib&quot;
+depends-on = [&quot;core_library&quot;]  # Build core_library first
+
+[build.my_app]
+type = &quot;exe&quot;
+startup-vi = &quot;src/Main.vi&quot;
+depends-on = [&quot;core_library&quot;, &quot;ui_library&quot;]  # Build both libraries first
+
+[build.my_package]
+type = &quot;vipb&quot;
+path = &quot;Package.vipb&quot;
+depends-on = [&quot;my_app&quot;]  # Build the app before packaging
+</code></pre>
+<p>When you run <code>vipm build my_package</code>, vipm will automatically build the dependencies in the correct order: <code>core_library</code> → <code>ui_library</code> → <code>my_app</code> → <code>my_package</code>.</p>
+<p>You can skip dependency builds with <code>--no-deps</code> or force rebuild them with <code>--rebuild-deps</code>.</p>
+<hr />
+<h2 id="cleaning-build-outputs">Cleaning Build Outputs</h2>
+<p>Use <code>vipm clean</code> to remove build output directories:</p>
+<pre><code class="language-bash"># Clean all build outputs
+vipm clean
+
+# Clean a specific build
+vipm clean my_library
+
+# Preview what would be deleted (dry run)
+vipm clean --dry-run
+
+# Explicitly clean all builds
+vipm clean --all
+</code></pre>
+<hr />
+<h2 id="complete-example">Complete Example</h2>
+<p>Here's a complete <code>vipm.toml</code> for a typical LabVIEW project:</p>
+<pre><code class="language-toml">[project]
+name = &quot;instrument-control-system&quot;
+version = &quot;2.1.0&quot;
+labview-version = &quot;2024&quot;
+labview-bitness = 64
+description = &quot;Automated instrument control and data acquisition system&quot;
+authors = [&quot;Lab Team &lt;lab@example.com&gt;&quot;]
+license = &quot;MIT&quot;
+repository = &quot;https://github.com/example/instrument-control&quot;
+
+[dependencies]
+oglib_array = &quot;6.0.1.20&quot;
+oglib_error = &quot;5.0.0.27&quot;
+jki_lib_state_machine = &quot;2.0.0.50&quot;
+
+[dev-dependencies]
+caraya = &quot;1.4.5.165&quot;
+jki_vi_tester = &quot;3.0.2.294&quot;
+
+[build.main_library]
+type = &quot;ppl&quot;
+top-level-library = &quot;src/InstrumentControl.lvlib&quot;
+
+[build.main_app]
+type = &quot;exe&quot;
+startup-vi = &quot;src/Main.vi&quot;
+default = false  # Not built by default
+
+[build.package]
+type = &quot;vipb&quot;
+path = &quot;InstrumentControl.vipb&quot;
+depends-on = [&quot;main_library&quot;]  # Build library first
+</code></pre>
+<h3 id="typical-workflow">Typical Workflow</h3>
+<pre><code class="language-bash"># 1. Initialize the project
+vipm init --name instrument-control-system
+
+# 2. Add dependencies
+vipm add oglib_array oglib_error jki_lib_state_machine
+vipm add --dev caraya jki_vi_tester
+
+# 3. Install all dependencies
+vipm install --dev
+
+# 4. Generate lock file
+vipm lock
+
+# 5. Build the project
+vipm build
+
+# 6. Clean up build outputs when needed
+vipm clean
+</code></pre>
+<hr />
+<h2 id="cicd-workflows">CI/CD Workflows</h2>
+<p>The <code>vipm.toml</code> and <code>vipm.lock</code> files make it easy to integrate LabVIEW builds into your CI/CD pipeline. For additional CI/CD examples and troubleshooting, see the <a href="../../cli/github-actions/">GitHub Actions guide</a>.</p>
+<h3 id="github-actions">GitHub Actions</h3>
+<pre><code class="language-yaml">name: Build LabVIEW Project
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: [self-hosted, labview]  # Requires LabVIEW on runner
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify lock file is in sync
+        run: vipm lock --check
+
+      - name: Install dependencies
+        run: vipm install
+
+      - name: Build project
+        run: vipm build --all
+</code></pre>
+<h3 id="gitlab-ci">GitLab CI</h3>
+<pre><code class="language-yaml">stages:
+  - validate
+  - build
+
+check-lockfile:
+  stage: validate
+  script:
+    - vipm lock --check
+  tags:
+    - labview
+
+build-project:
+  stage: build
+  script:
+    - vipm install
+    - vipm build --all
+  artifacts:
+    paths:
+      - builds/
+  tags:
+    - labview
+</code></pre>
+<h3 id="jenkins-pipeline">Jenkins Pipeline</h3>
+<pre><code class="language-groovy">pipeline {
+    agent { label 'labview' }
+    stages {
+        stage('Validate') {
+            steps {
+                sh 'vipm lock --check'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                sh 'vipm install'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'vipm build --all'
+            }
+        }
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: 'builds/**/*', fingerprint: true
+        }
+    }
+}
+</code></pre>
+<h3 id="ci-best-practices">CI Best Practices</h3>
+<ul>
+<li><strong>Always run <code>vipm lock --check</code></strong> first to catch out-of-sync lock files early</li>
+<li><strong>Commit <code>vipm.lock</code></strong> to your repository for reproducible builds</li>
+<li><strong>Use <code>--no-dev</code></strong> in production builds: <code>vipm install --no-dev</code></li>
+<li><strong>Cache dependencies</strong> if your CI system supports it (speeds up builds)</li>
+<li><strong>Fail fast</strong> on lock file mismatches to enforce discipline</li>
+</ul>
+<hr />
+<h2 id="command-reference">Command Reference</h2>
+<p>For detailed documentation on all CLI commands, see the <a href="../../cli/command-reference/">CLI Command Reference</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vipm init [path]</code></td>
+<td>Create a new vipm.toml file (<code>--name</code>, <code>--force</code>)</td>
+</tr>
+<tr>
+<td><code>vipm add &lt;packages&gt;</code></td>
+<td>Add dependencies to vipm.toml (<code>--dev</code>, <code>--install</code>)</td>
+</tr>
+<tr>
+<td><code>vipm remove &lt;packages&gt;</code></td>
+<td>Remove dependencies from vipm.toml (<code>--dev</code>)</td>
+</tr>
+<tr>
+<td><code>vipm install</code></td>
+<td>Install dependencies from vipm.toml (<code>--dev</code>, <code>--no-dev</code>, <code>--upgrade</code>)</td>
+</tr>
+<tr>
+<td><code>vipm lock</code></td>
+<td>Generate/update vipm.lock (<code>--no-dev</code>, <code>--best-effort</code>)</td>
+</tr>
+<tr>
+<td><code>vipm lock --check</code></td>
+<td>Verify lock file is in sync (for CI)</td>
+</tr>
+<tr>
+<td><code>vipm build [name]</code></td>
+<td>Build targets defined in vipm.toml (<code>--all</code>, <code>--debug</code>, <code>--version-number</code>)</td>
+</tr>
+<tr>
+<td><code>vipm clean [name]</code></td>
+<td>Remove build output directories (<code>--all</code>, <code>--dry-run</code>)</td>
+</tr>
+<tr>
+<td><code>vipm list [file]</code></td>
+<td>List packages from vipm.toml or installed (<code>--installed</code>, <code>--dev</code>, <code>--no-dev</code>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="need-help">Need Help?</h2>
+<ul>
+<li>Report issues on <a href="https://github.com/vipm-io/vipm-desktop-issues/issues">GitHub</a></li>
+<li>Join our community on <a href="https://discord.gg/uyXwAz4B63">Discord</a></li>
+<li>Check the <a href="../../support/">Support page</a> for additional resources</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 VIPM Community Contributors
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://vipm.io" target="_blank" rel="noopener" title="vipm.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <text x="8" y="12.5" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="bold" font-size="12" fill="currentColor">VI</text>
+</svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/vipm" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/showcase/vi-package-manager/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://discord.gg/uyXwAz4B63" target="_blank" rel="noopener" title="discord.gg" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
