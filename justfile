@@ -3,9 +3,15 @@
 list:
     @just --list
 
-# build and server locally, with live reload
+# build and serve locally, with live reload (auto-finds open port starting at 8000)
 dev:
-    uv run mkdocs serve --livereload
+    #!/usr/bin/env bash
+    port=8000
+    while ss -tlnp | grep -q ":$port "; do
+        port=$((port + 1))
+    done
+    echo "Serving on http://localhost:$port"
+    uv run mkdocs serve --livereload --dev-addr "localhost:$port"
 
 # build the documentation site
 build:
