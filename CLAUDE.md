@@ -35,6 +35,8 @@ Always run `uv run mkdocs build` after documentation changes and fix any warning
 
 Never include mentions of Claude, AI, or "generated with" in commit messages, PR titles, PR descriptions, or any other git metadata. No co-authored-by lines referencing Claude. No "🤖 Generated with Claude Code" footers. Commits and PRs should read as if written by a human developer.
 
+PR descriptions should start with a brief sentence explaining **why** the PR exists — what user need it addresses or what value it provides. Lead with the motivation, then list the changes.
+
 ## CLI Docs Modernization
 
 Active improvement effort tracked in `dev-docs/cli-docs-improvement-proposal.md`. That document is the source of truth for CLI documentation plans, decisions, and progress. Update it when modifying `docs/cli/` content.
