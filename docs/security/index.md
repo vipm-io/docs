@@ -30,7 +30,7 @@ The [JKI Security Suite](https://jki.net/security/) provides static analysis for
 !!! tip "Looking for Security Tools?"
     JKI provides LabVIEW tools for analysis and SBOM generation for LabVIEW software and applications.
 
-    [Learn More about Security Tools for LabVIEW](https://jki.net/cra/){ .md-button }
+    [Learn More about Security Tools for LabVIEW](https://jki.net/security/){ .md-button }
 
 VIPM also supports **Software Bill of Materials (SBOM)** generation for LabVIEW software, giving packages publishers a machine-readable inventory of their LabVIEW software components and dependencies. SBOMs are a key requirement of the [EU Cyber Resilience Act](https://jki.net/cra/) and are increasingly expected across regulated industries. Combined with static analysis, SBOM generation gives teams visibility into both the code they write and the components they depend on. 
 
