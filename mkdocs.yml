@@ -16,11 +16,17 @@ theme:
     primary: white
     accent: deep orange
 
+  custom_dir: overrides
+
   font:
     text: Roboto
 
 extra:
+  homepage: https://vipm.io
   social:
+    - icon: custom/vipm
+      link: https://vipm.io
+      name: vipm.io
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/vipm
     - icon: fontawesome/brands/linkedin
