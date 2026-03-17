@@ -43,7 +43,7 @@ A typical Docker setup for VIPM includes:
 
 Example `.env` file:
 
-```bash
+```env
 # VIPM Pro activation credentials
 VIPM_SERIAL_NUMBER=your-serial-number-here
 VIPM_FULL_NAME=Your Full Name
