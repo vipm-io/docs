@@ -8,6 +8,7 @@ Please select a release from the navbar on the left or choose from one of the it
 
 ## Recent Releases
 
+- [VIPM 2026 Q1](2026.1.md)
 - [VIPM 2025Q3 fix 1 for Windows](2025.3.1.md)
 
 ## Past Releases

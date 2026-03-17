@@ -31,6 +31,8 @@ Unless a command states otherwise, it returns exit code `0` on success and a non
 | [`vipm package-list-refresh`](#vipm-package-list-refresh) | Refresh repository metadata (legacy command, still supported). |
 | [`vipm activate`](#vipm-activate) | Activate VIPM Pro using a serial number, name, and email. |
 | [`vipm build`](#vipm-build) | Build packages from `.vipb` specs or LabVIEW project build specs. |
+| [`vipm sbom`](#vipm-sbom) | Generate a CycloneDX SBOM from a project or manifest. |
+| [`vipm sync`](#vipm-sync) | Reconcile vipm.toml from a LabVIEW project scan. |
 | [`vipm version`](#vipm-version) | Output the CLI and Desktop version numbers. |
 | [`vipm about`](#vipm-about) | Print installation details (paths, versions). |
 
@@ -284,6 +286,139 @@ Building VI Package from path/to/your_package.vipb
 - **Linux build limitations**: Review the [VIPM Preview docs](../preview.md) for current platform support notes.
 - **Missing dependencies**: Run `vipm install project.vipc` before invoking `vipm build` in CI.
 
+## `vipm sbom`
+
+--8<-- "sbom-preview.md"
+
+Generates a [CycloneDX](https://cyclonedx.org/) Software Bill of Materials (SBOM) from a project file or manifest. See the [SBOM documentation](../sbom/index.md) for a tutorial and workflow guidance.
+
+### Syntax
+
+```bash
+vipm sbom [INPUT] --format cyclonedx --schema-version 1.5 --output <PATH> [OPTIONS]
+```
+
+`INPUT` is a `vipm.toml`, `.lvproj`, `.dragon`, or `.vipc` file. If omitted, the CLI searches upward for a `vipm.toml`.
+
+### Options
+
+| Option | Description |
+|--------|-------------|
+| `--format cyclonedx` | **Required.** Output format. |
+| `--schema-version 1.5` | **Required.** CycloneDX spec version for the output document. |
+| `--output <PATH>` | **Required.** File path for the generated SBOM (relative or absolute). |
+| `--product-name <NAME>` | Sets `metadata.component.name` in the SBOM. Defaults to the input filename stem. |
+| `--product-version <VERSION>` | Sets `metadata.component.version`. Omitted from the SBOM if not provided. |
+| `--product-type <TYPE>` | Sets `metadata.component.type`. One of: `application` (default), `library`, `framework`, `container`, `firmware`, `device`, `file`. |
+| `--document-version <N>` | BOM revision number (default: `1`). |
+| `--document-serial-number <URN>` | Unique BOM identifier (`urn:uuid:...`). Auto-generated if omitted. |
+| `--no-vipm` | Exclude VIPM packages from the SBOM. |
+| `--no-nipm` | Exclude NI packages (NIPM) from the SBOM. |
+| `--no-dev` | Exclude dev-dependencies (`vipm.toml` input only). |
+| `--follow-linker` | Follow the VI linker to discover subVI dependencies (`.lvproj` input only). |
+| `--follow-depth <N>` | Linker traversal depth limit. Requires `--follow-linker`. |
+
+### Examples
+
+Generate an SBOM from a LabVIEW project:
+
+```bash
+vipm sbom MyProject.lvproj \
+  --format cyclonedx \
+  --schema-version 1.5 \
+  --product-name "My Instrument" \
+  --product-version 2.1.0 \
+  --output build/bom.json
+```
+
+Generate from a vipm.toml, excluding dev-dependencies:
+
+```bash
+vipm sbom vipm.toml \
+  --format cyclonedx \
+  --schema-version 1.5 \
+  --no-dev \
+  --output build/bom.json
+```
+
+Expected output on success:
+
+```
+SBOM written to build/bom.json
+```
+
+### Exit Codes
+
+| Code | Meaning |
+|------|---------|
+| `0` | SBOM generated successfully |
+| `1` | Unexpected or unclassified error |
+| `2` | Invalid arguments or failed input validation |
+| `4` | Requested LabVIEW version is not installed |
+| `6` | Insufficient edition, license, or activation |
+| `8` | File system or IO failure (e.g., cannot write to `--output` path) |
+| `13` | Input file is not a supported type |
+| `14` | Input file exists but is malformed |
+| `15` | A required file does not exist |
+
+Any non-zero exit code means the SBOM was **not** produced. The `--output` file is only written on exit code `0`.
+
+On failure, stderr contains a human-readable error message. Example:
+
+```
+error: No LabVIEW installation found for version '2024'.
+help: Use 'vipm labview-list' to see available versions
+```
+
+### Common Issues
+
+- **Missing required flags**: `--format`, `--schema-version`, and `--output` are always required — there are no defaults.
+- **Wrong LabVIEW version**: Use `--labview-version` and `--labview-bitness` to target the correct installation when scanning `.lvproj` files.
+- **`--no-dev` on non-toml input**: The `--no-dev` flag is only valid with `vipm.toml` input.
+
+## `vipm sync`
+
+--8<-- "sbom-preview.md"
+
+Reconciles a `vipm.toml` manifest from the dependencies discovered in a LabVIEW project scan.
+
+### Syntax
+
+```bash
+vipm sync [TARGET] --from <SOURCE> [OPTIONS]
+```
+
+`TARGET` is the `vipm.toml` to update. If omitted, the CLI searches upward from the current directory. `SOURCE` is the file to scan (e.g., a `.lvproj`).
+
+### Options
+
+| Option | Description |
+|--------|-------------|
+| `--from <SOURCE>` | **Required.** The source file to scan for dependencies. |
+| `--dry-run` | Preview changes without writing to the manifest. |
+| `--no-vipm` | Exclude VIPM packages from the sync. |
+| `--no-nipm` | Exclude NI packages (NIPM) from the sync. |
+| `--follow-linker` | Follow the VI linker to discover subVI dependencies. |
+| `--follow-depth <N>` | Linker traversal depth limit. Requires `--follow-linker`. |
+
+### Examples
+
+Sync vipm.toml from a LabVIEW project:
+
+```bash
+vipm sync --from MyProject.lvproj
+```
+
+Preview changes without writing:
+
+```bash
+vipm sync --from MyProject.lvproj --dry-run
+```
+
+### Common Issues
+
+- **No vipm.toml found**: Either specify the target path explicitly or run the command from a directory that contains (or is a child of a directory that contains) a `vipm.toml`.
+
 ## `vipm version`
 
 Prints the VIPM CLI and Desktop versions. Useful for support tickets and automation logs.
@@ -312,6 +447,7 @@ Use `vipm about --help` to review the latest options.
 ## Related Resources
 
 - [Getting Started](getting-started.md)
+- [SBOM Generation](../sbom/index.md)
 - [Docker and Containers](docker.md)
 - [GitHub Actions and CI/CD](github-actions.md)
 - Project plan: `dev-docs/cli-docs-improvement-proposal.md`

@@ -1,6 +1,4 @@
-# VIPM 2026Q1 Preview 3
-
-Watch our [overview video](https://www.youtube.com/watch?v=2vHFfQF0agc) to see the new features and improvements in this preview release.
+# VIPM 2026 Q3 Preview 1
 
 ## Installation & Feedback
 
@@ -26,85 +24,37 @@ Report issues on [GitHub](https://github.com/vipm-io/vipm-desktop-issues/issues)
 
 ## What's New
 
-### Updates in Preview 3
-This release focuses on polish and bug fixes based on community feedback:
+### CycloneDX SBOM Generation
 
-**VIPM Desktop Improvements:**
+Generate a [CycloneDX](https://cyclonedx.org/) 1.5 Software Bill of Materials (SBOM) for your LabVIEW project with a single command. The SBOM includes VIPM packages, NI packages (NIPM), enriched metadata (licenses, descriptions, vendors), and cryptographic hashes (SHA-256, MD5).
 
-- **Fixed "Search Online" button alignment**: Corrected alignment of the "Search Online" button in the window that appears when no packages are available for search results
-- **Fixed destination deletion text issue**: Resolved issue where deleting a custom VI Package Builder destination would leave previously selected text white
-- **Improved installer window behavior**: The Updates Installer window now stays visible instead of hiding to the System Tray, making installation progress clearly visible
+SBOMs are increasingly required for regulatory compliance, including the [EU Cyber Resilience Act (CRA)](https://jki.net/cra/). See the [SBOM documentation](sbom/index.md) for details.
 
-**VIPM CLI Improvements:**
+```bash
+vipm sbom MyProject.lvproj \
+  --format cyclonedx \
+  --schema-version 1.5 \
+  --product-name "My Instrument" \
+  --product-version 2.1.0 \
+  --output build/bom.json
+```
 
-- **Fixed `vipm about` initialization error**: The `vipm about` command now prints all fields and outputs a warning when VIPM Desktop is not fully initialized (such as on first startup)
-- **Added Global Options to command help**: Running `--help` for individual commands (e.g., `vipm build --help`) now displays Global Options in addition to command-specific options
-- **Fixed LabVIEW version reporting**: The `vipm build LVPROJ_FILE` command now correctly reports the LabVIEW version being used
-- **Fixed output line formatting**: Resolved issue where `vipm build LVPROJ_FILE` output would sometimes garble multiple lines together into a single line
+**[Get started with SBOM generation →](sbom/getting-started.md)**
 
-### Updates in Preview 2
+### Manifest Sync (vipm sync)
 
-- **VI Package building officially supported on Linux**: Build .vip packages natively on Linux systems
-- **Multi-platform .vipb files**: Package build files (.vipb) now work seamlessly across Windows and Linux
-- **Improved Linux support for RHEL**: Native RPM packages for Red Hat Enterprise Linux and derivatives
-- **Fixed .dragon and .vip installation**: Resolved issues with VIPM CLI when installing .dragon and .vip files
-- **Case-insensitive library name handling**: VIPM now handles internal library name changes in a case-insensitive manner
-- **LabVIEW Class default menu support**: Re-added support for LabVIEW Class default menu items
+Keep your `vipm.toml` manifest in sync with the dependencies discovered in a LabVIEW project:
 
-### LabVIEW 2026 Support
-This preview release has been tested with LabVIEW 2026 Beta and includes full LabVIEW 2026 support. You can access the LabVIEW 2026 Beta at the [LabVIEW Beta forum](https://forums.ni.com/t5/LabVIEW-Beta/ct-p/7035).
+```bash
+vipm sync --from MyProject.lvproj
+```
 
-### Improved Support for Installing VIPM on Linux
-
-VIPM is now available as native Linux packages for seamless installation and updates:
-
-- **DEB Packages** - Native support for Debian-based distributions (Ubuntu, Debian, Linux Mint, and derivatives)
-
-- **RPM Packages** - Native support for Red Hat-based distributions (RHEL, Fedora, CentOS, Rocky Linux, and derivatives)
-
-### VIPM Command Line Interface (CLI)
-
-The new VIPM CLI brings powerful automation capabilities to your package management workflows. Install, update, and remove packages from the command line, integrate VIPM operations into build scripts and CI/CD pipelines, and automate package management tasks across multiple systems.
-
-Once installed, try out VIPM CLI by opening a terminal and typing `vipm`.
-
-### vipm.toml Project Configuration (Preview Feature)
-
-Manage your LabVIEW project's dependencies and builds with a modern, human-readable `vipm.toml` configuration file. Features include declarative dependency management, reproducible builds via lock files, and seamless CI/CD integration.
-
-**[Get started with vipm.toml →](vipm-toml/getting-started.md)**
-
-### Faster Downloads and Improved Stability (Preview Feature)
-
-VIPM now uses a modernized HTTP client for improved package repository communication and download performance. This preview feature lays the groundwork for enhanced reliability and future capabilities.
-
-### Bug Fixes and Usability Improvements
-Various bug and usability fixes including:
-
-* LabVIEW Libraries (lvlib) that contain support files now correctly point to the correct location. Thank you to GitHub users @NatanBiesmans and @AlexanderElbert for reporting this issue.
-* Improved Linux workflows. Thank you to GitHub users @pesmith8a and @JamesMc86 for reporting this issue.
-* Fixed issue where similar VIPB destination names become linked. Thank you to GitHub user @qalldredge for reporting this issue.
-* "Place folder contents in destination" now works for support files. Thank you to GitHub user @Sdusing7 for reporting this issue.
-
-  > This is a preview feature. Enable this through Options > Preview Features and select "[Bug Fix] Place Folder Contents for Non-LabVIEW Files".
-
---8<-- "need-help.md"    
+Preview changes before writing with `--dry-run`. See the [CLI Command Reference](cli/command-reference.md#vipm-sync) for full options.
 
 ---
 
-## Thank You to Our Community
+## Feedback
 
-Thank you to everyone who has been testing the VIPM 2026Q1 Preview! Your feedback and testing efforts are invaluable in helping us improve the product.
+Thank you to everyone testing VIPM previews! Your feedback is invaluable in helping us improve the product.
 
-Please continue to report any issues you encounter:
-
-**Feedback**
 Report issues on [GitHub](https://github.com/vipm-io/vipm-desktop-issues/issues) or join us on [Discord](https://discord.gg/GCB7QQyzsP)
-
-We appreciate your ongoing support and contributions to making VIPM better for the entire LabVIEW community!
-
----
-
-**Page last edited:** November 19, 2025
-
----
