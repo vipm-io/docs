@@ -44,10 +44,23 @@ A typical Docker setup for VIPM includes:
 Example `.env` file:
 
 ```bash
+# VIPM Pro activation credentials
 VIPM_SERIAL_NUMBER=your-serial-number-here
 VIPM_FULL_NAME=Your Full Name
 VIPM_EMAIL=your.email@example.com
+
+# Auto-confirm prompts (recommended for CI/CD)
+VIPM_ASSUME_YES=1
+
+# Disable colored output for cleaner CI logs
+NO_COLOR=1
+
+# Set CI=true if running Docker outside a CI system (e.g. local testing)
+# to get longer default timeouts. Most CI runners set this automatically.
+# CI=true
 ```
+
+See [Environment Variables](environment-variables.md) for the full list and [GitHub Actions and CI/CD](github-actions.md) for workflow examples.
 
 ### Running the Container
 
