@@ -2093,10 +2093,10 @@
 <h2 id="confirmation-prompts">Confirmation Prompts</h2>
 <h3 id="vipm_assume_yes"><code>VIPM_ASSUME_YES</code></h3>
 <p>Auto-confirms all interactive prompts without requiring the <code>--yes</code> / <code>-y</code> flag on each command. This is the recommended approach for CI/CD pipelines where you want all commands to proceed non-interactively.</p>
-<pre><code class="language-bash">export VIPM_ASSUME_YES=1
-vipm install project.vipc     # no prompt
-vipm uninstall oglib_boolean  # no prompt
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_ASSUME_YES</span><span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>vipm<span class="w"> </span>install<span class="w"> </span>project.vipc<span class="w">     </span><span class="c1"># no prompt</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>vipm<span class="w"> </span>uninstall<span class="w"> </span>oglib_boolean<span class="w">  </span><span class="c1"># no prompt</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2120,34 +2120,34 @@ vipm uninstall oglib_boolean  # no prompt
 </tbody>
 </table>
 <p>Alternatively, use the <code>--yes</code> / <code>-y</code> flag on individual commands:</p>
-<pre><code class="language-bash">vipm install -y project.vipc
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>vipm<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>project.vipc
+</code></pre></div>
 <h2 id="timeouts">Timeouts</h2>
 <h3 id="vipm_timeout"><code>VIPM_TIMEOUT</code></h3>
 <p>Overrides the default operation timeout (in seconds). When set, this takes precedence over the <code>--timeout</code> flag and any CI-adjusted defaults.</p>
-<pre><code class="language-bash">export VIPM_TIMEOUT=300   # 5 minutes
-vipm install project.vipc
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_TIMEOUT</span><span class="o">=</span><span class="m">300</span><span class="w">   </span><span class="c1"># 5 minutes</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>vipm<span class="w"> </span>install<span class="w"> </span>project.vipc
+</code></pre></div>
 <h2 id="debugging">Debugging</h2>
 <h3 id="vipm_debug"><code>VIPM_DEBUG</code></h3>
 <p>Enables verbose debug output for troubleshooting.</p>
-<pre><code class="language-bash">export VIPM_DEBUG=1
-vipm install oglib_boolean
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_DEBUG</span><span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>vipm<span class="w"> </span>install<span class="w"> </span>oglib_boolean
+</code></pre></div>
 <h2 id="output">Output</h2>
 <h3 id="no_color"><code>NO_COLOR</code></h3>
 <p>Disables colored output, following the <a href="https://no-color.org/">no-color.org</a> standard. Equivalent to <code>--color-mode never</code>.</p>
-<pre><code class="language-bash">export NO_COLOR=1
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">NO_COLOR</span><span class="o">=</span><span class="m">1</span>
+</code></pre></div>
 <h3 id="source_date_epoch"><code>SOURCE_DATE_EPOCH</code></h3>
 <p>When set, VIPM uses this Unix timestamp for the <code>generated_at</code> field in <code>--json</code> output instead of the current time. This supports <a href="https://reproducible-builds.org/specs/source-date-epoch/">reproducible builds</a>.</p>
-<pre><code class="language-bash">export SOURCE_DATE_EPOCH=1710000000
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SOURCE_DATE_EPOCH</span><span class="o">=</span><span class="m">1710000000</span>
+</code></pre></div>
 <h2 id="edition">Edition</h2>
 <h3 id="vipm_community_edition"><code>VIPM_COMMUNITY_EDITION</code></h3>
 <p>Forces VIPM to operate in Community Edition mode, regardless of activation status.</p>
-<pre><code class="language-bash">export VIPM_COMMUNITY_EDITION=1
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_COMMUNITY_EDITION</span><span class="o">=</span><span class="m">1</span>
+</code></pre></div>
 <h2 id="related-resources">Related Resources</h2>
 <ul>
 <li><a href="../command-reference/">CLI Command Reference</a> — command flags and options</li>

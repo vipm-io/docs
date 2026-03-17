@@ -1838,11 +1838,11 @@
 </div>
 <h2 id="problem">Problem</h2>
 <p>VIPM crashes with segmentation fault when installing packages on Linux:</p>
-<pre><code>LabVIEW caught fatal signal
-23.3.7f7 - Received SIGSEGV
-Reason: invalid permissions for mapped object
-Segmentation fault
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>LabVIEW caught fatal signal
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>23.3.7f7 - Received SIGSEGV
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Reason: invalid permissions for mapped object
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Segmentation fault
+</code></pre></div>
 <p><strong>Symptoms:</strong>
 - VIPM launches successfully
 - Crashes only when installing/downloading packages
@@ -1851,25 +1851,25 @@ Segmentation fault
 <p>VIPM requires write access to LabVIEW installation directories to install packages. When LabVIEW directories are owned by root, VIPM cannot write files and crashes.</p>
 <h2 id="solution">Solution</h2>
 <p>Change ownership of LabVIEW directories to your user account:</p>
-<pre><code class="language-bash"># Set ownership of LabVIEW installation
-sudo chown $USER -R /usr/local/natinst/LabVIEW*
-
-# Set ownership of VIPM directories
-sudo chown $USER -R /usr/local/JKI/VIPM
-sudo chown $USER -R /etc/JKI
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Set ownership of LabVIEW installation</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>chown<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-R<span class="w"> </span>/usr/local/natinst/LabVIEW*
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Set ownership of VIPM directories</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>sudo<span class="w"> </span>chown<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-R<span class="w"> </span>/usr/local/JKI/VIPM
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo<span class="w"> </span>chown<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-R<span class="w"> </span>/etc/JKI
+</code></pre></div>
 <h2 id="verification">Verification</h2>
 <ol>
 <li>
 <p><strong>Check ownership changed:</strong>
-   <code>bash
-   ls -la /usr/local/natinst/ | grep LabVIEW</code>
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ls<span class="w"> </span>-la<span class="w"> </span>/usr/local/natinst/<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>LabVIEW
+</code></pre></div>
    Should show your username, not "root"</p>
 </li>
 <li>
 <p><strong>Launch VIPM as regular user (NOT with sudo):</strong>
-   <code>bash
-   vipm</code></p>
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>vipm
+</code></pre></div></p>
 </li>
 <li>
 <p><strong>Test package installation</strong> - should complete without crashes</p>
@@ -1883,34 +1883,34 @@ sudo chown $USER -R /etc/JKI
 </ul>
 <h2 id="complete-setup-script">Complete Setup Script</h2>
 <p>For fresh installations or persistent issues:</p>
-<pre><code class="language-bash">#!/bin/bash
-
-if [ &quot;$EUID&quot; -ne 0 ]; then
-  echo &quot;Run with: sudo $0&quot;
-  exit 1
-fi
-
-echo &quot;Configuring VIPM permissions for: $SUDO_USER&quot;
-
-# Fix file handle limits
-if ! test -f /etc/sysctl.d/vipm-files.conf; then
-  echo &quot;fs.file-max = 2000000&quot; &gt; /etc/sysctl.d/vipm-files.conf
-fi
-
-# Set ownership
-chown $SUDO_USER -R /usr/local/natinst/LabVIEW*
-chown $SUDO_USER -R /usr/local/JKI/VIPM 2&gt;/dev/null || true
-chown $SUDO_USER -R /etc/JKI 2&gt;/dev/null || true
-
-# Fix tmp permissions
-chmod 777 /tmp
-
-echo &quot;Complete! Run 'vipm' as regular user (not sudo)&quot;
-</code></pre>
-<p>Save as <code>fix-vipm-permissions.sh</code>, then run:</p>
-<pre><code class="language-bash">chmod +x fix-vipm-permissions.sh
-sudo ./fix-vipm-permissions.sh
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EUID</span><span class="s2">&quot;</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Run with: sudo </span><span class="nv">$0</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">fi</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Configuring VIPM permissions for: </span><span class="nv">$SUDO_USER</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Fix file handle limits</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-f<span class="w"> </span>/etc/sysctl.d/vipm-files.conf<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;fs.file-max = 2000000&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/sysctl.d/vipm-files.conf
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="k">fi</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="c1"># Set ownership</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>chown<span class="w"> </span><span class="nv">$SUDO_USER</span><span class="w"> </span>-R<span class="w"> </span>/usr/local/natinst/LabVIEW*
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>chown<span class="w"> </span><span class="nv">$SUDO_USER</span><span class="w"> </span>-R<span class="w"> </span>/usr/local/JKI/VIPM<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>chown<span class="w"> </span><span class="nv">$SUDO_USER</span><span class="w"> </span>-R<span class="w"> </span>/etc/JKI<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="c1"># Fix tmp permissions</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>chmod<span class="w"> </span><span class="m">777</span><span class="w"> </span>/tmp
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Complete! Run &#39;vipm&#39; as regular user (not sudo)&quot;</span>
+</code></pre></div>
+<p>Save as <code>fix-vipm-permissions.sh</code>, then run:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>fix-vipm-permissions.sh
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>./fix-vipm-permissions.sh
+</code></pre></div></p>
 <h2 id="additional-troubleshooting">Additional Troubleshooting</h2>
 <p>If issues persist, check:
 - File handle limits: <code>cat /etc/sysctl.d/vipm-files.conf</code>

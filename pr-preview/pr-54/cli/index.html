@@ -1807,36 +1807,36 @@
 <p>VIPM includes a powerful command-line interface (CLI) that enables automation, integration with CI/CD pipelines, and usage in containerized environments. The CLI also supports <a href="../sbom/">SBOM generation</a> for producing CycloneDX software inventories of your LabVIEW projects.</p>
 <h2 id="example-commands">Example Commands</h2>
 <p>Use these quick snippets to verify your environment, then jump to the <a href="command-reference/">CLI Command Reference</a> for full syntax, options, exit codes, and troubleshooting tips.</p>
-<pre><code class="language-bash"># Activate VIPM Pro (optional)
-
-
-# Refresh package list so installs see the latest metadata
-vipm package-list-refresh
-
-# Install packages by name or from a .vipc file
-vipm install oglib_boolean oglib_numeric
-vipm install path/to/project.vipc
-
-# Inspect installed packages or files
-vipm list --installed
-vipm list project.vipc
-
-# Build a VI package (requires .vipb or .lvproj)
-</code></pre>
-<pre><code>Listing installed packages
-Found &lt;n&gt; packages:
-    &lt;Package Name&gt; (&lt;id&gt; vX.Y.Z)
-</code></pre>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Activate VIPM Pro (optional)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Refresh package list so installs see the latest metadata</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>vipm<span class="w"> </span>package-list-refresh
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Install packages by name or from a .vipc file</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>vipm<span class="w"> </span>install<span class="w"> </span>oglib_boolean<span class="w"> </span>oglib_numeric
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>vipm<span class="w"> </span>install<span class="w"> </span>path/to/project.vipc
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># Inspect installed packages or files</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>vipm<span class="w"> </span>list<span class="w"> </span>--installed
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>vipm<span class="w"> </span>list<span class="w"> </span>project.vipc
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1"># Build a VI package (requires .vipb or .lvproj)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Listing installed packages
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Found &lt;n&gt; packages:
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    &lt;Package Name&gt; (&lt;id&gt; vX.Y.Z)
+</code></pre></div></p>
 <h3 id="uninstall-a-package">Uninstall a Package</h3>
-<pre><code class="language-bash">vipm uninstall oglib_boolean
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>vipm<span class="w"> </span>uninstall<span class="w"> </span>oglib_boolean
+</code></pre></div>
 <p>Expected output:</p>
-<pre><code>Uninstalling 1 package
-✓ Uninstalled 1 package ...
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Uninstalling 1 package
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>✓ Uninstalled 1 package ...
+</code></pre></div>
 <h3 id="build-a-vi-package">Build a VI Package</h3>
-<pre><code class="language-bash">vipm build path/to/package.vipb
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>vipm<span class="w"> </span>build<span class="w"> </span>path/to/package.vipb
+</code></pre></div>
 <p>Typical outcome: VIPM validates the build specification, produces a <code>.vip</code> artifact, and reports the output location.</p>
 <h2 id="getting-started">Getting Started</h2>
 <p>To start using VIPM CLI, ensure you have VIPM installed on your system. The CLI ships with every edition of VIPM Desktop.</p>

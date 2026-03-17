@@ -1969,31 +1969,31 @@
 <p>VIPM supports managing NI Package Manager (NIPM) dependencies alongside VIPM packages in a single <code>vipm.toml</code> manifest. This gives you a unified view of all your project's dependencies — both community packages from vipm.io and NI packages from NI feeds.</p>
 <h2 id="vipmtoml-format">vipm.toml format</h2>
 <p>NIPM dependencies use three dedicated sections in <code>vipm.toml</code>:</p>
-<pre><code class="language-toml">[nipm.feeds]
-ni = &quot;https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/24.5/released/&quot;
-
-[nipm.dependencies]
-ni-daqmx = &quot;24.5.0&quot;
-
-[nipm.dev-dependencies]
-ni-teststand = &quot;2023.1.0&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">[nipm.feeds]</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">ni</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/24.5/released/&quot;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">[nipm.dependencies]</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">ni-daqmx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;24.5.0&quot;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">[nipm.dev-dependencies]</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">ni-teststand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2023.1.0&quot;</span>
+</code></pre></div>
 <h3 id="nipmfeeds"><code>[nipm.feeds]</code></h3>
 <p>Maps human-readable aliases to NI package feed URLs. Feed aliases are referenced by dependencies to specify where to download the package.</p>
-<pre><code class="language-toml">[nipm.feeds]
-ni-daqmx-feed = &quot;https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/24.5/released/&quot;
-ni-visa-feed = &quot;https://download.ni.com/support/nipkg/products/ni-v/ni-visa/2024Q1/released/&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">[nipm.feeds]</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">ni-daqmx-feed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/24.5/released/&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">ni-visa-feed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://download.ni.com/support/nipkg/products/ni-v/ni-visa/2024Q1/released/&quot;</span>
+</code></pre></div>
 <h3 id="nipmdependencies-and-nipmdev-dependencies"><code>[nipm.dependencies]</code> and <code>[nipm.dev-dependencies]</code></h3>
 <p>Declare NIPM packages your project depends on. Two formats are supported:</p>
 <p><strong>Simple format</strong> — version string only:</p>
-<pre><code class="language-toml">[nipm.dependencies]
-ni-daqmx = &quot;24.5.0&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">[nipm.dependencies]</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">ni-daqmx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;24.5.0&quot;</span>
+</code></pre></div>
 <p><strong>Detailed format</strong> — with feed alias:</p>
-<pre><code class="language-toml">[nipm.dependencies]
-ni-daqmx = { version = &quot;24.5.0&quot;, feed = &quot;ni-daqmx-feed&quot; }
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">[nipm.dependencies]</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">ni-daqmx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;24.5.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">feed</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;ni-daqmx-feed&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
 <p>Use <code>[nipm.dev-dependencies]</code> for packages only needed during development or testing.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2002,32 +2002,32 @@ ni-daqmx = { version = &quot;24.5.0&quot;, feed = &quot;ni-daqmx-feed&quot; }
 <h2 id="workflow">Workflow</h2>
 <h3 id="adding-nipm-dependencies">Adding NIPM dependencies</h3>
 <p>Use <code>vipm add --nipm</code> to add NI packages to your manifest:</p>
-<pre><code class="language-bash"># Add with explicit version (required)
-vipm add --nipm ni-daqmx@24.5.0
-
-# Add with a feed alias
-vipm add --nipm ni-daqmx@24.5.0 --feed ni-daqmx-feed
-
-# Register a new feed and add the package
-vipm add --nipm ni-daqmx@24.5.0 --feed ni-daqmx-feed --feed-url &quot;https://download.ni.com/...&quot;
-
-# Add as a dev dependency
-vipm add --nipm ni-teststand@2023.1.0 --dev
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Add with explicit version (required)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>vipm<span class="w"> </span>add<span class="w"> </span>--nipm<span class="w"> </span>ni-daqmx@24.5.0
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Add with a feed alias</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>vipm<span class="w"> </span>add<span class="w"> </span>--nipm<span class="w"> </span>ni-daqmx@24.5.0<span class="w"> </span>--feed<span class="w"> </span>ni-daqmx-feed
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Register a new feed and add the package</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>vipm<span class="w"> </span>add<span class="w"> </span>--nipm<span class="w"> </span>ni-daqmx@24.5.0<span class="w"> </span>--feed<span class="w"> </span>ni-daqmx-feed<span class="w"> </span>--feed-url<span class="w"> </span><span class="s2">&quot;https://download.ni.com/...&quot;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Add as a dev dependency</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>vipm<span class="w"> </span>add<span class="w"> </span>--nipm<span class="w"> </span>ni-teststand@2023.1.0<span class="w"> </span>--dev
+</code></pre></div>
 <p>On Windows with NI Package Manager installed, VIPM can auto-detect the installed version if you omit the version number, and can discover which feed provides the package.</p>
 <h3 id="removing-nipm-dependencies">Removing NIPM dependencies</h3>
-<pre><code class="language-bash">vipm remove --nipm ni-daqmx
-vipm remove --nipm ni-teststand --dev
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>vipm<span class="w"> </span>remove<span class="w"> </span>--nipm<span class="w"> </span>ni-daqmx
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>vipm<span class="w"> </span>remove<span class="w"> </span>--nipm<span class="w"> </span>ni-teststand<span class="w"> </span>--dev
+</code></pre></div>
 <h3 id="locking">Locking</h3>
 <p><code>vipm lock</code> includes NIPM dependencies in the lock file alongside VIPM packages:</p>
-<pre><code class="language-bash">vipm lock
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>vipm<span class="w"> </span>lock
+</code></pre></div>
 <p>The lock file records each NIPM package's name, version, feed URL, and checksum (when available).</p>
 <h3 id="installing">Installing</h3>
 <p>When you run <code>vipm install</code> on a project with NIPM dependencies, VIPM installs both VIPM and NIPM packages:</p>
-<pre><code class="language-bash">vipm install
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>vipm<span class="w"> </span>install
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Windows only</p>
 <p>NIPM package installation requires Windows with NI Package Manager installed. On other platforms, VIPM manages the manifest entries but cannot install NI packages. VIPM will display a warning if NIPM is not available.</p>
@@ -2038,19 +2038,19 @@ vipm remove --nipm ni-teststand --dev
 </div>
 <h3 id="listing">Listing</h3>
 <p><code>vipm list</code> shows NIPM dependencies alongside VIPM packages when listing from a <code>vipm.toml</code>:</p>
-<pre><code class="language-bash">vipm list vipm.toml
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>vipm<span class="w"> </span>list<span class="w"> </span>vipm.toml
+</code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Planned: selective listing</p>
 <p><code>vipm list</code> does not yet support <code>--no-nipm</code> or <code>--no-vipm</code> flags to filter by package type. Currently it shows all dependencies together.</p>
 </div>
 <h3 id="inspecting-ni-packages">Inspecting NI packages</h3>
 <p>Use <code>vipm info --nipm</code> to view metadata for an installed NI package:</p>
-<pre><code class="language-bash">vipm info --nipm ni-daqmx
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>vipm<span class="w"> </span>info<span class="w"> </span>--nipm<span class="w"> </span>ni-daqmx
+</code></pre></div>
 <p>To see which files a package installed:</p>
-<pre><code class="language-bash">vipm info --nipm ni-daqmx --installed-files
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>vipm<span class="w"> </span>info<span class="w"> </span>--nipm<span class="w"> </span>ni-daqmx<span class="w"> </span>--installed-files
+</code></pre></div>
 <p><code>vipm info --nipm</code> requires Windows with NI Package Manager installed.</p>
 <h2 id="filtering-by-package-type">Filtering by package type</h2>
 <p>Several commands include both VIPM and NIPM packages by default. Use <code>--no-nipm</code> or <code>--no-vipm</code> to filter:</p>
@@ -2109,55 +2109,55 @@ vipm remove --nipm ni-teststand --dev
 </tbody>
 </table>
 <p>Examples:</p>
-<pre><code class="language-bash"># Generate SBOM with only VIPM packages
-vipm sbom vipm.toml --format cyclonedx --schema-version 1.5 --no-nipm --output bom.json
-
-# Generate SBOM with only NI packages
-vipm sbom vipm.toml --format cyclonedx --schema-version 1.5 --no-vipm --output bom.json
-
-# Sync vipm.toml from project, excluding NI packages
-vipm sync --from MyProject.lvproj --no-nipm
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Generate SBOM with only VIPM packages</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>vipm.toml<span class="w"> </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span>--no-nipm<span class="w"> </span>--output<span class="w"> </span>bom.json
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Generate SBOM with only NI packages</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>vipm.toml<span class="w"> </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span>--no-vipm<span class="w"> </span>--output<span class="w"> </span>bom.json
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Sync vipm.toml from project, excluding NI packages</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj<span class="w"> </span>--no-nipm
+</code></pre></div>
 <h2 id="complete-example">Complete example</h2>
-<pre><code class="language-toml">[project]
-name = &quot;instrument-control&quot;
-version = &quot;1.0.0&quot;
-labview-version = &quot;2024&quot;
-labview-bitness = 64
-
-[dependencies]
-oglib_array = &quot;6.0.1.20&quot;
-jki_lib_state_machine = &quot;2.0.0.50&quot;
-
-[dev-dependencies]
-caraya = &quot;1.4.5.165&quot;
-
-[nipm.feeds]
-ni-daq = &quot;https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/24.5/released/&quot;
-
-[nipm.dependencies]
-ni-daqmx = { version = &quot;24.5.0&quot;, feed = &quot;ni-daq&quot; }
-
-[nipm.dev-dependencies]
-ni-teststand = &quot;2023.1.0&quot;
-</code></pre>
-<pre><code class="language-bash"># Add all dependencies
-vipm add oglib_array jki_lib_state_machine
-vipm add --dev caraya
-vipm add --nipm ni-daqmx@24.5.0 --feed ni-daq
-
-# Lock and install
-vipm lock
-vipm install
-
-# Generate SBOM including both VIPM and NI packages
-vipm sbom vipm.toml \
-  --format cyclonedx \
-  --schema-version 1.5 \
-  --product-name &quot;Instrument Control&quot; \
-  --product-version 1.0.0 \
-  --output build/bom.json
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">[project]</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;instrument-control&quot;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">labview-version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2024&quot;</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">labview-bitness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="k">[dependencies]</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="n">oglib_array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;6.0.1.20&quot;</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="n">jki_lib_state_machine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2.0.0.50&quot;</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="k">[dev-dependencies]</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="n">caraya</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.4.5.165&quot;</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="k">[nipm.feeds]</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="n">ni-daq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/24.5/released/&quot;</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="k">[nipm.dependencies]</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="n">ni-daqmx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;24.5.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">feed</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;ni-daq&quot;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="k">[nipm.dev-dependencies]</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="n">ni-teststand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2023.1.0&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Add all dependencies</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>vipm<span class="w"> </span>add<span class="w"> </span>oglib_array<span class="w"> </span>jki_lib_state_machine
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>vipm<span class="w"> </span>add<span class="w"> </span>--dev<span class="w"> </span>caraya
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>vipm<span class="w"> </span>add<span class="w"> </span>--nipm<span class="w"> </span>ni-daqmx@24.5.0<span class="w"> </span>--feed<span class="w"> </span>ni-daq
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="c1"># Lock and install</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>vipm<span class="w"> </span>lock
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>vipm<span class="w"> </span>install
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="c1"># Generate SBOM including both VIPM and NI packages</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>vipm.toml<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">  </span>--product-name<span class="w"> </span><span class="s2">&quot;Instrument Control&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">  </span>--product-version<span class="w"> </span><span class="m">1</span>.0.0<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+</code></pre></div>
 <h2 id="need-help">Need Help?</h2>
 <ul>
 <li>Report issues on <a href="https://github.com/vipm-io/vipm-desktop-issues/issues">GitHub</a></li>

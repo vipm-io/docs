@@ -1757,33 +1757,33 @@ This feature is not available in stable releases. See the <a href="../preview/">
 <p>Ready to dive in? Jump to the <strong><a href="getting-started/">vipm.toml Getting Started guide →</a></strong></p>
 <h2 id="first-look-at-vipmtoml">First look at <code>vipm.toml</code></h2>
 <p>A typical workflow with <code>vipm.toml</code>:</p>
-<pre><code class="language-bash">vipm init                          # Create vipm.toml
-vipm add oglib_array oglib_error   # Add dependencies
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vipm<span class="w"> </span>init<span class="w">                          </span><span class="c1"># Create vipm.toml</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>vipm<span class="w"> </span>add<span class="w"> </span>oglib_array<span class="w"> </span>oglib_error<span class="w">   </span><span class="c1"># Add dependencies</span>
+</code></pre></div>
 <p>This creates a <code>vipm.toml</code> file like:</p>
-<pre><code class="language-toml">[project]
-name = &quot;my-labview-project&quot;
-version = &quot;1.0.0&quot;
-labview-version = &quot;2024&quot;
-
-[dependencies]
-oglib_array = &quot;6.0.1.20&quot;
-oglib_error = &quot;5.0.0.27&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">[project]</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;my-labview-project&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">labview-version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2024&quot;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">[dependencies]</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">oglib_array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;6.0.1.20&quot;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">oglib_error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;5.0.0.27&quot;</span>
+</code></pre></div>
 <p>Install your packages:</p>
-<pre><code class="language-bash">vipm install                       # Install packages to LabVIEW
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>vipm<span class="w"> </span>install<span class="w">                       </span><span class="c1"># Install packages to LabVIEW</span>
+</code></pre></div>
 <p>Add a build spec:</p>
-<pre><code class="language-toml">[build.my_library]
-type = &quot;ppl&quot;
-top-level-library = &quot;src/MyLibrary.lvlib&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">[build.my_library]</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ppl&quot;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">top-level-library</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;src/MyLibrary.lvlib&quot;</span>
+</code></pre></div>
 <p>Do a build:</p>
-<pre><code class="language-bash">vipm build                         # Build your project (see `my_library` below)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>vipm<span class="w"> </span>build<span class="w">                         </span><span class="c1"># Build your project (see `my_library` below)</span>
+</code></pre></div>
 <p>Use your build output:</p>
-<pre><code class="language-bash">builds/my_library/MyLibrary.lvlib
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>builds/my_library/MyLibrary.lvlib
+</code></pre></div>
 <h2 id="why-vipmtoml">Why vipm.toml?</h2>
 <table>
 <thead>

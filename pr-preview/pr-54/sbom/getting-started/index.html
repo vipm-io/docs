@@ -1818,28 +1818,28 @@ Download it to try these features and share your feedback.</p>
 <p>This guide walks you through generating your first CycloneDX SBOM with the VIPM CLI.</p>
 <h2 id="step-1-verify-the-cli-is-available">Step 1 — Verify the CLI is available</h2>
 <p>Open a terminal and confirm that VIPM is installed:</p>
-<pre><code class="language-bash">vipm --version
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vipm<span class="w"> </span>--version
+</code></pre></div>
 <p>Expected output:</p>
-<pre><code>VIPM CLI version 2026.3.x
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>VIPM CLI version 2026.3.x
+</code></pre></div>
 <p>If the command is not found, install the <a href="../../preview/">VIPM 2026 Q3 Preview</a> first.</p>
 <h2 id="step-2-generate-an-sbom">Step 2 — Generate an SBOM</h2>
 <p>Run the <code>vipm sbom</code> command against your project. This example uses a <code>.lvproj</code> file:</p>
-<pre><code class="language-bash">vipm sbom &quot;C:\MyProject\MyProject.lvproj&quot; ^
-  --format cyclonedx ^
-  --schema-version 1.5 ^
-  --output &quot;C:\MyProject\build\bom.json&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span><span class="s2">&quot;C:\MyProject\MyProject.lvproj&quot;</span><span class="w"> </span>^
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span>^
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span>^
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span>--output<span class="w"> </span><span class="s2">&quot;C:\MyProject\build\bom.json&quot;</span>
+</code></pre></div>
 <p>On Linux or macOS, use backslash line continuations instead:</p>
-<pre><code class="language-bash">vipm sbom /home/user/MyProject/MyProject.lvproj \
-  --format cyclonedx \
-  --schema-version 1.5 \
-  --output /home/user/MyProject/build/bom.json
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>/home/user/MyProject/MyProject.lvproj<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>--output<span class="w"> </span>/home/user/MyProject/build/bom.json
+</code></pre></div>
 <p>Expected output:</p>
-<pre><code>SBOM written to C:\MyProject\build\bom.json
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>SBOM written to C:\MyProject\build\bom.json
+</code></pre></div>
 <p>The three required flags are <code>--format</code>, <code>--schema-version</code>, and <code>--output</code>. There are no defaults for these — they must always be specified.</p>
 <h2 id="step-3-inspect-the-output">Step 3 — Inspect the output</h2>
 <p>Open <code>bom.json</code> to see the generated CycloneDX document. Key sections include:</p>
@@ -1850,23 +1850,23 @@ Download it to try these features and share your feedback.</p>
 </ul>
 <h2 id="step-4-add-product-metadata">Step 4 — Add product metadata</h2>
 <p>Set your product's name and version so they appear in the SBOM's root component:</p>
-<pre><code class="language-bash">vipm sbom MyProject.lvproj ^
-  --format cyclonedx ^
-  --schema-version 1.5 ^
-  --product-name &quot;My Instrument&quot; ^
-  --product-version 2.1.0 ^
-  --output build/bom.json
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span>^
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span>^
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span>^
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span>--product-name<span class="w"> </span><span class="s2">&quot;My Instrument&quot;</span><span class="w"> </span>^
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span>--product-version<span class="w"> </span><span class="m">2</span>.1.0<span class="w"> </span>^
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+</code></pre></div>
 <p>If <code>--product-name</code> is omitted, it defaults to the input filename stem (e.g., <code>MyProject</code>). If <code>--product-version</code> is omitted, the version field is left out of the SBOM.</p>
 <h2 id="step-5-filter-dependencies">Step 5 — Filter dependencies</h2>
 <p>You can exclude specific dependency sources:</p>
-<pre><code class="language-bash"># Exclude NI packages, only include VIPM packages
-vipm sbom MyProject.lvproj ^
-  --format cyclonedx ^
-  --schema-version 1.5 ^
-  --no-nipm ^
-  --output build/bom.json
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Exclude NI packages, only include VIPM packages</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span>^
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span>^
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span>^
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span>--no-nipm<span class="w"> </span>^
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+</code></pre></div>
 <p>Available filters:</p>
 <table>
 <thead>

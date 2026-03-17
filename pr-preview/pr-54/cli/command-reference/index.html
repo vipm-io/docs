@@ -3050,8 +3050,8 @@
 <h2 id="vipm-install"><code>vipm install</code></h2>
 <p>Installs one or more packages by name, name@version, or file path.</p>
 <h3 id="syntax">Syntax</h3>
-<pre><code class="language-bash">vipm install [OPTIONS] &lt;package|path&gt;...
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vipm<span class="w"> </span>install<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>&lt;package<span class="p">|</span>path&gt;...
+</code></pre></div>
 <h3 id="options">Options</h3>
 <table>
 <thead>
@@ -3081,18 +3081,18 @@
 </table>
 <h3 id="examples">Examples</h3>
 <p>Install a single package:</p>
-<pre><code class="language-bash">vipm install oglib_boolean
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>vipm<span class="w"> </span>install<span class="w"> </span>oglib_boolean
+</code></pre></div>
 <p>Install multiple packages and upgrade existing ones:</p>
-<pre><code class="language-bash">vipm install --upgrade oglib_boolean oglib_numeric
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>vipm<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>oglib_boolean<span class="w"> </span>oglib_numeric
+</code></pre></div>
 <p>Apply a configuration file:</p>
-<pre><code class="language-bash">vipm install project.vipc
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>vipm<span class="w"> </span>install<span class="w"> </span>project.vipc
+</code></pre></div>
 <p>Expected output includes progress such as:</p>
-<pre><code>Installing 2 packages
-✓ Installed 2 packages from LabVIEW 2025 (64-bit) in 28.5s
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Installing 2 packages
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>✓ Installed 2 packages from LabVIEW 2025 (64-bit) in 28.5s
+</code></pre></div>
 <h3 id="common-issues">Common Issues</h3>
 <ul>
 <li><strong>Package not found</strong>: Run <code>vipm package-list-refresh</code> and verify the package ID at <a href="https://www.vipm.io">vipm.io</a>.</li>
@@ -3101,8 +3101,8 @@
 <h2 id="vipm-uninstall"><code>vipm uninstall</code></h2>
 <p>Removes packages from the selected LabVIEW installation.</p>
 <h3 id="syntax_1">Syntax</h3>
-<pre><code class="language-bash">vipm uninstall [OPTIONS] &lt;package|package@version&gt;...
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>vipm<span class="w"> </span>uninstall<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>&lt;package<span class="p">|</span>package@version&gt;...
+</code></pre></div>
 <h3 id="options_1">Options</h3>
 <table>
 <thead>
@@ -3123,12 +3123,12 @@
 </tbody>
 </table>
 <h3 id="examples_1">Examples</h3>
-<pre><code class="language-bash">vipm uninstall oglib_boolean
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>vipm<span class="w"> </span>uninstall<span class="w"> </span>oglib_boolean
+</code></pre></div>
 <p>Expected output:</p>
-<pre><code>Uninstalling 1 package
-✓ Uninstalled 1 package from LabVIEW 2025 (64-bit)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Uninstalling 1 package
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>✓ Uninstalled 1 package from LabVIEW 2025 (64-bit)
+</code></pre></div>
 <h3 id="common-issues_1">Common Issues</h3>
 <ul>
 <li><strong>Package in use</strong>: Close LabVIEW or stop any process locking the files before uninstalling.</li>
@@ -3137,8 +3137,8 @@
 <h2 id="vipm-list"><code>vipm list</code></h2>
 <p>Lists packages from the installed LabVIEW environment or from a <code>.vipc</code> / <code>.dragon</code> file.</p>
 <h3 id="syntax_2">Syntax</h3>
-<pre><code class="language-bash">vipm list [OPTIONS] [path/to/project.vipc]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>vipm<span class="w"> </span>list<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span><span class="o">[</span>path/to/project.vipc<span class="o">]</span>
+</code></pre></div>
 <h3 id="options_2">Options</h3>
 <table>
 <thead>
@@ -3164,21 +3164,21 @@
 </table>
 <h3 id="examples_2">Examples</h3>
 <p>List installed packages:</p>
-<pre><code class="language-bash">vipm list --installed
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>vipm<span class="w"> </span>list<span class="w"> </span>--installed
+</code></pre></div>
 <p>Inspect a configuration file:</p>
-<pre><code class="language-bash">vipm list project.vipc
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>vipm<span class="w"> </span>list<span class="w"> </span>project.vipc
+</code></pre></div>
 <p>Expected output:</p>
-<pre><code>Listing installed packages
-Found 4 packages:
-  OpenG Boolean Library (oglib_boolean v6.0.0.9)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Listing installed packages
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Found 4 packages:
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  OpenG Boolean Library (oglib_boolean v6.0.0.9)
+</code></pre></div>
 <h2 id="vipm-info"><code>vipm info</code></h2>
 <p>Shows metadata for a package, including name, version, description, vendor, and license. Can also list installed files. For managing NI packages in vipm.toml, see <a href="../../vipm-toml/nipm/">NI Packages (NIPM)</a>.</p>
 <h3 id="syntax_3">Syntax</h3>
-<pre><code class="language-bash">vipm info [OPTIONS] &lt;package&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>vipm<span class="w"> </span>info<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>&lt;package&gt;
+</code></pre></div>
 <h3 id="options_3">Options</h3>
 <table>
 <thead>
@@ -3200,19 +3200,19 @@ Found 4 packages:
 </table>
 <h3 id="examples_3">Examples</h3>
 <p>Show metadata for a VIPM package:</p>
-<pre><code class="language-bash">vipm info oglib_boolean
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>vipm<span class="w"> </span>info<span class="w"> </span>oglib_boolean
+</code></pre></div>
 <p>Show metadata for an NI package:</p>
-<pre><code class="language-bash">vipm info --nipm ni-labview-2025-core --labview-version 2025
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>vipm<span class="w"> </span>info<span class="w"> </span>--nipm<span class="w"> </span>ni-labview-2025-core<span class="w"> </span>--labview-version<span class="w"> </span><span class="m">2025</span>
+</code></pre></div>
 <p>List installed files for a package:</p>
-<pre><code class="language-bash">vipm info oglib_boolean --installed-files
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>vipm<span class="w"> </span>info<span class="w"> </span>oglib_boolean<span class="w"> </span>--installed-files
+</code></pre></div>
 <h2 id="vipm-search"><code>vipm search</code></h2>
 <p>Searches the VIPM repositories for packages by name or description.</p>
 <h3 id="syntax_4">Syntax</h3>
-<pre><code class="language-bash">vipm search [OPTIONS] &lt;search terms&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>vipm<span class="w"> </span>search<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>&lt;search<span class="w"> </span>terms&gt;
+</code></pre></div>
 <h3 id="options_4">Options</h3>
 <table>
 <thead>
@@ -3230,13 +3230,13 @@ Found 4 packages:
 </table>
 <h3 id="examples_4">Examples</h3>
 <p>Search for OpenG packages:</p>
-<pre><code class="language-bash">vipm search openg --limit 5
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>vipm<span class="w"> </span>search<span class="w"> </span>openg<span class="w"> </span>--limit<span class="w"> </span><span class="m">5</span>
+</code></pre></div>
 <p>Sample output:</p>
-<pre><code>Showing 5 packages matching &quot;openg&quot;:
-  OpenG Array Library (oglib_array v6.0.0.9)
-  ...
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Showing 5 packages matching &quot;openg&quot;:
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>  OpenG Array Library (oglib_array v6.0.0.9)
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>  ...
+</code></pre></div>
 <h3 id="tips">Tips</h3>
 <ul>
 <li>Combine multiple terms (e.g., <code>vipm search serial communication</code>) to narrow results.</li>
@@ -3245,8 +3245,8 @@ Found 4 packages:
 <h2 id="vipm-package-list-refresh"><code>vipm package-list-refresh</code></h2>
 <p>Legacy command that refreshes VIPM's cached repository metadata. Still widely used in scripts.</p>
 <h3 id="syntax_5">Syntax</h3>
-<pre><code class="language-bash">vipm package-list-refresh [OPTIONS]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>vipm<span class="w"> </span>package-list-refresh<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</code></pre></div>
 <h3 id="options_5">Options</h3>
 <table>
 <thead>
@@ -3271,11 +3271,11 @@ Found 4 packages:
 </tbody>
 </table>
 <h3 id="example">Example</h3>
-<pre><code class="language-bash">vipm package-list-refresh
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>vipm<span class="w"> </span>package-list-refresh
+</code></pre></div>
 <p>Expected output:</p>
-<pre><code>✓ Package list refreshed successfully
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>✓ Package list refreshed successfully
+</code></pre></div>
 <h3 id="common-issues_2">Common Issues</h3>
 <ul>
 <li><strong>Corporate proxy</strong>: Configure <code>http_proxy</code> / <code>https_proxy</code> environment variables before running.</li>
@@ -3284,15 +3284,15 @@ Found 4 packages:
 <h2 id="vipm-activate"><code>vipm activate</code></h2>
 <p>Activates VIPM Pro. Legacy scripts may use <code>vipm activate</code>; both map to the same functionality.</p>
 <h3 id="syntax_6">Syntax</h3>
-<pre><code class="language-bash">vipm activate \
-  --serial-number &quot;SERIAL&quot; \
-  --name &quot;Full Name&quot; \
-  --email &quot;you@example.com&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>vipm<span class="w"> </span>activate<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">  </span>--serial-number<span class="w"> </span><span class="s2">&quot;SERIAL&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">  </span>--name<span class="w"> </span><span class="s2">&quot;Full Name&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">  </span>--email<span class="w"> </span><span class="s2">&quot;you@example.com&quot;</span>
+</code></pre></div>
 <p>Any argument omitted on interactive terminals will trigger a prompt.</p>
 <h3 id="example-output">Example Output</h3>
-<pre><code>✓ Activation succeeded!
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>✓ Activation succeeded!
+</code></pre></div>
 <h3 id="common-issues_3">Common Issues</h3>
 <ul>
 <li>Ensure the serial number is valid and not already in use elsewhere.</li>
@@ -3301,14 +3301,14 @@ Found 4 packages:
 <h2 id="vipm-build"><code>vipm build</code></h2>
 <p>Builds packages or other project artifacts from <code>.vipb</code> or <code>.lvproj</code> build specifications.</p>
 <h3 id="syntax_7">Syntax</h3>
-<pre><code class="language-bash">vipm build [OPTIONS] path/to/spec.vipb
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>vipm<span class="w"> </span>build<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>path/to/spec.vipb
+</code></pre></div>
 <p>For LabVIEW project builds:</p>
-<pre><code class="language-bash">vipm build \
-  --lvproj-spec &quot;My Build&quot; \
-  --lvproj-target &quot;My Computer&quot; \
-  path/to/project.lvproj
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>vipm<span class="w"> </span>build<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">  </span>--lvproj-spec<span class="w"> </span><span class="s2">&quot;My Build&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">  </span>--lvproj-target<span class="w"> </span><span class="s2">&quot;My Computer&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">  </span>path/to/project.lvproj
+</code></pre></div>
 <h3 id="options_6">Options</h3>
 <table>
 <thead>
@@ -3353,9 +3353,9 @@ Found 4 packages:
 </tbody>
 </table>
 <h3 id="example-output_1">Example Output</h3>
-<pre><code>Building VI Package from path/to/your_package.vipb
-✓ Build completed: builds/your_package.vip
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>Building VI Package from path/to/your_package.vipb
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>✓ Build completed: builds/your_package.vip
+</code></pre></div>
 <h3 id="common-issues_4">Common Issues</h3>
 <ul>
 <li><strong>Linux build limitations</strong>: Review the <a href="../../preview/">VIPM Preview docs</a> for current platform support notes.</li>
@@ -3369,8 +3369,8 @@ Download it to try these features and share your feedback.</p>
 </div>
 <p>Generates a <a href="https://cyclonedx.org/">CycloneDX</a> Software Bill of Materials (SBOM) from a project file or manifest. See the <a href="../../sbom/">SBOM documentation</a> for a tutorial and workflow guidance.</p>
 <h3 id="syntax_8">Syntax</h3>
-<pre><code class="language-bash">vipm sbom [INPUT] --format cyclonedx --schema-version 1.5 --output &lt;PATH&gt; [OPTIONS]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span><span class="o">[</span>INPUT<span class="o">]</span><span class="w"> </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span>--output<span class="w"> </span>&lt;PATH&gt;<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</code></pre></div>
 <p><code>INPUT</code> is a <code>vipm.toml</code>, <code>.lvproj</code>, <code>.dragon</code>, or <code>.vipc</code> file. If omitted, the CLI searches upward for a <code>vipm.toml</code>.</p>
 <h3 id="options_7">Options</h3>
 <table>
@@ -3437,23 +3437,23 @@ Download it to try these features and share your feedback.</p>
 </table>
 <h3 id="examples_5">Examples</h3>
 <p>Generate an SBOM from a LabVIEW project:</p>
-<pre><code class="language-bash">vipm sbom MyProject.lvproj \
-  --format cyclonedx \
-  --schema-version 1.5 \
-  --product-name &quot;My Instrument&quot; \
-  --product-version 2.1.0 \
-  --output build/bom.json
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">  </span>--product-name<span class="w"> </span><span class="s2">&quot;My Instrument&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">  </span>--product-version<span class="w"> </span><span class="m">2</span>.1.0<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+</code></pre></div>
 <p>Generate from a vipm.toml, excluding dev-dependencies:</p>
-<pre><code class="language-bash">vipm sbom vipm.toml \
-  --format cyclonedx \
-  --schema-version 1.5 \
-  --no-dev \
-  --output build/bom.json
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>vipm.toml<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="w">  </span>--no-dev<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+</code></pre></div>
 <p>Expected output on success:</p>
-<pre><code>SBOM written to build/bom.json
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>SBOM written to build/bom.json
+</code></pre></div>
 <h3 id="exit-codes">Exit Codes</h3>
 <table>
 <thead>
@@ -3503,9 +3503,9 @@ Download it to try these features and share your feedback.</p>
 </table>
 <p>Any non-zero exit code means the SBOM was <strong>not</strong> produced. The <code>--output</code> file is only written on exit code <code>0</code>.</p>
 <p>On failure, stderr contains a human-readable error message. Example:</p>
-<pre><code>error: No LabVIEW installation found for version '2024'.
-help: Use 'vipm labview-list' to see available versions
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>error: No LabVIEW installation found for version &#39;2024&#39;.
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>help: Use &#39;vipm labview-list&#39; to see available versions
+</code></pre></div>
 <h3 id="common-issues_5">Common Issues</h3>
 <ul>
 <li><strong>Missing required flags</strong>: <code>--format</code>, <code>--schema-version</code>, and <code>--output</code> are always required — there are no defaults.</li>
@@ -3520,8 +3520,8 @@ Download it to try these features and share your feedback.</p>
 </div>
 <p>Reconciles a <code>vipm.toml</code> manifest from the dependencies discovered in a LabVIEW project scan.</p>
 <h3 id="syntax_9">Syntax</h3>
-<pre><code class="language-bash">vipm sync [TARGET] --from &lt;SOURCE&gt; [OPTIONS]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span><span class="o">[</span>TARGET<span class="o">]</span><span class="w"> </span>--from<span class="w"> </span>&lt;SOURCE&gt;<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</code></pre></div>
 <p><code>TARGET</code> is the <code>vipm.toml</code> to update. If omitted, the CLI searches upward from the current directory. <code>SOURCE</code> is the file to scan (e.g., a <code>.lvproj</code>).</p>
 <h3 id="options_8">Options</h3>
 <table>
@@ -3560,27 +3560,27 @@ Download it to try these features and share your feedback.</p>
 </table>
 <h3 id="examples_6">Examples</h3>
 <p>Sync vipm.toml from a LabVIEW project:</p>
-<pre><code class="language-bash">vipm sync --from MyProject.lvproj
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj
+</code></pre></div>
 <p>Preview changes without writing:</p>
-<pre><code class="language-bash">vipm sync --from MyProject.lvproj --dry-run
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj<span class="w"> </span>--dry-run
+</code></pre></div>
 <h3 id="common-issues_6">Common Issues</h3>
 <ul>
 <li><strong>No vipm.toml found</strong>: Either specify the target path explicitly or run the command from a directory that contains (or is a child of a directory that contains) a <code>vipm.toml</code>.</li>
 </ul>
 <h2 id="vipm-version"><code>vipm version</code></h2>
 <p>Prints the VIPM CLI and Desktop versions. Useful for support tickets and automation logs.</p>
-<pre><code class="language-bash">vipm version
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>vipm<span class="w"> </span>version
+</code></pre></div>
 <p>Sample output:</p>
-<pre><code>VIPM CLI version 2025.3.0
-VIPM Desktop version 2025.3.0
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>VIPM CLI version 2025.3.0
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>VIPM Desktop version 2025.3.0
+</code></pre></div>
 <h2 id="vipm-about"><code>vipm about</code></h2>
 <p>Shows installation information such as install paths and license data.</p>
-<pre><code class="language-bash">vipm about
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>vipm<span class="w"> </span>about
+</code></pre></div>
 <p>Use <code>vipm about --help</code> to review the latest options.</p>
 <h2 id="related-resources">Related Resources</h2>
 <ul>
