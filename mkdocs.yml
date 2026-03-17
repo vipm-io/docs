@@ -40,6 +40,9 @@ hooks:
 markdown_extensions:
   - admonition
   - attr_list
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
   - pymdownx.snippets:
       base_path: docs/.snippets
       check_paths: true
