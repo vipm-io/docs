@@ -1935,10 +1935,22 @@
 <li><strong>.env file</strong> - Stores environment variables (VIPM serial number, etc.)</li>
 </ol>
 <p>Example <code>.env</code> file:</p>
-<pre><code class="language-bash">VIPM_SERIAL_NUMBER=your-serial-number-here
+<pre><code class="language-bash"># VIPM Pro activation credentials
+VIPM_SERIAL_NUMBER=your-serial-number-here
 VIPM_FULL_NAME=Your Full Name
 VIPM_EMAIL=your.email@example.com
+
+# Auto-confirm prompts (recommended for CI/CD)
+VIPM_ASSUME_YES=1
+
+# Disable colored output for cleaner CI logs
+NO_COLOR=1
+
+# Set CI=true if running Docker outside a CI system (e.g. local testing)
+# to get longer default timeouts. Most CI runners set this automatically.
+# CI=true
 </code></pre>
+<p>See <a href="../environment-variables/">Environment Variables</a> for the full list and <a href="../github-actions/">GitHub Actions and CI/CD</a> for workflow examples.</p>
 <h3 id="running-the-container">Running the Container</h3>
 <p>Build and run your container:</p>
 <pre><code class="language-bash">docker compose run --rm vipm-labview
