@@ -32,7 +32,7 @@ The [JKI Security Suite](https://jki.net/security/) provides static analysis for
 
     [Learn More about Security Tools for LabVIEW](https://jki.net/security/){ .md-button }
 
-VIPM also supports **Software Bill of Materials (SBOM)** generation for LabVIEW software, giving package publishers a machine-readable inventory of their LabVIEW software components and dependencies. SBOMs are a key requirement of the [EU Cyber Resilience Act](https://jki.net/cra/) and are increasingly expected across regulated industries. Combined with static analysis, SBOM generation gives teams visibility into both the code they write and the components they depend on.
+VIPM also supports **[Software Bill of Materials (SBOM)](../sbom/index.md)** generation for LabVIEW software, giving package publishers a machine-readable inventory of their LabVIEW software components and dependencies in [CycloneDX](https://cyclonedx.org/) format. SBOMs are a key requirement of the [EU Cyber Resilience Act](https://jki.net/cra/) and are increasingly expected across regulated industries. Combined with static analysis, SBOM generation gives teams visibility into both the code they write and the components they depend on. See the [SBOM documentation](../sbom/index.md) to get started.
 
 !!! warning "Disclaimer"
     This notice is informational and not legal advice. For authoritative information about the EU CRA regulations, please visit [european-cyber-resilience-act.com](https://www.european-cyber-resilience-act.com).
