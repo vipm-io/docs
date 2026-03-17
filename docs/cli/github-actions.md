@@ -40,6 +40,9 @@ Store your VIPM Pro credentials as GitHub repository secrets:
 
 You can find your VIPM Pro serial number on the [VIPM account page](https://www.vipm.io/account/).
 
+!!! tip "Skip prompts in CI"
+    Use the `-y` flag on install/uninstall commands, or set `VIPM_ASSUME_YES=1` as an environment variable to auto-confirm all prompts across your workflow. See [Environment Variables](environment-variables.md) for details.
+
 ### Basic Workflow Example
 
 Create a file at `.github/workflows/vipm-ci.yml`:
@@ -81,7 +84,7 @@ jobs:
         run: vipm package-list-refresh
       
       - name: Install project dependencies
-        run: vipm install project.vipc
+        run: vipm install -y project.vipc
       
       - name: List installed packages
         run: vipm list --installed
@@ -94,7 +97,7 @@ To install specific packages instead of using a `.vipc` file:
 ```yaml
 - name: Install required packages
   run: |
-    vipm install \
+    vipm install -y \
       oglib_boolean \
       oglib_numeric \
       jki_lib_state_machine
@@ -165,7 +168,7 @@ jobs:
         run: vipm package-list-refresh
       
       - name: Install dependencies
-        run: vipm install project.vipc
+        run: vipm install -y project.vipc
       
       - name: Build project
         run: |

@@ -5,7 +5,7 @@ title: Command Reference
 Use this page to look up syntax, options, and common workflows for the most frequently used VIPM CLI commands. For additional details, remember that `vipm help` lists every command and `vipm <command> --help` prints the authoritative help text for a single command.
 
 !!! info "vipm.toml Commands (Preview)"
-    Looking for `vipm init`, `vipm add`, `vipm remove`, `vipm lock`, or `vipm clean`? These commands work with the new `vipm.toml` project configuration format. See the [vipm.toml Getting Started guide](../vipm-toml/getting-started.md) for details.
+    Looking for `vipm init`, `vipm add`, `vipm remove`, `vipm lock`, or `vipm clean`? These commands work with the new `vipm.toml` project configuration format. See the [vipm.toml Getting Started guide](../vipm-toml/getting-started.md) for details. For managing NI packages (NIPM) in vipm.toml, see [NI Packages (NIPM)](../vipm-toml/nipm.md).
 
 ## Global Options
 
@@ -17,6 +17,9 @@ These flags are available on every command unless noted otherwise:
 | `--labview-version <YYYY>` | Targets a specific LabVIEW year (e.g., `2025`). Combine with `--labview-bitness` when multiple bitnesses exist. |
 | `--labview-bitness <32|64>` | Specifies 32-bit or 64-bit LabVIEW when both are installed for the same year. Only meaningful with `--labview-version`. |
 | `--color-mode <auto|always|never>` | Controls CLI color output (defaults to `auto`). |
+| `--timeout <seconds>` | How long to wait for the operation to finish. Use `-1` for no timeout. |
+| `--show-progress` | Display a progress indicator during long-running operations. |
+| `--verbose`, `-v` | Enable verbose output for additional diagnostic detail. |
 | `-h`, `--help` | Shows help for the current command. |
 
 Unless a command states otherwise, it returns exit code `0` on success and a non-zero value on failure (check your automation scripts for non-zero exits).
@@ -28,6 +31,7 @@ Unless a command states otherwise, it returns exit code `0` on success and a non
 | [`vipm install`](#vipm-install) | Install packages, `.vipc`, `.vip`, `.ogp`, or `.dragon` files. |
 | [`vipm uninstall`](#vipm-uninstall) | Remove packages from the selected LabVIEW installation. |
 | [`vipm list`](#vipm-list) | List installed packages or inspect a `.vipc`/`.dragon` file. |
+| [`vipm info`](#vipm-info) | Show metadata and installed files for a package. |
 | [`vipm package-list-refresh`](#vipm-package-list-refresh) | Refresh repository metadata (legacy command, still supported). |
 | [`vipm activate`](#vipm-activate) | Activate VIPM Pro using a serial number, name, and email. |
 | [`vipm build`](#vipm-build) | Build packages from `.vipb` specs or LabVIEW project build specs. |
@@ -51,6 +55,9 @@ vipm install [OPTIONS] <package|path>...
 | Option | Description |
 |--------|-------------|
 | `--upgrade` | If the package is already installed, upgrade it to the latest available version. |
+| `--dev` | Install dev-dependencies from `vipm.toml`. |
+| `--no-dev` | Exclude dev-dependencies when installing from `vipm.toml`. |
+| `--yes`, `-y` | Skip confirmation prompts and proceed automatically. |
 
 ### Examples
 
@@ -91,8 +98,15 @@ Removes packages from the selected LabVIEW installation.
 ### Syntax
 
 ```bash
-vipm uninstall <package|package@version>...
+vipm uninstall [OPTIONS] <package|package@version>...
 ```
+
+### Options
+
+| Option | Description |
+|--------|-------------|
+| `--allow-version-mismatch`, `-F`, `--force` | Proceed even if the installed version does not match the requested version. |
+| `--yes`, `-y` | Skip confirmation prompts and proceed automatically. |
 
 ### Examples
 
@@ -127,6 +141,8 @@ vipm list [OPTIONS] [path/to/project.vipc]
 | Option | Description |
 |--------|-------------|
 | `--installed` | Show every package installed in the active LabVIEW version. |
+| `--dev` | Include dev-dependencies when listing from `vipm.toml`. |
+| `--no-dev` | Exclude dev-dependencies when listing from `vipm.toml`. |
 
 ### Examples
 
@@ -148,6 +164,43 @@ Expected output:
 Listing installed packages
 Found 4 packages:
   OpenG Boolean Library (oglib_boolean v6.0.0.9)
+```
+
+## `vipm info`
+
+Shows metadata for a package, including name, version, description, vendor, and license. Can also list installed files. For managing NI packages in vipm.toml, see [NI Packages (NIPM)](../vipm-toml/nipm.md).
+
+### Syntax
+
+```bash
+vipm info [OPTIONS] <package>
+```
+
+### Options
+
+| Option | Description |
+|--------|-------------|
+| `--nipm` | Look up an NI package (NIPM) instead of a VIPM package. |
+| `--installed-files` | List all files installed by the package (Professional edition). |
+
+### Examples
+
+Show metadata for a VIPM package:
+
+```bash
+vipm info oglib_boolean
+```
+
+Show metadata for an NI package:
+
+```bash
+vipm info --nipm ni-labview-2025-core --labview-version 2025
+```
+
+List installed files for a package:
+
+```bash
+vipm info oglib_boolean --installed-files
 ```
 
 ## `vipm search`
@@ -273,6 +326,12 @@ vipm build \
 |--------|-------------|
 | `--lvproj-spec <name>` | Name of the LabVIEW project build spec to run when using `.lvproj`. |
 | `--lvproj-target <name>` | LabVIEW project target (defaults to `My Computer`). |
+| `--all` | Build all build specs found in the project. |
+| `--version-number <VERSION>` | Override the version number for the build. |
+| `--build-number <N>` | Override the build number for the build. |
+| `--debug` | Build in debug mode. |
+| `--no-deps` | Skip installing dependencies before building. |
+| `--rebuild-deps` | Reinstall dependencies before building, even if already installed. |
 
 ### Example Output
 
@@ -447,6 +506,7 @@ Use `vipm about --help` to review the latest options.
 ## Related Resources
 
 - [Getting Started](getting-started.md)
+- [Environment Variables](environment-variables.md)
 - [SBOM Generation](../sbom/index.md)
 - [Docker and Containers](docker.md)
 - [GitHub Actions and CI/CD](github-actions.md)
