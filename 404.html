@@ -7,9 +7,10 @@
     <meta http-equiv="refresh" content="0; url=/latest/" />
   </noscript>
   <script>
-    // Redirect unversioned paths to /latest/ equivalent.
-    // Fetches versions.json to determine known version prefixes,
-    // so this file never needs manual updates when versions change.
+    // Redirect 404s to the correct versioned path.
+    // - Unversioned paths (e.g. /cli/) redirect to /latest/cli/
+    // - Already-versioned paths (e.g. /latest/cli2) redirect to that version's root
+    // Fetches versions.json so this file never needs manual updates.
     (function() {
       var path = window.location.pathname;
       var firstSegment = path.split("/").filter(Boolean)[0] || "";
@@ -23,18 +24,20 @@
             (v.aliases || []).forEach(function(a) { prefixes.push(a); });
           });
           if (prefixes.indexOf(firstSegment) === -1) {
+            // Unversioned path — try /latest/ + path
             window.location.replace("/latest" + path + window.location.search + window.location.hash);
+          } else {
+            // Already versioned but page not found — go to that version's root
+            window.location.replace("/" + firstSegment + "/");
           }
         })
         .catch(function() {
-          // If versions.json can't be loaded, redirect to /latest/ root
           window.location.replace("/latest/");
         });
     })();
   </script>
 </head>
 <body>
-  <h1>Page Not Found</h1>
-  <p>Redirecting... or go to the <a href="/latest/">latest documentation</a>.</p>
+  <p>Redirecting to <a href="/latest/">latest documentation</a>...</p>
 </body>
 </html>
