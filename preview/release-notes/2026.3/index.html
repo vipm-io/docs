@@ -6,17 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Fix release for Windows addressing build, migration, and quick search issues.">
+        <meta name="description" content="SBOM generation, vipm sync, vipm info, NI package management, new environment variables, and enhanced CI/CD support.">
       
       
       
-        <link rel="canonical" href="https://docs.vipm.io/preview/release-notes/2025.3.1/">
+        <link rel="canonical" href="https://docs.vipm.io/preview/release-notes/2026.3/">
       
       
-        <link rel="prev" href="../2026.1/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../2025.3/">
+        <link rel="next" href="../2026.1/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>VIPM 2025 Q3 f1 - Developer Docs</title>
+        <title>VIPM 2026 Q3 - Developer Docs</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fixes" class="md-skip">
+        <a href="#vipm-2026-q3-release-notes" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VIPM 2025 Q3 f1
+              VIPM 2026 Q3
             
           </span>
         </div>
@@ -1238,10 +1238,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../2026.3/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VIPM 2026 Q3
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1257,6 +1284,103 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#software-bill-of-materials-sbom-wtih-vipm-sbom-cli-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software Bill of Materials (SBOM) wtih vipm sbom CLI Command
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scan-projects-for-dependencies-with-vipm-sync-cli-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scan Projects for Dependencies with vipm sync CLI Command
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lookup-package-metadata-with-vipm-info-cli-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lookup Package Metadata with vipm info CLI Command
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ni-package-nipm-support-in-vipmtoml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NI Package (NIPM) Support in vipm.toml
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables-applicable-to-cli-cicd-and-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment Variables (Applicable to CLI, CI/CD, and Containers)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enhanced-cicd-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enhanced CI/CD Guides
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Need Help?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1294,35 +1418,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    VIPM 2025 Q3 f1
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../2025.3.1/" class="md-nav__link">
         
   
   
@@ -1338,35 +1437,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#fixes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fixes
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1727,6 +1797,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1735,10 +1807,76 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#fixes" class="md-nav__link">
+  <a href="#software-bill-of-materials-sbom-wtih-vipm-sbom-cli-command" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fixes
+        Software Bill of Materials (SBOM) wtih vipm sbom CLI Command
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scan-projects-for-dependencies-with-vipm-sync-cli-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scan Projects for Dependencies with vipm sync CLI Command
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lookup-package-metadata-with-vipm-info-cli-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lookup Package Metadata with vipm info CLI Command
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ni-package-nipm-support-in-vipmtoml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NI Package (NIPM) Support in vipm.toml
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables-applicable-to-cli-cicd-and-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment Variables (Applicable to CLI, CI/CD, and Containers)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enhanced-cicd-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enhanced CI/CD Guides
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Need Help?
       
     </span>
   </a>
@@ -1765,17 +1903,50 @@
   
 
 
-  <h1>VIPM 2025 Q3 f1</h1>
-
-<p>VIPM 2025Q3 Fix 1 is a fix release for Windows that fixes a build and LabVIEW target migration issue.</p>
-<blockquote>
-<p>Note: You will need an active VIPM Pro subscription in order to activate VIPM 2025Q3 F1 into Pro Edition.</p>
-</blockquote>
-<h2 id="fixes">Fixes</h2>
+<h1 id="vipm-2026-q3-release-notes">VIPM 2026 Q3 - Release Notes</h1>
+<p>VIPM 2026 Q3 adds Software Bill of Materials (SBOM) generation, project synchronization with <code>vipm sync</code>, NI Package Manager (NIPM) dependency management in vipm.toml, and expanded CLI capabilities for automation and CI/CD.</p>
+<p>Many of the new features and capabilities are visible in the <code>vipm</code> command-line interface (CLI).</p>
+<h2 id="software-bill-of-materials-sbom-wtih-vipm-sbom-cli-command">Software Bill of Materials (SBOM) wtih <code>vipm sbom</code> CLI Command</h2>
+<p>Generate <a href="https://cyclonedx.org/">CycloneDX</a> 1.5 SBOMs from LabVIEW projects, vipm.toml manifests, <code>.vipc</code>, or <code>.dragon</code> files. SBOMs include both VIPM and NI packages with enriched metadata, license identifiers, and cryptographic hashes — helping meet compliance requirements such as the EU Cyber Resilience Act and US Executive Order 14028.</p>
+<p>Features include:</p>
 <ul>
-<li><strong>Build Issue</strong>: Resolved an issue where packages containing support files would fail to build correctly, ensuring that all support files are now properly handled and included during the package build process. More information.</li>
-<li><strong>Migration</strong>: Resolved an issue where VIPM would not recognize previously installed packages after updating LabVIEW from the Q1 to Q3 release. This fix specifically addresses migration from Q1 to Q3 (reverse migration from Q3 to Q1 will be supported in a future release).</li>
-<li><strong>Quick Search</strong>: Resolved an issue where the new search algorithm (preview feature) wouldn't respond to column sorting.</li>
+<li>Multiple input types: <code>vipm.toml</code>, <code>.lvproj</code>, <code>.dragon</code>, <code>.vipc</code></li>
+<li>Product metadata: name, version, and component type</li>
+<li>Dependency filtering: <code>--no-vipm</code>, <code>--no-nipm</code>, <code>--no-dev</code></li>
+<li>VI linker traversal for deeper dependency discovery from <code>.lvproj</code> files</li>
+<li>CI/CD integration with GitHub Actions and Docker</li>
+</ul>
+<p>See the <a href="../../sbom/">SBOM documentation</a> for a tutorial and workflow guidance.</p>
+<h2 id="scan-projects-for-dependencies-with-vipm-sync-cli-command">Scan Projects for Dependencies with <code>vipm sync</code> CLI Command</h2>
+<p>Reconcile a <code>vipm.toml</code> manifest from the dependencies discovered in a LabVIEW project scan. This enables a workflow where you maintain <code>vipm.toml</code> as the source of truth — sync from your <code>.lvproj</code>, then generate SBOMs from the manifest without needing LabVIEW on your build machine.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj<span class="w"> </span>--dry-run<span class="w">  </span><span class="c1"># preview changes</span>
+</code></pre></div>
+<p>See the <a href="../../cli/command-reference/#vipm-sync"><code>vipm sync</code> command reference</a> for full options.</p>
+<h2 id="lookup-package-metadata-with-vipm-info-cli-command">Lookup Package Metadata with <code>vipm info</code> CLI Command</h2>
+<p>Look up metadata for any VIPM or NI package — name, version, description, vendor, license, and installed files. Supports both VIPM packages and NI packages via the <code>--nipm</code> flag.</p>
+<p>See the <a href="../../cli/command-reference/#vipm-info"><code>vipm info</code> command reference</a> for full options.</p>
+<h2 id="ni-package-nipm-support-in-vipmtoml">NI Package (NIPM) Support in <code>vipm.toml</code></h2>
+<p>Manage NI Package Manager dependencies alongside VIPM packages in a single <code>vipm.toml</code> manifest. Declare NIPM feeds, production dependencies, and dev-dependencies in dedicated <code>[nipm.*]</code> sections. Add, remove, and lock NIPM packages using the familiar <code>vipm add --nipm</code>, <code>vipm remove --nipm</code>, and <code>vipm lock</code> commands.</p>
+<p>See the <a href="../../vipm-toml/nipm/">NI Packages (NIPM) guide</a> for details.</p>
+<h2 id="environment-variables-applicable-to-cli-cicd-and-containers">Environment Variables (Applicable to CLI, CI/CD, and Containers)</h2>
+<p>New environment variables simplify headless and CI/CD automation:</p>
+<ul>
+<li><code>VIPM_ASSUME_YES</code> — auto-confirm all prompts (recommended for CI/CD)</li>
+<li><code>VIPM_COMMUNITY_EDITION</code> — activate Community Edition without interactive prompts</li>
+<li><code>VIPM_TIMEOUT</code> — override the default operation timeout</li>
+<li><code>VIPM_DEBUG</code> — enable verbose debug output</li>
+<li><code>NO_COLOR</code> — disable colored output</li>
+<li>Automatic CI environment detection for GitHub Actions, GitLab CI, Jenkins, and 9 other CI systems</li>
+</ul>
+<p>See the <a href="../../cli/environment-variables/">Environment Variables reference</a> for the full list.</p>
+<h2 id="enhanced-cicd-guides">Enhanced CI/CD Guides</h2>
+<p>Updated <a href="../../cli/docker/">Docker</a> and <a href="../../cli/github-actions/">GitHub Actions</a> guides with environment variable configuration, <code>-y</code> flag usage in examples, and SBOM generation workflow steps.</p>
+<h2 id="need-help">Need Help?</h2>
+<ul>
+<li>Report issues on <a href="https://github.com/vipm-io/vipm-desktop-issues/issues">GitHub</a></li>
+<li>Join our community on <a href="https://discord.gg/uyXwAz4B63">Discord</a></li>
+<li>Check the <a href="../../support/">Support page</a> for additional resources</li>
 </ul>
 
 
