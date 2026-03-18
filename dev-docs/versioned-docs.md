@@ -79,13 +79,13 @@ Pull requests build and validate with `--strict` but do **not** deploy any versi
 
 ### Shipping a new VIPM release (e.g., 2026 Q3)
 
-1. **During development:** `main` branch auto-deploys as `dev` on every push.
+1. **During development:** All PRs target `main`. Each push to `main` auto-deploys as `dev`.
 
-2. **At release time:** Push or merge to `release/2026-Q3` branch. CI auto-deploys version `2026-Q3`.
+2. **At preview/GA milestones:** Merge `main` into `release/2026-Q3`. CI auto-deploys version `2026-Q3`.
 
-3. **Set as latest:** Trigger workflow_dispatch manually with `version: 2026-Q3` and `set_latest: true`. This updates the `latest` alias so `docs.vipm.io/` redirects to the Q3 docs.
+3. **At GA:** Trigger workflow_dispatch manually with `version: 2026-Q3` and `set_latest: true`. This updates the `latest` alias so `docs.vipm.io/` redirects to the Q3 docs.
 
-4. **Post-release hotfixes:** Commit typo fixes or corrections to the `release/2026-Q3` branch. CI redeploys `2026-Q3` with updated content. Previous versions are not affected.
+4. **Post-GA hotfixes:** Commit typo fixes or corrections directly to the `release/2026-Q3` branch. CI redeploys `2026-Q3` with updated content. Previous versions are not affected.
 
 ### First-time setup (bootstrapping)
 
