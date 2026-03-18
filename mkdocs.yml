@@ -86,6 +86,7 @@ nav:
       - linux/VIPM Linux Crash on Package Installation - Permission Fix.md
   - Release notes:
     - release-notes/index.md
+    - release-notes/2026.3.md
     - release-notes/2026.1.md
     - release-notes/2025.3.1.md
     - release-notes/2025.3.md
