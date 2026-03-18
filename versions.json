@@ -3,5 +3,12 @@
     "version": "dev",
     "title": "dev",
     "aliases": []
+  },
+  {
+    "version": "2026-Q1",
+    "title": "2026-Q1",
+    "aliases": [
+      "latest"
+    ]
   }
 ]
