@@ -97,7 +97,11 @@ When mike was first deployed, the `gh-pages` branch needed to be initialized:
 2. Triggered workflow_dispatch manually with `version: 2026-Q1` and `set_latest: true` → deployed `2026-Q1` and set it as the default.
 3. Rebased the `release/2026-Q1` branch onto `main` so it has the mike CI config, then pushed it.
 
-**Lesson learned:** Release branches created before the mike PR was merged don't have the `release/**` CI trigger in their workflow file. GitHub Actions uses the workflow from the branch being pushed, not from `main`. The fix is to rebase the release branch onto `main` after the mike PR merges. Alternatively, use workflow_dispatch to deploy manually.
+**Lessons learned:**
+
+- Release branches created before the mike PR was merged don't have the `release/**` CI trigger in their workflow file. GitHub Actions uses the workflow from the branch being pushed, not from `main`. The fix is to rebase the release branch onto `main` after the mike PR merges. Alternatively, use workflow_dispatch to deploy manually.
+- `mike delete --all` removes everything from `gh-pages`, including the `CNAME` file needed for the custom domain (`docs.vipm.io`). If you ever need to wipe and redeploy, restore the `CNAME` file afterward. The `CNAME` file exists in `docs/CNAME` in the source, so normal mike deploys include it — but `mike delete --all` doesn't know about it.
+- A custom `404.html` on `gh-pages` redirects old unversioned URLs (e.g., `/cli/`) to `/latest/cli/` via JavaScript. This handles bookmarks and links from before the mike migration.
 
 ## Local development
 
