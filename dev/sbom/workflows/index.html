@@ -8,31 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://docs.vipm.io/dev/preview/">
+        <link rel="canonical" href="https://docs.vipm.io/dev/sbom/workflows/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../getting-started/">
       
       
-        <link rel="next" href="../security/">
+        <link rel="next" href="../../vipm-toml/">
       
       
         
       
       
-      <link rel="icon" href="../assets/favicon.png">
+      <link rel="icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>VIPM 2026 Q3 Preview 1 - Developer Docs</title>
+        <title>Workflows - Developer Docs</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,7 +51,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vipm-2026-q3-preview-1" class="md-skip">
+        <a href="#sbom-workflows" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="https://vipm.io" title="Developer Docs" class="md-header__button md-logo" aria-label="Developer Docs" data-md-component="logo">
       
-  <img src="../assets/logo.png" alt="logo">
+  <img src="../../assets/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VIPM 2026 Q3 Preview 1
+              Workflows
             
           </span>
         </div>
@@ -165,7 +165,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="https://vipm.io" title="Developer Docs" class="md-nav__button md-logo" aria-label="Developer Docs" data-md-component="logo">
       
-  <img src="../assets/logo.png" alt="logo">
+  <img src="../../assets/logo.png" alt="logo">
 
     </a>
     Developer Docs
@@ -192,7 +192,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -216,37 +216,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    VIPM 2026 Q3 Preview 1
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../preview/" class="md-nav__link">
         
   
   
@@ -262,154 +235,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation-feedback" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation &amp; Feedback
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installation &amp; Feedback">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#windows" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Windows
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Linux
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Linux">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#debian-based-distributions-ubuntu-debian-linux-mint-and-derivatives" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Debian-based distributions (Ubuntu, Debian, Linux Mint, and derivatives)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#red-hat-based-distributions-rhel-fedora-centos-rocky-linux-and-derivatives" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Red Hat-based distributions (RHEL, Fedora, CentOS, Rocky Linux, and derivatives)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#feedback" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Feedback
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#whats-new" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What's New
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="What&#39;s New">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cyclonedx-sbom-generation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CycloneDX SBOM Generation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#manifest-sync-vipm-sync" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Manifest Sync (vipm sync)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#feedback_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Feedback
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -421,7 +246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/" class="md-nav__link">
+      <a href="../../security/" class="md-nav__link">
         
   
   
@@ -445,18 +270,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -477,7 +304,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -495,7 +322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sbom/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -523,7 +350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sbom/getting-started/" class="md-nav__link">
+      <a href="../getting-started/" class="md-nav__link">
         
   
   
@@ -548,10 +375,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../sbom/workflows/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflows
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -567,6 +421,226 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#manifest-based-generation-vipmtoml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manifest-based generation (vipm.toml)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manifest-based generation (vipm.toml)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#excluding-dev-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Excluding dev-dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keeping-vipmtoml-in-sync-with-your-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keeping vipm.toml in sync with your project
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-based-generation-lvproj" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project-based generation (.lvproj)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Project-based generation (.lvproj)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#targeting-a-specific-labview-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Targeting a specific LabVIEW version
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#following-the-vi-linker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Following the VI linker
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legacy-inputs-dragon-vipc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Legacy inputs (.dragon, .vipc)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cicd-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI/CD integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub Actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-success-in-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifying success in automation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-cyclonedx-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding the CycloneDX output
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the CycloneDX output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serialnumber-and-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        serialNumber and version
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Need Help?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -633,7 +707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vipm-toml/" class="md-nav__link">
+      <a href="../../vipm-toml/" class="md-nav__link">
         
   
   
@@ -661,7 +735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vipm-toml/getting-started/" class="md-nav__link">
+      <a href="../../vipm-toml/getting-started/" class="md-nav__link">
         
   
   
@@ -689,7 +763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vipm-toml/nipm/" class="md-nav__link">
+      <a href="../../vipm-toml/nipm/" class="md-nav__link">
         
   
   
@@ -724,7 +798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vipm-editions-comparison/" class="md-nav__link">
+      <a href="../../vipm-editions-comparison/" class="md-nav__link">
         
   
   
@@ -798,7 +872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../building-packages/" class="md-nav__link">
+      <a href="../../building-packages/" class="md-nav__link">
         
   
   
@@ -826,7 +900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../building-packages/building-vi-packages-that-depend-on-other-software/" class="md-nav__link">
+      <a href="../../building-packages/building-vi-packages-that-depend-on-other-software/" class="md-nav__link">
         
   
   
@@ -854,7 +928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../building-packages/vi-packages-build-templates/" class="md-nav__link">
+      <a href="../../building-packages/vi-packages-build-templates/" class="md-nav__link">
         
   
   
@@ -936,7 +1010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../publishing-packages/" class="md-nav__link">
+      <a href="../../publishing-packages/" class="md-nav__link">
         
   
   
@@ -1018,7 +1092,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
+      <a href="../../cli/" class="md-nav__link">
         
   
   
@@ -1046,7 +1120,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/getting-started/" class="md-nav__link">
+      <a href="../../cli/getting-started/" class="md-nav__link">
         
   
   
@@ -1074,7 +1148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/command-reference/" class="md-nav__link">
+      <a href="../../cli/command-reference/" class="md-nav__link">
         
   
   
@@ -1102,7 +1176,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/environment-variables/" class="md-nav__link">
+      <a href="../../cli/environment-variables/" class="md-nav__link">
         
   
   
@@ -1130,7 +1204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/docker/" class="md-nav__link">
+      <a href="../../cli/docker/" class="md-nav__link">
         
   
   
@@ -1158,7 +1232,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/github-actions/" class="md-nav__link">
+      <a href="../../cli/github-actions/" class="md-nav__link">
         
   
   
@@ -1240,7 +1314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../linux/" class="md-nav__link">
+      <a href="../../linux/" class="md-nav__link">
         
   
   
@@ -1268,7 +1342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../linux/ubuntu/" class="md-nav__link">
+      <a href="../../linux/ubuntu/" class="md-nav__link">
         
   
   
@@ -1296,7 +1370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../linux/VIPM%20Linux%20Crash%20on%20Package%20Installation%20-%20Permission%20Fix/" class="md-nav__link">
+      <a href="../../linux/VIPM%20Linux%20Crash%20on%20Package%20Installation%20-%20Permission%20Fix/" class="md-nav__link">
         
   
   
@@ -1378,7 +1452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../release-notes/" class="md-nav__link">
+      <a href="../../release-notes/" class="md-nav__link">
         
   
   
@@ -1406,7 +1480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../release-notes/2026.1/" class="md-nav__link">
+      <a href="../../release-notes/2026.1/" class="md-nav__link">
         
   
   
@@ -1434,7 +1508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../release-notes/2025.3.1/" class="md-nav__link">
+      <a href="../../release-notes/2025.3.1/" class="md-nav__link">
         
   
   
@@ -1462,7 +1536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../release-notes/2025.3/" class="md-nav__link">
+      <a href="../../release-notes/2025.3/" class="md-nav__link">
         
   
   
@@ -1490,7 +1564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../release-notes/2024.3/" class="md-nav__link">
+      <a href="../../release-notes/2024.3/" class="md-nav__link">
         
   
   
@@ -1518,7 +1592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../release-notes/2024.1/" class="md-nav__link">
+      <a href="../../release-notes/2024.1/" class="md-nav__link">
         
   
   
@@ -1546,7 +1620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../release-notes/2023.3/" class="md-nav__link">
+      <a href="../../release-notes/2023.3/" class="md-nav__link">
         
   
   
@@ -1574,7 +1648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../release-notes/2023.1/" class="md-nav__link">
+      <a href="../../release-notes/2023.1/" class="md-nav__link">
         
   
   
@@ -1609,7 +1683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../support/" class="md-nav__link">
+      <a href="../../support/" class="md-nav__link">
         
   
   
@@ -1683,7 +1757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/" class="md-nav__link">
+      <a href="../../troubleshooting/" class="md-nav__link">
         
   
   
@@ -1711,7 +1785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/are-vipms-online-services-down/" class="md-nav__link">
+      <a href="../../troubleshooting/are-vipms-online-services-down/" class="md-nav__link">
         
   
   
@@ -1766,22 +1840,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installation-feedback" class="md-nav__link">
+  <a href="#manifest-based-generation-vipmtoml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installation &amp; Feedback
+        Manifest-based generation (vipm.toml)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installation &amp; Feedback">
+    <nav class="md-nav" aria-label="Manifest-based generation (vipm.toml)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#windows" class="md-nav__link">
+  <a href="#excluding-dev-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Windows
+        Excluding dev-dependencies
       
     </span>
   </a>
@@ -1789,49 +1863,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#linux" class="md-nav__link">
+  <a href="#keeping-vipmtoml-in-sync-with-your-project" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Linux
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Linux">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#debian-based-distributions-ubuntu-debian-linux-mint-and-derivatives" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Debian-based distributions (Ubuntu, Debian, Linux Mint, and derivatives)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#red-hat-based-distributions-rhel-fedora-centos-rocky-linux-and-derivatives" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Red Hat-based distributions (RHEL, Fedora, CentOS, Rocky Linux, and derivatives)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#feedback" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Feedback
+        Keeping vipm.toml in sync with your project
       
     </span>
   </a>
@@ -1844,22 +1879,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#whats-new" class="md-nav__link">
+  <a href="#project-based-generation-lvproj" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What's New
+        Project-based generation (.lvproj)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="What&#39;s New">
+    <nav class="md-nav" aria-label="Project-based generation (.lvproj)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cyclonedx-sbom-generation" class="md-nav__link">
+  <a href="#targeting-a-specific-labview-version" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CycloneDX SBOM Generation
+        Targeting a specific LabVIEW version
       
     </span>
   </a>
@@ -1867,10 +1902,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#manifest-sync-vipm-sync" class="md-nav__link">
+  <a href="#following-the-vi-linker" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Manifest Sync (vipm sync)
+        Following the VI linker
       
     </span>
   </a>
@@ -1883,10 +1918,121 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#feedback_1" class="md-nav__link">
+  <a href="#legacy-inputs-dragon-vipc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Feedback
+        Legacy inputs (.dragon, .vipc)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cicd-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI/CD integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub Actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-success-in-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifying success in automation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-cyclonedx-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding the CycloneDX output
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the CycloneDX output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serialnumber-and-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        serialNumber and version
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Need Help?
       
     </span>
   </a>
@@ -1913,56 +2059,179 @@
   
 
 
-<h1 id="vipm-2026-q3-preview-1">VIPM 2026 Q3 Preview 1</h1>
-<h2 id="installation-feedback">Installation &amp; Feedback</h2>
-<h3 id="windows">Windows</h3>
-<ul>
-<li>Download the Windows Installer <a href="https://packages.jki.net/vipm/preview/vipm-setup-latest-preview.exe">here</a></li>
-<li>Or via a one command install <code>curl.exe -L https://packages.jki.net/vipm/preview/vipm-setup-latest-preview.exe -o %TEMP%\vipm-setup.exe &amp;&amp; start /wait %TEMP%\vipm-setup.exe /quiet /norestart &amp;&amp; del %TEMP%\vipm-setup.exe</code></li>
-</ul>
-<h3 id="linux">Linux</h3>
-<h4 id="debian-based-distributions-ubuntu-debian-linux-mint-and-derivatives">Debian-based distributions (Ubuntu, Debian, Linux Mint, and derivatives)</h4>
-<ul>
-<li>Download <a href="https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.deb">here</a></li>
-<li>Or via a one command install <code>wget -O /tmp/vipm.deb https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.deb &amp;&amp; sudo dpkg -i /tmp/vipm.deb &amp;&amp; rm /tmp/vipm.deb</code></li>
-</ul>
-<h4 id="red-hat-based-distributions-rhel-fedora-centos-rocky-linux-and-derivatives">Red Hat-based distributions (RHEL, Fedora, CentOS, Rocky Linux, and derivatives)</h4>
-<ul>
-<li>Download <a href="https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm">here</a></li>
-<li>Or via one command install:</li>
-<li><strong>RHEL 8+ / Fedora / Rocky Linux / AlmaLinux (dnf):</strong> <code>wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm &amp;&amp; sudo dnf install -y --nogpgcheck /tmp/vipm.rpm &amp;&amp; rm /tmp/vipm.rpm</code></li>
-<li><strong>RHEL 7 / CentOS 7 (yum):</strong> <code>wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm &amp;&amp; sudo yum install -y --nogpgcheck /tmp/vipm.rpm &amp;&amp; rm /tmp/vipm.rpm</code></li>
-<li><strong>openSUSE (zypper):</strong> <code>wget -O /tmp/vipm.rpm https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.rpm &amp;&amp; sudo zypper --non-interactive install --no-recommends --allow-unsigned-rpm /tmp/vipm.rpm &amp;&amp; rm /tmp/vipm.rpm</code></li>
-</ul>
-<h3 id="feedback">Feedback</h3>
-<p>Report issues on <a href="https://github.com/vipm-io/vipm-desktop-issues/issues">GitHub</a> or join us on <a href="https://discord.gg/GCB7QQyzsP">Discord</a></p>
-<h2 id="whats-new">What's New</h2>
-<h3 id="cyclonedx-sbom-generation">CycloneDX SBOM Generation</h3>
-<p>Generate a <a href="https://cyclonedx.org/">CycloneDX</a> 1.5 Software Bill of Materials (SBOM) for your LabVIEW project with a single command. The SBOM includes VIPM packages, NI packages (NIPM), enriched metadata (licenses, descriptions, vendors), and cryptographic hashes (SHA-256, MD5).</p>
-<p>SBOMs are increasingly required for regulatory compliance, including the <a href="https://jki.net/cra/">EU Cyber Resilience Act (CRA)</a>. See the <a href="../sbom/">SBOM documentation</a> for details.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span><span class="se">\</span>
+<h1 id="sbom-workflows">SBOM Workflows</h1>
+<div class="admonition info">
+<p class="admonition-title">Preview Feature — Available in VIPM 2026 Q3 Preview</p>
+<p>The SBOM and sync commands are available in the <strong><a href="../../preview/">VIPM 2026 Q3 Preview</a></strong>.
+Download it to try these features and share your feedback.</p>
+</div>
+<p>The VIPM CLI supports several input types for SBOM generation. This page helps you choose the right approach for your project and shows how to integrate SBOM generation into CI/CD pipelines.</p>
+<h2 id="manifest-based-generation-vipmtoml">Manifest-based generation (vipm.toml)</h2>
+<p>If your project uses a <code>vipm.toml</code> file to declare dependencies, this is the simplest workflow. No LabVIEW installation is needed — the CLI reads the manifest directly.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>vipm.toml<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span>--product-name<span class="w"> </span><span class="s2">&quot;My Instrument&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>--product-version<span class="w"> </span><span class="m">2</span>.1.0<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span>--product-name<span class="w"> </span><span class="s2">&quot;My Application&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>--product-version<span class="w"> </span><span class="m">1</span>.0.0<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
 </code></pre></div>
-<p><strong><a href="../sbom/getting-started/">Get started with SBOM generation →</a></strong></p>
-<h3 id="manifest-sync-vipm-sync">Manifest Sync (vipm sync)</h3>
-<p>Keep your <code>vipm.toml</code> manifest in sync with the dependencies discovered in a LabVIEW project:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj
+<p>If you omit the input path, the CLI searches upward from the current directory for a <code>vipm.toml</code> file.</p>
+<h3 id="excluding-dev-dependencies">Excluding dev-dependencies</h3>
+<p>Use <code>--no-dev</code> to omit dependencies marked as dev-only in your <code>vipm.toml</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>vipm.toml<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>--no-dev<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
 </code></pre></div>
-<p>Preview changes before writing with <code>--dry-run</code>. See the <a href="../cli/command-reference/#vipm-sync">CLI Command Reference</a> for full options.</p>
-<hr />
-<h2 id="feedback_1">Feedback</h2>
-<p>Thank you to everyone testing VIPM previews! Your feedback is invaluable in helping us improve the product.</p>
-<p>Report issues on <a href="https://github.com/vipm-io/vipm-desktop-issues/issues">GitHub</a> or join us on <a href="https://discord.gg/GCB7QQyzsP">Discord</a></p>
+<p><code>--no-dev</code> is only available with <code>vipm.toml</code> input.</p>
+<h3 id="keeping-vipmtoml-in-sync-with-your-project">Keeping vipm.toml in sync with your project</h3>
+<p>Use <code>vipm sync</code> to reconcile your <code>vipm.toml</code> with the dependencies discovered in a LabVIEW project:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj
+</code></pre></div>
+<p>This updates the <code>vipm.toml</code> in your project directory to reflect the packages found in the <code>.lvproj</code> file. You can then generate SBOMs from the manifest without needing LabVIEW on your build machine.</p>
+<p>Preview changes without writing:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj<span class="w"> </span>--dry-run
+</code></pre></div>
+<p>See the <a href="../../cli/command-reference/#vipm-sync">CLI Command Reference</a> for full <code>vipm sync</code> options.</p>
+<h2 id="project-based-generation-lvproj">Project-based generation (.lvproj)</h2>
+<p>For LabVIEW projects that don't yet use <code>vipm.toml</code>, point directly at the <code>.lvproj</code> file. The CLI scans the LabVIEW installation to discover installed packages.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+</code></pre></div>
+<h3 id="targeting-a-specific-labview-version">Targeting a specific LabVIEW version</h3>
+<p>If multiple LabVIEW versions are installed, use the global options to select one:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>--labview-version<span class="w"> </span><span class="m">2025</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--labview-bitness<span class="w"> </span><span class="m">64</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+</code></pre></div>
+<h3 id="following-the-vi-linker">Following the VI linker</h3>
+<p>For deeper dependency discovery, use <code>--follow-linker</code> to trace subVI dependencies through the LabVIEW linker:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span>--follow-linker<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span>--follow-depth<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+</code></pre></div>
+<p><code>--follow-depth</code> sets how many levels deep the linker traversal goes. It requires <code>--follow-linker</code> to be set.</p>
+<h2 id="legacy-inputs-dragon-vipc">Legacy inputs (.dragon, .vipc)</h2>
+<p>The CLI also accepts <code>.dragon</code> and <code>.vipc</code> files as input. These are useful when migrating from older VIPM workflows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>project.dragon<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>project.vipc<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+</code></pre></div>
+<h2 id="cicd-integration">CI/CD integration</h2>
+<p>SBOM generation fits naturally into build pipelines. The CLI runs headless with no GUI, making it suitable for automated environments.</p>
+<h3 id="docker">Docker</h3>
+<p>If you already run VIPM in Docker (see <a href="../../cli/docker/">Docker and Containers</a>), add the <code>vipm sbom</code> step after your build:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>vipm.toml<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span>--product-name<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PRODUCT_NAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span>--product-version<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VERSION</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span>--output<span class="w"> </span>/output/bom.json
+</code></pre></div>
+<h3 id="github-actions">GitHub Actions</h3>
+<p>Add an SBOM generation step to your workflow (see <a href="../../cli/github-actions/">GitHub Actions and CI/CD</a> for environment setup):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Generate SBOM</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="no">vipm sbom vipm.toml \</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">      </span><span class="no">--format cyclonedx \</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">      </span><span class="no">--schema-version 1.5 \</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">      </span><span class="no">--product-name &quot;${{ github.event.repository.name }}&quot; \</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">      </span><span class="no">--product-version &quot;${{ github.ref_name }}&quot; \</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">      </span><span class="no">--output build/bom.json</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload SBOM artifact</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">  </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v4</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">  </span><span class="nt">with</span><span class="p">:</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sbom</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build/bom.json</span>
+</code></pre></div>
+<h3 id="verifying-success-in-automation">Verifying success in automation</h3>
+<p>Check the exit code to determine success. Exit code <code>0</code> means the SBOM was written; any non-zero code means it was not produced. See the <a href="../../cli/command-reference/#vipm-sbom">exit codes table</a> for the full list.</p>
+<h2 id="understanding-the-cyclonedx-output">Understanding the CycloneDX output</h2>
+<p>The generated JSON follows the <a href="https://cyclonedx.org/docs/1.5/json/">CycloneDX 1.5 specification</a>. Here's an overview of the key sections:</p>
+<h3 id="metadata"><code>metadata</code></h3>
+<p>Contains information about the SBOM itself:</p>
+<ul>
+<li><strong><code>metadata.timestamp</code></strong> — when the SBOM was generated (ISO 8601)</li>
+<li><strong><code>metadata.tools</code></strong> — identifies VIPM CLI as the generating tool</li>
+<li><strong><code>metadata.component</code></strong> — your product: the name, version, and type set via <code>--product-name</code>, <code>--product-version</code>, and <code>--product-type</code></li>
+</ul>
+<h3 id="components"><code>components</code></h3>
+<p>An array of dependencies found in your project. Each component includes:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>Component type (e.g., <code>library</code>)</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Package name</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Package version</td>
+</tr>
+<tr>
+<td><code>purl</code></td>
+<td>Package URL — <code>pkg:vipm/name@version</code> or <code>pkg:nipkg/name@version</code></td>
+</tr>
+<tr>
+<td><code>supplier</code></td>
+<td>Package vendor or publisher</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>Package description</td>
+</tr>
+<tr>
+<td><code>licenses</code></td>
+<td>SPDX license identifiers</td>
+</tr>
+<tr>
+<td><code>hashes</code></td>
+<td>SHA-256 and MD5 checksums</td>
+</tr>
+</tbody>
+</table>
+<h3 id="serialnumber-and-version"><code>serialNumber</code> and <code>version</code></h3>
+<p>Each SBOM has a unique serial number (<code>urn:uuid:...</code>) and a document version (starting at 1). These support tracking multiple revisions of the same SBOM over time. You can set them explicitly with <code>--document-serial-number</code> and <code>--document-version</code>, or let the CLI auto-generate them.</p>
+<h2 id="need-help">Need Help?</h2>
+<ul>
+<li>Report issues on <a href="https://github.com/vipm-io/vipm-desktop-issues/issues">GitHub</a></li>
+<li>Join our community on <a href="https://discord.gg/uyXwAz4B63">Discord</a></li>
+<li>Check the <a href="../../support/">Support page</a> for additional resources</li>
+</ul>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -2058,10 +2327,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>

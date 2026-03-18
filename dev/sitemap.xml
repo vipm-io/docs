@@ -41,6 +41,10 @@
          <lastmod>2026-03-18</lastmod>
     </url>
     <url>
+         <loc>https://docs.vipm.io/dev/cli/environment-variables/</loc>
+         <lastmod>2026-03-18</lastmod>
+    </url>
+    <url>
          <loc>https://docs.vipm.io/dev/cli/getting-started/</loc>
          <lastmod>2026-03-18</lastmod>
     </url>
@@ -93,6 +97,22 @@
          <lastmod>2026-03-18</lastmod>
     </url>
     <url>
+         <loc>https://docs.vipm.io/dev/release-notes/2026.1/</loc>
+         <lastmod>2026-03-18</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.vipm.io/dev/sbom/</loc>
+         <lastmod>2026-03-18</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.vipm.io/dev/sbom/getting-started/</loc>
+         <lastmod>2026-03-18</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.vipm.io/dev/sbom/workflows/</loc>
+         <lastmod>2026-03-18</lastmod>
+    </url>
+    <url>
          <loc>https://docs.vipm.io/dev/security/</loc>
          <lastmod>2026-03-18</lastmod>
     </url>
@@ -110,6 +130,10 @@
     </url>
     <url>
          <loc>https://docs.vipm.io/dev/vipm-toml/getting-started/</loc>
+         <lastmod>2026-03-18</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.vipm.io/dev/vipm-toml/nipm/</loc>
          <lastmod>2026-03-18</lastmod>
     </url>
 </urlset>

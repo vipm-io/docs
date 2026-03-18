@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.vipm.io/dev/support/">
+        <link rel="canonical" href="https://docs.vipm.io/dev/sbom/">
       
       
-        <link rel="prev" href="../release-notes/2023.1/">
+        <link rel="prev" href="../security/">
       
       
-        <link rel="next" href="../troubleshooting/">
+        <link rel="next" href="getting-started/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Support - Developer Docs</title>
+        <title>SBOM Overview - Developer Docs</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#support" class="md-skip">
+        <a href="#software-bill-of-materials-sbom" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Support
+              SBOM Overview
             
           </span>
         </div>
@@ -270,18 +270,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -302,7 +304,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -317,10 +319,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../sbom/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SBOM Overview
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -336,6 +365,92 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-sboms-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why SBOMs matter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-vipm-generates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What VIPM generates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported inputs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Need Help?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -348,7 +463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sbom/getting-started/" class="md-nav__link">
+      <a href="getting-started/" class="md-nav__link">
         
   
   
@@ -376,7 +491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sbom/workflows/" class="md-nav__link">
+      <a href="workflows/" class="md-nav__link">
         
   
   
@@ -1431,37 +1546,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Support
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../support/" class="md-nav__link">
         
   
   
@@ -1477,48 +1565,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#community-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Community Resources
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vipm-professional-support" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VIPM Professional Support
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1660,10 +1706,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#community-resources" class="md-nav__link">
+  <a href="#why-sboms-matter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Community Resources
+        Why SBOMs matter
       
     </span>
   </a>
@@ -1671,10 +1717,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#vipm-professional-support" class="md-nav__link">
+  <a href="#what-vipm-generates" class="md-nav__link">
     <span class="md-ellipsis">
       
-        VIPM Professional Support
+        What VIPM generates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported inputs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Need Help?
       
     </span>
   </a>
@@ -1701,14 +1791,78 @@
   
 
 
-<h1 id="support">Support</h1>
-<h2 id="community-resources">Community Resources</h2>
-<p>To <strong>report a problem</strong> with VIPM, please visit the <a href="https://github.com/vipm-io/vipm-desktop-issues">VIPM Desktop Issue Tracker</a>.</p>
-<p>To <strong>request a feature</strong> (or upvote an existing request), please visit the <a href="https://forums.vipm.io/forum/84-vipm-idea-exchange/">VIPM Idea Exchange</a>.</p>
-<p>For <strong>questions and discussion</strong>, please visit the <a href="https://forums.vipm.io/forum/5-vi-package-manager-vipm/">VIPM Discussion Forum</a>.</p>
-<p>Join our <strong>Discord server</strong> to connect with the VIPM community, get help, share ideas, and stay updated on the latest developments. You can join the conversation at <a href="https://discord.gg/uyXwAz4B63">discord.gg/uyXwAz4B63</a>.</p>
-<h2 id="vipm-professional-support">VIPM Professional Support</h2>
-<p>If you are a <strong>VIPM Professional customer</strong>, you have access to priority support. Please visit <a href="https://support.vipm.io">support.vipm.io</a> to submit support tickets and get assistance from our team. To purchase a VIPM Professional license with support, visit <a href="https://www.vipm.io/get/">vipm.io/get</a></p>
+<h1 id="software-bill-of-materials-sbom">Software Bill of Materials (SBOM)</h1>
+<div class="admonition info">
+<p class="admonition-title">Preview Feature — Available in VIPM 2026 Q3 Preview</p>
+<p>The SBOM and sync commands are available in the <strong><a href="../preview/">VIPM 2026 Q3 Preview</a></strong>.
+Download it to try these features and share your feedback.</p>
+</div>
+<p>A Software Bill of Materials (SBOM) is a machine-readable inventory of every software component in your product — including package names, versions, suppliers, licenses, and cryptographic hashes. SBOMs give you and your customers visibility into exactly what ships in your software.</p>
+<h2 id="why-sboms-matter">Why SBOMs matter</h2>
+<p>Regulations such as the <a href="https://jki.net/cra/">EU Cyber Resilience Act (CRA)</a> and <a href="https://www.nist.gov/itl/executive-order-14028-improving-nations-cybersecurity">US Executive Order 14028</a> are making SBOMs a requirement for software products in regulated markets. Beyond compliance, SBOMs support practical goals like license auditing, vulnerability tracking, and supply chain transparency.</p>
+<h2 id="what-vipm-generates">What VIPM generates</h2>
+<p>The VIPM CLI generates <a href="https://cyclonedx.org/">CycloneDX</a> 1.5 SBOMs in JSON format. A single command scans your LabVIEW project and produces an SBOM that includes:</p>
+<ul>
+<li><strong>VIPM packages</strong> — packages installed via VI Package Manager</li>
+<li><strong>NI packages (NIPM)</strong> — packages installed via NI Package Manager</li>
+<li><strong>Enriched metadata</strong> — display names, descriptions, vendors, license identifiers, and download URLs</li>
+<li><strong>Cryptographic hashes</strong> — SHA-256 and MD5 checksums for each component</li>
+<li><strong>Product metadata</strong> — your application's name, version, and component type</li>
+</ul>
+<h2 id="supported-inputs">Supported inputs</h2>
+<table>
+<thead>
+<tr>
+<th>Input type</th>
+<th>Description</th>
+<th>LabVIEW required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vipm.toml</code></td>
+<td>Project manifest with declared dependencies</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>.lvproj</code></td>
+<td>LabVIEW project file — scans installed packages directly</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>.dragon</code></td>
+<td>Dragon configuration file</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>.vipc</code></td>
+<td>VIPM configuration file</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>Choose the input that matches your workflow. If your project already uses <code>vipm.toml</code>, that's the simplest path — no LabVIEW installation is needed. For existing LabVIEW projects, point directly at your <code>.lvproj</code> file. See <a href="workflows/">Workflows</a> for guidance on each approach.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li><strong>VIPM 2026 Q3 Preview</strong> or later — <a href="../preview/">download here</a></li>
+<li><strong>LabVIEW</strong> — required only when generating SBOMs from <code>.lvproj</code> files</li>
+<li><strong>NI Package Manager</strong> — required only when including NI packages in the SBOM</li>
+</ul>
+<p>Verify your CLI is available:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vipm<span class="w"> </span>--version
+</code></pre></div>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><strong><a href="getting-started/">Getting Started</a></strong> — generate your first SBOM in a few minutes</li>
+<li><strong><a href="workflows/">Workflows</a></strong> — choose the right approach for your project and environment</li>
+<li><strong><a href="../cli/command-reference/#vipm-sbom">CLI Command Reference</a></strong> — full parameter reference for <code>vipm sbom</code></li>
+</ul>
+<h2 id="need-help">Need Help?</h2>
+<ul>
+<li>Report issues on <a href="https://github.com/vipm-io/vipm-desktop-issues/issues">GitHub</a></li>
+<li>Join our community on <a href="https://discord.gg/uyXwAz4B63">Discord</a></li>
+<li>Check the <a href="../support/">Support page</a> for additional resources</li>
+</ul>
 
 
 
