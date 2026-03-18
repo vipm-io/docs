@@ -3,12 +3,22 @@ on:
   push:
     branches:
       - main
+      - release/**
   pull_request:
     branches:
       - main
   # allow manual build here:
   # https://github.com/vipm-io/docs/actions/workflows/ci.yml
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version label to deploy (e.g., 2026-Q1, dev)'
+        required: false
+      set_latest:
+        description: 'Set this version as "latest"'
+        required: false
+        default: 'false'
+        type: boolean
 
 jobs:
   build:
@@ -36,11 +46,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Install uv
         uses: astral-sh/setup-uv@v6
         with:
@@ -49,38 +61,36 @@ jobs:
         run: uv python install
       - name: Sync dependencies
         run: uv sync
-      - run: uv run mkdocs gh-deploy --force
+      - name: Configure git for mike
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Deploy with mike
+        run: |
+          # Determine version label
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+          elif [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            VERSION="dev"
+          elif [[ "${{ github.ref }}" == refs/heads/release/* ]]; then
+            # Extract version from branch name: release/2026-Q3 -> 2026-Q3
+            VERSION="${{ github.ref_name }}"
+            VERSION="${VERSION#release/}"
+          else
+            echo "No deploy rule for ref ${{ github.ref }}"
+            exit 0
+          fi
 
-  comment-preview:
-    runs-on: ubuntu-latest
-    needs: build
-    # disable since its very noisy in PR comments history
-    if: false
-    #if: github.event_name == 'pull_request'
-    permissions:
-      pull-requests: write
-    steps:
-      - name: Comment PR with artifact info
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const comment = `## ✅ Documentation Build Successful
-            
-            The documentation has been successfully built for this PR!
-            
-            📦 **Built Site Artifact:** Available in the workflow run
-            🔗 **Workflow Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-            
-            You can download the built site artifact from the workflow run to preview the changes locally.
-            
-            To preview locally:
-            1. Download the \`site-pr-${{ github.event.pull_request.number }}\` artifact from the workflow run
-            2. Extract the zip file
-            3. Open \`index.html\` in your browser or serve with \`python -m http.server\``;
-            
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: comment
-            });
+          echo "Deploying version: $VERSION"
+
+          # Determine if this version should be aliased as "latest"
+          if [ "${{ github.event.inputs.set_latest }}" = "true" ]; then
+            uv run mike deploy --push --update-aliases "$VERSION" latest
+          elif [ "$VERSION" = "dev" ]; then
+            uv run mike deploy --push "$VERSION"
+          else
+            uv run mike deploy --push "$VERSION"
+          fi
+      - name: Set default version
+        if: github.ref == 'refs/heads/main'
+        run: uv run mike set-default --push latest || true

@@ -23,6 +23,9 @@ theme:
 
 extra:
   homepage: https://vipm.io
+  version:
+    provider: mike
+    default: latest
   social:
     - icon: custom/vipm
       link: https://vipm.io
