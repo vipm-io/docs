@@ -57,34 +57,33 @@ plugins:
 
 nav:
   - Home: index.md
-  - VIPM Preview: preview.md
-  - Security: security/index.md
-  - SBOM:
-    - sbom/index.md
-    - sbom/getting-started.md
-    - sbom/workflows.md
-  - vipm.toml (Preview):
-    - vipm-toml/index.md
-    - vipm-toml/getting-started.md
-    - vipm-toml/nipm.md
-  - VIPM Edition Comparison: vipm-editions-comparison.md
-  - Building packages:
-    - building-packages/index.md
-    - building-packages/building-vi-packages-that-depend-on-other-software.md
-    - building-packages/vi-packages-build-templates.md
-  - Publishing packages:
-    - publishing-packages/index.md
-  - CLI:
-    - cli/index.md
-    - cli/getting-started.md
-    - cli/command-reference.md
-    - cli/environment-variables.md
-    - cli/docker.md
-    - cli/github-actions.md
-  - Linux:
-    - linux/index.md
-    - linux/ubuntu.md
-    - linux/VIPM Linux Crash on Package Installation - Permission Fix.md
+  - VIPM Editions: vipm-editions-comparison.md
+  - Guides:
+    - Generating a Software Bill of Materials (SBOM):
+      - sbom/index.md
+      - sbom/getting-started.md
+      - sbom/workflows.md
+    - Using vipm.toml files:
+      - vipm-toml/index.md
+      - vipm-toml/getting-started.md
+      - vipm-toml/nipm.md
+    - Building packages:
+      - building-packages/index.md
+      - building-packages/building-vi-packages-that-depend-on-other-software.md
+      - building-packages/vi-packages-build-templates.md
+    - Publishing packages:
+      - publishing-packages/index.md
+    - Using the Command-Line Interface (CLI):
+      - cli/index.md
+      - cli/getting-started.md
+      - cli/command-reference.md
+      - cli/environment-variables.md
+      - cli/docker.md
+      - cli/github-actions.md
+    - Using VIPM on Linux:
+      - linux/index.md
+      - linux/ubuntu.md
+      - linux/VIPM Linux Crash on Package Installation - Permission Fix.md
   - Release notes:
     - release-notes/index.md
     - release-notes/2026.1.md
@@ -94,6 +93,8 @@ nav:
     - release-notes/2024.1.md
     - release-notes/2023.3.md
     - release-notes/2023.1.md
+  - Early Access Preview Releases: preview.md
+  - VIPM Platform Security: security/index.md
   - Support: support.md
   - Troubleshooting:
     - troubleshooting/index.md
