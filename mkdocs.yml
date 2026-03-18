@@ -57,7 +57,7 @@ plugins:
 
 nav:
   - Home: index.md
-  - VIPM 2026 Q3 Preview 1: preview.md
+  - VIPM Preview: preview.md
   - Security: security/index.md
   - SBOM:
     - sbom/index.md

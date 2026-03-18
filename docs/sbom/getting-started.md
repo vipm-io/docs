@@ -12,13 +12,13 @@ This guide walks you through generating your first CycloneDX SBOM with the VIPM 
 
 Open a terminal and confirm that VIPM is installed:
 
-```bash
+```shell
 vipm --version
 ```
 
 Expected output:
 
-```
+```text
 VIPM CLI version 2026.3.x
 ```
 
@@ -28,26 +28,26 @@ If the command is not found, install the [VIPM 2026 Q3 Preview](../preview.md) f
 
 Run the `vipm sbom` command against your project. This example uses a `.lvproj` file:
 
-```bash
+```shell
 vipm sbom "C:\MyProject\MyProject.lvproj" ^
-  --format cyclonedx ^
-  --schema-version 1.5 ^
+  --format "cyclonedx" ^
+  --schema-version "1.5" ^
   --output "C:\MyProject\build\bom.json"
 ```
 
 On Linux or macOS, use backslash line continuations instead:
 
 ```bash
-vipm sbom /home/user/MyProject/MyProject.lvproj \
-  --format cyclonedx \
-  --schema-version 1.5 \
-  --output /home/user/MyProject/build/bom.json
+vipm sbom "/home/user/MyProject/MyProject.lvproj" \
+  --format "cyclonedx" \
+  --schema-version "1.5" \
+  --output "/home/user/MyProject/build/bom.json"
 ```
 
 Expected output:
 
-```
-SBOM written to C:\MyProject\build\bom.json
+```text
+SBOM written to "C:\MyProject\build\bom.json"
 ```
 
 The three required flags are `--format`, `--schema-version`, and `--output`. There are no defaults for these — they must always be specified.
@@ -64,13 +64,13 @@ Open `bom.json` to see the generated CycloneDX document. Key sections include:
 
 Set your product's name and version so they appear in the SBOM's root component:
 
-```bash
+```shell
 vipm sbom MyProject.lvproj ^
-  --format cyclonedx ^
-  --schema-version 1.5 ^
+  --format "cyclonedx" ^
+  --schema-version "1.5" ^
   --product-name "My Instrument" ^
-  --product-version 2.1.0 ^
-  --output build/bom.json
+  --product-version "2.1.0" ^
+  --output "build\bom.json"
 ```
 
 If `--product-name` is omitted, it defaults to the input filename stem (e.g., `MyProject`). If `--product-version` is omitted, the version field is left out of the SBOM.
@@ -79,13 +79,13 @@ If `--product-name` is omitted, it defaults to the input filename stem (e.g., `M
 
 You can exclude specific dependency sources:
 
-```bash
+```shell
 # Exclude NI packages, only include VIPM packages
 vipm sbom MyProject.lvproj ^
-  --format cyclonedx ^
-  --schema-version 1.5 ^
+  --format "cyclonedx" ^
+  --schema-version "1.5" ^
   --no-nipm ^
-  --output build/bom.json
+  --output "build\bom.json"
 ```
 
 Available filters:
