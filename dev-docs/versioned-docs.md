@@ -89,14 +89,15 @@ Pull requests build and validate with `--strict` but do **not** deploy any versi
 
 ### First-time setup (bootstrapping)
 
-When mike is first deployed, the `gh-pages` branch needs to be initialized:
+This was completed on 2026-03-17. Steps are preserved here for reference.
 
-1. Merge the mike PR to `main` → CI deploys `dev`
-2. Push the `release/2026-Q1` branch (already created locally from `main` at the point Q1 shipped) → CI deploys `2026-Q1`
-3. Manually trigger workflow_dispatch with `version: 2026-Q1` and `set_latest: true` to set it as the default
-4. mike automatically creates the version index and redirect structure
+When mike was first deployed, the `gh-pages` branch needed to be initialized:
 
-The `release/2026-Q1` branch should not be pushed until after the mike PR is merged, otherwise CI will try to deploy with the old `mkdocs gh-deploy` workflow.
+1. Merged the mike PR to `main` → CI deployed `dev` version automatically.
+2. Triggered workflow_dispatch manually with `version: 2026-Q1` and `set_latest: true` → deployed `2026-Q1` and set it as the default.
+3. Rebased the `release/2026-Q1` branch onto `main` so it has the mike CI config, then pushed it.
+
+**Lesson learned:** Release branches created before the mike PR was merged don't have the `release/**` CI trigger in their workflow file. GitHub Actions uses the workflow from the branch being pushed, not from `main`. The fix is to rebase the release branch onto `main` after the mike PR merges. Alternatively, use workflow_dispatch to deploy manually.
 
 ## Local development
 
@@ -142,8 +143,8 @@ Each GA release should have a persistent `release/<version>` branch:
 | Branch | Version | Status |
 |--------|---------|--------|
 | `main` | `dev` | Active development |
-| `release/2026-Q1` | `2026-Q1` | Maintenance (hotfixes only) |
-| `release/2026-Q3` | `2026-Q3` | Maintenance (hotfixes only) |
+| `release/2026-Q1` | `2026-Q1` | Maintenance (hotfixes only) — current `latest` |
+| `release/2026q3-preview1` | — | Integration branch for Q3 preview (not deployed as a version) |
 
 Hotfixes to shipped docs are committed to the maintenance branch and CI redeploys that version automatically.
 
