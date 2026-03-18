@@ -144,7 +144,7 @@ Each GA release should have a persistent `release/<version>` branch:
 |--------|---------|--------|
 | `main` | `dev` | Active development |
 | `release/2026-Q1` | `2026-Q1` | Maintenance (hotfixes only) — current `latest` |
-| `release/2026q3-preview1` | — | Integration branch for Q3 preview (not deployed as a version) |
+| `release/2026-Q3` | `2026-Q3` | In development (Q3 preview → GA) |
 
 Hotfixes to shipped docs are committed to the maintenance branch and CI redeploys that version automatically.
 
