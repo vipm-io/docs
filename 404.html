@@ -8,19 +8,33 @@
   </noscript>
   <script>
     // Redirect unversioned paths to /latest/ equivalent.
-    // Only redirect once — if the path already starts with a known
-    // version prefix, show the 404 instead of looping.
-    var path = window.location.pathname;
-    var firstSegment = path.split("/").filter(Boolean)[0] || "";
-    var versionPrefixes = ["latest", "dev", "2026-Q1", "2026-Q3"];
+    // Fetches versions.json to determine known version prefixes,
+    // so this file never needs manual updates when versions change.
+    (function() {
+      var path = window.location.pathname;
+      var firstSegment = path.split("/").filter(Boolean)[0] || "";
 
-    if (versionPrefixes.indexOf(firstSegment) === -1) {
-      window.location.replace("/latest" + path + window.location.search + window.location.hash);
-    }
+      fetch("/versions.json")
+        .then(function(r) { return r.json(); })
+        .then(function(versions) {
+          var prefixes = ["latest"];
+          versions.forEach(function(v) {
+            prefixes.push(v.version);
+            (v.aliases || []).forEach(function(a) { prefixes.push(a); });
+          });
+          if (prefixes.indexOf(firstSegment) === -1) {
+            window.location.replace("/latest" + path + window.location.search + window.location.hash);
+          }
+        })
+        .catch(function() {
+          // If versions.json can't be loaded, redirect to /latest/ root
+          window.location.replace("/latest/");
+        });
+    })();
   </script>
 </head>
 <body>
   <h1>Page Not Found</h1>
-  <p>The page you're looking for doesn't exist. Go to the <a href="/latest/">latest documentation</a>.</p>
+  <p>Redirecting... or go to the <a href="/latest/">latest documentation</a>.</p>
 </body>
 </html>
