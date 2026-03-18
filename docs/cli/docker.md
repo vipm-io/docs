@@ -44,10 +44,23 @@ A typical Docker setup for VIPM includes:
 Example `.env` file:
 
 ```bash
+# VIPM Pro activation credentials
 VIPM_SERIAL_NUMBER=your-serial-number-here
 VIPM_FULL_NAME=Your Full Name
 VIPM_EMAIL=your.email@example.com
+
+# Auto-confirm prompts (recommended for CI/CD)
+VIPM_ASSUME_YES=1
+
+# Disable colored output for cleaner CI logs
+NO_COLOR=1
+
+# Set CI=true if running Docker outside a CI system (e.g. local testing)
+# to get longer default timeouts. Most CI runners set this automatically.
+# CI=true
 ```
+
+See [Environment Variables](environment-variables.md) for the full list and [GitHub Actions and CI/CD](github-actions.md) for workflow examples.
 
 ### Running the Container
 
@@ -76,8 +89,8 @@ Once inside a running container, use the same CLI commands described in the [CLI
 - **Install packages or `.vipc` files`** just like on desktop. If you have multiple LabVIEW versions in the container image, pair your command with `--labview-version` (and `--labview-bitness` when needed).
 
   ```bash
-  vipm install oglib_boolean
-  vipm install project.vipc
+  vipm install -y oglib_boolean
+  vipm install -y project.vipc
   ```
 
 - **List/verify installations** to confirm the container state before running builds or tests:
@@ -88,6 +101,9 @@ Once inside a running container, use the same CLI commands described in the [CLI
   ```
 
 > 💡 Because containers are often ephemeral, script these commands in your Docker entrypoint or CI workflow so every run activates, refreshes, installs, and verifies automatically.
+
+!!! tip "Skip prompts in CI"
+    Set `VIPM_ASSUME_YES=1` in your container environment to auto-confirm all prompts, or use the `-y` flag on individual commands. See [Environment Variables](environment-variables.md) for details.
 
 ## Building VI Packages in Containers
 

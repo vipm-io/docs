@@ -43,6 +43,9 @@ hooks:
 markdown_extensions:
   - admonition
   - attr_list
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
   - pymdownx.snippets:
       base_path: docs/.snippets
       check_paths: true
@@ -54,10 +57,16 @@ plugins:
 
 nav:
   - Home: index.md
-  - VIPM 2026Q1 Preview 3: preview.md
+  - VIPM 2026 Q3 Preview 1: preview.md
+  - Security: security/index.md
+  - SBOM:
+    - sbom/index.md
+    - sbom/getting-started.md
+    - sbom/workflows.md
   - vipm.toml (Preview):
     - vipm-toml/index.md
     - vipm-toml/getting-started.md
+    - vipm-toml/nipm.md
   - VIPM Edition Comparison: vipm-editions-comparison.md
   - Building packages:
     - building-packages/index.md
@@ -69,15 +78,16 @@ nav:
     - cli/index.md
     - cli/getting-started.md
     - cli/command-reference.md
+    - cli/environment-variables.md
     - cli/docker.md
     - cli/github-actions.md
   - Linux:
     - linux/index.md
     - linux/ubuntu.md
     - linux/VIPM Linux Crash on Package Installation - Permission Fix.md
-  - Security: security/index.md
   - Release notes:
     - release-notes/index.md
+    - release-notes/2026.1.md
     - release-notes/2025.3.1.md
     - release-notes/2025.3.md
     - release-notes/2024.3.md
