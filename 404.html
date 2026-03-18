@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Page Not Found — Redirecting</title>
+  <script>
+    // Redirect unversioned paths to /latest/ equivalent.
+    // e.g. /cli/command-reference/ -> /latest/cli/command-reference/
+    (function() {
+      var defined_versions = ["latest"];
+      var defined_aliases = [];
+
+      // Fetch versions.json to get current version prefixes
+      fetch("/versions.json")
+        .then(function(r) { return r.json(); })
+        .then(function(versions) {
+          var prefixes = [];
+          versions.forEach(function(v) {
+            prefixes.push(v.version);
+            (v.aliases || []).forEach(function(a) { prefixes.push(a); });
+          });
+          tryRedirect(prefixes);
+        })
+        .catch(function() {
+          // Fallback if versions.json can't be loaded
+          tryRedirect(["latest", "dev", "2026-Q1"]);
+        });
+
+      function tryRedirect(prefixes) {
+        var path = window.location.pathname;
+        var firstSegment = path.split("/").filter(Boolean)[0] || "";
+
+        if (prefixes.indexOf(firstSegment) === -1) {
+          // Path doesn't start with a known version — redirect to /latest/ + path
+          var newUrl = "/latest" + path + window.location.search + window.location.hash;
+          window.location.replace(newUrl);
+        }
+      }
+    })();
+  </script>
+</head>
+<body>
+  <h1>Page Not Found</h1>
+  <p>Redirecting to <a href="/latest/">latest documentation</a>...</p>
+</body>
+</html>
