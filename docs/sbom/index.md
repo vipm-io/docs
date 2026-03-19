@@ -18,8 +18,8 @@ The VIPM CLI generates [CycloneDX](https://cyclonedx.org/) 1.5 SBOMs in JSON for
 
 - **VIPM packages** — packages installed via VI Package Manager
 - **NI packages (NIPM)** — packages installed via NI Package Manager
-- **Enriched metadata** — display names, descriptions, vendors, license identifiers, and download URLs
-- **Cryptographic hashes** — SHA-256 and MD5 checksums for each component
+- **Enriched metadata** — descriptions, vendors, and license identifiers
+- **Cryptographic hashes** — checksums for each component
 - **Product metadata** — your application's name, version, and component type
 
 ## Supported inputs
@@ -49,6 +49,7 @@ vipm --version
 
 - **[Getting Started](getting-started.md)** — generate your first SBOM in a few minutes
 - **[Workflows](workflows.md)** — choose the right approach for your project and environment
+- **[Output Reference](output-reference.md)** — understand the CycloneDX fields, data sources, and enrichment in your SBOM
 - **[CLI Command Reference](../cli/command-reference.md#vipm-sbom)** — full parameter reference for `vipm sbom`
 
 --8<-- "need-help.md"

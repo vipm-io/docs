@@ -185,4 +185,10 @@ An array of dependencies found in your project. Each component includes:
 
 Each SBOM has a unique serial number (`urn:uuid:...`) and a document version (starting at 1). These support tracking multiple revisions of the same SBOM over time. You can set them explicitly with `--document-serial-number` and `--document-version`, or let the CLI auto-generate them.
 
+### `dependencies`
+
+The dependency graph showing which packages your product depends on. See the [Output Reference](output-reference.md#dependencies-array) for details.
+
+For a complete field-by-field breakdown of the CycloneDX output — including data sources, enrichment behavior, and an annotated example — see the **[Output Reference](output-reference.md)**.
+
 --8<-- "need-help.md"

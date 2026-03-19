@@ -63,6 +63,8 @@ nav:
       - sbom/index.md
       - sbom/getting-started.md
       - sbom/workflows.md
+      - sbom/output-reference.md
+      - sbom/custom-components.md
     - Using vipm.toml Files:
       - vipm-toml/index.md
       - vipm-toml/getting-started.md
