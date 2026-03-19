@@ -57,7 +57,7 @@ vipm install [OPTIONS] <package|path>...
 | `--upgrade` | If the package is already installed, upgrade it to the latest available version. |
 | `--dev` | Install dev-dependencies from `vipm.toml`. |
 | `--no-dev` | Exclude dev-dependencies when installing from `vipm.toml`. |
-| `--yes`, `-y` | Skip confirmation prompts and proceed automatically. |
+| `--yes`, `-y` | Skip confirmation prompts and proceed automatically. Also available as `VIPM_ASSUME_YES=1` env var, or use `VIPM_NONINTERACTIVE=1` to disable all prompts. See [Environment Variables](environment-variables.md). |
 
 ### Examples
 
@@ -106,7 +106,7 @@ vipm uninstall [OPTIONS] <package|package@version>...
 | Option | Description |
 |--------|-------------|
 | `--allow-version-mismatch`, `-F`, `--force` | Proceed even if the installed version does not match the requested version. |
-| `--yes`, `-y` | Skip confirmation prompts and proceed automatically. |
+| `--yes`, `-y` | Skip confirmation prompts and proceed automatically. Also available as `VIPM_ASSUME_YES=1` env var, or use `VIPM_NONINTERACTIVE=1` to disable all prompts. See [Environment Variables](environment-variables.md). |
 
 ### Examples
 
