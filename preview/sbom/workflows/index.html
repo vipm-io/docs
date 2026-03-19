@@ -14,7 +14,7 @@
         <link rel="prev" href="../getting-started/">
       
       
-        <link rel="next" href="../../vipm-toml/">
+        <link rel="next" href="../output-reference/">
       
       
         
@@ -643,6 +643,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -663,6 +674,62 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../output-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SBOM Output Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom-components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -2113,6 +2180,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2307,6 +2385,9 @@ Download it to try these features and share your feedback.</p>
 </table>
 <h3 id="serialnumber-and-version"><code>serialNumber</code> and <code>version</code></h3>
 <p>Each SBOM has a unique serial number (<code>urn:uuid:...</code>) and a document version (starting at 1). These support tracking multiple revisions of the same SBOM over time. You can set them explicitly with <code>--document-serial-number</code> and <code>--document-version</code>, or let the CLI auto-generate them.</p>
+<h3 id="dependencies"><code>dependencies</code></h3>
+<p>The dependency graph showing which packages your product depends on. See the <a href="../output-reference/#dependencies-array">Output Reference</a> for details.</p>
+<p>For a complete field-by-field breakdown of the CycloneDX output — including data sources, enrichment behavior, and an annotated example — see the <strong><a href="../output-reference/">Output Reference</a></strong>.</p>
 <h2 id="need-help">Need Help?</h2>
 <ul>
 <li>Report issues on <a href="https://github.com/vipm-io/vipm-desktop-issues/issues">GitHub</a></li>

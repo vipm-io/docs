@@ -545,6 +545,62 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../output-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SBOM Output Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom-components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1934,7 +1990,7 @@ Download it to try these features and share your feedback.</p>
 <p>Expected output:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>SBOM written to &quot;C:\MyProject\build\bom.json&quot;
 </code></pre></div>
-<p>The three required flags are <code>--format</code>, <code>--schema-version</code>, and <code>--output</code>. There are no defaults for these — they must always be specified.</p>
+<p>The only required flag is <code>--output</code>. The <code>--format</code> and <code>--schema-version</code> flags default to <code>cyclonedx</code> and <code>1.5</code> respectively, but are shown explicitly here for clarity.</p>
 <h2 id="step-3-inspect-the-output">Step 3 — Inspect the output</h2>
 <p>Open <code>bom.json</code> to see the generated CycloneDX document. Key sections include:</p>
 <ul>
@@ -1987,6 +2043,7 @@ Download it to try these features and share your feedback.</p>
 <h2 id="next-steps">Next steps</h2>
 <ul>
 <li><strong><a href="../workflows/">Workflows</a></strong> — learn about different input types, CI/CD integration, and understanding the CycloneDX output</li>
+<li><strong><a href="../output-reference/">Output Reference</a></strong> — detailed breakdown of every CycloneDX field, where the data comes from, and how enrichment works</li>
 <li><strong><a href="../../cli/command-reference/#vipm-sbom">CLI Command Reference</a></strong> — full parameter reference including exit codes</li>
 </ul>
 <h2 id="need-help">Need Help?</h2>
