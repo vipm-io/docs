@@ -50,7 +50,7 @@ Expected output:
 SBOM written to "C:\MyProject\build\bom.json"
 ```
 
-The three required flags are `--format`, `--schema-version`, and `--output`. There are no defaults for these — they must always be specified.
+The only required flag is `--output`. The `--format` and `--schema-version` flags default to `cyclonedx` and `1.5` respectively, but are shown explicitly here for clarity.
 
 ## Step 3 — Inspect the output
 
@@ -99,6 +99,7 @@ Available filters:
 ## Next steps
 
 - **[Workflows](workflows.md)** — learn about different input types, CI/CD integration, and understanding the CycloneDX output
+- **[Output Reference](output-reference.md)** — detailed breakdown of every CycloneDX field, where the data comes from, and how enrichment works
 - **[CLI Command Reference](../cli/command-reference.md#vipm-sbom)** — full parameter reference including exit codes
 
 --8<-- "need-help.md"

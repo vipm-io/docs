@@ -363,8 +363,8 @@ vipm sbom [INPUT] --format cyclonedx --schema-version 1.5 --output <PATH> [OPTIO
 
 | Option | Description |
 |--------|-------------|
-| `--format cyclonedx` | **Required.** Output format. |
-| `--schema-version 1.5` | **Required.** CycloneDX spec version for the output document. |
+| `--format cyclonedx` | Output format (default: `cyclonedx`). |
+| `--schema-version 1.5` | CycloneDX spec version for the output document (default: `1.5`). |
 | `--output <PATH>` | **Required.** File path for the generated SBOM (relative or absolute). |
 | `--product-name <NAME>` | Sets `metadata.component.name` in the SBOM. Defaults to the input filename stem. |
 | `--product-version <VERSION>` | Sets `metadata.component.version`. Omitted from the SBOM if not provided. |
