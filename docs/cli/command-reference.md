@@ -510,4 +510,3 @@ Use `vipm about --help` to review the latest options.
 - [SBOM Generation](../sbom/index.md)
 - [Docker and Containers](docker.md)
 - [GitHub Actions and CI/CD](github-actions.md)
-- Project plan: `dev-docs/cli-docs-improvement-proposal.md`

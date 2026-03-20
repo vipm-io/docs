@@ -118,7 +118,3 @@ Add `--labview-version` to focus on a specific LabVIEW release if you have more 
 - **Activation fails**: Confirm the serial number, name, and email match your VIPM account exactly; rerun `vipm activate` after updating secrets or environment variables.
 - **Package install fails**: Refresh metadata (`vipm package-list-refresh`) and double-check the package ID; add `--labview-version` when multiple LabVIEW versions are installed.
 - **Network issues**: Configure proxy variables (`http_proxy`, `https_proxy`) or use an internal repository mirror if the build machine cannot reach `vipm.io`.
-
-## Notes for Contributors
-
-This file currently serves as the quick-start outline. As the new command reference and troubleshooting docs come online, tighten each step to cross-reference those pages and keep duplication minimal.
