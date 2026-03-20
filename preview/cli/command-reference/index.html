@@ -3132,6 +3132,10 @@
 <td>Display a progress indicator during long-running operations.</td>
 </tr>
 <tr>
+<td><code>--json</code></td>
+<td>Output command results as JSON to stdout. Errors go to stderr. <em>Experimental · Professional Edition.</em></td>
+</tr>
+<tr>
 <td><code>--verbose</code>, <code>-v</code></td>
 <td>Enable verbose output for additional diagnostic detail.</td>
 </tr>
@@ -3564,12 +3568,20 @@ Download it to try these features and share your feedback.</p>
 <td>Unique BOM identifier (<code>urn:uuid:...</code>). Auto-generated if omitted.</td>
 </tr>
 <tr>
+<td><code>--vipm</code></td>
+<td>Include only VIPM packages. Conflicts with <code>--no-vipm</code>.</td>
+</tr>
+<tr>
+<td><code>--nipm</code></td>
+<td>Include only NIPM packages. Conflicts with <code>--no-nipm</code>.</td>
+</tr>
+<tr>
 <td><code>--no-vipm</code></td>
-<td>Exclude VIPM packages from the SBOM.</td>
+<td>Exclude VIPM packages from the SBOM. Conflicts with <code>--vipm</code>.</td>
 </tr>
 <tr>
 <td><code>--no-nipm</code></td>
-<td>Exclude NI packages (NIPM) from the SBOM.</td>
+<td>Exclude NI packages (NIPM) from the SBOM. Conflicts with <code>--nipm</code>.</td>
 </tr>
 <tr>
 <td><code>--no-dev</code></td>
@@ -3658,7 +3670,7 @@ Download it to try these features and share your feedback.</p>
 </code></pre></div>
 <h3 id="common-issues_5">Common Issues</h3>
 <ul>
-<li><strong>Missing required flags</strong>: <code>--format</code>, <code>--schema-version</code>, and <code>--output</code> are always required — there are no defaults.</li>
+<li><strong>Missing <code>--output</code></strong>: The <code>--output</code> flag is always required. <code>--format</code> defaults to <code>cyclonedx</code> and <code>--schema-version</code> defaults to <code>1.5</code>, so they can be omitted.</li>
 <li><strong>Wrong LabVIEW version</strong>: Use <code>--labview-version</code> and <code>--labview-bitness</code> to target the correct installation when scanning <code>.lvproj</code> files.</li>
 <li><strong><code>--no-dev</code> on non-toml input</strong>: The <code>--no-dev</code> flag is only valid with <code>vipm.toml</code> input.</li>
 </ul>
@@ -3691,12 +3703,20 @@ Download it to try these features and share your feedback.</p>
 <td>Preview changes without writing to the manifest.</td>
 </tr>
 <tr>
+<td><code>--vipm</code></td>
+<td>Include only VIPM packages. Conflicts with <code>--no-vipm</code>.</td>
+</tr>
+<tr>
+<td><code>--nipm</code></td>
+<td>Include only NIPM packages. Conflicts with <code>--no-nipm</code>.</td>
+</tr>
+<tr>
 <td><code>--no-vipm</code></td>
-<td>Exclude VIPM packages from the sync.</td>
+<td>Exclude VIPM packages from the sync. Conflicts with <code>--vipm</code>.</td>
 </tr>
 <tr>
 <td><code>--no-nipm</code></td>
-<td>Exclude NI packages (NIPM) from the sync.</td>
+<td>Exclude NI packages (NIPM) from the sync. Conflicts with <code>--nipm</code>.</td>
 </tr>
 <tr>
 <td><code>--follow-linker</code></td>

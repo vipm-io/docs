@@ -527,15 +527,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#option-merge-the-vipm-sbom-output-with-a-supplemental-sbom" class="md-nav__link">
+  <a href="#merge-the-vipm-sbom-output-with-a-supplemental-sbom" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Option: Merge the vipm sbom output with a supplemental SBOM
+        Merge the vipm sbom output with a supplemental SBOM
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Option: Merge the vipm sbom output with a supplemental SBOM">
+    <nav class="md-nav" aria-label="Merge the vipm sbom output with a supplemental SBOM">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1847,15 +1847,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#option-merge-the-vipm-sbom-output-with-a-supplemental-sbom" class="md-nav__link">
+  <a href="#merge-the-vipm-sbom-output-with-a-supplemental-sbom" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Option: Merge the vipm sbom output with a supplemental SBOM
+        Merge the vipm sbom output with a supplemental SBOM
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Option: Merge the vipm sbom output with a supplemental SBOM">
+    <nav class="md-nav" aria-label="Merge the vipm sbom output with a supplemental SBOM">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1911,14 +1911,10 @@
 <p>The SBOM and sync commands are available in the <strong><a href="../../preview/">VIPM 2026 Q3 Preview</a></strong>.
 Download it to try these features and share your feedback.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Under consideration</p>
-<p>Native support for custom components in <code>vipm sbom</code> is being considered but is not yet available. In the meantime, the approach below can help.</p>
-</div>
 <h2 id="background">Background</h2>
-<p><code>vipm sbom</code> automatically discovers VIPM and NIPM packages in your project, but LabVIEW applications can depend on components that neither package manager tracks (like .dll, firmware, and other types of files and components).</p>
-<p>It can be desirable to include these components in your SBOM, alongside the automatically discovered packages.</p>
-<h2 id="option-merge-the-vipm-sbom-output-with-a-supplemental-sbom">Option: Merge the <code>vipm sbom</code> output with a supplemental SBOM</h2>
+<p><code>vipm sbom</code> automatically discovers VIPM and NIPM packages in your project, but LabVIEW applications can depend on components that neither package manager tracks — DLLs, firmware, hardware modules, and other third-party artifacts.</p>
+<p>The recommended approach is to maintain a separate CycloneDX file for these components and merge it with the <code>vipm sbom</code> output using standard CycloneDX merge tooling.</p>
+<h2 id="merge-the-vipm-sbom-output-with-a-supplemental-sbom">Merge the <code>vipm sbom</code> output with a supplemental SBOM</h2>
 <p>One practical approach is to maintain a hand-crafted CycloneDX JSON file containing your custom components and merge it with the output of <code>vipm sbom</code>.</p>
 <p><strong>Step 1</strong> — Generate your LabVIEW SBOM as usual:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span><span class="se">\</span>
