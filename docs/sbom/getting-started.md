@@ -92,6 +92,8 @@ Available filters:
 
 | Flag | Effect |
 |------|--------|
+| `--vipm` | Include only VIPM packages |
+| `--nipm` | Include only NIPM packages |
 | `--no-vipm` | Exclude VIPM packages from the SBOM |
 | `--no-nipm` | Exclude NI packages (NIPM) from the SBOM |
 | `--no-dev` | Exclude dev-dependencies (vipm.toml input only) |

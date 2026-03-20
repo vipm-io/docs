@@ -19,6 +19,7 @@ These flags are available on every command unless noted otherwise:
 | `--color-mode <auto|always|never>` | Controls CLI color output (defaults to `auto`). |
 | `--timeout <seconds>` | How long to wait for the operation to finish. Use `-1` for no timeout. |
 | `--show-progress` | Display a progress indicator during long-running operations. |
+| `--json` | Output command results as JSON to stdout. Errors go to stderr. _Experimental · Professional Edition._ |
 | `--verbose`, `-v` | Enable verbose output for additional diagnostic detail. |
 | `-h`, `--help` | Shows help for the current command. |
 
@@ -371,8 +372,10 @@ vipm sbom [INPUT] --format cyclonedx --schema-version 1.5 --output <PATH> [OPTIO
 | `--product-type <TYPE>` | Sets `metadata.component.type`. One of: `application` (default), `library`, `framework`, `container`, `firmware`, `device`, `file`. |
 | `--document-version <N>` | BOM revision number (default: `1`). |
 | `--document-serial-number <URN>` | Unique BOM identifier (`urn:uuid:...`). Auto-generated if omitted. |
-| `--no-vipm` | Exclude VIPM packages from the SBOM. |
-| `--no-nipm` | Exclude NI packages (NIPM) from the SBOM. |
+| `--vipm` | Include only VIPM packages. Conflicts with `--no-vipm`. |
+| `--nipm` | Include only NIPM packages. Conflicts with `--no-nipm`. |
+| `--no-vipm` | Exclude VIPM packages from the SBOM. Conflicts with `--vipm`. |
+| `--no-nipm` | Exclude NI packages (NIPM) from the SBOM. Conflicts with `--nipm`. |
 | `--no-dev` | Exclude dev-dependencies (`vipm.toml` input only). |
 | `--follow-linker` | Follow the VI linker to discover subVI dependencies (`.lvproj` input only). |
 | `--follow-depth <N>` | Linker traversal depth limit. Requires `--follow-linker`. |
@@ -431,7 +434,7 @@ help: Use 'vipm labview-list' to see available versions
 
 ### Common Issues
 
-- **Missing required flags**: `--format`, `--schema-version`, and `--output` are always required — there are no defaults.
+- **Missing `--output`**: The `--output` flag is always required. `--format` defaults to `cyclonedx` and `--schema-version` defaults to `1.5`, so they can be omitted.
 - **Wrong LabVIEW version**: Use `--labview-version` and `--labview-bitness` to target the correct installation when scanning `.lvproj` files.
 - **`--no-dev` on non-toml input**: The `--no-dev` flag is only valid with `vipm.toml` input.
 
@@ -455,8 +458,10 @@ vipm sync [TARGET] --from <SOURCE> [OPTIONS]
 |--------|-------------|
 | `--from <SOURCE>` | **Required.** The source file to scan for dependencies. |
 | `--dry-run` | Preview changes without writing to the manifest. |
-| `--no-vipm` | Exclude VIPM packages from the sync. |
-| `--no-nipm` | Exclude NI packages (NIPM) from the sync. |
+| `--vipm` | Include only VIPM packages. Conflicts with `--no-vipm`. |
+| `--nipm` | Include only NIPM packages. Conflicts with `--no-nipm`. |
+| `--no-vipm` | Exclude VIPM packages from the sync. Conflicts with `--vipm`. |
+| `--no-nipm` | Exclude NI packages (NIPM) from the sync. Conflicts with `--nipm`. |
 | `--follow-linker` | Follow the VI linker to discover subVI dependencies. |
 | `--follow-depth <N>` | Linker traversal depth limit. Requires `--follow-linker`. |
 

@@ -6,16 +6,13 @@ title: Custom Components
 
 --8<-- "sbom-preview.md"
 
-!!! note "Under consideration"
-    Native support for custom components in `vipm sbom` is being considered but is not yet available. In the meantime, the approach below can help.
-
 ## Background
 
-`vipm sbom` automatically discovers VIPM and NIPM packages in your project, but LabVIEW applications can depend on components that neither package manager tracks (like .dll, firmware, and other types of files and components).
+`vipm sbom` automatically discovers VIPM and NIPM packages in your project, but LabVIEW applications can depend on components that neither package manager tracks — DLLs, firmware, hardware modules, and other third-party artifacts.
 
-It can be desirable to include these components in your SBOM, alongside the automatically discovered packages.
+The recommended approach is to maintain a separate CycloneDX file for these components and merge it with the `vipm sbom` output using standard CycloneDX merge tooling.
 
-## Option: Merge the `vipm sbom` output with a supplemental SBOM
+## Merge the `vipm sbom` output with a supplemental SBOM
 
 One practical approach is to maintain a hand-crafted CycloneDX JSON file containing your custom components and merge it with the output of `vipm sbom`.
 
