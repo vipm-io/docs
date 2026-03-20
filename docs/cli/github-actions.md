@@ -40,8 +40,8 @@ Store your VIPM Pro credentials as GitHub repository secrets:
 
 You can find your VIPM Pro serial number on the [VIPM account page](https://www.vipm.io/account/).
 
-!!! tip "Skip prompts in CI"
-    Use the `-y` flag on install/uninstall commands, or set `VIPM_ASSUME_YES=1` as an environment variable to auto-confirm all prompts across your workflow. See [Environment Variables](environment-variables.md) for details.
+!!! tip "Prompts are auto-disabled in CI"
+    VIPM automatically detects CI environments like GitHub Actions and enables non-interactive mode — confirmation prompts are auto-accepted and missing parameters cause immediate errors instead of hanging. No extra configuration is needed. You can also use the `-y` flag or `VIPM_ASSUME_YES=1` for explicit control. See [Environment Variables](environment-variables.md) for details.
 
 ### Basic Workflow Example
 
