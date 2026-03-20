@@ -124,7 +124,7 @@ export NO_COLOR=1
 
 ### `SOURCE_DATE_EPOCH`
 
-When set, VIPM uses this Unix timestamp for the `generated_at` field in `--json` output instead of the current time. This supports [reproducible builds](https://reproducible-builds.org/specs/source-date-epoch/).
+When set, VIPM uses this Unix timestamp for timestamps in structured output instead of the current time. This supports [reproducible builds](https://reproducible-builds.org/specs/source-date-epoch/).
 
 ```bash
 export SOURCE_DATE_EPOCH=1710000000
