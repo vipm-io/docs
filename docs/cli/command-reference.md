@@ -315,7 +315,7 @@ For LabVIEW project builds:
 
 ```bash
 vipm build \
-  --lvproj-spec "My Build" \
+  --lvproj-build-spec "My Build" \
   --lvproj-target "My Computer" \
   path/to/project.lvproj
 ```
@@ -324,7 +324,7 @@ vipm build \
 
 | Option | Description |
 |--------|-------------|
-| `--lvproj-spec <name>` | Name of the LabVIEW project build spec to run when using `.lvproj`. |
+| `--lvproj-build-spec <name>` | Name of the LabVIEW project build spec to run when using `.lvproj`. |
 | `--lvproj-target <name>` | LabVIEW project target (defaults to `My Computer`). |
 | `--all` | Build all build specs found in the project. |
 | `--version-number <VERSION>` | Override the version number for the build. |
