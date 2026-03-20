@@ -1055,22 +1055,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#confirmation-prompts" class="md-nav__link">
+  <a href="#non-interactive-mode" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Confirmation Prompts
+        Non-Interactive Mode
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Confirmation Prompts">
+    <nav class="md-nav" aria-label="Non-Interactive Mode">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vipm_noninteractive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VIPM_NONINTERACTIVE
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#vipm_assume_yes" class="md-nav__link">
     <span class="md-ellipsis">
       
         VIPM_ASSUME_YES
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#precedence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Precedence
       
     </span>
   </a>
@@ -1535,7 +1557,7 @@
   <span class="md-ellipsis">
     
   
-    VIPM 2026 Q3
+    VIPM 2026 Q3 Preview
   
 
     
@@ -1981,22 +2003,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#confirmation-prompts" class="md-nav__link">
+  <a href="#non-interactive-mode" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Confirmation Prompts
+        Non-Interactive Mode
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Confirmation Prompts">
+    <nav class="md-nav" aria-label="Non-Interactive Mode">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vipm_noninteractive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VIPM_NONINTERACTIVE
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#vipm_assume_yes" class="md-nav__link">
     <span class="md-ellipsis">
       
         VIPM_ASSUME_YES
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#precedence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Precedence
       
     </span>
   </a>
@@ -2236,16 +2280,56 @@
 </tbody>
 </table>
 <p>No configuration is needed — if any of these variables are set, VIPM treats the environment as CI.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>CI detection affects <strong>timeouts only</strong>. It does not automatically skip confirmation prompts. Use <code>VIPM_ASSUME_YES</code> or the <code>--yes</code> flag to skip prompts in CI. See <a href="#confirmation-prompts">Confirmation Prompts</a> below.</p>
-</div>
-<h2 id="confirmation-prompts">Confirmation Prompts</h2>
+<p>When a CI environment is detected and <code>VIPM_NONINTERACTIVE</code> is not explicitly set, VIPM automatically enables non-interactive mode: confirmation prompts are auto-accepted and missing required parameters cause immediate errors instead of hanging. See <a href="#vipm_noninteractive">Non-Interactive Mode</a> below.</p>
+<h2 id="non-interactive-mode">Non-Interactive Mode</h2>
+<h3 id="vipm_noninteractive"><code>VIPM_NONINTERACTIVE</code></h3>
+<p>Disables all interactive prompts. Confirmation prompts are auto-accepted and missing required parameters cause immediate errors instead of blocking on stdin. This prevents commands from hanging in headless environments.</p>
+<p><strong>Auto-enabled in CI</strong> — when a CI environment is detected (see <a href="#ci-environment-detection">table above</a>) and <code>VIPM_NONINTERACTIVE</code> is not explicitly set, non-interactive mode activates automatically. Set <code>VIPM_NONINTERACTIVE=0</code> to override this and restore interactive behavior (useful for debugging in CI).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Docker — no prompts at all</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_NONINTERACTIVE</span><span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>vipm<span class="w"> </span>install<span class="w"> </span>project.vipc
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># CI — auto-detected, no configuration needed</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>vipm<span class="w"> </span>install<span class="w"> </span>project.vipc
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># Override CI detection for debugging</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nv">VIPM_NONINTERACTIVE</span><span class="o">=</span><span class="m">0</span><span class="w"> </span>vipm<span class="w"> </span>install<span class="w"> </span>project.vipc
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1</code>, <code>true</code>, <code>yes</code> (any truthy value)</td>
+<td>Non-interactive: auto-confirm + error on missing params</td>
+</tr>
+<tr>
+<td><code>0</code>, <code>false</code></td>
+<td>Disabled (overrides CI auto-detection)</td>
+</tr>
+<tr>
+<td>Empty string</td>
+<td>Disabled (a warning is logged)</td>
+</tr>
+<tr>
+<td>Unset + CI detected</td>
+<td>Non-interactive (auto-enabled)</td>
+</tr>
+<tr>
+<td>Unset + no CI</td>
+<td>Interactive (default)</td>
+</tr>
+</tbody>
+</table>
 <h3 id="vipm_assume_yes"><code>VIPM_ASSUME_YES</code></h3>
-<p>Auto-confirms all interactive prompts without requiring the <code>--yes</code> / <code>-y</code> flag on each command. This is the recommended approach for CI/CD pipelines where you want all commands to proceed non-interactively.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_ASSUME_YES</span><span class="o">=</span><span class="m">1</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>vipm<span class="w"> </span>install<span class="w"> </span>project.vipc<span class="w">     </span><span class="c1"># no prompt</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>vipm<span class="w"> </span>uninstall<span class="w"> </span>oglib_boolean<span class="w">  </span><span class="c1"># no prompt</span>
+<p>Auto-confirms confirmation prompts only (e.g., "Install 5 packages?") without requiring the <code>--yes</code> / <code>-y</code> flag on each command. Unlike <code>VIPM_NONINTERACTIVE</code>, commands with missing required parameters will still prompt for input.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_ASSUME_YES</span><span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>vipm<span class="w"> </span>install<span class="w"> </span>project.vipc<span class="w">     </span><span class="c1"># no confirmation prompt</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>vipm<span class="w"> </span>uninstall<span class="w"> </span>oglib_boolean<span class="w">  </span><span class="c1"># no confirmation prompt</span>
 </code></pre></div>
 <table>
 <thead>
@@ -2270,33 +2354,43 @@
 </tbody>
 </table>
 <p>Alternatively, use the <code>--yes</code> / <code>-y</code> flag on individual commands:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>vipm<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>project.vipc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>vipm<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>project.vipc
 </code></pre></div>
+<h3 id="precedence">Precedence</h3>
+<p>When multiple settings apply, VIPM uses this precedence order:</p>
+<ol>
+<li><code>VIPM_NONINTERACTIVE=1</code> — non-interactive mode</li>
+<li><code>VIPM_NONINTERACTIVE=0</code> — interactive (overrides CI detection)</li>
+<li>CI detected (if <code>VIPM_NONINTERACTIVE</code> unset) — non-interactive mode</li>
+<li><code>VIPM_ASSUME_YES=1</code> — auto-confirm only (parameter prompts still work)</li>
+<li><code>--yes</code> flag — auto-confirm for that command</li>
+<li>Default — fully interactive</li>
+</ol>
 <h2 id="timeouts">Timeouts</h2>
 <h3 id="vipm_timeout"><code>VIPM_TIMEOUT</code></h3>
 <p>Overrides the default operation timeout (in seconds). When set, this takes precedence over the <code>--timeout</code> flag and any CI-adjusted defaults.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_TIMEOUT</span><span class="o">=</span><span class="m">300</span><span class="w">   </span><span class="c1"># 5 minutes</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>vipm<span class="w"> </span>install<span class="w"> </span>project.vipc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_TIMEOUT</span><span class="o">=</span><span class="m">300</span><span class="w">   </span><span class="c1"># 5 minutes</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>vipm<span class="w"> </span>install<span class="w"> </span>project.vipc
 </code></pre></div>
 <h2 id="debugging">Debugging</h2>
 <h3 id="vipm_debug"><code>VIPM_DEBUG</code></h3>
 <p>Enables verbose debug output for troubleshooting.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_DEBUG</span><span class="o">=</span><span class="m">1</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>vipm<span class="w"> </span>install<span class="w"> </span>oglib_boolean
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_DEBUG</span><span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>vipm<span class="w"> </span>install<span class="w"> </span>oglib_boolean
 </code></pre></div>
 <h2 id="output">Output</h2>
 <h3 id="no_color"><code>NO_COLOR</code></h3>
 <p>Disables colored output, following the <a href="https://no-color.org/">no-color.org</a> standard. Equivalent to <code>--color-mode never</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">NO_COLOR</span><span class="o">=</span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">NO_COLOR</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
 <h3 id="source_date_epoch"><code>SOURCE_DATE_EPOCH</code></h3>
-<p>When set, VIPM uses this Unix timestamp for the <code>generated_at</code> field in <code>--json</code> output instead of the current time. This supports <a href="https://reproducible-builds.org/specs/source-date-epoch/">reproducible builds</a>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SOURCE_DATE_EPOCH</span><span class="o">=</span><span class="m">1710000000</span>
+<p>When set, VIPM uses this Unix timestamp for timestamps in structured output instead of the current time. This supports <a href="https://reproducible-builds.org/specs/source-date-epoch/">reproducible builds</a>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SOURCE_DATE_EPOCH</span><span class="o">=</span><span class="m">1710000000</span>
 </code></pre></div>
 <h2 id="edition">Edition</h2>
 <h3 id="vipm_community_edition"><code>VIPM_COMMUNITY_EDITION</code></h3>
 <p>Forces VIPM to operate in Community Edition mode, regardless of activation status.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_COMMUNITY_EDITION</span><span class="o">=</span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_COMMUNITY_EDITION</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
 <h2 id="related-resources">Related Resources</h2>
 <ul>

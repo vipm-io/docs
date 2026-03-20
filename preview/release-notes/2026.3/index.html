@@ -27,7 +27,7 @@
     
     
       
-        <title>VIPM 2026 Q3 - Developer Docs</title>
+        <title>VIPM 2026 Q3 Preview - Developer Docs</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vipm-2026-q3-release-notes" class="md-skip">
+        <a href="#vipm-2026-q3-preview-release-notes" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VIPM 2026 Q3
+              VIPM 2026 Q3 Preview
             
           </span>
         </div>
@@ -1313,7 +1313,7 @@
   <span class="md-ellipsis">
     
   
-    VIPM 2026 Q3
+    VIPM 2026 Q3 Preview
   
 
     
@@ -1331,7 +1331,7 @@
   <span class="md-ellipsis">
     
   
-    VIPM 2026 Q3
+    VIPM 2026 Q3 Preview
   
 
     
@@ -1959,8 +1959,8 @@
   
 
 
-<h1 id="vipm-2026-q3-release-notes">VIPM 2026 Q3 - Release Notes</h1>
-<p>VIPM 2026 Q3 adds Software Bill of Materials (SBOM) generation, project synchronization with <code>vipm sync</code>, NI Package Manager (NIPM) dependency management in vipm.toml, and expanded CLI capabilities for automation and CI/CD.</p>
+<h1 id="vipm-2026-q3-preview-release-notes">VIPM 2026 Q3 Preview - Release Notes</h1>
+<p>VIPM 2026 Q3 Preview adds Software Bill of Materials (SBOM) generation, project synchronization with <code>vipm sync</code>, NI Package Manager (NIPM) dependency management in vipm.toml, and expanded CLI capabilities for automation and CI/CD.</p>
 <p>Many of the new features and capabilities are visible in the <code>vipm</code> command-line interface (CLI).</p>
 <h2 id="software-bill-of-materials-sbom-wtih-vipm-sbom-cli-command">Software Bill of Materials (SBOM) wtih <code>vipm sbom</code> CLI Command</h2>
 <p>Generate <a href="https://cyclonedx.org/">CycloneDX</a> 1.5 SBOMs from LabVIEW projects, vipm.toml manifests, <code>.vipc</code>, or <code>.dragon</code> files. SBOMs include both VIPM and NI packages with enriched metadata, license identifiers, and cryptographic hashes — helping meet compliance requirements such as the EU Cyber Resilience Act and US Executive Order 14028.</p>
@@ -1988,12 +1988,13 @@
 <h2 id="environment-variables-applicable-to-cli-cicd-and-containers">Environment Variables (Applicable to CLI, CI/CD, and Containers)</h2>
 <p>New environment variables simplify headless and CI/CD automation:</p>
 <ul>
-<li><code>VIPM_ASSUME_YES</code> — auto-confirm all prompts (recommended for CI/CD)</li>
+<li><code>VIPM_NONINTERACTIVE</code> — full non-interactive mode (auto-confirm prompts + error on missing params); auto-enabled in CI environments</li>
+<li><code>VIPM_ASSUME_YES</code> — auto-confirm confirmation prompts only</li>
 <li><code>VIPM_COMMUNITY_EDITION</code> — activate Community Edition without interactive prompts</li>
 <li><code>VIPM_TIMEOUT</code> — override the default operation timeout</li>
 <li><code>VIPM_DEBUG</code> — enable verbose debug output</li>
 <li><code>NO_COLOR</code> — disable colored output</li>
-<li>Automatic CI environment detection for GitHub Actions, GitLab CI, Jenkins, and 9 other CI systems</li>
+<li>Automatic CI environment detection for GitHub Actions, GitLab CI, Jenkins, and 9 other CI systems — non-interactive mode activates automatically so commands never hang</li>
 </ul>
 <p>See the <a href="../../cli/environment-variables/">Environment Variables reference</a> for the full list.</p>
 <h2 id="enhanced-cicd-guides">Enhanced CI/CD Guides</h2>
