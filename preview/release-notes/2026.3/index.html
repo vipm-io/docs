@@ -1423,6 +1423,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#additional-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional improvements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#need-help" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1929,6 +1940,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#additional-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional improvements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#need-help" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1999,6 +2021,11 @@
 <p>See the <a href="../../cli/environment-variables/">Environment Variables reference</a> for the full list.</p>
 <h2 id="enhanced-cicd-guides">Enhanced CI/CD Guides</h2>
 <p>Updated <a href="../../cli/docker/">Docker</a> and <a href="../../cli/github-actions/">GitHub Actions</a> guides with environment variable configuration, <code>-y</code> flag usage in examples, and SBOM generation workflow steps.</p>
+<h2 id="additional-improvements">Additional improvements</h2>
+<ul>
+<li><code>vipm install</code> now preserves dev-dependencies in <code>vipm.lock</code> even when running without <code>--dev</code>, so the lock file always reflects the full resolved dependency graph (both production and dev-dependencies), matching the convention of other lock-file-based package managers.</li>
+<li><code>vipm lock --dev</code> and <code>vipm lock --no-dev</code> flags were removed in this release — the lock file now always includes dev-dependencies, so these flags no longer have an effect. Remove them from any scripts that pass them.</li>
+</ul>
 <h2 id="need-help">Need Help?</h2>
 <ul>
 <li>Report issues on <a href="https://github.com/vipm-io/vipm-desktop-issues/issues">GitHub</a></li>
