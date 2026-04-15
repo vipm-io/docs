@@ -207,11 +207,8 @@ The `vipm.lock` file captures exact versions of all installed packages, ensuring
 ### Generating a Lock File
 
 ```bash
-# Generate/update vipm.lock from vipm.toml (includes dev dependencies by default)
+# Generate/update vipm.lock from vipm.toml (always includes dev-dependencies)
 vipm lock
-
-# Exclude dev dependencies from the lock file
-vipm lock --no-dev
 
 # Continue with incomplete lock file when specs cannot be fetched
 vipm lock --best-effort
@@ -656,7 +653,7 @@ For detailed documentation on all CLI commands, see the [CLI Command Reference](
 | `vipm add <packages>` | Add dependencies to vipm.toml (`--dev`, `--install`) |
 | `vipm remove <packages>` | Remove dependencies from vipm.toml (`--dev`) |
 | `vipm install` | Install dependencies from vipm.toml (`--dev`, `--no-dev`, `--upgrade`) |
-| `vipm lock` | Generate/update vipm.lock (`--no-dev`, `--best-effort`) |
+| `vipm lock` | Generate/update vipm.lock (`--best-effort`) |
 | `vipm lock --check` | Verify lock file is in sync (for CI) |
 | `vipm build [name]` | Build targets defined in vipm.toml (`--all`, `--debug`, `--version-number`) |
 | `vipm clean [name]` | Remove build output directories (`--all`, `--dry-run`) |
