@@ -2870,14 +2870,11 @@ This feature is not available in stable releases. See the <a href="../../preview
 <h2 id="lock-files">Lock Files</h2>
 <p>The <code>vipm.lock</code> file captures exact versions of all installed packages, ensuring reproducible builds.</p>
 <h3 id="generating-a-lock-file">Generating a Lock File</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Generate/update vipm.lock from vipm.toml (includes dev dependencies by default)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Generate/update vipm.lock from vipm.toml (always includes dev-dependencies)</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>vipm<span class="w"> </span>lock
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Exclude dev dependencies from the lock file</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>vipm<span class="w"> </span>lock<span class="w"> </span>--no-dev
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Continue with incomplete lock file when specs cannot be fetched</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>vipm<span class="w"> </span>lock<span class="w"> </span>--best-effort
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Continue with incomplete lock file when specs cannot be fetched</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>vipm<span class="w"> </span>lock<span class="w"> </span>--best-effort
 </code></pre></div>
 <h3 id="checking-lock-file-sync-for-ci">Checking Lock File Sync (for CI)</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Check if vipm.lock is in sync with vipm.toml</span>
@@ -3348,7 +3345,7 @@ This feature is not available in stable releases. See the <a href="../../preview
 </tr>
 <tr>
 <td><code>vipm lock</code></td>
-<td>Generate/update vipm.lock (<code>--no-dev</code>, <code>--best-effort</code>)</td>
+<td>Generate/update vipm.lock (<code>--best-effort</code>)</td>
 </tr>
 <tr>
 <td><code>vipm lock --check</code></td>
