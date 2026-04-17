@@ -379,7 +379,8 @@ vipm sbom [INPUT] --format cyclonedx --schema-version 1.5 --output <PATH> [OPTIO
 | `--no-dev` | Exclude dev-dependencies (`vipm.toml` input only). |
 | `--follow-linker` | Follow the VI linker to discover subVI dependencies (`.lvproj` input only). |
 | `--follow-depth <N>` | Linker traversal depth limit. Requires `--follow-linker`. |
-| `--lvproj-build-spec <NAME>` | Select a build specification within a `.lvproj`. Seeds `metadata.component` name, version, and type from the build spec (overridden by explicit `--product-*` flags) and narrows the dependency scan to the build spec's containing target. The target is inferred automatically when unambiguous; pass `--lvproj-target` to disambiguate when the same name exists under multiple targets. `.lvproj` input only. |
+| `--no-follow-linker` | Opt out of the implicit linker traversal that `--lvproj-build-spec` enables. The resulting SBOM is limited to the build spec's declared root set, with no transitive closure. A warning is printed on stderr. Only meaningful with `--lvproj-build-spec`; conflicts with `--follow-linker`. |
+| `--lvproj-build-spec <NAME>` | Select a build specification within a `.lvproj`. Seeds `metadata.component` name, version, and type from the build spec (overridden by explicit `--product-*` flags) and narrows the dependency scan to the build spec's **deliverable closure** — its declared source roots (with container expansion and `sourceInclusion` filtering applied) plus the linker-walked transitive closure from those roots. Linker traversal is implicit when this flag is set; pass `--no-follow-linker` to opt out. Supported build-spec types: `EXE`, `Packed Library`, `DLL`, `Source Distribution`. Invoking for an Installer or Package build spec produces exit code `2` and a message directing you to `--lvproj-target`. The containing target is inferred automatically when unambiguous; pass `--lvproj-target` to disambiguate when the same name exists under multiple targets. `.lvproj` input only. |
 | `--lvproj-target <TARGET>` | Narrow the dependency scan to a single `.lvproj` target. May be used alone (scans only that target) or with `--lvproj-build-spec` (validates the spec is under that target). Omit to scan the whole project. An unknown target name produces exit code `12` with a listing of the project's available targets. `.lvproj` input only. |
 
 ### Examples
@@ -405,6 +406,29 @@ vipm sbom MyProject.lvproj \
   --lvproj-target "My Computer" \
   --output build/bom.json
 ```
+
+The resulting SBOM reports only the packages whose code contributes to
+that build spec's deliverable — its declared source roots plus whatever
+the LabVIEW linker can reach from them. It's a strict subset of (or
+equal to) the SBOM for `--lvproj-target "My Computer"` alone.
+
+#### What's in the SBOM vs. what's in the build output
+
+`--lvproj-build-spec` narrows the SBOM to code the build **delivers**,
+not just files LabVIEW **copies** into the output directory. In
+particular, the build-dialog optimization settings (`exclude-*` /
+`remove-*` — inline SubVIs, typedefs, library items, dependent PPLs,
+excluded directories, etc.) do **not** shrink the SBOM. Those settings
+control file-copy behaviour at build time; the linked code from those
+files is still part of the deliverable (e.g., an inline SubVI's block
+diagram is expanded into every caller; a dependent PPL is runtime-linked
+at load time). Reporting them in the SBOM is correct for supply-chain
+disclosure.
+
+If the build spec is an `Installer` or `Package` type, the command
+errors with exit code `2`. Those types bundle other build specs'
+outputs and declare NIPM dependencies through a different mechanism;
+for now, use `--lvproj-target` to scope to the containing target.
 
 Scope to a specific target without selecting a build spec (useful when running from source without building a binary):
 
