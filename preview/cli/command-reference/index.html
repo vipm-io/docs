@@ -3595,6 +3595,14 @@ Download it to try these features and share your feedback.</p>
 <td><code>--follow-depth &lt;N&gt;</code></td>
 <td>Linker traversal depth limit. Requires <code>--follow-linker</code>.</td>
 </tr>
+<tr>
+<td><code>--lvproj-build-spec &lt;NAME&gt;</code></td>
+<td>Select a build specification within a <code>.lvproj</code>. Seeds <code>metadata.component</code> name, version, and type from the build spec (overridden by explicit <code>--product-*</code> flags) and narrows the dependency scan to the build spec's containing target. The target is inferred automatically when unambiguous; pass <code>--lvproj-target</code> to disambiguate when the same name exists under multiple targets. <code>.lvproj</code> input only.</td>
+</tr>
+<tr>
+<td><code>--lvproj-target &lt;TARGET&gt;</code></td>
+<td>Narrow the dependency scan to a single <code>.lvproj</code> target. May be used alone (scans only that target) or with <code>--lvproj-build-spec</code> (validates the spec is under that target). Omit to scan the whole project. An unknown target name produces exit code <code>12</code> with a listing of the project's available targets. <code>.lvproj</code> input only.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="examples_5">Examples</h3>
@@ -3606,15 +3614,30 @@ Download it to try these features and share your feedback.</p>
 <a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">  </span>--product-version<span class="w"> </span><span class="m">2</span>.1.0<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
 </code></pre></div>
-<p>Generate from a vipm.toml, excluding dev-dependencies:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>vipm.toml<span class="w"> </span><span class="se">\</span>
+<p>Scope an SBOM to a specific build specification within a <code>.lvproj</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="w">  </span>--no-dev<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="w">  </span>--lvproj-build-spec<span class="w"> </span><span class="s2">&quot;My EXE Build&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="w">  </span>--lvproj-target<span class="w"> </span><span class="s2">&quot;My Computer&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+</code></pre></div>
+<p>Scope to a specific target without selecting a build spec (useful when running from source without building a binary):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="w">  </span>--lvproj-target<span class="w"> </span><span class="s2">&quot;My Computer&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+</code></pre></div>
+<p>Generate from a vipm.toml, excluding dev-dependencies:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>vipm.toml<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">  </span>--no-dev<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
 </code></pre></div>
 <p>Expected output on success:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>SBOM written to build/bom.json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>SBOM written to build/bom.json
 </code></pre></div>
 <h3 id="exit-codes">Exit Codes</h3>
 <table>
@@ -3650,6 +3673,10 @@ Download it to try these features and share your feedback.</p>
 <td>File system or IO failure (e.g., cannot write to <code>--output</code> path)</td>
 </tr>
 <tr>
+<td><code>12</code></td>
+<td>Named build target (<code>--lvproj-target</code>) not found in the <code>.lvproj</code></td>
+</tr>
+<tr>
 <td><code>13</code></td>
 <td>Input file is not a supported type</td>
 </tr>
@@ -3665,8 +3692,8 @@ Download it to try these features and share your feedback.</p>
 </table>
 <p>Any non-zero exit code means the SBOM was <strong>not</strong> produced. The <code>--output</code> file is only written on exit code <code>0</code>.</p>
 <p>On failure, stderr contains a human-readable error message. Example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>error: No LabVIEW installation found for version &#39;2024&#39;.
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>help: Use &#39;vipm labview-list&#39; to see available versions
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>error: No LabVIEW installation found for version &#39;2024&#39;.
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>help: Use &#39;vipm labview-list&#39; to see available versions
 </code></pre></div>
 <h3 id="common-issues_5">Common Issues</h3>
 <ul>
@@ -3682,7 +3709,7 @@ Download it to try these features and share your feedback.</p>
 </div>
 <p>Reconciles a <code>vipm.toml</code> manifest from the dependencies discovered in a LabVIEW project scan.</p>
 <h3 id="syntax_9">Syntax</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span><span class="o">[</span>TARGET<span class="o">]</span><span class="w"> </span>--from<span class="w"> </span>&lt;SOURCE&gt;<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span><span class="o">[</span>TARGET<span class="o">]</span><span class="w"> </span>--from<span class="w"> </span>&lt;SOURCE&gt;<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 </code></pre></div>
 <p><code>TARGET</code> is the <code>vipm.toml</code> to update. If omitted, the CLI searches upward from the current directory. <code>SOURCE</code> is the file to scan (e.g., a <code>.lvproj</code>).</p>
 <h3 id="options_8">Options</h3>
@@ -3730,10 +3757,10 @@ Download it to try these features and share your feedback.</p>
 </table>
 <h3 id="examples_6">Examples</h3>
 <p>Sync vipm.toml from a LabVIEW project:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj
 </code></pre></div>
 <p>Preview changes without writing:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj<span class="w"> </span>--dry-run
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj<span class="w"> </span>--dry-run
 </code></pre></div>
 <h3 id="common-issues_6">Common Issues</h3>
 <ul>
@@ -3741,15 +3768,15 @@ Download it to try these features and share your feedback.</p>
 </ul>
 <h2 id="vipm-version"><code>vipm version</code></h2>
 <p>Prints the VIPM CLI and Desktop versions. Useful for support tickets and automation logs.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>vipm<span class="w"> </span>version
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>vipm<span class="w"> </span>version
 </code></pre></div>
 <p>Sample output:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>VIPM CLI version 2025.3.0
-<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>VIPM Desktop version 2025.3.0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>VIPM CLI version 2025.3.0
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>VIPM Desktop version 2025.3.0
 </code></pre></div>
 <h2 id="vipm-about"><code>vipm about</code></h2>
 <p>Shows installation information such as install paths and license data.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>vipm<span class="w"> </span>about
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>vipm<span class="w"> </span>about
 </code></pre></div>
 <p>Use <code>vipm about --help</code> to review the latest options.</p>
 <h2 id="related-resources">Related Resources</h2>
