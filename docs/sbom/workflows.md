@@ -93,7 +93,7 @@ vipm sbom MyProject.lvproj \
   --output build/bom.json
 ```
 
-Scope to a specific build specification. The build spec's product name, version, and type are applied to the SBOM's top-level component automatically, and the dependency scan is narrowed to the build spec's containing target:
+Scope to a specific build specification. The build spec's product name, version, and type are applied to the SBOM's top-level component automatically, and the dependency scan is narrowed to the **build spec's deliverable closure** — the files declared as its sources (with container expansion and `sourceInclusion` filtering applied) plus the linker-walked transitive closure from those roots:
 
 ```bash
 vipm sbom MyProject.lvproj \
@@ -103,6 +103,17 @@ vipm sbom MyProject.lvproj \
   --lvproj-target "My Computer" \
   --output build/bom.json
 ```
+
+The SBOM produced is a strict subset of (or equal to) the one
+`--lvproj-target` alone produces for the same target. Linker traversal
+is automatic — no `--follow-linker` needed. Supported build-spec types
+are `EXE`, `Packed Library`, `DLL`, and `Source Distribution`; Installer
+and Package types produce an error directing you back to
+`--lvproj-target` until they're explicitly supported. The build-dialog
+`exclude-*` / `remove-*` optimization settings (inline SubVIs,
+dependent PPLs, excluded directories, etc.) do not shrink the SBOM —
+those control what's copied into the output, while the SBOM reports
+what contributes code to the deliverable.
 
 If the build spec name is unique across the project, `--lvproj-target` can be omitted — it will be inferred. Pass it explicitly (for example, from a CI or IDE integration) to avoid ambiguity when the same name exists under multiple targets.
 
