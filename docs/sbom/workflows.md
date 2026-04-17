@@ -79,6 +79,33 @@ vipm sbom MyProject.lvproj \
   --output build/bom.json
 ```
 
+### Scoping to a target or build specification
+
+A `.lvproj` may contain multiple *targets* (e.g., `My Computer`, RT controllers) and multiple *build specifications* per target. By default, `vipm sbom` scans every file under every target. To narrow the SBOM to a specific deliverable, use `--lvproj-target` or `--lvproj-build-spec`:
+
+Scope to a single target (useful when running code from source without building a binary):
+
+```bash
+vipm sbom MyProject.lvproj \
+  --format cyclonedx \
+  --schema-version 1.5 \
+  --lvproj-target "My Computer" \
+  --output build/bom.json
+```
+
+Scope to a specific build specification. The build spec's product name, version, and type are applied to the SBOM's top-level component automatically, and the dependency scan is narrowed to the build spec's containing target:
+
+```bash
+vipm sbom MyProject.lvproj \
+  --format cyclonedx \
+  --schema-version 1.5 \
+  --lvproj-build-spec "My EXE Build" \
+  --lvproj-target "My Computer" \
+  --output build/bom.json
+```
+
+If the build spec name is unique across the project, `--lvproj-target` can be omitted — it will be inferred. Pass it explicitly (for example, from a CI or IDE integration) to avoid ambiguity when the same name exists under multiple targets.
+
 ### Following the VI linker
 
 For deeper dependency discovery, use `--follow-linker` to trace subVI dependencies through the LabVIEW linker:

@@ -379,6 +379,8 @@ vipm sbom [INPUT] --format cyclonedx --schema-version 1.5 --output <PATH> [OPTIO
 | `--no-dev` | Exclude dev-dependencies (`vipm.toml` input only). |
 | `--follow-linker` | Follow the VI linker to discover subVI dependencies (`.lvproj` input only). |
 | `--follow-depth <N>` | Linker traversal depth limit. Requires `--follow-linker`. |
+| `--lvproj-build-spec <NAME>` | Select a build specification within a `.lvproj`. Seeds `metadata.component` name, version, and type from the build spec (overridden by explicit `--product-*` flags) and narrows the dependency scan to the build spec's containing target. The target is inferred automatically when unambiguous; pass `--lvproj-target` to disambiguate when the same name exists under multiple targets. `.lvproj` input only. |
+| `--lvproj-target <TARGET>` | Narrow the dependency scan to a single `.lvproj` target. May be used alone (scans only that target) or with `--lvproj-build-spec` (validates the spec is under that target). Omit to scan the whole project. An unknown target name produces exit code `12` with a listing of the project's available targets. `.lvproj` input only. |
 
 ### Examples
 
@@ -390,6 +392,27 @@ vipm sbom MyProject.lvproj \
   --schema-version 1.5 \
   --product-name "My Instrument" \
   --product-version 2.1.0 \
+  --output build/bom.json
+```
+
+Scope an SBOM to a specific build specification within a `.lvproj`:
+
+```bash
+vipm sbom MyProject.lvproj \
+  --format cyclonedx \
+  --schema-version 1.5 \
+  --lvproj-build-spec "My EXE Build" \
+  --lvproj-target "My Computer" \
+  --output build/bom.json
+```
+
+Scope to a specific target without selecting a build spec (useful when running from source without building a binary):
+
+```bash
+vipm sbom MyProject.lvproj \
+  --format cyclonedx \
+  --schema-version 1.5 \
+  --lvproj-target "My Computer" \
   --output build/bom.json
 ```
 
@@ -419,6 +442,7 @@ SBOM written to build/bom.json
 | `4` | Requested LabVIEW version is not installed |
 | `6` | Insufficient edition, license, or activation |
 | `8` | File system or IO failure (e.g., cannot write to `--output` path) |
+| `12` | Named build target (`--lvproj-target`) not found in the `.lvproj` |
 | `13` | Input file is not a supported type |
 | `14` | Input file exists but is malformed |
 | `15` | A required file does not exist |
