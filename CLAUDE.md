@@ -9,6 +9,7 @@ Documentation site for [docs.vipm.io](https://docs.vipm.io), built with **Zensic
 ## Commands
 
 - `just dev` — Local dev server (auto-finds open port starting at 8000)
+- `just test` — Run pytest suite for `scripts/`
 - `just build` — Full pipeline: generate snippets → validate inputs → `zensical build` → validate rendered outputs. Delegates to `scripts/build_docs.py`.
 - `just prebuild` — Regenerate generated snippets only (release-notes table)
 
@@ -23,6 +24,7 @@ Always rebuild after documentation changes and review the output.
 - `scripts/generate_release_notes_table.py` — Prebuild script that reads frontmatter from `docs/release-notes/*.md` and writes the release-notes-table snippet. Runs before every `zensical build` so the rendered site has a fresh table. Replaced the former `hooks.py:on_page_markdown` (Zensical has no native hook API and invokes the build as a subprocess during `mike deploy`, so runtime shims are not an option).
 - `scripts/validate_docs_build.py` — Pre-build validator: checks that generator outputs (e.g., the release-notes snippet) exist and have the expected shape before `zensical build` consumes them.
 - `scripts/build_docs.py` — Orchestrator for local and CI builds: generate → validate-pre → `zensical build` → validate-post. Post-build checks grep the rendered `site/` for markers that guard against migration regressions (release-notes `<table>` present, `/report-a-problem/` meta-refresh intact). The mike-deploy job in `ci.yml` does NOT use this script — mike invokes `zensical build` itself, so that job keeps its discrete generate + validate-pre steps before `mike deploy`.
+- `tests/` — pytest unit tests for the `scripts/` modules. Covers generator behavior (sort order, frontmatter warnings, empty-dir handling, expected href format) and each validator's failure/success paths using synthetic inputs. Run via `just test` or `uv run pytest`.
 - `dev-docs/` — Internal planning documents, not published to the site
 
 ## Key Conventions

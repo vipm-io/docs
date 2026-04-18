@@ -12,3 +12,11 @@ dependencies = [
     "mike @ git+https://github.com/squidfunk/mike.git",
     "zensical>=0.0.33",
 ]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

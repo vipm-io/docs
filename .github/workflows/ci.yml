@@ -35,6 +35,8 @@ jobs:
         run: uv python install
       - name: Sync dependencies
         run: uv sync
+      - name: Run unit tests
+        run: uv run pytest
       - name: Build and validate docs site
         run: uv run python scripts/build_docs.py
       - name: Upload site artifact

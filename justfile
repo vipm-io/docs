@@ -17,6 +17,10 @@ dev: prebuild
     echo "Serving on http://localhost:$port"
     uv run zensical serve --dev-addr "localhost:$port"
 
+# run unit tests for scripts and validators
+test:
+    uv run pytest
+
 # build the documentation site with pre- and post-build validation
 build:
     uv run python scripts/build_docs.py
