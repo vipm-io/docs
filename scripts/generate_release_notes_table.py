@@ -36,14 +36,25 @@ def _parse_frontmatter(filepath: Path) -> dict:
 
 
 def _version_sort_key(filename: str) -> tuple:
+    # Primary sort by the dotted-numeric version; non-numeric parts coerce
+    # to 0 (with a warning) so a convention-violating filename still sorts
+    # instead of crashing. The raw stem is included as a secondary key so
+    # files whose numeric parts collide (two non-conforming filenames)
+    # still produce a deterministic order across runs.
     stem = filename.removesuffix(".md")
     parts = []
     for part in stem.split("."):
         try:
             parts.append(int(part))
         except ValueError:
+            print(
+                f"warning: docs/release-notes/{filename} has non-numeric "
+                f"version part {part!r}; ordering in the generated table is "
+                f"best-effort. Rename to a dotted-numeric form (e.g., 2026.3).",
+                file=sys.stderr,
+            )
             parts.append(0)
-    return tuple(parts)
+    return (tuple(parts), stem)
 
 
 def main() -> int:
@@ -56,14 +67,38 @@ def main() -> int:
         for f in RELEASE_NOTES_DIR.iterdir()
         if f.suffix == ".md" and f.name != "index.md"
     ]
+    if not rn_files:
+        # Hard-fail rather than write a header-only table. A header-only
+        # snippet would silently ship an empty table in the rendered site,
+        # and no `best-effort` output is meaningful here.
+        print(
+            f"error: no release-notes files found in {RELEASE_NOTES_DIR} "
+            f"(expected at least one *.md besides index.md)",
+            file=sys.stderr,
+        )
+        return 1
     rn_files.sort(key=_version_sort_key, reverse=True)
 
     rows = []
     for fname in rn_files:
         meta = _parse_frontmatter(RELEASE_NOTES_DIR / fname)
+        missing = [k for k in ("title", "description") if k not in meta]
+        if missing:
+            # Warn loudly rather than silently emit a degraded row (slug as
+            # title, empty summary). The build still succeeds so a release
+            # can ship with a frontmatter fix chased separately, but the
+            # warning surfaces in CI logs and `just build` output.
+            print(
+                f"warning: docs/release-notes/{fname} is missing frontmatter "
+                f"field(s): {', '.join(missing)}",
+                file=sys.stderr,
+            )
         slug = fname.removesuffix(".md")
         title = meta.get("title", slug)
         description = meta.get("description", "")
+        # `../` is relative to `docs/release-notes/index.md`, the only
+        # consumer of this snippet. Includes from a page at a different
+        # depth would break. `build_docs.py` asserts this pattern renders.
         link = f'<a href="../{slug}/" style="white-space: nowrap">{title}</a>'
         rows.append(f"| {link} | {description} |")
 

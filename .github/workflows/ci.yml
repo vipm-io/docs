@@ -35,9 +35,8 @@ jobs:
         run: uv python install
       - name: Sync dependencies
         run: uv sync
-      - name: Generate release-notes table snippet
-        run: uv run python scripts/generate_release_notes_table.py
-      - run: uv run zensical build
+      - name: Build and validate docs site
+        run: uv run python scripts/build_docs.py
       - name: Upload site artifact
         uses: actions/upload-artifact@v4
         with:
@@ -69,6 +68,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
       - name: Generate release-notes table snippet
         run: uv run python scripts/generate_release_notes_table.py
+      - name: Validate prebuild outputs
+        run: uv run python scripts/validate_docs_build.py
       - name: Deploy with mike
         run: |
           # Determine version label

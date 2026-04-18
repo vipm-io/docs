@@ -14,18 +14,19 @@ Material for MkDocs entered maintenance mode on 2025-11-06; its maintainers shif
 - `mkdocs.yml` — removed the `plugins.redirects` block and the top-level `hooks:` reference. The `extra.version` (mike) block stays. The `copyright:` line is now static (bump the year annually).
 - `hooks.py` removed. Zensical has no native hook API yet, and its mike fork invokes `zensical build` as a subprocess (see `mike/utils.py`), so a Python-level runtime shim around `zensical.markdown.render` would not fire during `mike deploy`.
 - `scripts/generate_release_notes_table.py` — the release-notes table is now generated at the source level by a prebuild script that writes `docs/.snippets/release-notes-table.md`. `docs/release-notes/index.md` pulls the snippet in via the existing pymdownx.snippets extension. This mirrors the output of the previous `hooks.py:on_page_markdown` and works with both direct `zensical build` and `mike deploy`.
+- `scripts/validate_docs_build.py` + `scripts/build_docs.py` — pre-build validation (snippet exists, shape correct) and an end-to-end build orchestrator (generate → validate-pre → `zensical build` → validate-post) used by `just build`, `ci.yml`'s build job, and `preview.yml`. Post-build checks guard rendered-output markers the migration is sensitive to (release-notes `<table>` present, `/report-a-problem/` meta-refresh intact). The mike-deploy job keeps its discrete pre-build steps because mike invokes `zensical build` itself as a subprocess.
 - `docs/.snippets/release-notes-table.md` — gitignored; produced by the prebuild.
 - `docs/report-a-problem.md` — replaces the `mkdocs-redirects` redirect mapping with a meta-refresh page pointing at `support/`.
 
 ## Accepted regressions
 
-1. **No `--strict` guard in CI.** Zensical 0.0.33 flags `--strict` as "currently unsupported". CI builds no longer fail on warnings. Revisit when upstream adds support.
+1. **No `--strict` guard in CI.** Zensical 0.0.x flags `--strict` as "currently unsupported" and exits 0 even when individual pages hit render errors (e.g., a `SnippetMissingError` skips the page but the CLI reports success). `scripts/build_docs.py` mitigates this by capturing zensical's output and failing the build if any `Error:` line is logged. Replace the wrapper with `zensical build --strict` once upstream ships it.
 2. **`/report-a-problem` is a redirect page, not a plugin-generated redirect.** Bookmarks to `/report-a-problem/` still land on Support, via meta-refresh rather than server-side.
 3. **Static `copyright:` year.** The old `hooks.py:on_config` auto-bumped the year; now we set it once in `mkdocs.yml` and bump manually each January. Low effort, very visible if missed.
 4. **`mike` is a git dependency on a 3rd-party fork**. Lock captures a specific commit; refresh with `uv lock --upgrade-package mike`. This is a bridge until Zensical ships native versioning (tracked on the Zensical roadmap).
 
 ## Follow-ups
 
-- Replace the prebuild script with Zensical-native extension hooks once its module system ships (<https://zensical.org/about/roadmap/#module-system>).
+- Replace the prebuild script with Zensical-native extension hooks once its module system ships (<https://zensical.org/about/roadmap/>).
 - Track Zensical releases for `--strict` support; re-enable the guard when available.
 - Drop the mike git dependency in favor of Zensical-native versioning once it ships.

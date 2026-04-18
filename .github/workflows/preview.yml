@@ -34,12 +34,9 @@ jobs:
         if: github.event.action != 'closed'
         run: uv sync
 
-      - name: Generate release-notes table snippet
+      - name: Build and validate docs site
         if: github.event.action != 'closed'
-        run: uv run python scripts/generate_release_notes_table.py
-      - name: Build documentation
-        if: github.event.action != 'closed'
-        run: uv run zensical build
+        run: uv run python scripts/build_docs.py
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1

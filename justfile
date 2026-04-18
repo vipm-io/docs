@@ -17,6 +17,6 @@ dev: prebuild
     echo "Serving on http://localhost:$port"
     uv run zensical serve --dev-addr "localhost:$port"
 
-# build the documentation site
-build: prebuild
-    uv run zensical build
+# build the documentation site with pre- and post-build validation
+build:
+    uv run python scripts/build_docs.py
