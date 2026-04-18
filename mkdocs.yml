@@ -19,6 +19,11 @@ theme:
 
   custom_dir: overrides
 
+  features:
+    - search.suggest
+    - search.highlight
+    - search.share
+
   font:
     text: Roboto
 
@@ -95,4 +100,3 @@ nav:
   - Troubleshooting:
     - troubleshooting/index.md
     - troubleshooting/are-vipms-online-services-down.md
-
