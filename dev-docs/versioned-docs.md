@@ -1,19 +1,17 @@
 # Versioned Documentation with mike
 
-> **Superseded (2026-04).** The site no longer uses `mike`. The Zensical migration dropped per-release versioned deploys; `docs.vipm.io` now ships a single (latest) version at root. Legacy version subdirectories (`/latest/`, `/preview/`, `/2026.3/`, …) remain served from `gh-pages` because the deploy workflow uses `keep_files: true`, but no new versions are published there. This document is kept as historical reference. See `zensical-migration.md` for context.
-
 ## Overview
 
-The docs site uses [mike](https://github.com/jimporter/mike) to publish versioned documentation. Each VIPM release gets its own version of the docs that persists permanently, so users can always find documentation matching their installed version.
+The docs site uses [mike](https://github.com/squidfunk/mike) to publish versioned documentation. Each VIPM release gets its own version of the docs that persists permanently, so users can always find documentation matching their installed version.
 
-The version switcher dropdown appears in the site header, powered by MkDocs Material's built-in version provider.
+The version switcher dropdown appears in the site header, populated from the `versions.json` file that mike maintains on the `gh-pages` branch.
 
 ## How it works
 
 ### Tools
 
-- **mike** — manages multiple versions of the docs on the `gh-pages` branch. Each version is deployed to a path prefix (e.g., `/2026-Q1/`, `/dev/`).
-- **MkDocs Material** — renders the version switcher UI via the `extra.version` config in `mkdocs.yml`.
+- **mike** — manages multiple versions of the docs on the `gh-pages` branch. Each version is deployed to a path prefix (e.g., `/2026-Q1/`, `/preview/`). We use the Zensical-compatible fork at `github.com/squidfunk/mike` (not the PyPI package); the fork patches mike to invoke `zensical build` instead of `mkdocs build`. Per the Zensical team this is a bridge until Zensical ships native versioning; see <https://zensical.org/docs/setup/versioning/>.
+- **Zensical** — renders the version switcher UI when `extra.version.provider: mike` is set in the config.
 
 ### Configuration
 
@@ -30,10 +28,12 @@ extra:
 
 ```toml
 dependencies = [
-    "mike>=2.1.0",
+    "mike @ git+https://github.com/squidfunk/mike.git",
     ...
 ]
 ```
+
+The git-URL dependency means `uv.lock` pins a specific commit of the fork; refresh by running `uv lock --upgrade-package mike` to pick up new fork commits.
 
 ### Versioning scheme
 
@@ -56,7 +56,7 @@ The deploy logic lives in `.github/workflows/ci.yml`.
 
 | Trigger | Version deployed | Sets `latest`? |
 |---------|-----------------|----------------|
-| Push to `main` | `dev` | No |
+| Push to `main` | `preview` | No |
 | Push to `release/*` branch | Extracted from branch name (e.g., `release/2026-Q3` → `2026-Q3`) | No |
 
 ### Manual deployments
@@ -75,13 +75,13 @@ This is used for:
 
 ### PR builds
 
-Pull requests build and validate with `--strict` but do **not** deploy any version. The `pr-preview-action` in `preview.yml` handles ephemeral PR previews separately.
+Pull requests build without deploying any version. The `pr-preview-action` in `preview.yml` handles ephemeral PR previews separately. (Zensical 0.0.x does not yet support a `--strict` mode, so CI cannot fail on warnings the way the MkDocs-era pipeline did.)
 
 ## Release workflow
 
 ### Shipping a new VIPM release (e.g., 2026 Q3)
 
-1. **During development:** All PRs target `main`. Each push to `main` auto-deploys as `dev`.
+1. **During development:** All PRs target `main`. Each push to `main` auto-deploys as `preview`.
 
 2. **At preview/GA milestones:** Merge `main` into `release/2026-Q3`. CI auto-deploys version `2026-Q3`.
 
@@ -111,8 +111,8 @@ When mike was first deployed, the `gh-pages` branch needed to be initialized:
 
 ```bash
 just dev
-# or
-uv run mkdocs serve
+# or, bypassing the prebuild step (release-notes table won't regenerate):
+uv run zensical serve
 ```
 
 ### List deployed versions
@@ -148,7 +148,7 @@ Each GA release should have a persistent `release/<version>` branch:
 
 | Branch | Version | Status |
 |--------|---------|--------|
-| `main` | `dev` | Active development |
+| `main` | `preview` | Active development |
 | `release/2026-Q1` | `2026-Q1` | Maintenance (hotfixes only) — current `latest` |
 | `release/2026-Q3` | `2026-Q3` | In development (Q3 preview → GA) |
 

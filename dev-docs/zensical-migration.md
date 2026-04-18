@@ -8,22 +8,24 @@ Material for MkDocs entered maintenance mode on 2025-11-06; its maintainers shif
 
 ## What changed
 
-- `pyproject.toml` — replaced `mkdocs-material`, `mkdocs-redirects`, and `mike` with `zensical`.
-- `justfile` — `mkdocs build`/`serve` → `python zensical_hooks.py build`/`serve` (see shim note below).
-- `.github/workflows/ci.yml` — dropped `--strict` (Zensical 0.0.33 lists it as unsupported); replaced the `mike deploy` pipeline with `peaceiris/actions-gh-pages` using `keep_files: true`.
-- `mkdocs.yml` — removed the `plugins.redirects` block, the `extra.version` (mike) block, and the top-level `hooks:` reference. The `copyright:` line is no longer set here; the shim sets it with the current year on every build.
-- `hooks.py` → `zensical_hooks.py` — Zensical has no native hook API yet (module system is on the roadmap but unshipped). The new file monkey-patches `zensical.config.parse_config` and `zensical.markdown.render` before delegating to the Zensical CLI, restoring the two hooks we rely on (dynamic copyright year, release-notes table generation). Pattern adapted from a community gist; not endorsed by the Zensical team. Build commands invoke `python zensical_hooks.py build` instead of `zensical build`.
+- `pyproject.toml` — replaced `mkdocs-material` and `mkdocs-redirects` with `zensical`. `mike` is retained but now pulled from the Zensical-compatible fork at `git+https://github.com/squidfunk/mike.git` (the fork's maintainers chose not to publish to PyPI; see <https://zensical.org/docs/setup/versioning/>).
+- `justfile` / GitHub workflows — `mkdocs build`/`serve` → `zensical build`/`serve`, preceded by a prebuild step that regenerates the release-notes table snippet (see below).
+- `.github/workflows/ci.yml` — retained the pre-migration mike-based deploy pipeline verbatim; only the build commands change. `--strict` was dropped from the build step because Zensical 0.0.x lists it as unsupported.
+- `mkdocs.yml` — removed the `plugins.redirects` block and the top-level `hooks:` reference. The `extra.version` (mike) block stays. The `copyright:` line is now static (bump the year annually).
+- `hooks.py` removed. Zensical has no native hook API yet, and its mike fork invokes `zensical build` as a subprocess (see `mike/utils.py`), so a Python-level runtime shim around `zensical.markdown.render` would not fire during `mike deploy`.
+- `scripts/generate_release_notes_table.py` — the release-notes table is now generated at the source level by a prebuild script that writes `docs/.snippets/release-notes-table.md`. `docs/release-notes/index.md` pulls the snippet in via the existing pymdownx.snippets extension. This mirrors the output of the previous `hooks.py:on_page_markdown` and works with both direct `zensical build` and `mike deploy`.
+- `docs/.snippets/release-notes-table.md` — gitignored; produced by the prebuild.
 - `docs/report-a-problem.md` — replaces the `mkdocs-redirects` redirect mapping with a meta-refresh page pointing at `support/`.
 
 ## Accepted regressions
 
-1. **No per-release versioning.** `mike` was dropped; `docs.vipm.io` now ships a single "latest" version at root. Legacy `/latest/`, `/preview/`, `/2026.3/`, … subdirectories remain served from `gh-pages` (via `keep_files: true`) but are no longer updated, and there is no version selector UI. Revisit if Zensical grows a versioning plugin.
-2. **No `--strict` guard in CI.** Zensical 0.0.33 flags `--strict` as "currently unsupported". CI builds no longer fail on warnings. Revisit when upstream adds support.
-3. **`/report-a-problem` is a redirect page, not a plugin-generated redirect.** Bookmarks to `/report-a-problem/` still land on Support, via meta-refresh rather than server-side.
-4. **`zensical_hooks.py` relies on Zensical internals.** Each Zensical upgrade may break the shim (monkey-patches `parse_config` and `render`). When it does, re-adapt against the new entry points, or fall back to hand-maintaining the affected surfaces (release-notes table, copyright line).
+1. **No `--strict` guard in CI.** Zensical 0.0.33 flags `--strict` as "currently unsupported". CI builds no longer fail on warnings. Revisit when upstream adds support.
+2. **`/report-a-problem` is a redirect page, not a plugin-generated redirect.** Bookmarks to `/report-a-problem/` still land on Support, via meta-refresh rather than server-side.
+3. **Static `copyright:` year.** The old `hooks.py:on_config` auto-bumped the year; now we set it once in `mkdocs.yml` and bump manually each January. Low effort, very visible if missed.
+4. **`mike` is a git dependency on a 3rd-party fork**. Lock captures a specific commit; refresh with `uv lock --upgrade-package mike`. This is a bridge until Zensical ships native versioning (tracked on the Zensical roadmap).
 
 ## Follow-ups
 
-- Remove the `keep_files: true` deploy option and prune stale `gh-pages` subdirectories after confirming no inbound traffic to legacy version paths.
-- Replace the shim with Zensical's module system once it ships (https://zensical.org/about/roadmap/#module-system).
-- Track Zensical releases for `--strict` support and a versioning story.
+- Replace the prebuild script with Zensical-native extension hooks once its module system ships (<https://zensical.org/about/roadmap/#module-system>).
+- Track Zensical releases for `--strict` support; re-enable the guard when available.
+- Drop the mike git dependency in favor of Zensical-native versioning once it ships.

@@ -5,5 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    # mike is published from https://github.com/squidfunk/mike (a Zensical-
+    # compatible fork of jimporter/mike) rather than PyPI. The fork's
+    # authors chose not to publish to PyPI; see
+    # https://zensical.org/docs/setup/versioning/.
+    "mike @ git+https://github.com/squidfunk/mike.git",
     "zensical>=0.0.33",
 ]

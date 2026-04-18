@@ -34,9 +34,12 @@ jobs:
         if: github.event.action != 'closed'
         run: uv sync
 
+      - name: Generate release-notes table snippet
+        if: github.event.action != 'closed'
+        run: uv run python scripts/generate_release_notes_table.py
       - name: Build documentation
         if: github.event.action != 'closed'
-        run: uv run python zensical_hooks.py build
+        run: uv run zensical build
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1

@@ -3,16 +3,20 @@
 list:
     @just --list
 
+# regenerate generated source snippets (release-notes table)
+prebuild:
+    uv run python scripts/generate_release_notes_table.py
+
 # build and serve locally (auto-finds open port starting at 8000)
-dev:
+dev: prebuild
     #!/usr/bin/env bash
     port=8000
     while ss -tlnp | grep -q ":$port "; do
         port=$((port + 1))
     done
     echo "Serving on http://localhost:$port"
-    uv run python zensical_hooks.py serve --dev-addr "localhost:$port"
+    uv run zensical serve --dev-addr "localhost:$port"
 
 # build the documentation site
-build:
-    uv run python zensical_hooks.py build
+build: prebuild
+    uv run zensical build
