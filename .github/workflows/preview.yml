@@ -36,7 +36,7 @@ jobs:
 
       - name: Build documentation
         if: github.event.action != 'closed'
-        run: uv run mkdocs build --strict
+        run: uv run python zensical_hooks.py build
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1

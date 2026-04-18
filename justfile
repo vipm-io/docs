@@ -3,7 +3,7 @@
 list:
     @just --list
 
-# build and serve locally, with live reload (auto-finds open port starting at 8000)
+# build and serve locally (auto-finds open port starting at 8000)
 dev:
     #!/usr/bin/env bash
     port=8000
@@ -11,8 +11,8 @@ dev:
         port=$((port + 1))
     done
     echo "Serving on http://localhost:$port"
-    uv run mkdocs serve --livereload --dev-addr "localhost:$port"
+    uv run python zensical_hooks.py serve --dev-addr "localhost:$port"
 
 # build the documentation site
 build:
-    uv run mkdocs build
+    uv run python zensical_hooks.py build

@@ -1,5 +1,7 @@
 # Versioned Documentation with mike
 
+> **Superseded (2026-04).** The site no longer uses `mike`. The Zensical migration dropped per-release versioned deploys; `docs.vipm.io` now ships a single (latest) version at root. Legacy version subdirectories (`/latest/`, `/preview/`, `/2026.3/`, …) remain served from `gh-pages` because the deploy workflow uses `keep_files: true`, but no new versions are published there. This document is kept as historical reference. See `zensical-migration.md` for context.
+
 ## Overview
 
 The docs site uses [mike](https://github.com/jimporter/mike) to publish versioned documentation. Each VIPM release gets its own version of the docs that persists permanently, so users can always find documentation matching their installed version.

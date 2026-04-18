@@ -3,22 +3,10 @@ on:
   push:
     branches:
       - main
-      - release/**
   pull_request:
     branches:
       - main
-  # allow manual build here:
-  # https://github.com/vipm-io/docs/actions/workflows/ci.yml
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version label to deploy (e.g., 2026-Q1, preview)'
-        required: false
-      set_latest:
-        description: 'Set this version as "latest"'
-        required: false
-        default: 'false'
-        type: boolean
 
 jobs:
   build:
@@ -35,7 +23,7 @@ jobs:
         run: uv python install
       - name: Sync dependencies
         run: uv sync
-      - run: uv run mkdocs build --strict
+      - run: uv run python zensical_hooks.py build
       - name: Upload site artifact
         uses: actions/upload-artifact@v4
         with:
@@ -46,13 +34,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - name: Install uv
         uses: astral-sh/setup-uv@v6
         with:
@@ -61,36 +47,11 @@ jobs:
         run: uv python install
       - name: Sync dependencies
         run: uv sync
-      - name: Configure git for mike
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-      - name: Deploy with mike
-        run: |
-          # Determine version label
-          if [ -n "${{ github.event.inputs.version }}" ]; then
-            VERSION="${{ github.event.inputs.version }}"
-          elif [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            VERSION="preview"
-          elif [[ "${{ github.ref }}" == refs/heads/release/* ]]; then
-            # Extract version from branch name: release/2026-Q3 -> 2026-Q3
-            VERSION="${{ github.ref_name }}"
-            VERSION="${VERSION#release/}"
-          else
-            echo "No deploy rule for ref ${{ github.ref }}"
-            exit 0
-          fi
-
-          echo "Deploying version: $VERSION"
-
-          # Determine if this version should be aliased as "latest"
-          if [ "${{ github.event.inputs.set_latest }}" = "true" ]; then
-            uv run mike deploy --push --update-aliases "$VERSION" latest
-          elif [ "$VERSION" = "preview" ]; then
-            uv run mike deploy --push "$VERSION"
-          else
-            uv run mike deploy --push "$VERSION"
-          fi
-      - name: Set default version
-        if: github.ref == 'refs/heads/main'
-        run: uv run mike set-default --push latest || true
+      - name: Build site
+        run: uv run python zensical_hooks.py build
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          keep_files: true
