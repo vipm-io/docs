@@ -1535,6 +1535,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whats-in-the-sbom-vs-whats-in-the-build-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's in the SBOM vs. what's in the build output
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -2948,6 +2965,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whats-in-the-sbom-vs-whats-in-the-build-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's in the SBOM vs. what's in the build output
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -3596,8 +3630,12 @@ Download it to try these features and share your feedback.</p>
 <td>Linker traversal depth limit. Requires <code>--follow-linker</code>.</td>
 </tr>
 <tr>
+<td><code>--no-follow-linker</code></td>
+<td>Opt out of the implicit linker traversal that <code>--lvproj-build-spec</code> enables. The resulting SBOM is limited to the build spec's declared root set, with no transitive closure. A warning is printed on stderr. Only meaningful with <code>--lvproj-build-spec</code>; conflicts with <code>--follow-linker</code>.</td>
+</tr>
+<tr>
 <td><code>--lvproj-build-spec &lt;NAME&gt;</code></td>
-<td>Select a build specification within a <code>.lvproj</code>. Seeds <code>metadata.component</code> name, version, and type from the build spec (overridden by explicit <code>--product-*</code> flags) and narrows the dependency scan to the build spec's containing target. The target is inferred automatically when unambiguous; pass <code>--lvproj-target</code> to disambiguate when the same name exists under multiple targets. <code>.lvproj</code> input only.</td>
+<td>Select a build specification within a <code>.lvproj</code>. Seeds <code>metadata.component</code> name, version, and type from the build spec (overridden by explicit <code>--product-*</code> flags) and narrows the dependency scan to the build spec's <strong>deliverable closure</strong> — its declared source roots (with container expansion and <code>sourceInclusion</code> filtering applied) plus the linker-walked transitive closure from those roots. Linker traversal is implicit when this flag is set; pass <code>--no-follow-linker</code> to opt out. Supported build-spec types: <code>EXE</code>, <code>Packed Library</code>, <code>DLL</code>, <code>Source Distribution</code>. Invoking for an Installer or Package build spec produces exit code <code>2</code> and a message directing you to <code>--lvproj-target</code>. The containing target is inferred automatically when unambiguous; pass <code>--lvproj-target</code> to disambiguate when the same name exists under multiple targets. <code>.lvproj</code> input only.</td>
 </tr>
 <tr>
 <td><code>--lvproj-target &lt;TARGET&gt;</code></td>
@@ -3622,6 +3660,25 @@ Download it to try these features and share your feedback.</p>
 <a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="w">  </span>--lvproj-target<span class="w"> </span><span class="s2">&quot;My Computer&quot;</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
 </code></pre></div>
+<p>The resulting SBOM reports only the packages whose code contributes to
+that build spec's deliverable — its declared source roots plus whatever
+the LabVIEW linker can reach from them. It's a strict subset of (or
+equal to) the SBOM for <code>--lvproj-target "My Computer"</code> alone.</p>
+<h4 id="whats-in-the-sbom-vs-whats-in-the-build-output">What's in the SBOM vs. what's in the build output</h4>
+<p><code>--lvproj-build-spec</code> narrows the SBOM to code the build <strong>delivers</strong>,
+not just files LabVIEW <strong>copies</strong> into the output directory. In
+particular, the build-dialog optimization settings (<code>exclude-*</code> /
+<code>remove-*</code> — inline SubVIs, typedefs, library items, dependent PPLs,
+excluded directories, etc.) do <strong>not</strong> shrink the SBOM. Those settings
+control file-copy behaviour at build time; the linked code from those
+files is still part of the deliverable (e.g., an inline SubVI's block
+diagram is expanded into every caller; a dependent PPL is runtime-linked
+at load time). Reporting them in the SBOM is correct for supply-chain
+disclosure.</p>
+<p>If the build spec is an <code>Installer</code> or <code>Package</code> type, the command
+errors with exit code <code>2</code>. Those types bundle other build specs'
+outputs and declare NIPM dependencies through a different mechanism;
+for now, use <code>--lvproj-target</code> to scope to the containing target.</p>
 <p>Scope to a specific target without selecting a build spec (useful when running from source without building a binary):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>

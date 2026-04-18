@@ -2309,7 +2309,7 @@ Download it to try these features and share your feedback.</p>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span>--lvproj-target<span class="w"> </span><span class="s2">&quot;My Computer&quot;</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
 </code></pre></div>
-<p>Scope to a specific build specification. The build spec's product name, version, and type are applied to the SBOM's top-level component automatically, and the dependency scan is narrowed to the build spec's containing target:</p>
+<p>Scope to a specific build specification. The build spec's product name, version, and type are applied to the SBOM's top-level component automatically, and the dependency scan is narrowed to the <strong>build spec's deliverable closure</strong> — the files declared as its sources (with container expansion and <code>sourceInclusion</code> filtering applied) plus the linker-walked transitive closure from those roots:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
@@ -2317,6 +2317,16 @@ Download it to try these features and share your feedback.</p>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span>--lvproj-target<span class="w"> </span><span class="s2">&quot;My Computer&quot;</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
 </code></pre></div>
+<p>The SBOM produced is a strict subset of (or equal to) the one
+<code>--lvproj-target</code> alone produces for the same target. Linker traversal
+is automatic — no <code>--follow-linker</code> needed. Supported build-spec types
+are <code>EXE</code>, <code>Packed Library</code>, <code>DLL</code>, and <code>Source Distribution</code>; Installer
+and Package types produce an error directing you back to
+<code>--lvproj-target</code> until they're explicitly supported. The build-dialog
+<code>exclude-*</code> / <code>remove-*</code> optimization settings (inline SubVIs,
+dependent PPLs, excluded directories, etc.) do not shrink the SBOM —
+those control what's copied into the output, while the SBOM reports
+what contributes code to the deliverable.</p>
 <p>If the build spec name is unique across the project, <code>--lvproj-target</code> can be omitted — it will be inferred. Pass it explicitly (for example, from a CI or IDE integration) to avoid ambiguity when the same name exists under multiple targets.</p>
 <h3 id="following-the-vi-linker">Following the VI linker</h3>
 <p>For deeper dependency discovery, use <code>--follow-linker</code> to trace subVI dependencies through the LabVIEW linker:</p>
