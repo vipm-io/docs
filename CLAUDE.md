@@ -9,6 +9,9 @@ Documentation site for [docs.vipm.io](https://docs.vipm.io), built with **Zensic
 ## Commands
 
 - `just dev` — Local dev server (auto-finds open port starting at 8000)
+- `just format` — Apply ruff formatting
+- `just lint` — Run ruff lint checks (no-fix)
+- `just check` — No-fix pre-push check: `ruff format --check` + `ruff check` + `pytest`
 - `just test` — Run pytest suite for `scripts/`
 - `just build` — Full pipeline: generate snippets → validate inputs → `zensical build` → validate rendered outputs. Delegates to `scripts/build_docs.py`.
 - `just prebuild` — Regenerate generated snippets only (release-notes table)

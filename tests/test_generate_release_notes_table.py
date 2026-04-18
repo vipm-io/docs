@@ -17,7 +17,6 @@ from pathlib import Path
 
 import generate_release_notes_table as gen
 
-
 # --- pure helpers ---------------------------------------------------------
 
 

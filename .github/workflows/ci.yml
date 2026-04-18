@@ -35,6 +35,10 @@ jobs:
         run: uv python install
       - name: Sync dependencies
         run: uv sync
+      - name: Lint (ruff check)
+        run: uv run ruff check
+      - name: Format check (ruff format --check)
+        run: uv run ruff format --check
       - name: Run unit tests
         run: uv run pytest
       - name: Build and validate docs site

@@ -17,6 +17,20 @@ dev: prebuild
     echo "Serving on http://localhost:$port"
     uv run zensical serve --dev-addr "localhost:$port"
 
+# format Python code with ruff
+format:
+    uv run ruff format
+
+# lint Python code with ruff (reports only; does not modify files)
+lint:
+    uv run ruff check
+
+# no-fix check used before pushing: format check + lint + tests
+check:
+    uv run ruff format --check
+    uv run ruff check
+    uv run pytest
+
 # run unit tests for scripts and validators
 test:
     uv run pytest

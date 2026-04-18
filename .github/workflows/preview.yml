@@ -34,6 +34,12 @@ jobs:
         if: github.event.action != 'closed'
         run: uv sync
 
+      - name: Lint (ruff check)
+        if: github.event.action != 'closed'
+        run: uv run ruff check
+      - name: Format check (ruff format --check)
+        if: github.event.action != 'closed'
+        run: uv run ruff format --check
       - name: Run unit tests
         if: github.event.action != 'closed'
         run: uv run pytest

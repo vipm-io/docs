@@ -13,7 +13,6 @@ from pathlib import Path
 import build_docs
 import validate_docs_build
 
-
 # --- validate_docs_build._check_release_notes_table ---------------------
 
 
@@ -138,9 +137,7 @@ def test_post_report_a_problem_wrong_url_fails(tmp_path, monkeypatch):
     # Regression guard for PR #77 P2: bare `url=support/` would
     # resolve from `/report-a-problem/` to `/report-a-problem/support/`.
     html_path = tmp_path / "site" / "report-a-problem" / "index.html"
-    _write_html(
-        html_path, '<meta http-equiv="refresh" content="0; url=support/">'
-    )
+    _write_html(html_path, '<meta http-equiv="refresh" content="0; url=support/">')
     _point_report_at(monkeypatch, tmp_path, html_path)
 
     result = build_docs._post_report_a_problem_redirect()
@@ -151,9 +148,7 @@ def test_post_report_a_problem_wrong_url_fails(tmp_path, monkeypatch):
 
 def test_post_report_a_problem_correct_form_ok(tmp_path, monkeypatch):
     html_path = tmp_path / "site" / "report-a-problem" / "index.html"
-    _write_html(
-        html_path, '<meta http-equiv="refresh" content="0; url=../support/">'
-    )
+    _write_html(html_path, '<meta http-equiv="refresh" content="0; url=../support/">')
     _point_report_at(monkeypatch, tmp_path, html_path)
 
     assert build_docs._post_report_a_problem_redirect() is None
