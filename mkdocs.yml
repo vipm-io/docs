@@ -3,6 +3,7 @@ site_url: https://docs.vipm.io
 repo_name: vipm-io/docs
 edit_uri: edit/main/docs/
 repo_url: https://github.com/vipm-io/docs
+copyright: Copyright &copy; 2026 VIPM Community Contributors
 
 theme:
   name: material
@@ -37,9 +38,6 @@ extra:
     - icon: fontawesome/brands/discord
       link: https://discord.gg/uyXwAz4B63
 
-hooks:
-  - hooks.py
-
 markdown_extensions:
   - admonition
   - attr_list
@@ -49,11 +47,6 @@ markdown_extensions:
   - pymdownx.snippets:
       base_path: docs/.snippets
       check_paths: true
-
-plugins:
-  - redirects:
-      redirect_maps:
-        'report-a-problem.md': 'support.md'
 
 nav:
   - Home: index.md

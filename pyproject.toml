@@ -5,7 +5,26 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "mike>=2.1.4",
-    "mkdocs-material>=9.5.21",
-    "mkdocs-redirects>=1.2.2,<1.2.3",
+    # mike is published from https://github.com/squidfunk/mike (a Zensical-
+    # compatible fork of jimporter/mike) rather than PyPI. The fork's
+    # authors chose not to publish to PyPI; see
+    # https://zensical.org/docs/setup/versioning/.
+    "mike @ git+https://github.com/squidfunk/mike.git",
+    "zensical>=0.0.33",
 ]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8",
+    "ruff>=0.15.11",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+# E, F, W are ruff defaults; I adds isort-style import ordering.
+select = ["E", "F", "W", "I"]
