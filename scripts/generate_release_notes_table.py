@@ -96,10 +96,14 @@ def main() -> int:
         slug = fname.removesuffix(".md")
         title = meta.get("title", slug)
         description = meta.get("description", "")
-        # `../` is relative to `docs/release-notes/index.md`, the only
-        # consumer of this snippet. Includes from a page at a different
-        # depth would break. `build_docs.py` asserts this pattern renders.
-        link = f'<a href="../{slug}/" style="white-space: nowrap">{title}</a>'
+        # Href must resolve to `/release-notes/{slug}/` at the rendered
+        # page URL (`/release-notes/` un-versioned, `/<version>/release-notes/`
+        # under `mike`). Empirically, Zensical rewrites a bare `{slug}/`
+        # href inside a pymdownx.snippets include by prefixing `../`,
+        # routing the link to `/{slug}/` (top-level, 404). Writing the full
+        # `../release-notes/{slug}/` form is passed through unchanged and
+        # resolves correctly from any mike-prefixed base.
+        link = f'<a href="../release-notes/{slug}/" style="white-space: nowrap">{title}</a>'
         rows.append(f"| {link} | {description} |")
 
     table = (

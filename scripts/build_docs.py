@@ -47,13 +47,19 @@ def _post_release_notes_table_rendered() -> str | None:
             f"the release-notes snippet did not render. Check the "
             f"pymdownx.snippets include in docs/release-notes/index.md."
         )
-    # Confirm at least one row links back into a release subpage, matching
-    # the generator's output contract (`<a href="../<slug>/" ...>`).
-    if not re.search(r'<a href="\.\./[^/"]+/"', html):
+    # Confirm at least one row links back into a release subpage in the
+    # expected `../release-notes/<slug>/` form. This specific pattern
+    # resolves to `/release-notes/<slug>/` from the un-versioned index
+    # page and to `/<version>/release-notes/<slug>/` from a mike-versioned
+    # one. A bare `<slug>/` href (what the generator emits literally) gets
+    # rewritten by Zensical to `../<slug>/`, which routes to `/<slug>/`
+    # (top-level, 404), so we reject any non-`../release-notes/` form.
+    if not re.search(r'<a href="\.\./release-notes/[^/"]+/"', html):
         return (
             f"{RELEASE_NOTES_INDEX.relative_to(REPO_ROOT)} table has no row "
-            f"links — the generated snippet may be header-only or the output "
-            f"format has drifted."
+            f"links in the expected `../release-notes/<slug>/` form — the "
+            f"generated snippet may be header-only, or Zensical's URL "
+            f"rewriting changed and the links now 404."
         )
     return None
 
@@ -62,10 +68,15 @@ def _post_report_a_problem_redirect() -> str | None:
     if not REPORT_A_PROBLEM_INDEX.is_file():
         return f"missing rendered page: {REPORT_A_PROBLEM_INDEX.relative_to(REPO_ROOT)}"
     html = REPORT_A_PROBLEM_INDEX.read_text()
-    if 'http-equiv="refresh"' not in html or "url=support" not in html:
+    # Require the full `url=../support/` form. A bare `url=support/`
+    # resolves from `/report-a-problem/` to `/report-a-problem/support/`
+    # (404); raw HTML meta tags aren't URL-rewritten by Zensical the way
+    # markdown links are, so the source has to spell the correct relative
+    # path explicitly. See P2 in the PR review history.
+    if 'http-equiv="refresh"' not in html or "url=../support/" not in html:
         return (
             f"{REPORT_A_PROBLEM_INDEX.relative_to(REPO_ROOT)} is missing the "
-            f"meta-refresh redirect to `support/`. This was previously "
+            f"meta-refresh redirect to `../support/`. This was previously "
             f"provided by the removed mkdocs-redirects plugin; it is now "
             f"inline in docs/report-a-problem.md."
         )

@@ -16,7 +16,7 @@ Material for MkDocs entered maintenance mode on 2025-11-06; its maintainers shif
 - `scripts/generate_release_notes_table.py` — the release-notes table is now generated at the source level by a prebuild script that writes `docs/.snippets/release-notes-table.md`. `docs/release-notes/index.md` pulls the snippet in via the existing pymdownx.snippets extension. This mirrors the output of the previous `hooks.py:on_page_markdown` and works with both direct `zensical build` and `mike deploy`.
 - `scripts/validate_docs_build.py` + `scripts/build_docs.py` — pre-build validation (snippet exists, shape correct) and an end-to-end build orchestrator (generate → validate-pre → `zensical build` → validate-post) used by `just build`, `ci.yml`'s build job, and `preview.yml`. Post-build checks guard rendered-output markers the migration is sensitive to (release-notes `<table>` present, `/report-a-problem/` meta-refresh intact). The mike-deploy job keeps its discrete pre-build steps because mike invokes `zensical build` itself as a subprocess.
 - `docs/.snippets/release-notes-table.md` — gitignored; produced by the prebuild.
-- `docs/report-a-problem.md` — replaces the `mkdocs-redirects` redirect mapping with a meta-refresh page pointing at `support/`.
+- `docs/report-a-problem.md` — replaces the `mkdocs-redirects` redirect mapping with a meta-refresh page pointing at `../support/`. The `../` prefix is required because Zensical does not rewrite relative URLs inside raw HTML (only inside markdown links); a bare `url=support/` from `/report-a-problem/` would resolve to `/report-a-problem/support/` and 404.
 
 ## Accepted regressions
 
