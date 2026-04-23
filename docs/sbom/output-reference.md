@@ -103,6 +103,12 @@ Each entry in `components` represents one dependency found in your project. All 
   "hashes": [
     { "alg": "SHA-256", "content": "0123456789abcdef..." },
     { "alg": "MD5", "content": "abcdef0123456789..." }
+  ],
+  "externalReferences": [
+    { "type": "website", "url": "https://www.vipm.io/package/oglib_file" }
+  ],
+  "properties": [
+    { "name": "vipm:display-name", "value": "OpenG File Library" }
   ]
 }
 ```
@@ -120,6 +126,8 @@ The table below describes each field and where the data originates.
 | `description` | Package description. For NIPM packages, the feed name and URL are appended when available. | VIPM: `description` from package spec. NIPM: `Description` field. |
 | `licenses` | Array of license entries. See [License handling](#license-handling). | VIPM: `license` from package spec. NIPM: `Eula` field. |
 | `hashes` | Cryptographic checksums. See [Hash algorithms](#hash-algorithms). | VIPM: cached hashes. NIPM: hash fields from NIPM CLI. |
+| `externalReferences` | Links related to the component. Currently a single `website` entry is emitted when a homepage URL is available. | VIPM: `url` from package spec. NIPM: `Homepage` field. |
+| `properties` | Tool-specific extensions under the `vipm:` namespace — `vipm:display-name` (human-readable package name) and `vipm:display-version` (human-readable version), each emitted when available. | VIPM: `display_name` from package spec (`display_version` not currently populated). NIPM: `DisplayName` and `DisplayVersion` fields. |
 
 Fields are omitted from the JSON when no data is available (e.g., if a package has no description, the `description` key is absent).
 
@@ -351,6 +359,12 @@ Below is an annotated example of a complete CycloneDX 1.5 SBOM generated from a 
       "hashes": [
         { "alg": "SHA-256", "content": "a1b2c3d4e5f6..." },
         { "alg": "MD5", "content": "1a2b3c4d..." }
+      ],
+      "externalReferences": [
+        { "type": "website", "url": "https://www.vipm.io/package/oglib_file" }
+      ],
+      "properties": [
+        { "name": "vipm:display-name", "value": "OpenG File Library" }
       ]
     },
     {
@@ -368,6 +382,13 @@ Below is an annotated example of a complete CycloneDX 1.5 SBOM generated from a 
         { "alg": "MD5", "content": "9a8b7c6d..." },
         { "alg": "SHA-1", "content": "f1e2d3c4b5a6..." },
         { "alg": "SHA-256", "content": "b2c3d4e5f6a7..." }
+      ],
+      "externalReferences": [
+        { "type": "website", "url": "https://www.ni.com/en/support/downloads/drivers/download.ni-daq-mx.html" }
+      ],
+      "properties": [
+        { "name": "vipm:display-name", "value": "NI-DAQmx" },
+        { "name": "vipm:display-version", "value": "23.8" }
       ]
     }
   ],
@@ -392,10 +413,8 @@ The following CycloneDX 1.5 capabilities are not produced by `vipm sbom`. Howeve
 |---------|-------------|
 | Vulnerabilities | Known security vulnerabilities for components. Use a vulnerability scanner on the generated SBOM for this. |
 | Services | External service dependencies (APIs, databases). |
-| External references | URLs beyond the package URL (source repos, documentation, advisories). |
 | Compositions | Completeness assertions about the dependency list. |
 | Formulation | Build environment and process provenance. |
-| Properties | Custom key-value metadata on components or the document. |
 | Annotations | Review notes or audit commentary. |
 
 --8<-- "need-help.md"
