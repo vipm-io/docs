@@ -1456,6 +1456,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#stricter-defaults-for-project-scanning-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stricter Defaults for Project-Scanning Commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#additional-improvements" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1987,6 +1998,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#stricter-defaults-for-project-scanning-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stricter Defaults for Project-Scanning Commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#additional-improvements" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2066,6 +2088,13 @@
 <p>See the <a href="../../cli/environment-variables/">Environment Variables reference</a> for the full list.</p>
 <h2 id="enhanced-cicd-guides">Enhanced CI/CD Guides</h2>
 <p>Updated <a href="../../cli/docker/">Docker</a> and <a href="../../cli/github-actions/">GitHub Actions</a> guides with environment variable configuration, <code>-y</code> flag usage in examples, and SBOM generation workflow steps.</p>
+<h2 id="stricter-defaults-for-project-scanning-commands">Stricter Defaults for Project-Scanning Commands</h2>
+<p><code>vipm scan</code>, <code>vipm sync</code>, and <code>vipm sbom</code> now fail by default when they detect conditions that would produce incomplete or misleading output. Both failure modes are opt-out with a dedicated flag and expose the same per-entry detail on stderr when the flag is set.</p>
+<ul>
+<li><strong>Missing referenced files.</strong> When a LabVIEW project references files that are not on disk, the command aborts with exit code <code>18</code> instead of printing a warning and returning success. Pass <code>--allow-missing-files</code> to restore the previous behavior — a warning listing each missing reference is printed to stderr, and the command proceeds with whatever could be scanned.</li>
+<li><strong>Installed-package drift (<code>vipm sbom</code>).</strong> When installed packages disagree with the project's declared state in <code>vipm.toml</code> or <code>vipm.lock</code>, <code>vipm sbom</code> aborts with exit code <code>17</code>. Pass <code>--allow-package-drift</code> to override — a warning listing the drifted packages is printed to stderr, and the SBOM reflects installed versions.</li>
+</ul>
+<p><strong>Migration note for automation.</strong> Scripts that previously treated exit code <code>0</code> as "output produced successfully" may need to either add the appropriate <code>--allow-*</code> flag or fix the underlying condition (run <code>vipm install</code> to reconcile drift; fix the project's file references). See the updated <a href="../../cli/command-reference/#vipm-sbom"><code>vipm sbom</code></a> and <a href="../../cli/command-reference/#vipm-sync"><code>vipm sync</code></a> references for full details.</p>
 <h2 id="additional-improvements">Additional improvements</h2>
 <ul>
 <li><code>vipm install</code> now preserves dev-dependencies in <code>vipm.lock</code> even when running without <code>--dev</code>, so the lock file always reflects the full resolved dependency graph (both production and dev-dependencies), matching the convention of other lock-file-based package managers.</li>

@@ -3687,6 +3687,14 @@ Download it to try these features and share your feedback.</p>
 <td><code>--lvproj-target &lt;TARGET&gt;</code></td>
 <td>Narrow the dependency scan to a single <code>.lvproj</code> target. May be used alone (scans only that target) or with <code>--lvproj-build-spec</code> (validates the spec is under that target). Omit to scan the whole project. An unknown target name produces exit code <code>12</code> with a listing of the project's available targets. <code>.lvproj</code> input only.</td>
 </tr>
+<tr>
+<td><code>--allow-package-drift</code></td>
+<td>Opt out of the package-drift check. When set, SBOM generation proceeds even if installed packages disagree with <code>vipm.toml</code> or <code>vipm.lock</code>; a warning listing the drifted packages is printed to stderr and the SBOM reflects installed versions. Without this flag, drift aborts with exit code <code>17</code>.</td>
+</tr>
+<tr>
+<td><code>--allow-missing-files</code></td>
+<td>Opt out of the missing-referenced-files check. When set, SBOM generation proceeds even if the project references files that are not on disk; a warning listing each missing reference is printed to stderr and the SBOM reflects what could be scanned. Without this flag, missing references abort with exit code <code>18</code>.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="examples_5">Examples</h3>
@@ -3791,6 +3799,14 @@ for now, use <code>--lvproj-target</code> to scope to the containing target.</p>
 <td><code>15</code></td>
 <td>A required file does not exist</td>
 </tr>
+<tr>
+<td><code>17</code></td>
+<td>Installed packages disagree with the project's declared state in <code>vipm.toml</code> or <code>vipm.lock</code>. Use <code>--allow-package-drift</code> to override.</td>
+</tr>
+<tr>
+<td><code>18</code></td>
+<td>One or more files referenced by the scanned project could not be found on disk. Use <code>--allow-missing-files</code> to override.</td>
+</tr>
 </tbody>
 </table>
 <p>Any non-zero exit code means the SBOM was <strong>not</strong> produced. The <code>--output</code> file is only written on exit code <code>0</code>.</p>
@@ -3855,6 +3871,10 @@ Download it to try these features and share your feedback.</p>
 <tr>
 <td><code>--follow-depth &lt;N&gt;</code></td>
 <td>Linker traversal depth limit. Requires <code>--follow-linker</code>.</td>
+</tr>
+<tr>
+<td><code>--allow-missing-files</code></td>
+<td>Opt out of the missing-referenced-files check. When set, sync proceeds even if the project references files that are not on disk; a warning listing each missing reference is printed to stderr. Without this flag, missing references abort with exit code <code>18</code>.</td>
 </tr>
 </tbody>
 </table>
