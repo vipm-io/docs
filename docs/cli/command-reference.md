@@ -382,6 +382,8 @@ vipm sbom [INPUT] --format cyclonedx --schema-version 1.5 --output <PATH> [OPTIO
 | `--no-follow-linker` | Opt out of the implicit linker traversal that `--lvproj-build-spec` enables. The resulting SBOM is limited to the build spec's declared root set, with no transitive closure. A warning is printed on stderr. Only meaningful with `--lvproj-build-spec`; conflicts with `--follow-linker`. |
 | `--lvproj-build-spec <NAME>` | Select a build specification within a `.lvproj`. Seeds `metadata.component` name, version, and type from the build spec (overridden by explicit `--product-*` flags) and narrows the dependency scan to the build spec's **deliverable closure** — its declared source roots (with container expansion and `sourceInclusion` filtering applied) plus the linker-walked transitive closure from those roots. Linker traversal is implicit when this flag is set; pass `--no-follow-linker` to opt out. Supported build-spec types: `EXE`, `Packed Library`, `DLL`, `Source Distribution`. Invoking for an Installer or Package build spec produces exit code `2` and a message directing you to `--lvproj-target`. The containing target is inferred automatically when unambiguous; pass `--lvproj-target` to disambiguate when the same name exists under multiple targets. `.lvproj` input only. |
 | `--lvproj-target <TARGET>` | Narrow the dependency scan to a single `.lvproj` target. May be used alone (scans only that target) or with `--lvproj-build-spec` (validates the spec is under that target). Omit to scan the whole project. An unknown target name produces exit code `12` with a listing of the project's available targets. `.lvproj` input only. |
+| `--allow-package-drift` | Opt out of the package-drift check. When set, SBOM generation proceeds even if installed packages disagree with `vipm.toml` or `vipm.lock`; a warning listing the drifted packages is printed to stderr and the SBOM reflects installed versions. Without this flag, drift aborts with exit code `17`. |
+| `--allow-missing-files` | Opt out of the missing-referenced-files check. When set, SBOM generation proceeds even if the project references files that are not on disk; a warning listing each missing reference is printed to stderr and the SBOM reflects what could be scanned. Without this flag, missing references abort with exit code `18`. |
 
 ### Examples
 
@@ -470,6 +472,8 @@ SBOM written to build/bom.json
 | `13` | Input file is not a supported type |
 | `14` | Input file exists but is malformed |
 | `15` | A required file does not exist |
+| `17` | Installed packages disagree with the project's declared state in `vipm.toml` or `vipm.lock`. Use `--allow-package-drift` to override. |
+| `18` | One or more files referenced by the scanned project could not be found on disk. Use `--allow-missing-files` to override. |
 
 Any non-zero exit code means the SBOM was **not** produced. The `--output` file is only written on exit code `0`.
 
@@ -512,6 +516,7 @@ vipm sync [TARGET] --from <SOURCE> [OPTIONS]
 | `--no-nipm` | Exclude NI packages (NIPM) from the sync. Conflicts with `--nipm`. |
 | `--follow-linker` | Follow the VI linker to discover subVI dependencies. |
 | `--follow-depth <N>` | Linker traversal depth limit. Requires `--follow-linker`. |
+| `--allow-missing-files` | Opt out of the missing-referenced-files check. When set, sync proceeds even if the project references files that are not on disk; a warning listing each missing reference is printed to stderr. Without this flag, missing references abort with exit code `18`. |
 
 ### Examples
 
