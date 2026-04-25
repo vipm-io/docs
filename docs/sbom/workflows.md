@@ -106,31 +106,17 @@ vipm sbom MyProject.lvproj \
 
 The SBOM produced is a strict subset of (or equal to) the one
 `--lvproj-target` alone produces for the same target. Linker traversal
-is automatic — no `--follow-linker` needed. Supported build-spec types
-are `EXE`, `Packed Library`, `DLL`, and `Source Distribution`; Installer
-and Package types produce an error directing you back to
-`--lvproj-target` until they're explicitly supported. The build-dialog
-`exclude-*` / `remove-*` optimization settings (inline SubVIs,
-dependent PPLs, excluded directories, etc.) do not shrink the SBOM —
-those control what's copied into the output, while the SBOM reports
-what contributes code to the deliverable.
+runs automatically and recurses to fixpoint, so the SBOM captures the
+full transitive closure of subVI dependencies the build will pull in.
+Supported build-spec types are `EXE`, `Packed Library`, `DLL`, and
+`Source Distribution`; Installer and Package types produce an error
+directing you back to `--lvproj-target` until they're explicitly
+supported. The build-dialog `exclude-*` / `remove-*` optimization
+settings (inline SubVIs, dependent PPLs, excluded directories, etc.)
+do not shrink the SBOM — those control what's copied into the output,
+while the SBOM reports what contributes code to the deliverable.
 
 If the build spec name is unique across the project, `--lvproj-target` can be omitted — it will be inferred. Pass it explicitly (for example, from a CI or IDE integration) to avoid ambiguity when the same name exists under multiple targets.
-
-### Following the VI linker
-
-For deeper dependency discovery, use `--follow-linker` to trace subVI dependencies through the LabVIEW linker:
-
-```bash
-vipm sbom MyProject.lvproj \
-  --format cyclonedx \
-  --schema-version 1.5 \
-  --follow-linker \
-  --follow-depth 3 \
-  --output build/bom.json
-```
-
-`--follow-depth` sets how many levels deep the linker traversal goes. It requires `--follow-linker` to be set.
 
 ## Legacy inputs (.dragon, .vipc)
 
