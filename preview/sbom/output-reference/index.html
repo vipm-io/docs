@@ -2949,7 +2949,7 @@ Download it to try these features and share your feedback.</p>
 <li><strong>Deduplicate</strong> — multiple files from the same package produce a single component (package) entry.</li>
 </ol>
 <p>This means the SBOM reflects the packages that <strong>provide files actually referenced by your project</strong>, not every package installed on the system.</p>
-<p><strong><code>--follow-linker</code></strong> extends this by invoking the LabVIEW linker to trace subVI call chains, discovering dependencies that are loaded at runtime but not directly listed in the project file. Use <code>--follow-depth</code> to control how many levels deep the traversal goes.</p>
+<p>For <code>.lvproj</code> inputs, the CLI also invokes the LabVIEW linker to trace subVI call chains automatically — discovering dependencies that are loaded at runtime but not directly listed in the project file. The traversal recurses to fixpoint so the SBOM reflects the full transitive closure; there is no flag to disable it or cap its depth.</p>
 <h3 id="from-vipmtoml-files">From <code>vipm.toml</code> files</h3>
 <p>The CLI reads the declared dependencies from your manifest:</p>
 <ol>

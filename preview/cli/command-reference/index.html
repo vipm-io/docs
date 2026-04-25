@@ -3668,20 +3668,8 @@ Download it to try these features and share your feedback.</p>
 <td>Exclude dev-dependencies (<code>vipm.toml</code> input only).</td>
 </tr>
 <tr>
-<td><code>--follow-linker</code></td>
-<td>Follow the VI linker to discover subVI dependencies (<code>.lvproj</code> input only).</td>
-</tr>
-<tr>
-<td><code>--follow-depth &lt;N&gt;</code></td>
-<td>Linker traversal depth limit. Requires <code>--follow-linker</code>.</td>
-</tr>
-<tr>
-<td><code>--no-follow-linker</code></td>
-<td>Opt out of the implicit linker traversal that <code>--lvproj-build-spec</code> enables. The resulting SBOM is limited to the build spec's declared root set, with no transitive closure. A warning is printed on stderr. Only meaningful with <code>--lvproj-build-spec</code>; conflicts with <code>--follow-linker</code>.</td>
-</tr>
-<tr>
 <td><code>--lvproj-build-spec &lt;NAME&gt;</code></td>
-<td>Select a build specification within a <code>.lvproj</code>. Seeds <code>metadata.component</code> name, version, and type from the build spec (overridden by explicit <code>--product-*</code> flags) and narrows the dependency scan to the build spec's <strong>deliverable closure</strong> — its declared source roots (with container expansion and <code>sourceInclusion</code> filtering applied) plus the linker-walked transitive closure from those roots. Linker traversal is implicit when this flag is set; pass <code>--no-follow-linker</code> to opt out. Supported build-spec types: <code>EXE</code>, <code>Packed Library</code>, <code>DLL</code>, <code>Source Distribution</code>. Invoking for an Installer or Package build spec produces exit code <code>2</code> and a message directing you to <code>--lvproj-target</code>. The containing target is inferred automatically when unambiguous; pass <code>--lvproj-target</code> to disambiguate when the same name exists under multiple targets. <code>.lvproj</code> input only.</td>
+<td>Select a build specification within a <code>.lvproj</code>. Seeds <code>metadata.component</code> name, version, and type from the build spec (overridden by explicit <code>--product-*</code> flags) and narrows the dependency scan to the build spec's <strong>deliverable closure</strong> — its declared source roots (with container expansion and <code>sourceInclusion</code> filtering applied) plus the linker-walked transitive closure from those roots. Supported build-spec types: <code>EXE</code>, <code>Packed Library</code>, <code>DLL</code>, <code>Source Distribution</code>. Invoking for an Installer or Package build spec produces exit code <code>2</code> and a message directing you to <code>--lvproj-target</code>. The containing target is inferred automatically when unambiguous; pass <code>--lvproj-target</code> to disambiguate when the same name exists under multiple targets. <code>.lvproj</code> input only.</td>
 </tr>
 <tr>
 <td><code>--lvproj-target &lt;TARGET&gt;</code></td>
@@ -3863,14 +3851,6 @@ Download it to try these features and share your feedback.</p>
 <tr>
 <td><code>--no-nipm</code></td>
 <td>Exclude NI packages (NIPM) from the sync. Conflicts with <code>--nipm</code>.</td>
-</tr>
-<tr>
-<td><code>--follow-linker</code></td>
-<td>Follow the VI linker to discover subVI dependencies.</td>
-</tr>
-<tr>
-<td><code>--follow-depth &lt;N&gt;</code></td>
-<td>Linker traversal depth limit. Requires <code>--follow-linker</code>.</td>
 </tr>
 <tr>
 <td><code>--allow-missing-files</code></td>
