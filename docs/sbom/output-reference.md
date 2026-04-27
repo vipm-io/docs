@@ -280,7 +280,7 @@ The CLI scans the LabVIEW project file to build a dependency list:
 
 This means the SBOM reflects the packages that **provide files actually referenced by your project**, not every package installed on the system.
 
-For `.lvproj` inputs, the CLI also invokes the LabVIEW linker to trace subVI call chains automatically — discovering dependencies that are loaded at runtime but not directly listed in the project file. The traversal recurses to fixpoint so the SBOM reflects the full transitive closure; there is no flag to disable it or cap its depth.
+For `.lvproj` inputs, the CLI also invokes the LabVIEW linker to trace subVI call chains automatically — discovering dependencies that are loaded at runtime but not directly listed in the project file. The traversal recurses to fixpoint so the SBOM reflects the full transitive closure.
 
 ### From `vipm.toml` files
 
