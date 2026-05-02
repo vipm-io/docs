@@ -69,7 +69,7 @@ The root component — your product. This is set by the `--product-name`, `--pro
   "type": "application",
   "name": "My Instrument",
   "version": "2.1.0",
-  "bom-ref": "pkg:vipm/My-Instrument@2-1-0"
+  "bom-ref": "pkg:vipm/My-Instrument@2.1.0"
 }
 ```
 
@@ -138,7 +138,7 @@ The `dependencies` section records the relationship between your product and its
 ```json
 "dependencies": [
   {
-    "ref": "pkg:vipm/My-Instrument@2-1-0",
+    "ref": "pkg:vipm/My-Instrument@2.1.0",
     "dependsOn": [
       "pkg:vipm/oglib_file@6.0.2.28",
       "pkg:vipm/jki_state_machine@2020.0.2.50",
@@ -340,7 +340,7 @@ Below is an annotated example of a complete CycloneDX 1.5 SBOM generated from a 
       "type": "application",
       "name": "Acme Widget Tester",
       "version": "2.1.0",
-      "bom-ref": "pkg:vipm/Acme-Widget-Tester@2-1-0"
+      "bom-ref": "pkg:vipm/Acme-Widget-Tester@2.1.0"
     }
   },
 
@@ -395,7 +395,7 @@ Below is an annotated example of a complete CycloneDX 1.5 SBOM generated from a 
 
   "dependencies": [
     {
-      "ref": "pkg:vipm/Acme-Widget-Tester@2-1-0",
+      "ref": "pkg:vipm/Acme-Widget-Tester@2.1.0",
       "dependsOn": [
         "pkg:vipm/oglib_file@6.0.2.28",
         "pkg:nipkg/ni-daqmx@23.8.0.49349-0%2Bf197?feed=https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/23.8/released"
