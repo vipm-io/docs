@@ -906,22 +906,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
+  <a href="#install" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installation
+        Install
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installation">
+    <nav class="md-nav" aria-label="Install">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#get-started-with-vipm-2026-q1-preview" class="md-nav__link">
+  <a href="#debian-based-distributions-ubuntu-debian-linux-mint-and-derivatives" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Get Started with VIPM 2026 Q1 Preview
+        Debian-based distributions (Ubuntu, Debian, Linux Mint, and derivatives)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#red-hat-based-distributions-rhel-fedora-centos-rocky-linux-and-derivatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Red Hat-based distributions (RHEL, Fedora, CentOS, Rocky Linux, and derivatives)
       
     </span>
   </a>
@@ -930,6 +941,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-included" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's included
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1524,22 +1546,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
+  <a href="#install" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installation
+        Install
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installation">
+    <nav class="md-nav" aria-label="Install">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#get-started-with-vipm-2026-q1-preview" class="md-nav__link">
+  <a href="#debian-based-distributions-ubuntu-debian-linux-mint-and-derivatives" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Get Started with VIPM 2026 Q1 Preview
+        Debian-based distributions (Ubuntu, Debian, Linux Mint, and derivatives)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#red-hat-based-distributions-rhel-fedora-centos-rocky-linux-and-derivatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Red Hat-based distributions (RHEL, Fedora, CentOS, Rocky Linux, and derivatives)
       
     </span>
   </a>
@@ -1548,6 +1581,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-included" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's included
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1594,21 +1638,36 @@
 
 
 <h1 id="vipm-on-linux">VIPM on Linux</h1>
-<p>Welcome to the VIPM Linux documentation! VIPM (VI Package Manager) is now available for Linux with modern installers and powerful command-line tools.</p>
-<h2 id="installation">Installation</h2>
-<p>For the latest and best experience, we recommend installing the <a href="../preview/"><strong>VIPM 2026 Q1 Preview</strong></a> release, which includes:</p>
+<p>VIPM is available as a native Linux package, with both DEB and RPM installers, full Package Manager UI, and a powerful command-line interface (CLI) for automation and CI/CD.</p>
+<h2 id="install">Install</h2>
+<h3 id="debian-based-distributions-ubuntu-debian-linux-mint-and-derivatives">Debian-based distributions (Ubuntu, Debian, Linux Mint, and derivatives)</h3>
+<p>Download: <a href="https://traffic.libsyn.com/secure/jkinc/vipm_26.1.1-3772_amd64.deb"><code>vipm_26.1.1-3772_amd64.deb</code></a></p>
+<p>Or via a one-command install:</p>
+<pre><code>wget -O /tmp/vipm.deb https://traffic.libsyn.com/secure/jkinc/vipm_26.1.1-3772_amd64.deb &amp;&amp; sudo dpkg -i /tmp/vipm.deb &amp;&amp; rm /tmp/vipm.deb
+</code></pre>
+<h3 id="red-hat-based-distributions-rhel-fedora-centos-rocky-linux-and-derivatives">Red Hat-based distributions (RHEL, Fedora, CentOS, Rocky Linux, and derivatives)</h3>
+<p>Download: <a href="https://traffic.libsyn.com/secure/jkinc/vipm-26.1.1-3772.x86_64.rpm"><code>vipm-26.1.1-3772.x86_64.rpm</code></a></p>
+<p>Or via a one-command install:</p>
 <ul>
-<li><strong>VIPM CLI</strong> - Command-line interface for automation and CI/CD workflows</li>
-<li><strong>Native Linux Installers</strong> - Available in both DEB and RPM package formats</li>
-<li><strong>Full Package Management</strong> - Install, update, and remove LabVIEW packages</li>
-<li><strong>VI Package Building</strong> - Build .vip packages natively on Linux</li>
+<li><strong>RHEL 8+ / Fedora / Rocky Linux / AlmaLinux (<code>dnf</code>):</strong>
+  <code>wget -O /tmp/vipm.rpm https://traffic.libsyn.com/secure/jkinc/vipm-26.1.1-3772.x86_64.rpm &amp;&amp; sudo dnf install -y --nogpgcheck /tmp/vipm.rpm &amp;&amp; rm /tmp/vipm.rpm</code></li>
+<li><strong>RHEL 7 / CentOS 7 (<code>yum</code>):</strong>
+  <code>wget -O /tmp/vipm.rpm https://traffic.libsyn.com/secure/jkinc/vipm-26.1.1-3772.x86_64.rpm &amp;&amp; sudo yum install -y --nogpgcheck /tmp/vipm.rpm &amp;&amp; rm /tmp/vipm.rpm</code></li>
+<li><strong>openSUSE (<code>zypper</code>):</strong>
+  <code>wget -O /tmp/vipm.rpm https://traffic.libsyn.com/secure/jkinc/vipm-26.1.1-3772.x86_64.rpm &amp;&amp; sudo zypper --non-interactive install --no-recommends --allow-unsigned-rpm /tmp/vipm.rpm &amp;&amp; rm /tmp/vipm.rpm</code></li>
 </ul>
-<h3 id="get-started-with-vipm-2026-q1-preview">Get Started with VIPM 2026 Q1 Preview</h3>
-<p>Visit the <a href="../preview/">VIPM 2026Q1 Preview page</a> for installation instructions and the latest features.</p>
+<h2 id="whats-included">What's included</h2>
+<ul>
+<li><strong>Native Linux installers</strong> — DEB and RPM, supporting Debian/Ubuntu/Mint and RHEL/Fedora/CentOS/Rocky/openSUSE</li>
+<li><strong>VIPM Desktop UI</strong> — full graphical Package Manager, including search, install, build, and configure flows</li>
+<li><strong>VIPM CLI</strong> — command-line interface for scripting and CI/CD integration</li>
+<li><strong>VI Package building</strong> — build <code>.vip</code> packages natively on Linux; <code>.vipb</code> build files work across Windows and Linux</li>
+</ul>
+<p>See <a href="../release-notes/2026.1/">Release Notes for VIPM 2026 Q1</a> for the full feature list, and the <a href="../release-notes/2026.1.1/">VIPM 2026.1f1 release notes</a> for the latest fixes.</p>
 <h2 id="documentation">Documentation</h2>
 <ul>
-<li><a href="ubuntu/">Installing VIPM 2022 on Ubuntu</a> - Legacy installation guide for VIPM 2022</li>
-<li><a href="VIPM%20Linux%20Crash%20on%20Package%20Installation%20-%20Permission%20Fix/">Permission Fix for Package Installation Issues</a> - Troubleshooting guide for installation crashes</li>
+<li><a href="ubuntu/">Installing VIPM 2022 on Ubuntu</a> — Legacy installation guide for VIPM 2022</li>
+<li><a href="VIPM%20Linux%20Crash%20on%20Package%20Installation%20-%20Permission%20Fix/">Permission Fix for Package Installation Issues</a> — Troubleshooting guide for installation crashes</li>
 </ul>
 <h2 id="need-help">Need Help?</h2>
 <ul>
