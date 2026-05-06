@@ -78,14 +78,14 @@ nav:
   - Security: security/index.md
   - Release notes:
     - release-notes/index.md
-    - release-notes/2026.1.1.md
-    - release-notes/2026.1.md
-    - release-notes/2025.3.1.md
-    - release-notes/2025.3.md
-    - release-notes/2024.3.md
-    - release-notes/2024.1.md
-    - release-notes/2023.3.md
-    - release-notes/2023.1.md
+    - 2026Q1f1: release-notes/2026.1.1.md
+    - 2026Q1: release-notes/2026.1.md
+    - 2025Q3f1: release-notes/2025.3.1.md
+    - 2025Q3: release-notes/2025.3.md
+    - 2024Q3: release-notes/2024.3.md
+    - 2024Q1: release-notes/2024.1.md
+    - 2023Q3: release-notes/2023.3.md
+    - 2023Q1: release-notes/2023.1.md
   - Support: support.md
   - Troubleshooting:
     - troubleshooting/index.md
