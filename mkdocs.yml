@@ -78,6 +78,7 @@ nav:
   - Security: security/index.md
   - Release notes:
     - release-notes/index.md
+    - release-notes/2026.1.1.md
     - release-notes/2026.1.md
     - release-notes/2025.3.1.md
     - release-notes/2025.3.md
