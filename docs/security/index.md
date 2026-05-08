@@ -10,10 +10,7 @@ title: Security Overview
 
 The CRA introduces mandatory security requirements for software products sold in the EU, with the first compliance deadline in **September 2026**. If you publish LabVIEW-based software or components, [read our CRA overview](https://jki.net/cra/) to understand what this means for you.
 
-!!! tip "Need help with CRA compliance?"
-    JKI provides security consulting and tooling for LabVIEW-based systems.
-
-    [Learn More about CRA Compliance and LabVIEW](https://jki.net/cra/){ .md-button }
+--8<-- "cra-compliance-help.md"
 
 ### Does the CRA apply to open source packages?
 
