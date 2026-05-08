@@ -58,6 +58,8 @@
       
     
     
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
@@ -2096,10 +2098,6 @@
 <p>VIPM 2026 Q3 Preview adds Software Bill of Materials (SBOM) generation, project synchronization with <code>vipm sync</code>, NI Package Manager (NIPM) dependency management in vipm.toml, and expanded CLI capabilities for automation and CI/CD.</p>
 <p>Many of the new features and capabilities are visible in the <code>vipm</code> command-line interface (CLI).</p>
 <h2 id="software-bill-of-materials-sbom-wtih-vipm-sbom-cli-command">Software Bill of Materials (SBOM) wtih <code>vipm sbom</code> CLI Command</h2>
-<div class="admonition note">
-<p class="admonition-title">VIPM Free tier</p>
-<p>Available in <strong>VIPM Free</strong>, <strong>Community</strong>, and <strong>Professional</strong> editions. See the <a href="../../vipm-editions-comparison/">editions comparison</a> for details.</p>
-</div>
 <p>Generate <a href="https://cyclonedx.org/">CycloneDX</a> 1.5 SBOMs from LabVIEW projects, vipm.toml manifests, <code>.vipc</code>, or <code>.dragon</code> files. SBOMs include both VIPM and NI packages with enriched metadata, license identifiers, and cryptographic hashes — helping meet compliance requirements such as the EU Cyber Resilience Act and US Executive Order 14028.</p>
 <div class="admonition tip">
 <p class="admonition-title">Need help with CRA compliance?</p>
@@ -2117,27 +2115,16 @@
 </ul>
 <p>See the <a href="../../sbom/">SBOM documentation</a> for a tutorial and workflow guidance.</p>
 <h2 id="scan-projects-for-dependencies-with-vipm-sync-cli-command">Scan Projects for Dependencies with <code>vipm sync</code> CLI Command</h2>
-<div class="admonition note">
-<p class="admonition-title">VIPM Free tier</p>
-<p>Available in <strong>VIPM Free</strong>, <strong>Community</strong>, and <strong>Professional</strong> editions. See the <a href="../../vipm-editions-comparison/">editions comparison</a> for details.</p>
-</div>
 <p>Reconcile a <code>vipm.toml</code> manifest from the dependencies discovered in a LabVIEW project scan. This enables a workflow where you maintain <code>vipm.toml</code> as the source of truth — sync from your <code>.lvproj</code>, then generate SBOMs from the manifest without needing LabVIEW on your build machine.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj<span class="w"> </span>--dry-run<span class="w">  </span><span class="c1"># preview changes</span>
 </code></pre></div>
 <p>See the <a href="../../cli/command-reference/#vipm-sync"><code>vipm sync</code> command reference</a> for full options.</p>
 <h2 id="lookup-package-metadata-with-vipm-info-cli-command">Lookup Package Metadata with <code>vipm info</code> CLI Command</h2>
-<div class="admonition note">
-<p class="admonition-title">VIPM Free tier</p>
-<p>Available in <strong>VIPM Free</strong>, <strong>Community</strong>, and <strong>Professional</strong> editions. See the <a href="../../vipm-editions-comparison/">editions comparison</a> for details.</p>
-</div>
 <p>Look up metadata for any VIPM or NI package — name, version, description, vendor, license, and installed files. Supports both VIPM packages and NI packages via the <code>--nipm</code> flag.</p>
 <p>See the <a href="../../cli/command-reference/#vipm-info"><code>vipm info</code> command reference</a> for full options.</p>
 <h2 id="ni-package-nipm-support-in-vipmtoml">NI Package (NIPM) Support in <code>vipm.toml</code></h2>
-<div class="admonition note">
-<p class="admonition-title">VIPM Community tier</p>
-<p>Available in <strong>VIPM Community</strong> (non-commercial) and <strong>VIPM Professional</strong> editions. See the <a href="../../vipm-editions-comparison/">editions comparison</a> for details.</p>
-</div>
+<p><a class="md-button vipm-tier-pill vipm-tier-community" href="../../vipm-editions-comparison/#available-editions">VIPM Community</a></p>
 <p>Manage NI Package Manager dependencies alongside VIPM packages in a single <code>vipm.toml</code> manifest. Declare NIPM feeds, production dependencies, and dev-dependencies in dedicated <code>[nipm.*]</code> sections. Add, remove, and lock NIPM packages using the familiar <code>vipm add --nipm</code>, <code>vipm remove --nipm</code>, and <code>vipm lock</code> commands.</p>
 <p>See the <a href="../../vipm-toml/nipm/">NI Packages (NIPM) guide</a> for details.</p>
 <h2 id="environment-variables-applicable-to-cli-cicd-and-containers">Environment Variables (Applicable to CLI, CI/CD, and Containers)</h2>
@@ -2155,10 +2142,6 @@
 <h2 id="enhanced-cicd-guides">Enhanced CI/CD Guides</h2>
 <p>Updated <a href="../../cli/docker/">Docker</a> and <a href="../../cli/github-actions/">GitHub Actions</a> guides with environment variable configuration, <code>-y</code> flag usage in examples, and SBOM generation workflow steps.</p>
 <h2 id="cancel-or-time-bound-long-running-cli-commands">Cancel or Time-Bound Long-Running CLI Commands</h2>
-<div class="admonition note">
-<p class="admonition-title">VIPM Free tier</p>
-<p>Available in <strong>VIPM Free</strong>, <strong>Community</strong>, and <strong>Professional</strong> editions. See the <a href="../../vipm-editions-comparison/">editions comparison</a> for details.</p>
-</div>
 <p>Long-running operations in the <code>vipm</code> command-line interface (CLI) can now be interrupted cleanly with <strong>Ctrl+C</strong> across the CLI, and <code>vipm sbom</code> and <code>vipm sync</code> additionally support the <strong><code>--timeout</code></strong> flag — useful when a project scan is taking longer than expected, or to guarantee a CI job cannot hang indefinitely.</p>
 <ul>
 <li><strong>Ctrl+C handling (CLI).</strong> Pressing Ctrl+C cancels the in-flight CLI operation cleanly rather than leaving the command in an indeterminate state. In addition to <code>vipm sbom</code> and <code>vipm sync</code>, this now also covers <code>vipm install</code>, <code>vipm cache update</code>, and <code>vipm refresh</code>.<ul>
@@ -2168,10 +2151,6 @@
 <li><strong><code>--timeout</code> flag (CLI).</strong> Sets a maximum wall-clock duration; the CLI command exits with a non-zero code if it exceeds the limit. Works alongside the existing <code>VIPM_TIMEOUT</code> environment variable. Applies to <code>vipm sbom</code> and <code>vipm sync</code>.</li>
 </ul>
 <h2 id="stricter-defaults-for-project-scanning-cli-commands">Stricter Defaults for Project-Scanning CLI Commands</h2>
-<div class="admonition note">
-<p class="admonition-title">VIPM Free tier</p>
-<p>Available in <strong>VIPM Free</strong>, <strong>Community</strong>, and <strong>Professional</strong> editions. See the <a href="../../vipm-editions-comparison/">editions comparison</a> for details.</p>
-</div>
 <p><code>vipm sync</code> and <code>vipm sbom</code> now fail by default when they detect conditions that would produce incomplete or misleading output. Both failure modes are opt-out with a dedicated flag and expose the same per-entry detail on stderr when the flag is set.</p>
 <ul>
 <li><strong>Missing referenced files.</strong> When a LabVIEW project references files that are not on disk, the command aborts with exit code <code>18</code> instead of printing a warning and returning success. Pass <code>--allow-missing-files</code> to restore the previous behavior — a warning listing each missing reference is printed to stderr, and the command proceeds with whatever could be scanned.</li>
@@ -2179,20 +2158,12 @@
 </ul>
 <p><strong>Migration note for automation.</strong> Scripts that previously treated exit code <code>0</code> as "output produced successfully" may need to either add the appropriate <code>--allow-*</code> flag or fix the underlying condition (run <code>vipm install</code> to reconcile drift; fix the project's file references). See the updated <a href="../../cli/command-reference/#vipm-sbom"><code>vipm sbom</code></a> and <a href="../../cli/command-reference/#vipm-sync"><code>vipm sync</code></a> references for full details.</p>
 <h2 id="more-reliable-vipmlock-with-dev-dependencies">More Reliable <code>vipm.lock</code> with Dev-Dependencies</h2>
-<div class="admonition note">
-<p class="admonition-title">VIPM Free tier</p>
-<p>Available in <strong>VIPM Free</strong>, <strong>Community</strong>, and <strong>Professional</strong> editions. See the <a href="../../vipm-editions-comparison/">editions comparison</a> for details.</p>
-</div>
 <p><code>vipm.lock</code> now always reflects the full resolved dependency graph — both production and dev-dependencies — regardless of which <code>--dev</code> flags are passed. This matches the convention of other lock-file-based package managers (pip, poetry, npm, cargo) and ensures consistent installs across environments.</p>
 <ul>
 <li><strong><code>vipm install</code> always preserves dev-dependencies in <code>vipm.lock</code>.</strong> Running <code>vipm install</code> without <code>--dev</code> no longer strips dev-dependencies from the lock file; the lock file remains complete.</li>
 <li><strong><code>vipm lock --dev</code> and <code>--no-dev</code> flags removed.</strong> Since the lock file always includes dev-dependencies, these flags no longer have an effect and have been removed in this release. Remove them from any scripts that pass them. (<code>vipm lock</code> requires <strong>VIPM Community</strong> or higher.)</li>
 </ul>
 <h2 id="additional-improvements">Additional improvements</h2>
-<div class="admonition note">
-<p class="admonition-title">VIPM Free tier</p>
-<p>Available in <strong>VIPM Free</strong>, <strong>Community</strong>, and <strong>Professional</strong> editions. See the <a href="../../vipm-editions-comparison/">editions comparison</a> for details.</p>
-</div>
 <ul>
 <li>LabVIEW project scans run faster on large projects, so <code>vipm sync</code> and <code>vipm sbom</code> complete more quickly on sizeable <code>.lvproj</code> files.</li>
 </ul>
