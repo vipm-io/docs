@@ -1456,10 +1456,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cancel-or-time-bound-long-running-commands" class="md-nav__link">
+  <a href="#cancel-or-time-bound-long-running-cli-commands" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cancel or Time-Bound Long-Running Commands
+        Cancel or Time-Bound Long-Running CLI Commands
       
     </span>
   </a>
@@ -1467,10 +1467,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stricter-defaults-for-project-scanning-commands" class="md-nav__link">
+  <a href="#stricter-defaults-for-project-scanning-cli-commands" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stricter Defaults for Project-Scanning Commands
+        Stricter Defaults for Project-Scanning CLI Commands
       
     </span>
   </a>
@@ -2009,10 +2009,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cancel-or-time-bound-long-running-commands" class="md-nav__link">
+  <a href="#cancel-or-time-bound-long-running-cli-commands" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cancel or Time-Bound Long-Running Commands
+        Cancel or Time-Bound Long-Running CLI Commands
       
     </span>
   </a>
@@ -2020,10 +2020,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stricter-defaults-for-project-scanning-commands" class="md-nav__link">
+  <a href="#stricter-defaults-for-project-scanning-cli-commands" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stricter Defaults for Project-Scanning Commands
+        Stricter Defaults for Project-Scanning CLI Commands
       
     </span>
   </a>
@@ -2110,13 +2110,13 @@
 <p>See the <a href="../../cli/environment-variables/">Environment Variables reference</a> for the full list.</p>
 <h2 id="enhanced-cicd-guides">Enhanced CI/CD Guides</h2>
 <p>Updated <a href="../../cli/docker/">Docker</a> and <a href="../../cli/github-actions/">GitHub Actions</a> guides with environment variable configuration, <code>-y</code> flag usage in examples, and SBOM generation workflow steps.</p>
-<h2 id="cancel-or-time-bound-long-running-commands">Cancel or Time-Bound Long-Running Commands</h2>
-<p>Long-running CLI operations can now be interrupted cleanly with <strong>Ctrl+C</strong> or constrained with the new <strong><code>--timeout</code></strong> flag. This applies to <code>vipm sbom</code>, <code>vipm scan</code>, and <code>vipm sync</code> — useful when a project scan is taking longer than expected, or to guarantee a CI job cannot hang indefinitely.</p>
+<h2 id="cancel-or-time-bound-long-running-cli-commands">Cancel or Time-Bound Long-Running CLI Commands</h2>
+<p>Long-running operations in the <code>vipm</code> command-line interface (CLI) can now be interrupted cleanly with <strong>Ctrl+C</strong> across the CLI, and <code>vipm sbom</code>, <code>vipm scan</code>, and <code>vipm sync</code> additionally support the <strong><code>--timeout</code></strong> flag — useful when a project scan is taking longer than expected, or to guarantee a CI job cannot hang indefinitely.</p>
 <ul>
-<li><strong>Ctrl+C handling.</strong> Pressing Ctrl+C cancels the in-flight operation cleanly rather than leaving the command in an indeterminate state.</li>
-<li><strong><code>--timeout</code> flag.</strong> Sets a maximum wall-clock duration; the command exits with a non-zero code if it exceeds the limit. Works alongside the existing <code>VIPM_TIMEOUT</code> environment variable.</li>
+<li><strong>Ctrl+C handling (CLI).</strong> Pressing Ctrl+C cancels the in-flight CLI operation cleanly rather than leaving the command in an indeterminate state. In addition to <code>vipm sbom</code>, <code>vipm scan</code>, and <code>vipm sync</code>, this now also covers <code>vipm install</code>, <code>vipm cache update</code>, <code>vipm refresh</code>, <code>vipm uninstall</code>, and <code>vipm build</code>.</li>
+<li><strong><code>--timeout</code> flag (CLI).</strong> Sets a maximum wall-clock duration; the CLI command exits with a non-zero code if it exceeds the limit. Works alongside the existing <code>VIPM_TIMEOUT</code> environment variable. Applies to <code>vipm sbom</code>, <code>vipm scan</code>, and <code>vipm sync</code>.</li>
 </ul>
-<h2 id="stricter-defaults-for-project-scanning-commands">Stricter Defaults for Project-Scanning Commands</h2>
+<h2 id="stricter-defaults-for-project-scanning-cli-commands">Stricter Defaults for Project-Scanning CLI Commands</h2>
 <p><code>vipm scan</code>, <code>vipm sync</code>, and <code>vipm sbom</code> now fail by default when they detect conditions that would produce incomplete or misleading output. Both failure modes are opt-out with a dedicated flag and expose the same per-entry detail on stderr when the flag is set.</p>
 <ul>
 <li><strong>Missing referenced files.</strong> When a LabVIEW project references files that are not on disk, the command aborts with exit code <code>18</code> instead of printing a warning and returning success. Pass <code>--allow-missing-files</code> to restore the previous behavior — a warning listing each missing reference is printed to stderr, and the command proceeds with whatever could be scanned.</li>
