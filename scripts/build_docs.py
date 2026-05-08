@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 """Orchestrate the Zensical docs build with pre- and post-build validation.
 
-Single entrypoint for `just build` and CI. Runs four stages in sequence:
+Single entrypoint for `just build` and CI. Runs five stages in sequence:
 
   1. ``scripts/generate_release_notes_table.py`` — regenerate the
      gitignored release-notes table snippet.
-  2. ``scripts/validate_docs_build.py`` — check that the generator's
+  2. ``scripts/generate_cli_snippets.py`` — regenerate the gitignored
+     per-command and global-options snippets from
+     ``data/vipm-public-cli.json``.
+  3. ``scripts/validate_docs_build.py`` — check that the generator's
      outputs are present and shaped as expected.
-  3. ``zensical build`` — render the site to ``site/``.
-  4. Post-build checks against rendered HTML — guard against regressions
+  4. ``zensical build`` — render the site to ``site/``.
+  5. Post-build checks against rendered HTML — guard against regressions
      introduced by the MkDocs→Zensical migration (see
      ``dev-docs/zensical-migration.md``): the release-notes index page
      actually contains the generated table, and the `/report-a-problem/`
@@ -118,6 +121,7 @@ def _run_zensical_build() -> int | None:
 
 def main() -> int:
     _run([sys.executable, str(SCRIPTS_DIR / "generate_release_notes_table.py")])
+    _run([sys.executable, str(SCRIPTS_DIR / "generate_cli_snippets.py")])
     _run([sys.executable, str(SCRIPTS_DIR / "validate_docs_build.py")])
 
     rc = _run_zensical_build()
