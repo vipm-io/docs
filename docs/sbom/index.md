@@ -12,6 +12,8 @@ A Software Bill of Materials (SBOM) is a machine-readable inventory of every sof
 
 Regulations such as the [EU Cyber Resilience Act (CRA)](https://jki.net/cra/) and [US Executive Order 14028](https://www.nist.gov/itl/executive-order-14028-improving-nations-cybersecurity) are making SBOMs a requirement for software products in regulated markets. Beyond compliance, SBOMs support practical goals like license auditing, vulnerability tracking, and supply chain transparency.
 
+--8<-- "cra-compliance-help.md"
+
 ## What VIPM generates
 
 The VIPM CLI generates [CycloneDX](https://cyclonedx.org/) 1.5 SBOMs in JSON format. A single command scans your LabVIEW project and produces an SBOM that includes:
