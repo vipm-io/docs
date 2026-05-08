@@ -1,0 +1,38 @@
+/* Tier badge — compact, colored label appearing under a section heading.
+   Built on Material's .md-button so it's still a clickable link to the
+   editions-comparison page, but visually distinct from regular CTA buttons. */
+
+.md-typeset .md-button.vipm-tier-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.55rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  border: 1px solid transparent;
+}
+
+.md-typeset .md-button.vipm-tier-free {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.md-typeset .md-button.vipm-tier-community {
+  background-color: #fed7aa;
+  color: #9a3412;
+}
+
+.md-typeset .md-button.vipm-tier-pro {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.md-typeset .md-button.vipm-tier-pill:hover,
+.md-typeset .md-button.vipm-tier-pill:focus {
+  opacity: 0.85;
+  color: inherit;
+}

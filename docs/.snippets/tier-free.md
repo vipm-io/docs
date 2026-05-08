@@ -1,3 +1,1 @@
-!!! note "VIPM Free tier"
-
-    Available in **VIPM Free**, **Community**, and **Professional** editions. See the [editions comparison](../vipm-editions-comparison.md) for details.
+[VIPM Free](../vipm-editions-comparison.md#available-editions){ .md-button .vipm-tier-pill .vipm-tier-free }
