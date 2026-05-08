@@ -45,6 +45,10 @@ Never include mentions of Claude, AI, or "generated with" in commit messages, PR
 
 PR descriptions should start with a brief sentence explaining **why** the PR exists — what user need it addresses or what value it provides. Lead with the motivation, then list the changes.
 
+## Public-repo authoring discipline
+
+This is a public repository. Commits, PR titles, PR descriptions, issue text and comments, file content, code comments, and review notes here MUST NEVER reference private/internal repositories or non-public information. That includes (non-exhaustive): internal repo names, internal issue or PR numbers, internal commit SHAs, internal file paths, internal command-name lists, or upstream tooling that lives in a non-public repo. Use generic phrasing instead — e.g. "the upstream tooling," "the source-of-truth registry," "an internal pipeline." When in doubt, omit. Describe USE in this repo, not ORIGIN. The same applies to file content: JSON fields, CSS classes, code comments, and embedded metadata should not carry private origin information.
+
 ## CLI Docs Modernization
 
 Active improvement effort tracked in `dev-docs/cli-docs-improvement-proposal.md`. That document is the source of truth for CLI documentation plans, decisions, and progress. Update it when modifying `docs/cli/` content.
