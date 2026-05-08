@@ -8,9 +8,9 @@ To download VIPM and/or purchase a VIPM Professional License visit [vipm.io/get]
 
 The three primary VIPM editions are:
 
-- **VIPM Community**: Advanced features typically reserved for Pro, but restricted to non-commercial use only
-- **VIPM Free**: Basic version that is free for commercial use
-- **VIPM Pro**: The full-featured commercial version for professional development
+- [VIPM Community](#available-editions){ .md-button .vipm-tier-pill .vipm-tier-community } — Advanced features typically reserved for Pro, but restricted to non-commercial use only.
+- [VIPM Free](#available-editions){ .md-button .vipm-tier-pill .vipm-tier-free } — Basic version that is free for commercial use.
+- [VIPM Pro](#available-editions){ .md-button .vipm-tier-pill .vipm-tier-pro } — The full-featured commercial version for professional development.
 
 ## Legend
 
