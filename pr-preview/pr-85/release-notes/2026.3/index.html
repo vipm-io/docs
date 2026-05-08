@@ -1478,6 +1478,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#more-reliable-vipmlock-with-dev-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        More Reliable vipm.lock with Dev-Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#additional-improvements" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2031,6 +2042,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#more-reliable-vipmlock-with-dev-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        More Reliable vipm.lock with Dev-Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#additional-improvements" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2079,6 +2101,7 @@
 <ul>
 <li>Multiple input types: <code>vipm.toml</code>, <code>.lvproj</code>, <code>.dragon</code>, <code>.vipc</code></li>
 <li>Product metadata: name, version, and component type</li>
+<li>Stable root references (<code>bom-ref</code>) for SBOMs, including for packages whose Product Name contains a dotted version number</li>
 <li>Dependency filtering: <code>--no-vipm</code>, <code>--no-nipm</code>, <code>--no-dev</code></li>
 <li>VI linker traversal for deeper dependency discovery from <code>.lvproj</code> files</li>
 <li>CI/CD integration with GitHub Actions and Docker</li>
@@ -2111,24 +2134,27 @@
 <h2 id="enhanced-cicd-guides">Enhanced CI/CD Guides</h2>
 <p>Updated <a href="../../cli/docker/">Docker</a> and <a href="../../cli/github-actions/">GitHub Actions</a> guides with environment variable configuration, <code>-y</code> flag usage in examples, and SBOM generation workflow steps.</p>
 <h2 id="cancel-or-time-bound-long-running-cli-commands">Cancel or Time-Bound Long-Running CLI Commands</h2>
-<p>Long-running operations in the <code>vipm</code> command-line interface (CLI) can now be interrupted cleanly with <strong>Ctrl+C</strong> across the CLI, and <code>vipm sbom</code>, <code>vipm scan</code>, and <code>vipm sync</code> additionally support the <strong><code>--timeout</code></strong> flag — useful when a project scan is taking longer than expected, or to guarantee a CI job cannot hang indefinitely.</p>
+<p>Long-running operations in the <code>vipm</code> command-line interface (CLI) can now be interrupted cleanly with <strong>Ctrl+C</strong> across the CLI, and <code>vipm sbom</code> and <code>vipm sync</code> additionally support the <strong><code>--timeout</code></strong> flag — useful when a project scan is taking longer than expected, or to guarantee a CI job cannot hang indefinitely.</p>
 <ul>
-<li><strong>Ctrl+C handling (CLI).</strong> Pressing Ctrl+C cancels the in-flight CLI operation cleanly rather than leaving the command in an indeterminate state. In addition to <code>vipm sbom</code>, <code>vipm scan</code>, and <code>vipm sync</code>, this now also covers <code>vipm install</code>, <code>vipm cache update</code>, <code>vipm refresh</code>, <code>vipm uninstall</code>, and <code>vipm build</code>.</li>
-<li><strong><code>--timeout</code> flag (CLI).</strong> Sets a maximum wall-clock duration; the CLI command exits with a non-zero code if it exceeds the limit. Works alongside the existing <code>VIPM_TIMEOUT</code> environment variable. Applies to <code>vipm sbom</code>, <code>vipm scan</code>, and <code>vipm sync</code>.</li>
+<li><strong>Ctrl+C handling (CLI).</strong> Pressing Ctrl+C cancels the in-flight CLI operation cleanly rather than leaving the command in an indeterminate state. In addition to <code>vipm sbom</code> and <code>vipm sync</code>, this now also covers <code>vipm install</code>, <code>vipm cache update</code>, <code>vipm refresh</code>, <code>vipm uninstall</code>, and <code>vipm build</code>.</li>
+<li><strong><code>--timeout</code> flag (CLI).</strong> Sets a maximum wall-clock duration; the CLI command exits with a non-zero code if it exceeds the limit. Works alongside the existing <code>VIPM_TIMEOUT</code> environment variable. Applies to <code>vipm sbom</code> and <code>vipm sync</code>.</li>
 </ul>
 <h2 id="stricter-defaults-for-project-scanning-cli-commands">Stricter Defaults for Project-Scanning CLI Commands</h2>
-<p><code>vipm scan</code>, <code>vipm sync</code>, and <code>vipm sbom</code> now fail by default when they detect conditions that would produce incomplete or misleading output. Both failure modes are opt-out with a dedicated flag and expose the same per-entry detail on stderr when the flag is set.</p>
+<p><code>vipm sync</code> and <code>vipm sbom</code> now fail by default when they detect conditions that would produce incomplete or misleading output. Both failure modes are opt-out with a dedicated flag and expose the same per-entry detail on stderr when the flag is set.</p>
 <ul>
 <li><strong>Missing referenced files.</strong> When a LabVIEW project references files that are not on disk, the command aborts with exit code <code>18</code> instead of printing a warning and returning success. Pass <code>--allow-missing-files</code> to restore the previous behavior — a warning listing each missing reference is printed to stderr, and the command proceeds with whatever could be scanned.</li>
 <li><strong>Installed-package drift (<code>vipm sbom</code>).</strong> When installed packages disagree with the project's declared state in <code>vipm.toml</code> or <code>vipm.lock</code>, <code>vipm sbom</code> aborts with exit code <code>17</code>. Pass <code>--allow-package-drift</code> to override — a warning listing the drifted packages is printed to stderr, and the SBOM reflects installed versions.</li>
 </ul>
 <p><strong>Migration note for automation.</strong> Scripts that previously treated exit code <code>0</code> as "output produced successfully" may need to either add the appropriate <code>--allow-*</code> flag or fix the underlying condition (run <code>vipm install</code> to reconcile drift; fix the project's file references). See the updated <a href="../../cli/command-reference/#vipm-sbom"><code>vipm sbom</code></a> and <a href="../../cli/command-reference/#vipm-sync"><code>vipm sync</code></a> references for full details.</p>
+<h2 id="more-reliable-vipmlock-with-dev-dependencies">More Reliable <code>vipm.lock</code> with Dev-Dependencies</h2>
+<p><code>vipm.lock</code> now always reflects the full resolved dependency graph — both production and dev-dependencies — regardless of which <code>--dev</code> flags are passed. This matches the convention of other lock-file-based package managers (pip, poetry, npm, cargo) and ensures consistent installs across environments.</p>
+<ul>
+<li><strong><code>vipm install</code> always preserves dev-dependencies in <code>vipm.lock</code>.</strong> Running <code>vipm install</code> without <code>--dev</code> no longer strips dev-dependencies from the lock file; the lock file remains complete.</li>
+<li><strong><code>vipm lock --dev</code> and <code>--no-dev</code> flags removed.</strong> Since the lock file always includes dev-dependencies, these flags no longer have an effect and have been removed in this release. Remove them from any scripts that pass them.</li>
+</ul>
 <h2 id="additional-improvements">Additional improvements</h2>
 <ul>
-<li><code>vipm install</code> now preserves dev-dependencies in <code>vipm.lock</code> even when running without <code>--dev</code>, so the lock file always reflects the full resolved dependency graph (both production and dev-dependencies), matching the convention of other lock-file-based package managers.</li>
-<li><code>vipm lock --dev</code> and <code>vipm lock --no-dev</code> flags were removed in this release — the lock file now always includes dev-dependencies, so these flags no longer have an effect. Remove them from any scripts that pass them.</li>
-<li>LabVIEW project scans run faster on large projects, so <code>vipm scan</code>, <code>vipm sync</code>, and <code>vipm sbom</code> complete more quickly on sizeable <code>.lvproj</code> files.</li>
-<li>SBOMs generated for packages whose Product Name contains a dotted version number now produce a stable, correct root reference (<code>bom-ref</code>). Previously, the dotted segment could lead to inconsistent root identifiers between SBOMs of the same package.</li>
+<li>LabVIEW project scans run faster on large projects, so <code>vipm sync</code> and <code>vipm sbom</code> complete more quickly on sizeable <code>.lvproj</code> files.</li>
 </ul>
 <h2 id="need-help">Need Help?</h2>
 <ul>
