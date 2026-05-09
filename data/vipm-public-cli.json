@@ -1,0 +1,1847 @@
+{
+  "schema_version": "1.0-public",
+  "cli_version": "dev",
+  "generated_on": "2026-05-08",
+  "global_options": [
+    {
+      "name": "refresh",
+      "long": "--refresh",
+      "value_name": "REFRESH",
+      "description": "Force a refresh of VIPM's package list before performing the operation",
+      "defaults": [],
+      "required": false,
+      "multiple": false,
+      "possible_values": [
+        "true",
+        "false"
+      ],
+      "aliases": [],
+      "visible_aliases": [],
+      "conflicts_with": []
+    },
+    {
+      "name": "labview_version",
+      "long": "--labview-version",
+      "value_name": "YYYY",
+      "description": "Performs the operation on or using the specified LabVIEW version. Accepts only YYYY format (4-digit year, e.g., 2020, 2024, 2025). Use --labview-bitness for 32/64-bit selection",
+      "defaults": [],
+      "required": false,
+      "multiple": false,
+      "possible_values": [],
+      "aliases": [],
+      "visible_aliases": [],
+      "conflicts_with": []
+    },
+    {
+      "name": "labview_bitness",
+      "long": "--labview-bitness",
+      "value_name": "32|64",
+      "description": "Used in conjunction with --labview-version when there are multiple bitnesses of the same LabVIEW version installed",
+      "defaults": [],
+      "required": false,
+      "multiple": false,
+      "possible_values": [],
+      "aliases": [],
+      "visible_aliases": [],
+      "conflicts_with": []
+    },
+    {
+      "name": "json",
+      "long": "--json",
+      "value_name": "JSON",
+      "description": "Output in JSON format",
+      "defaults": [],
+      "required": false,
+      "multiple": false,
+      "possible_values": [
+        "true",
+        "false"
+      ],
+      "aliases": [],
+      "visible_aliases": [],
+      "conflicts_with": [],
+      "access": {
+        "tier": "professional",
+        "experimental": true,
+        "community_requires_public_repo": false
+      }
+    },
+    {
+      "name": "color",
+      "long": "--color-mode",
+      "value_name": "COLOR_MODE",
+      "description": "Control when to use colored output",
+      "defaults": [
+        "auto"
+      ],
+      "required": false,
+      "multiple": false,
+      "possible_values": [
+        "auto",
+        "always",
+        "never"
+      ],
+      "aliases": [],
+      "visible_aliases": [],
+      "conflicts_with": []
+    },
+    {
+      "name": "global_timeout",
+      "long": "--timeout",
+      "value_name": "SECONDS",
+      "description": "Maximum time (in seconds) to wait for the operation to complete. Use -1 to wait indefinitely. The default varies by command and is longer in CI environments than locally",
+      "defaults": [],
+      "required": false,
+      "multiple": false,
+      "possible_values": [],
+      "aliases": [],
+      "visible_aliases": [],
+      "conflicts_with": []
+    },
+    {
+      "name": "show_progress",
+      "long": "--show-progress",
+      "value_name": "SHOW_PROGRESS",
+      "description": "Show real-time progress from VIPM Desktop during operations",
+      "defaults": [],
+      "required": false,
+      "multiple": false,
+      "possible_values": [
+        "true",
+        "false"
+      ],
+      "aliases": [],
+      "visible_aliases": [],
+      "conflicts_with": []
+    },
+    {
+      "name": "verbose",
+      "long": "--verbose",
+      "short": "v",
+      "value_name": "VERBOSE",
+      "description": "Show verbose diagnostic output (API calls, timing, file paths)",
+      "defaults": [],
+      "required": false,
+      "multiple": false,
+      "possible_values": [
+        "true",
+        "false"
+      ],
+      "aliases": [],
+      "visible_aliases": [],
+      "conflicts_with": []
+    }
+  ],
+  "commands": [
+    {
+      "name": "about",
+      "description": "Prints information about the VIPM installation",
+      "access": {
+        "tier": "always_allowed",
+        "community_requires_public_repo": false
+      },
+      "arguments": [],
+      "options": [],
+      "subcommands": []
+    },
+    {
+      "name": "activate",
+      "description": "Activates VIPM Pro",
+      "access": {
+        "tier": "always_allowed",
+        "community_requires_public_repo": false
+      },
+      "arguments": [],
+      "options": [
+        {
+          "name": "serial_number",
+          "long": "--serial-number",
+          "value_name": "SERIAL_NUMBER",
+          "description": "Serial Number (will prompt if not provided in interactive mode)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "name",
+          "long": "--name",
+          "value_name": "NAME",
+          "description": "Your full name (will prompt if not provided in interactive mode)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "email",
+          "long": "--email",
+          "value_name": "EMAIL",
+          "description": "Your email address (will prompt if not provided in interactive mode)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "install",
+      "description": "Installs packages from vipm.toml, .vipc, .dragon files, or by name",
+      "after_help": "VIPM.TOML SUPPORT:\n  When run without arguments, auto-detects project manifests in this order:\n    1. vipm.toml (highest priority)\n    2. .dragon file\n    3. .vipc file\n\n  For vipm.toml projects, the labview_version from [project] is used automatically.\n  Dev-dependencies ([dev-dependencies]) can be included with --dev.\n  Path and git dependencies are also skipped with a warning.\n\nEXAMPLES:\n  vipm install                      # Auto-detect vipm.toml, .dragon, or .vipc\n  vipm install ./vipm.toml          # Install from specific vipm.toml\n  vipm install --dev ./vipm.toml    # Install regular + dev dependencies from vipm.toml\n  vipm install project.vipc         # Install from .vipc file\n  vipm install oglib_array          # Install a package by name\n  vipm install oglib_array@6.0.1.20 # Install specific version",
+      "access": {
+        "tier": "free",
+        "community_requires_public_repo": true
+      },
+      "arguments": [
+        {
+          "name": "packages",
+          "description": "Packages to install by name (e.g., \"oglib_array\"), name with version (\"oglib_array@6.0.1.20\"), or path to a .vip, .ogp, .vipc, .dragon, or vipm.toml file. If no packages are specified and a vipm.toml, .dragon, or .vipc file exists, it will be used",
+          "value_name": "PACKAGES",
+          "required": false,
+          "multiple": true,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "options": [
+        {
+          "name": "dev",
+          "long": "--dev",
+          "value_name": "DEV",
+          "description": "Install dev-dependencies from vipm.toml in addition to regular dependencies",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "no_dev"
+          ]
+        },
+        {
+          "name": "no_dev",
+          "long": "--no-dev",
+          "value_name": "NO_DEV",
+          "description": "Skip dev-dependencies (explicit toggle for clarity)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "dev"
+          ]
+        },
+        {
+          "name": "upgrade",
+          "long": "--upgrade",
+          "value_name": "UPGRADE",
+          "description": "Upgrade packages to the latest version if already installed",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "yes",
+          "long": "--yes",
+          "short": "y",
+          "value_name": "YES",
+          "description": "Skip confirmation prompt when installing from files",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "best_effort",
+          "long": "--best-effort",
+          "value_name": "BEST_EFFORT",
+          "description": "Continue when dev-dependency resolution fails (warns instead of errors). Lets a production install proceed even if a dev-dependency version, feed, or spec is temporarily unresolvable",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "vipm",
+          "long": "--vipm",
+          "value_name": "VIPM",
+          "description": "Include only VIPM packages",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "no_vipm"
+          ]
+        },
+        {
+          "name": "nipm",
+          "long": "--nipm",
+          "value_name": "NIPM",
+          "description": "Include only NIPM packages",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "no_nipm"
+          ]
+        },
+        {
+          "name": "no_vipm",
+          "long": "--no-vipm",
+          "value_name": "NO_VIPM",
+          "description": "Exclude VIPM packages from results",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "vipm"
+          ]
+        },
+        {
+          "name": "no_nipm",
+          "long": "--no-nipm",
+          "value_name": "NO_NIPM",
+          "description": "Exclude NIPM packages from results",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "nipm"
+          ]
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "build",
+      "description": "Builds project artifacts from various sources",
+      "access": {
+        "tier": "community",
+        "community_requires_public_repo": true
+      },
+      "arguments": [
+        {
+          "name": "build_spec",
+          "description": "Build name from vipm.toml or path to a .lvproj/.vipb file. If omitted, builds all default targets from vipm.toml",
+          "value_name": "BUILD_SPEC",
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "options": [
+        {
+          "name": "all",
+          "long": "--all",
+          "value_name": "ALL",
+          "description": "Build all targets defined in vipm.toml (including those with default=false)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "build_spec"
+          ]
+        },
+        {
+          "name": "lvproj_build_spec",
+          "long": "--lvproj-build-spec",
+          "value_name": "LVPROJ_BUILD_SPEC",
+          "description": "Name of the build specification within a LabVIEW project file (only for .lvproj files)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [
+            "lvproj-spec"
+          ],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "lvproj_target",
+          "long": "--lvproj-target",
+          "value_name": "LVPROJ_TARGET",
+          "description": "Scope build-spec lookup to a specific target within the .lvproj file",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "version_number",
+          "long": "--version-number",
+          "value_name": "VERSION_NUMBER",
+          "description": "Set the version number (1-4 components: major.minor.patch[.build]); missing build preserves the existing build number when present",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "build_number",
+          "long": "--build-number",
+          "value_name": "BUILD_NUMBER",
+          "description": "Set the build number (4th component of version). Applies to .lvproj and .vipb; without --version-number, existing major.minor.patch values are reused (defaulting to 0.1.0 when none are present)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "debug",
+          "long": "--debug",
+          "value_name": "DEBUG",
+          "description": "Build in debug mode (preserves block diagrams and front panels)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "no_deps",
+          "long": "--no-deps",
+          "value_name": "NO_DEPS",
+          "description": "Skip building dependencies (assume they already exist)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "rebuild_deps"
+          ]
+        },
+        {
+          "name": "rebuild_deps",
+          "long": "--rebuild-deps",
+          "value_name": "REBUILD_DEPS",
+          "description": "Force rebuild all dependencies (clean and rebuild even if outputs exist)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "no_deps"
+          ]
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "clean",
+      "description": "Remove build output directories defined in vipm.toml",
+      "access": {
+        "tier": "community",
+        "community_requires_public_repo": true
+      },
+      "arguments": [
+        {
+          "name": "build",
+          "description": "Build name to clean (defaults to all builds when omitted)",
+          "value_name": "BUILD_NAME",
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "options": [
+        {
+          "name": "all",
+          "long": "--all",
+          "value_name": "ALL",
+          "description": "Clean all builds defined in vipm.toml",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "build"
+          ]
+        },
+        {
+          "name": "dry_run",
+          "long": "--dry-run",
+          "value_name": "DRY_RUN",
+          "description": "Show what would be removed without deleting files",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "yes",
+          "long": "--yes",
+          "short": "y",
+          "value_name": "YES",
+          "description": "Skip confirmation prompt",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "init",
+      "description": "Initialize a new vipm.toml file",
+      "access": {
+        "tier": "community",
+        "community_requires_public_repo": true
+      },
+      "arguments": [
+        {
+          "name": "path",
+          "description": "Directory to initialize (defaults to current directory)",
+          "value_name": "PATH",
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "options": [
+        {
+          "name": "name",
+          "long": "--name",
+          "value_name": "NAME",
+          "description": "Set the project name",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "force",
+          "long": "--force",
+          "value_name": "FORCE",
+          "description": "Overwrite existing vipm.toml",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "add",
+      "description": "Add dependencies to vipm.toml",
+      "access": {
+        "tier": "community",
+        "community_requires_public_repo": true
+      },
+      "arguments": [
+        {
+          "name": "packages",
+          "description": "Packages to add by name (e.g., \"oglib_array\") or name with version (\"oglib_array@6.0.1.20\")",
+          "value_name": "PACKAGES",
+          "required": true,
+          "multiple": true,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "options": [
+        {
+          "name": "install",
+          "long": "--install",
+          "value_name": "INSTALL",
+          "description": "Download, install, and update vipm.lock after editing vipm.toml",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "dev",
+          "long": "--dev",
+          "short": "D",
+          "value_name": "DEV",
+          "description": "Add as dev dependency instead of regular dependency",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "nipm",
+          "long": "--nipm",
+          "value_name": "NIPM",
+          "description": "Add NIPM package (writes to [nipm.dependencies] or [nipm.dev-dependencies])",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "feed",
+          "long": "--feed",
+          "value_name": "FEED",
+          "description": "NIPM feed alias (optional; vipm will attempt auto-resolution if omitted)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "feed_url",
+          "long": "--feed-url",
+          "value_name": "FEED_URL",
+          "description": "NIPM feed URL to add when the alias does not yet exist in vipm.toml",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "remove",
+      "description": "Remove dependencies from vipm.toml",
+      "access": {
+        "tier": "community",
+        "community_requires_public_repo": true
+      },
+      "arguments": [
+        {
+          "name": "packages",
+          "description": "Package names to remove",
+          "value_name": "PACKAGES",
+          "required": true,
+          "multiple": true,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "options": [
+        {
+          "name": "dev",
+          "long": "--dev",
+          "short": "D",
+          "value_name": "DEV",
+          "description": "Remove from dev dependencies instead of regular dependencies",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "nipm",
+          "long": "--nipm",
+          "value_name": "NIPM",
+          "description": "Remove NIPM packages (targets [nipm.dependencies] or [nipm.dev-dependencies])",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "lock",
+      "description": "Generate or check vipm.lock from vipm.toml",
+      "access": {
+        "tier": "community",
+        "community_requires_public_repo": true
+      },
+      "arguments": [],
+      "options": [
+        {
+          "name": "check",
+          "long": "--check",
+          "value_name": "CHECK",
+          "description": "Check if vipm.lock is in sync without writing changes",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "best_effort",
+          "long": "--best-effort",
+          "value_name": "BEST_EFFORT",
+          "description": "Continue with incomplete lock file when specs cannot be fetched (warns instead of errors)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "list",
+      "description": "Lists packages from a configuration file or shows installed packages",
+      "access": {
+        "tier": "free",
+        "community_requires_public_repo": true
+      },
+      "arguments": [
+        {
+          "name": "file",
+          "description": "Lists packages declared in the specified .vipc or .dragon file",
+          "value_name": "FILE",
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "installed"
+          ]
+        }
+      ],
+      "options": [
+        {
+          "name": "installed",
+          "long": "--installed",
+          "value_name": "INSTALLED",
+          "description": "Lists all packages installed in the current LabVIEW version",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "file"
+          ]
+        },
+        {
+          "name": "dev",
+          "long": "--dev",
+          "value_name": "DEV",
+          "description": "Show only dev dependencies (vipm.toml)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "no_dev"
+          ]
+        },
+        {
+          "name": "no_dev",
+          "long": "--no-dev",
+          "value_name": "NO_DEV",
+          "description": "Hide dev dependencies (vipm.toml)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "dev"
+          ]
+        },
+        {
+          "name": "vipm",
+          "long": "--vipm",
+          "value_name": "VIPM",
+          "description": "Include only VIPM packages",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "no_vipm"
+          ]
+        },
+        {
+          "name": "nipm",
+          "long": "--nipm",
+          "value_name": "NIPM",
+          "description": "Include only NIPM packages",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "no_nipm"
+          ]
+        },
+        {
+          "name": "no_vipm",
+          "long": "--no-vipm",
+          "value_name": "NO_VIPM",
+          "description": "Exclude VIPM packages from results",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "vipm"
+          ]
+        },
+        {
+          "name": "no_nipm",
+          "long": "--no-nipm",
+          "value_name": "NO_NIPM",
+          "description": "Exclude NIPM packages from results",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "nipm"
+          ]
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "info",
+      "description": "Show metadata and installed files for a package",
+      "access": {
+        "tier": "free",
+        "community_requires_public_repo": true
+      },
+      "arguments": [
+        {
+          "name": "package",
+          "description": "Package name (same format as install/uninstall)",
+          "value_name": "PACKAGE",
+          "required": true,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "options": [
+        {
+          "name": "installed_files",
+          "long": "--installed-files",
+          "value_name": "INSTALLED_FILES",
+          "description": "List the files installed by the package",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [],
+          "access": {
+            "tier": "professional",
+            "community_requires_public_repo": false
+          }
+        },
+        {
+          "name": "nipm",
+          "long": "--nipm",
+          "value_name": "NIPM",
+          "description": "Query an NIPM package instead of a VIPM package",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "search",
+      "description": "Searches for available packages by name or description",
+      "access": {
+        "tier": "free",
+        "community_requires_public_repo": true
+      },
+      "arguments": [
+        {
+          "name": "search_terms",
+          "description": "Search terms to filter packages",
+          "value_name": "SEARCH_TERMS",
+          "required": true,
+          "multiple": true,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "options": [
+        {
+          "name": "limit",
+          "long": "--limit",
+          "value_name": "LIMIT",
+          "description": "Limit the number of packages shown (default: 10)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "uninstall",
+      "description": "Uninstalls one or more packages",
+      "access": {
+        "tier": "community",
+        "community_requires_public_repo": true
+      },
+      "arguments": [
+        {
+          "name": "packages",
+          "description": "Package names or file paths (.vipc, .dragon) to uninstall",
+          "value_name": "PACKAGES",
+          "required": true,
+          "multiple": true,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "options": [
+        {
+          "name": "allow_version_mismatch",
+          "long": "--allow-version-mismatch",
+          "short": "F",
+          "value_name": "ALLOW_VERSION_MISMATCH",
+          "description": "Allow uninstalling when installed version differs from file specification",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [
+            "force"
+          ],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "yes",
+          "long": "--yes",
+          "short": "y",
+          "value_name": "YES",
+          "description": "Skip confirmation prompt when uninstalling from files",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "sbom",
+      "description": "Generate a Software Bill of Materials",
+      "access": {
+        "tier": "free",
+        "community_requires_public_repo": true
+      },
+      "arguments": [
+        {
+          "name": "input",
+          "description": "Path to a vipm.toml, .dragon, .vipc, or .lvproj file (default: vipm.toml)",
+          "value_name": "INPUT",
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "options": [
+        {
+          "name": "format",
+          "long": "--format",
+          "value_name": "FORMAT",
+          "description": "SBOM output format",
+          "defaults": [
+            "cyclonedx"
+          ],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "spdx",
+            "cyclonedx"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "schema_version",
+          "long": "--schema-version",
+          "value_name": "VERSION",
+          "description": "CycloneDX schema version",
+          "defaults": [
+            "1.5"
+          ],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "document_version",
+          "long": "--document-version",
+          "value_name": "N",
+          "description": "SBOM revision number (default: 1)",
+          "defaults": [
+            "1"
+          ],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "document_serial_number",
+          "long": "--document-serial-number",
+          "value_name": "URN",
+          "description": "Unique identifier for this BOM's lineage (urn:uuid:... format)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "output",
+          "long": "--output",
+          "value_name": "OUTPUT",
+          "description": "Output file path",
+          "defaults": [],
+          "required": true,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "product_version",
+          "long": "--product-version",
+          "value_name": "VERSION",
+          "description": "Version of the software described by the SBOM",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "product_name",
+          "long": "--product-name",
+          "value_name": "NAME",
+          "description": "Name of the software described by the SBOM (overrides the filename-derived name)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "product_type",
+          "long": "--product-type",
+          "value_name": "TYPE",
+          "description": "Component type of the software described by the SBOM (default: application)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "lvproj_build_spec",
+          "long": "--lvproj-build-spec",
+          "value_name": "NAME",
+          "description": "Name of a build specification within the .lvproj file. Extracts product name, version, and type from the build spec as defaults for metadata.component (overridden by explicit --product-* flags). The containing target is inferred automatically when unambiguous; pass --lvproj-target to disambiguate if the same name exists under multiple targets",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [
+            "lvproj-spec"
+          ],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "lvproj_target",
+          "long": "--lvproj-target",
+          "value_name": "TARGET",
+          "description": "Scope the dependency scan to a specific .lvproj target. May be used alone (scans only that target) or with --lvproj-build-spec (validates the spec is under that target). Omit to scan the whole project",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "no_dev",
+          "long": "--no-dev",
+          "value_name": "NO_DEV",
+          "description": "Exclude dev-dependencies from SBOM output",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "vipm",
+          "long": "--vipm",
+          "value_name": "VIPM",
+          "description": "Include only VIPM packages",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "no_vipm"
+          ]
+        },
+        {
+          "name": "nipm",
+          "long": "--nipm",
+          "value_name": "NIPM",
+          "description": "Include only NIPM packages",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "no_nipm"
+          ]
+        },
+        {
+          "name": "no_vipm",
+          "long": "--no-vipm",
+          "value_name": "NO_VIPM",
+          "description": "Exclude VIPM packages from results",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "vipm"
+          ]
+        },
+        {
+          "name": "no_nipm",
+          "long": "--no-nipm",
+          "value_name": "NO_NIPM",
+          "description": "Exclude NIPM packages from results",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "nipm"
+          ]
+        },
+        {
+          "name": "allow_package_drift",
+          "long": "--allow-package-drift",
+          "value_name": "ALLOW_PACKAGE_DRIFT",
+          "description": "Allow SBOM generation to proceed when installed packages disagree with `vipm.toml` / `vipm.lock`. A stderr warning lists the drifted packages and the SBOM reflects installed versions. Without this flag, drift aborts with exit code 17 (`PACKAGE_DRIFT`)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "allow_missing_files",
+          "long": "--allow-missing-files",
+          "value_name": "ALLOW_MISSING_FILES",
+          "description": "Allow SBOM generation to proceed when files referenced by the project cannot be found on disk. A stderr warning lists the missing references and the SBOM reflects what could be scanned. Without this flag, missing references abort with exit code 18 (`MISSING_REFERENCED_FILES`)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "sync",
+      "description": "Synchronize vipm.toml with dependencies discovered by scanning a project",
+      "access": {
+        "tier": "free",
+        "community_requires_public_repo": true
+      },
+      "arguments": [
+        {
+          "name": "target",
+          "description": "Manifest to update (default: vipm.toml, searched up through parent folders)",
+          "value_name": "TARGET",
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "options": [
+        {
+          "name": "from",
+          "long": "--from",
+          "value_name": "SOURCE",
+          "description": "Project file to scan for dependencies",
+          "defaults": [],
+          "required": true,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "dry_run",
+          "long": "--dry-run",
+          "value_name": "DRY_RUN",
+          "description": "Show what would change without writing to disk",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "vipm",
+          "long": "--vipm",
+          "value_name": "VIPM",
+          "description": "Include only VIPM packages",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "no_vipm"
+          ]
+        },
+        {
+          "name": "nipm",
+          "long": "--nipm",
+          "value_name": "NIPM",
+          "description": "Include only NIPM packages",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "no_nipm"
+          ]
+        },
+        {
+          "name": "no_vipm",
+          "long": "--no-vipm",
+          "value_name": "NO_VIPM",
+          "description": "Exclude VIPM packages from results",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "vipm"
+          ]
+        },
+        {
+          "name": "no_nipm",
+          "long": "--no-nipm",
+          "value_name": "NO_NIPM",
+          "description": "Exclude NIPM packages from results",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "nipm"
+          ]
+        },
+        {
+          "name": "allow_missing_files",
+          "long": "--allow-missing-files",
+          "value_name": "ALLOW_MISSING_FILES",
+          "description": "Allow sync to proceed when files referenced by the project cannot be found on disk. A stderr warning lists the missing references and sync operates on what could be resolved. Without this flag, missing references abort with exit code 18 (`MISSING_REFERENCED_FILES`)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "refresh",
+      "description": "Refresh all package sources (VIPM Desktop, CLI cache, NIPM feeds)",
+      "access": {
+        "tier": "free",
+        "community_requires_public_repo": true
+      },
+      "arguments": [],
+      "options": [
+        {
+          "name": "no_cache",
+          "long": "--no-cache",
+          "value_name": "NO_CACHE",
+          "description": "Skip CLI cache update (repo indexes, specs, database)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "no_nipm",
+          "long": "--no-nipm",
+          "value_name": "NO_NIPM",
+          "description": "Skip NIPM feed update",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "force",
+          "long": "--force",
+          "value_name": "FORCE",
+          "description": "Force re-download even if cached",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "version",
+      "description": "Prints the version of the VIPM CLI and VIPM Desktop",
+      "access": {
+        "tier": "always_allowed",
+        "community_requires_public_repo": false
+      },
+      "arguments": [],
+      "options": [],
+      "subcommands": []
+    },
+    {
+      "name": "login",
+      "description": "Log in to vipm.io",
+      "access": {
+        "tier": "always_allowed",
+        "community_requires_public_repo": false
+      },
+      "arguments": [],
+      "options": [
+        {
+          "name": "email",
+          "long": "--email",
+          "value_name": "EMAIL",
+          "description": "Email for vipm.io",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "password",
+          "long": "--password",
+          "value_name": "PASSWORD",
+          "description": "Password for vipm.io (will prompt if not provided in interactive mode)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "token",
+          "long": "--token",
+          "value_name": "TOKEN",
+          "description": "Provide an auth token directly instead of email/password",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "no_store",
+          "long": "--no-store",
+          "value_name": "NO_STORE",
+          "description": "Do not persist the token locally (always implied in CI)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "allow_file_store",
+          "long": "--allow-file-store",
+          "value_name": "ALLOW_FILE_STORE",
+          "description": "Allow insecure file-based token storage if keyring is unavailable (not recommended)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "whoami",
+      "description": "Show the current vipm.io account",
+      "access": {
+        "tier": "always_allowed",
+        "community_requires_public_repo": false
+      },
+      "arguments": [],
+      "options": [
+        {
+          "name": "token",
+          "long": "--token",
+          "value_name": "TOKEN",
+          "description": "Provide an auth token directly instead of using stored credentials",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "no_store",
+          "long": "--no-store",
+          "value_name": "NO_STORE",
+          "description": "Do not persist or consult local token storage (always implied in CI)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "allow_file_store",
+          "long": "--allow-file-store",
+          "value_name": "ALLOW_FILE_STORE",
+          "description": "Allow insecure file-based token storage if keyring is unavailable (not recommended)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "logout",
+      "description": "Log out of vipm.io locally (clears stored token)",
+      "access": {
+        "tier": "always_allowed",
+        "community_requires_public_repo": false
+      },
+      "arguments": [],
+      "options": [
+        {
+          "name": "no_store",
+          "long": "--no-store",
+          "value_name": "NO_STORE",
+          "description": "Do not attempt to clear local storage (CI/no-store)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "allow_file_store",
+          "long": "--allow-file-store",
+          "value_name": "ALLOW_FILE_STORE",
+          "description": "Allow insecure file-based token storage if keyring is unavailable (not recommended)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        }
+      ],
+      "subcommands": []
+    }
+  ]
+}
