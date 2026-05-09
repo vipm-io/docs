@@ -9,13 +9,13 @@ You can download VIPM from the following locations:
 - [VIPM 2022 beta for Linux and Mac](https://forums.vipm.io/topic/6423-announcing-the-vipm-2022-for-mac-and-linux-public-beta/)
 
 ## Compare Editions
-- [Compare VIPM editions](https://docs.vipm.io/vipm-editions-comparison/) to find the version that matches your development needs.
+- [Compare VIPM editions](vipm-editions-comparison.md) to find the version that matches your development needs.
 
 ## Installing VIPM
 
 The following are some specialized installation guides:
 
-- [How to install on Ubuntu Linux](https://docs.vipm.io/linux/ubuntu)
+- [How to install on Ubuntu Linux](linux/ubuntu.md)
 
 ## Finding VIPM Community Packages
 

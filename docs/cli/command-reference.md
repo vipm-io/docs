@@ -9,19 +9,9 @@ Use this page to look up syntax, options, and common workflows for the most freq
 
 ## Global Options
 
-These flags are available on every command unless noted otherwise:
+These options are available on every command unless noted otherwise. Every command also accepts `-h` / `--help`, which prints the authoritative help text for that command.
 
-| Option | Description |
-|--------|-------------|
-| `--refresh` | Forces a package-list refresh before the command runs. Helpful when automation needs the latest repository metadata. |
-| `--labview-version <YYYY>` | Targets a specific LabVIEW year (e.g., `2025`). Combine with `--labview-bitness` when multiple bitnesses exist. |
-| `--labview-bitness <32|64>` | Specifies 32-bit or 64-bit LabVIEW when both are installed for the same year. Only meaningful with `--labview-version`. |
-| `--color-mode <auto|always|never>` | Controls CLI color output (defaults to `auto`). |
-| `--timeout <seconds>` | How long to wait for the operation to finish. Use `-1` for no timeout. |
-| `--show-progress` | Display a progress indicator during long-running operations. |
-| `--json` | Output command results as JSON to stdout. Errors go to stderr. _Experimental · Professional Edition._ |
-| `--verbose`, `-v` | Enable verbose output for additional diagnostic detail. |
-| `-h`, `--help` | Shows help for the current command. |
+--8<-- "_generated/global-options.md"
 
 Unless a command states otherwise, it returns exit code `0` on success and a non-zero value on failure (check your automation scripts for non-zero exits).
 
@@ -43,22 +33,9 @@ Unless a command states otherwise, it returns exit code `0` on success and a non
 
 ## `vipm install`
 
-Installs one or more packages by name, name@version, or file path.
+--8<-- "_generated/commands/install.md"
 
-### Syntax
-
-```bash
-vipm install [OPTIONS] <package|path>...
-```
-
-### Options
-
-| Option | Description |
-|--------|-------------|
-| `--upgrade` | If the package is already installed, upgrade it to the latest available version. |
-| `--dev` | Install dev-dependencies from `vipm.toml`. |
-| `--no-dev` | Exclude dev-dependencies when installing from `vipm.toml`. |
-| `--yes`, `-y` | Skip confirmation prompts and proceed automatically. Also available as `VIPM_ASSUME_YES=1` env var, or use `VIPM_NONINTERACTIVE=1` to disable all prompts. See [Environment Variables](environment-variables.md). |
+`--yes`/`-y` is also available as the `VIPM_ASSUME_YES=1` environment variable, or use `VIPM_NONINTERACTIVE=1` to disable all prompts. See [Environment Variables](environment-variables.md).
 
 ### Examples
 
@@ -94,20 +71,9 @@ Installing 2 packages
 
 ## `vipm uninstall`
 
-Removes packages from the selected LabVIEW installation.
+--8<-- "_generated/commands/uninstall.md"
 
-### Syntax
-
-```bash
-vipm uninstall [OPTIONS] <package|package@version>...
-```
-
-### Options
-
-| Option | Description |
-|--------|-------------|
-| `--allow-version-mismatch`, `-F`, `--force` | Proceed even if the installed version does not match the requested version. |
-| `--yes`, `-y` | Skip confirmation prompts and proceed automatically. Also available as `VIPM_ASSUME_YES=1` env var, or use `VIPM_NONINTERACTIVE=1` to disable all prompts. See [Environment Variables](environment-variables.md). |
+`--yes`/`-y` is also available as the `VIPM_ASSUME_YES=1` environment variable, or use `VIPM_NONINTERACTIVE=1` to disable all prompts. See [Environment Variables](environment-variables.md).
 
 ### Examples
 
@@ -129,21 +95,7 @@ Uninstalling 1 package
 
 ## `vipm list`
 
-Lists packages from the installed LabVIEW environment or from a `.vipc` / `.dragon` file.
-
-### Syntax
-
-```bash
-vipm list [OPTIONS] [path/to/project.vipc]
-```
-
-### Options
-
-| Option | Description |
-|--------|-------------|
-| `--installed` | Show every package installed in the active LabVIEW version. |
-| `--dev` | Include dev-dependencies when listing from `vipm.toml`. |
-| `--no-dev` | Exclude dev-dependencies when listing from `vipm.toml`. |
+--8<-- "_generated/commands/list.md"
 
 ### Examples
 
@@ -169,20 +121,9 @@ Found 4 packages:
 
 ## `vipm info`
 
-Shows metadata for a package, including name, version, description, vendor, and license. Can also list installed files. For managing NI packages in vipm.toml, see [NI Packages (NIPM)](../vipm-toml/nipm.md).
+--8<-- "_generated/commands/info.md"
 
-### Syntax
-
-```bash
-vipm info [OPTIONS] <package>
-```
-
-### Options
-
-| Option | Description |
-|--------|-------------|
-| `--nipm` | Look up an NI package (NIPM) instead of a VIPM package. |
-| `--installed-files` | List all files installed by the package (Professional edition). |
+For managing NI packages in vipm.toml, see [NI Packages (NIPM)](../vipm-toml/nipm.md).
 
 ### Examples
 
@@ -206,19 +147,7 @@ vipm info oglib_boolean --installed-files
 
 ## `vipm search`
 
-Searches the VIPM repositories for packages by name or description.
-
-### Syntax
-
-```bash
-vipm search [OPTIONS] <search terms>
-```
-
-### Options
-
-| Option | Description |
-|--------|-------------|
-| `--limit <N>` | Limits the number of search results (defaults to 10). |
+--8<-- "_generated/commands/search.md"
 
 ### Examples
 
@@ -278,16 +207,7 @@ Expected output:
 
 ## `vipm activate`
 
-Activates VIPM Pro. Legacy scripts may use `vipm activate`; both map to the same functionality.
-
-### Syntax
-
-```bash
-vipm activate \
-  --serial-number "SERIAL" \
-  --name "Full Name" \
-  --email "you@example.com"
-```
+--8<-- "_generated/commands/activate.md"
 
 Any argument omitted on interactive terminals will trigger a prompt.
 
@@ -304,13 +224,7 @@ Any argument omitted on interactive terminals will trigger a prompt.
 
 ## `vipm build`
 
-Builds packages or other project artifacts from `.vipb` or `.lvproj` build specifications.
-
-### Syntax
-
-```bash
-vipm build [OPTIONS] path/to/spec.vipb
-```
+--8<-- "_generated/commands/build.md"
 
 For LabVIEW project builds:
 
@@ -320,19 +234,6 @@ vipm build \
   --lvproj-target "My Computer" \
   path/to/project.lvproj
 ```
-
-### Options
-
-| Option | Description |
-|--------|-------------|
-| `--lvproj-build-spec <name>` | Name of the LabVIEW project build spec to run when using `.lvproj`. |
-| `--lvproj-target <name>` | LabVIEW project target (defaults to `My Computer`). |
-| `--all` | Build all build specs found in the project. |
-| `--version-number <VERSION>` | Override the version number for the build. |
-| `--build-number <N>` | Override the build number for the build. |
-| `--debug` | Build in debug mode. |
-| `--no-deps` | Skip installing dependencies before building. |
-| `--rebuild-deps` | Reinstall dependencies before building, even if already installed. |
 
 ### Example Output
 
@@ -348,39 +249,9 @@ Building VI Package from path/to/your_package.vipb
 
 ## `vipm sbom`
 
---8<-- "sbom-preview.md"
+--8<-- "_generated/commands/sbom.md"
 
-Generates a [CycloneDX](https://cyclonedx.org/) Software Bill of Materials (SBOM) from a project file or manifest. See the [SBOM documentation](../sbom/index.md) for a tutorial and workflow guidance.
-
-### Syntax
-
-```bash
-vipm sbom [INPUT] --format cyclonedx --schema-version 1.5 --output <PATH> [OPTIONS]
-```
-
-`INPUT` is a `vipm.toml`, `.lvproj`, `.dragon`, or `.vipc` file. If omitted, the CLI searches upward for a `vipm.toml`.
-
-### Options
-
-| Option | Description |
-|--------|-------------|
-| `--format cyclonedx` | Output format (default: `cyclonedx`). |
-| `--schema-version 1.5` | CycloneDX spec version for the output document (default: `1.5`). |
-| `--output <PATH>` | **Required.** File path for the generated SBOM (relative or absolute). |
-| `--product-name <NAME>` | Sets `metadata.component.name` in the SBOM. Defaults to the input filename stem. |
-| `--product-version <VERSION>` | Sets `metadata.component.version`. Omitted from the SBOM if not provided. |
-| `--product-type <TYPE>` | Sets `metadata.component.type`. One of: `application` (default), `library`, `framework`, `container`, `firmware`, `device`, `file`. |
-| `--document-version <N>` | BOM revision number (default: `1`). |
-| `--document-serial-number <URN>` | Unique BOM identifier (`urn:uuid:...`). Auto-generated if omitted. |
-| `--vipm` | Include only VIPM packages. Conflicts with `--no-vipm`. |
-| `--nipm` | Include only NIPM packages. Conflicts with `--no-nipm`. |
-| `--no-vipm` | Exclude VIPM packages from the SBOM. Conflicts with `--vipm`. |
-| `--no-nipm` | Exclude NI packages (NIPM) from the SBOM. Conflicts with `--nipm`. |
-| `--no-dev` | Exclude dev-dependencies (`vipm.toml` input only). |
-| `--lvproj-build-spec <NAME>` | Select a build specification within a `.lvproj`. Seeds `metadata.component` name, version, and type from the build spec (overridden by explicit `--product-*` flags) and narrows the dependency scan to the build spec's **deliverable closure** — its declared source roots (with container expansion and `sourceInclusion` filtering applied) plus the linker-walked transitive closure from those roots. Supported build-spec types: `EXE`, `Packed Library`, `DLL`, `.NET Interop Assembly`, `Source Distribution`. Invoking for an Installer or Package build spec produces exit code `2` and a message directing you to `--lvproj-target`. The containing target is inferred automatically when unambiguous; pass `--lvproj-target` to disambiguate when the same name exists under multiple targets. `.lvproj` input only. |
-| `--lvproj-target <TARGET>` | Narrow the dependency scan to a single `.lvproj` target. May be used alone (scans only that target) or with `--lvproj-build-spec` (validates the spec is under that target). Omit to scan the whole project. An unknown target name produces exit code `12` with a listing of the project's available targets. `.lvproj` input only. |
-| `--allow-package-drift` | Opt out of the package-drift check. When set, SBOM generation proceeds even if installed packages disagree with `vipm.toml` or `vipm.lock`; a warning listing the drifted packages is printed to stderr and the SBOM reflects installed versions. Without this flag, drift aborts with exit code `17`. |
-| `--allow-missing-files` | Opt out of the missing-referenced-files check. When set, SBOM generation proceeds even if the project references files that are not on disk; a warning listing each missing reference is printed to stderr and the SBOM reflects what could be scanned. Without this flag, missing references abort with exit code `18`. |
+Generates a [CycloneDX](https://cyclonedx.org/) Software Bill of Materials. See the [SBOM documentation](../sbom/index.md) for a tutorial and workflow guidance.
 
 ### Examples
 
@@ -489,29 +360,9 @@ help: Use 'vipm labview-list' to see available versions
 
 ## `vipm sync`
 
---8<-- "sbom-preview.md"
+--8<-- "_generated/commands/sync.md"
 
-Reconciles a `vipm.toml` manifest from the dependencies discovered in a LabVIEW project scan.
-
-### Syntax
-
-```bash
-vipm sync [TARGET] --from <SOURCE> [OPTIONS]
-```
-
-`TARGET` is the `vipm.toml` to update. If omitted, the CLI searches upward from the current directory. `SOURCE` is the file to scan (e.g., a `.lvproj`).
-
-### Options
-
-| Option | Description |
-|--------|-------------|
-| `--from <SOURCE>` | **Required.** The source file to scan for dependencies. |
-| `--dry-run` | Preview changes without writing to the manifest. |
-| `--vipm` | Include only VIPM packages. Conflicts with `--no-vipm`. |
-| `--nipm` | Include only NIPM packages. Conflicts with `--no-nipm`. |
-| `--no-vipm` | Exclude VIPM packages from the sync. Conflicts with `--vipm`. |
-| `--no-nipm` | Exclude NI packages (NIPM) from the sync. Conflicts with `--nipm`. |
-| `--allow-missing-files` | Opt out of the missing-referenced-files check. When set, sync proceeds even if the project references files that are not on disk; a warning listing each missing reference is printed to stderr. Without this flag, missing references abort with exit code `18`. |
+`TARGET` is the `vipm.toml` to update — if omitted, the CLI searches upward from the current directory.
 
 ### Examples
 
@@ -533,13 +384,9 @@ vipm sync --from MyProject.lvproj --dry-run
 
 ## `vipm version`
 
-Prints the VIPM CLI and Desktop versions. Useful for support tickets and automation logs.
+--8<-- "_generated/commands/version.md"
 
-```bash
-vipm version
-```
-
-Sample output:
+Useful for support tickets and automation logs. Sample output:
 
 ```
 VIPM CLI version 2025.3.0
@@ -548,13 +395,9 @@ VIPM Desktop version 2025.3.0
 
 ## `vipm about`
 
-Shows installation information such as install paths and license data.
+--8<-- "_generated/commands/about.md"
 
-```bash
-vipm about
-```
-
-Use `vipm about --help` to review the latest options.
+Shows installation information such as install paths and license data. Use `vipm about --help` to review the latest options.
 
 ## Related Resources
 

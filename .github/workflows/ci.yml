@@ -74,6 +74,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
       - name: Generate release-notes table snippet
         run: uv run python scripts/generate_release_notes_table.py
+      - name: Generate CLI snippets
+        run: uv run python scripts/generate_cli_snippets.py
       - name: Validate prebuild outputs
         run: uv run python scripts/validate_docs_build.py
       - name: Deploy with mike

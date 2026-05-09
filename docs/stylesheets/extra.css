@@ -36,3 +36,34 @@
   opacity: 0.85;
   color: inherit;
 }
+
+/* Smaller variant for inline use inside tables (e.g., per-option Pro callouts) */
+.md-typeset .md-button.vipm-tier-pill-small {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.5rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.6rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  margin-left: 0.3em;
+}
+
+.md-typeset .md-button.vipm-tier-pill-small:hover,
+.md-typeset .md-button.vipm-tier-pill-small:focus {
+  opacity: 0.85;
+  color: inherit;
+}
+
+/* CLI options table — Flag column shrinks to fit its longest content;
+   the Description column takes the remaining width. width:1% combined
+   with white-space:nowrap is the canonical CSS idiom for this. */
+.md-typeset .cli-options table th:first-child,
+.md-typeset .cli-options table td:first-child {
+  white-space: nowrap;
+  width: 1%;
+}
