@@ -13,7 +13,27 @@ These options are available on every command unless noted otherwise. Every comma
 
 --8<-- "_generated/global-options.md"
 
-Unless a command states otherwise, it returns exit code `0` on success and a non-zero value on failure (check your automation scripts for non-zero exits).
+## Exit Codes
+
+Every command returns exit code `0` on success and a non-zero value on failure. The codes are stable — once assigned, a value never changes meaning, so automation scripts can branch on them safely. A given command emits only the subset relevant to its operation; consult the per-command "Common Issues" notes for command-specific guidance.
+
+| Code | Meaning |
+|------|---------|
+| `0` | Success |
+| `1` | Unexpected or unclassified error |
+| `2` | Invalid arguments or failed input validation. Also covers `vipm.lock` being stale or incomplete during dependency-state verification (run `vipm lock`, or pass `--allow-package-drift`). |
+| `4` | Requested LabVIEW version is not installed |
+| `6` | Insufficient edition, license, or activation |
+| `8` | File system or IO failure |
+| `11` | LabVIEW build operation failed (compilation error, App Builder failure, etc.) — `vipm build` only |
+| `12` | Named build target not found in the project |
+| `13` | Input file is not a supported type |
+| `14` | Input file exists but is malformed |
+| `15` | A required file does not exist |
+| `17` | Installed packages disagree with the project's declared state in `vipm.toml` or `vipm.lock`. Use `--allow-package-drift` to override. Applies to `vipm build` and `vipm sbom`. |
+| `18` | One or more files referenced by the scanned project could not be found on disk. Use `--allow-missing-files` to override. `vipm sbom` only. |
+
+Commands may additionally emit codes not listed here (e.g., authentication, network, or interruption failures). `vipm <command> --help` is the authoritative source for each command. On failure, stderr always contains a human-readable error message.
 
 ## Command Quick Look
 
@@ -242,10 +262,31 @@ Building VI Package from path/to/your_package.vipb
 ✓ Build completed: builds/your_package.vip
 ```
 
+### Dependency-State Verification
+
+When `vipm build` runs against a `vipm.toml` project, it verifies the build environment matches the project's declared dependency state *before* executing any build target:
+
+1. If `vipm.lock` exists, the lock is checked for completeness and consistency with `vipm.toml`.
+2. The installed packages on the host are compared against the lock (or, with no lock, against `vipm.toml`'s direct dependency specifiers).
+
+If either check fails, `vipm build` exits without producing any artifact. The error message identifies the specific packages and tells you which command to run to reconcile:
+
+- `vipm lock` — when the lock is out of sync with `vipm.toml`.
+- `vipm install` — when an installed package version doesn't match what's declared.
+
+Bare `.lvproj`/`.vipb` builds (no `vipm.toml`) skip this check; there's no manifest to verify against.
+
+To bypass verification for a single invocation, pass `--allow-package-drift`. The check still runs but failures become stderr warnings instead of hard errors, and the warning lists each drifted package so you see what you're accepting. There is no manifest field for this — the bypass is CLI-only by design.
+
+### Exit Codes
+
+See [Exit Codes](#exit-codes) for the canonical reference. `vipm build` uses codes `0`–`8`, `11`–`15`, and `17`. Any non-zero exit means the build artifact was **not** produced.
+
 ### Common Issues
 
 - **Linux build limitations**: Review the [VIPM Preview docs](../preview.md) for current platform support notes.
 - **Missing dependencies**: Run `vipm install project.vipc` before invoking `vipm build` in CI.
+- **Stale `vipm.lock`**: After editing `vipm.toml`, run `vipm lock` so the lock matches the manifest before building.
 
 ## `vipm sbom`
 
@@ -328,22 +369,7 @@ SBOM written to build/bom.json
 
 ### Exit Codes
 
-| Code | Meaning |
-|------|---------|
-| `0` | SBOM generated successfully |
-| `1` | Unexpected or unclassified error |
-| `2` | Invalid arguments or failed input validation |
-| `4` | Requested LabVIEW version is not installed |
-| `6` | Insufficient edition, license, or activation |
-| `8` | File system or IO failure (e.g., cannot write to `--output` path) |
-| `12` | Named build target (`--lvproj-target`) not found in the `.lvproj` |
-| `13` | Input file is not a supported type |
-| `14` | Input file exists but is malformed |
-| `15` | A required file does not exist |
-| `17` | Installed packages disagree with the project's declared state in `vipm.toml` or `vipm.lock`. Use `--allow-package-drift` to override. |
-| `18` | One or more files referenced by the scanned project could not be found on disk. Use `--allow-missing-files` to override. |
-
-Any non-zero exit code means the SBOM was **not** produced. The `--output` file is only written on exit code `0`.
+See [Exit Codes](#exit-codes) for the canonical reference. `vipm sbom` uses codes `0`–`8`, `12`–`15`, `17`, and `18`. Any non-zero exit means the SBOM was **not** produced — the `--output` file is only written on exit code `0`.
 
 On failure, stderr contains a human-readable error message. Example:
 
