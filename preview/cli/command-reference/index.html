@@ -1062,6 +1062,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#exit-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit Codes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#command-quick-look" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1369,6 +1380,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dependency-state-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency-State Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit-codes_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit Codes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#common-issues_4" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1425,7 +1458,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#exit-codes" class="md-nav__link">
+  <a href="#exit-codes_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         Exit Codes
@@ -2319,6 +2352,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#exit-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit Codes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#command-quick-look" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2626,6 +2670,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dependency-state-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency-State Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit-codes_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit Codes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#common-issues_4" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2682,7 +2748,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#exit-codes" class="md-nav__link">
+  <a href="#exit-codes_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         Exit Codes
@@ -2851,7 +2917,71 @@
 </tbody>
 </table>
 </div>
-<p>Unless a command states otherwise, it returns exit code <code>0</code> on success and a non-zero value on failure (check your automation scripts for non-zero exits).</p>
+<h2 id="exit-codes">Exit Codes</h2>
+<p>Every command returns exit code <code>0</code> on success and a non-zero value on failure. The codes are stable — once assigned, a value never changes meaning, so automation scripts can branch on them safely. A given command emits only the subset relevant to its operation; consult the per-command "Common Issues" notes for command-specific guidance.</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>Unexpected or unclassified error</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td>Invalid arguments or failed input validation. Also covers <code>vipm.lock</code> being stale or incomplete during dependency-state verification (run <code>vipm lock</code>, or pass <code>--allow-package-drift</code>).</td>
+</tr>
+<tr>
+<td><code>4</code></td>
+<td>Requested LabVIEW version is not installed</td>
+</tr>
+<tr>
+<td><code>6</code></td>
+<td>Insufficient edition, license, or activation</td>
+</tr>
+<tr>
+<td><code>8</code></td>
+<td>File system or IO failure</td>
+</tr>
+<tr>
+<td><code>11</code></td>
+<td>LabVIEW build operation failed (compilation error, App Builder failure, etc.) — <code>vipm build</code> only</td>
+</tr>
+<tr>
+<td><code>12</code></td>
+<td>Named build target not found in the project</td>
+</tr>
+<tr>
+<td><code>13</code></td>
+<td>Input file is not a supported type</td>
+</tr>
+<tr>
+<td><code>14</code></td>
+<td>Input file exists but is malformed</td>
+</tr>
+<tr>
+<td><code>15</code></td>
+<td>A required file does not exist</td>
+</tr>
+<tr>
+<td><code>17</code></td>
+<td>Installed packages disagree with the project's declared state in <code>vipm.toml</code> or <code>vipm.lock</code>. Use <code>--allow-package-drift</code> to override. Applies to <code>vipm build</code> and <code>vipm sbom</code>.</td>
+</tr>
+<tr>
+<td><code>18</code></td>
+<td>One or more files referenced by the scanned project could not be found on disk. Use <code>--allow-missing-files</code> to override. <code>vipm sbom</code> only.</td>
+</tr>
+</tbody>
+</table>
+<p>Commands may additionally emit codes not listed here (e.g., authentication, network, or interruption failures). <code>vipm &lt;command&gt; --help</code> is the authoritative source for each command. On failure, stderr always contains a human-readable error message.</p>
 <h2 id="command-quick-look">Command Quick Look</h2>
 <table>
 <thead>
@@ -3279,10 +3409,26 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Building VI Package from path/to/your_package.vipb
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>✓ Build completed: builds/your_package.vip
 </code></pre></div>
+<h3 id="dependency-state-verification">Dependency-State Verification</h3>
+<p>When <code>vipm build</code> runs against a <code>vipm.toml</code> project, it verifies the build environment matches the project's declared dependency state <em>before</em> executing any build target:</p>
+<ol>
+<li>If <code>vipm.lock</code> exists, the lock is checked for completeness and consistency with <code>vipm.toml</code>.</li>
+<li>The installed packages on the host are compared against the lock (or, with no lock, against <code>vipm.toml</code>'s direct dependency specifiers).</li>
+</ol>
+<p>If either check fails, <code>vipm build</code> exits without producing any artifact. The error message identifies the specific packages and tells you which command to run to reconcile:</p>
+<ul>
+<li><code>vipm lock</code> — when the lock is out of sync with <code>vipm.toml</code>.</li>
+<li><code>vipm install</code> — when an installed package version doesn't match what's declared.</li>
+</ul>
+<p>Bare <code>.lvproj</code>/<code>.vipb</code> builds (no <code>vipm.toml</code>) skip this check; there's no manifest to verify against.</p>
+<p>To bypass verification for a single invocation, pass <code>--allow-package-drift</code>. The check still runs but failures become stderr warnings instead of hard errors, and the warning lists each drifted package so you see what you're accepting. There is no manifest field for this — the bypass is CLI-only by design.</p>
+<h3 id="exit-codes_1">Exit Codes</h3>
+<p>See <a href="#exit-codes">Exit Codes</a> for the canonical reference. <code>vipm build</code> uses codes <code>0</code>–<code>8</code>, <code>11</code>–<code>15</code>, and <code>17</code>. Any non-zero exit means the build artifact was <strong>not</strong> produced.</p>
 <h3 id="common-issues_4">Common Issues</h3>
 <ul>
 <li><strong>Linux build limitations</strong>: Review the <a href="../../preview/">VIPM Preview docs</a> for current platform support notes.</li>
 <li><strong>Missing dependencies</strong>: Run <code>vipm install project.vipc</code> before invoking <code>vipm build</code> in CI.</li>
+<li><strong>Stale <code>vipm.lock</code></strong>: After editing <code>vipm.toml</code>, run <code>vipm lock</code> so the lock matches the manifest before building.</li>
 </ul>
 <h2 id="vipm-sbom"><code>vipm sbom</code></h2>
 <p>Generate a Software Bill of Materials.</p>
@@ -3422,66 +3568,8 @@ for now, use <code>--lvproj-target</code> to scope to the containing target.</p>
 <p>Expected output on success:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>SBOM written to build/bom.json
 </code></pre></div>
-<h3 id="exit-codes">Exit Codes</h3>
-<table>
-<thead>
-<tr>
-<th>Code</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>0</code></td>
-<td>SBOM generated successfully</td>
-</tr>
-<tr>
-<td><code>1</code></td>
-<td>Unexpected or unclassified error</td>
-</tr>
-<tr>
-<td><code>2</code></td>
-<td>Invalid arguments or failed input validation</td>
-</tr>
-<tr>
-<td><code>4</code></td>
-<td>Requested LabVIEW version is not installed</td>
-</tr>
-<tr>
-<td><code>6</code></td>
-<td>Insufficient edition, license, or activation</td>
-</tr>
-<tr>
-<td><code>8</code></td>
-<td>File system or IO failure (e.g., cannot write to <code>--output</code> path)</td>
-</tr>
-<tr>
-<td><code>12</code></td>
-<td>Named build target (<code>--lvproj-target</code>) not found in the <code>.lvproj</code></td>
-</tr>
-<tr>
-<td><code>13</code></td>
-<td>Input file is not a supported type</td>
-</tr>
-<tr>
-<td><code>14</code></td>
-<td>Input file exists but is malformed</td>
-</tr>
-<tr>
-<td><code>15</code></td>
-<td>A required file does not exist</td>
-</tr>
-<tr>
-<td><code>17</code></td>
-<td>Installed packages disagree with the project's declared state in <code>vipm.toml</code> or <code>vipm.lock</code>. Use <code>--allow-package-drift</code> to override.</td>
-</tr>
-<tr>
-<td><code>18</code></td>
-<td>One or more files referenced by the scanned project could not be found on disk. Use <code>--allow-missing-files</code> to override.</td>
-</tr>
-</tbody>
-</table>
-<p>Any non-zero exit code means the SBOM was <strong>not</strong> produced. The <code>--output</code> file is only written on exit code <code>0</code>.</p>
+<h3 id="exit-codes_2">Exit Codes</h3>
+<p>See <a href="#exit-codes">Exit Codes</a> for the canonical reference. <code>vipm sbom</code> uses codes <code>0</code>–<code>8</code>, <code>12</code>–<code>15</code>, <code>17</code>, and <code>18</code>. Any non-zero exit means the SBOM was <strong>not</strong> produced — the <code>--output</code> file is only written on exit code <code>0</code>.</p>
 <p>On failure, stderr contains a human-readable error message. Example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>error: No LabVIEW installation found for version &#39;2024&#39;.
 <a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>help: Use &#39;vipm labview-list&#39; to see available versions
