@@ -756,17 +756,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#source-attribution-in-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Source attribution in output
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#errors" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2039,17 +2028,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#source-attribution-in-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Source attribution in output
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#errors" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2200,24 +2178,6 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>.vipm/
 </code></pre></div>
 <p>Each developer's <code>.vipm/config.toml</code> then stays local to their checkout, and the team's <code>vipm.toml</code> remains the single committed source of project configuration.</p>
-<h2 id="source-attribution-in-output">Source attribution in output</h2>
-<p>VIPM surfaces when the override is in effect.</p>
-<p><strong>Plain mode</strong> prints an info line on stderr:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Using LabVIEW 2023 (64-bit) from workspace override (./.vipm/config.toml)
-</code></pre></div>
-<p><strong>JSON mode</strong> — for commands that emit a resolved LabVIEW version in their envelope — distinguishes the override from other sources:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">&quot;labview_version_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nt">&quot;year&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023&quot;</span><span class="p">,</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="nt">&quot;bitness&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">      </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;workspace-local&quot;</span><span class="p">,</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.vipm/config.toml&quot;</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="p">}</span>
-</code></pre></div>
-<p>The <code>"workspace-local"</code> discriminator distinguishes the override from <code>"cli"</code> (a <code>--labview-version</code> flag), <code>"file"</code> (a <code>vipm.toml</code> / <code>.lvproj</code> / <code>.dragon</code> / <code>.vipc</code>), and <code>"default"</code> (auto-detect from installed LabVIEW).</p>
 <h2 id="errors">Errors</h2>
 <table>
 <thead>
@@ -2258,21 +2218,21 @@
 <p>See the <a href="../../cli/command-reference/">CLI command reference</a> for the full exit-code taxonomy.</p>
 <h2 id="complete-example">Complete example</h2>
 <p>A typical project where the team is on LabVIEW 2024 64-bit, but you're temporarily running LabVIEW 2023 32-bit:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>my-project/
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>├── vipm.toml          # team: labview-version = &quot;2024&quot;, labview-bitness = 64
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>├── .vipm/
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>│   └── config.toml    # you:  labview-version = &quot;2023&quot;, labview-bitness = 32
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>└── .gitignore         # contains: .vipm/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>my-project/
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>├── vipm.toml          # team: labview-version = &quot;2024&quot;, labview-bitness = 64
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>├── .vipm/
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>│   └── config.toml    # you:  labview-version = &quot;2023&quot;, labview-bitness = 32
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>└── .gitignore         # contains: .vipm/
 </code></pre></div>
 <p><code>my-project/.vipm/config.toml</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">[project]</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">labview-version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2023&quot;</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">labview-bitness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">[project]</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">labview-version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2023&quot;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">labview-bitness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span>
 </code></pre></div>
 <p>Running <code>vipm install</code> from inside <code>my-project/</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$ vipm install
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Using LabVIEW 2023 (32-bit) from workspace override (./.vipm/config.toml)
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>... installs dependencies for LabVIEW 2023 (32-bit) ...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$ vipm install
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>Using LabVIEW 2023 (32-bit) from workspace override (./.vipm/config.toml)
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>... installs dependencies for LabVIEW 2023 (32-bit) ...
 </code></pre></div>
 <p>A teammate who has not created their own <code>.vipm/config.toml</code> continues to see LabVIEW 2024 (64-bit) per the team's <code>vipm.toml</code>. The shared file does not change.</p>
 <h2 id="need-help">Need Help?</h2>
