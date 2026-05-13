@@ -97,6 +97,9 @@ version = "0.1.0"
 labview-version = "2024"
 ```
 
+!!! tip "Per-developer LabVIEW version override"
+    The `[project].labview-version` field is the team's pinned version, shared via git. If you need to run commands against a different LabVIEW year locally — without editing the shared file — create a personal `.vipm/config.toml`. See [Workspace-Local Configuration](workspace-local-config.md).
+
 ---
 
 ## Managing Dependencies
@@ -196,7 +199,7 @@ When run without arguments, `vipm install` searches for manifest files in this o
 2. `.dragon` file
 3. `.vipc` file
 
-The `labview-version` from `vipm.toml` is used automatically when installing.
+The `labview-version` from `vipm.toml` is used automatically when installing. To override for your local checkout only — without editing the shared file — see [Workspace-Local Configuration](workspace-local-config.md).
 
 ---
 
