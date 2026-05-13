@@ -2158,9 +2158,9 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>vipm<span class="w"> </span>activate<span class="w"> </span>--serial-number<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VIPM_SERIAL_NUMBER</span><span class="s2">&quot;</span><span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VIPM_FULL_NAME</span><span class="s2">&quot;</span><span class="w"> </span>--email<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VIPM_EMAIL</span><span class="s2">&quot;</span>
 </code></pre></div>
 <ul>
-<li><strong>Refresh metadata</strong> before every install to avoid stale caches when containers are rebuilt frequently:</li>
+<li><strong>Refresh package sources</strong> before every install to avoid stale caches when containers are rebuilt frequently:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>vipm<span class="w"> </span>package-list-refresh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>vipm<span class="w"> </span>refresh
 </code></pre></div>
 <ul>
 <li>**Install packages or <code>.vipc</code> files<code>** just like on desktop. If you have multiple LabVIEW versions in the container image, pair your command with</code>--labview-version<code>(and</code>--labview-bitness` when needed).</li>

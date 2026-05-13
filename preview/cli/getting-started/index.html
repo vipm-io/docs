@@ -1056,10 +1056,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-refresh-package-metadata" class="md-nav__link">
+  <a href="#step-3-refresh-package-sources" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3 — Refresh Package Metadata
+        Step 3 — Refresh Package Sources
       
     </span>
   </a>
@@ -1956,10 +1956,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-refresh-package-metadata" class="md-nav__link">
+  <a href="#step-3-refresh-package-sources" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3 — Refresh Package Metadata
+        Step 3 — Refresh Package Sources
       
     </span>
   </a>
@@ -2058,34 +2058,31 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>✓ Activation succeeded!
 </code></pre></div>
 <p>Skip this step if you are using Community/Free features only.</p>
-<h2 id="step-3-refresh-package-metadata">Step 3 — Refresh Package Metadata</h2>
-<p>Pull the latest package list so that installs succeed on the first try:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>vipm<span class="w"> </span>package-list-refresh
-</code></pre></div>
-<p>Expected output:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>✓ Package list refreshed successfully
+<h2 id="step-3-refresh-package-sources">Step 3 — Refresh Package Sources</h2>
+<p>Pull the latest data from every source the CLI consults — VIPM Desktop's repository list, the CLI cache, and NIPM feeds — so that installs succeed on the first try:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>vipm<span class="w"> </span>refresh
 </code></pre></div>
 <p>Behind a proxy or on a restricted network? Configure proxy environment variables before running this command, or plan to sync from an internal VIPM repository.</p>
 <h2 id="step-4-install-your-first-package">Step 4 — Install Your First Package</h2>
 <p>Install a well-known package (replace with your preferred package ID). Use <code>--labview-version</code> if you have multiple versions installed.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>vipm<span class="w"> </span>install<span class="w"> </span>oglib_boolean
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>vipm<span class="w"> </span>install<span class="w"> </span>oglib_boolean
 </code></pre></div>
 <p>Expected output (truncated):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Installing 1 package
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>✓ Installed 1 package ...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Installing 1 package
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>✓ Installed 1 package ...
 </code></pre></div>
 <p>To install everything defined in a <code>.vipc</code> configuration:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>vipm<span class="w"> </span>install<span class="w"> </span>path/to/project.vipc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>vipm<span class="w"> </span>install<span class="w"> </span>path/to/project.vipc
 </code></pre></div>
-<p>If a package cannot be found, rerun <code>vipm package-list-refresh</code> and verify the package name on <a href="https://www.vipm.io">vipm.io</a> or in your <code>.vipc</code> file.</p>
+<p>If a package cannot be found, rerun <code>vipm refresh</code> and verify the package name on <a href="https://www.vipm.io">vipm.io</a> or in your <code>.vipc</code> file.</p>
 <h2 id="step-5-list-installed-packages">Step 5 — List Installed Packages</h2>
 <p>Confirm what VIPM just installed:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>vipm<span class="w"> </span>list<span class="w"> </span>--installed
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>vipm<span class="w"> </span>list<span class="w"> </span>--installed
 </code></pre></div>
 <p>Expected output:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Listing installed packages
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>Found &lt;n&gt; packages:
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  OpenG Boolean Library (oglib_boolean v6.0.0.9)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Listing installed packages
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>Found &lt;n&gt; packages:
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>  OpenG Boolean Library (oglib_boolean v6.0.0.9)
 </code></pre></div>
 <p>Add <code>--labview-version</code> to focus on a specific LabVIEW release if you have more than one.</p>
 <h2 id="step-6-where-to-go-next">Step 6 — Where to Go Next</h2>
@@ -2099,7 +2096,7 @@
 <ul>
 <li><strong>CLI not found</strong>: Use the VIPM terminal shortcut installed with VIPM or add the install directory (for example, <code>C:/Program Files/JKI/VIPM</code> or <code>/usr/local/jki/vipm</code>) to your PATH.</li>
 <li><strong>Activation fails</strong>: Confirm the serial number, name, and email match your VIPM account exactly; rerun <code>vipm activate</code> after updating secrets or environment variables.</li>
-<li><strong>Package install fails</strong>: Refresh metadata (<code>vipm package-list-refresh</code>) and double-check the package ID; add <code>--labview-version</code> when multiple LabVIEW versions are installed.</li>
+<li><strong>Package install fails</strong>: Refresh package sources (<code>vipm refresh</code>) and double-check the package ID; add <code>--labview-version</code> when multiple LabVIEW versions are installed.</li>
 <li><strong>Network issues</strong>: Configure proxy variables (<code>http_proxy</code>, <code>https_proxy</code>) or use an internal repository mirror if the build machine cannot reach <code>vipm.io</code>.</li>
 </ul>
 

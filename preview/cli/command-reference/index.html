@@ -1257,38 +1257,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#vipm-package-list-refresh" class="md-nav__link">
+  <a href="#vipm-refresh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        vipm package-list-refresh
+        vipm refresh
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="vipm package-list-refresh">
+    <nav class="md-nav" aria-label="vipm refresh">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#syntax" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Syntax
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#options" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Options
-      
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#example" class="md-nav__link">
@@ -2547,38 +2525,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#vipm-package-list-refresh" class="md-nav__link">
+  <a href="#vipm-refresh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        vipm package-list-refresh
+        vipm refresh
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="vipm package-list-refresh">
+    <nav class="md-nav" aria-label="vipm refresh">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#syntax" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Syntax
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#options" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Options
-      
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#example" class="md-nav__link">
@@ -3008,8 +2964,8 @@
 <td>Show metadata and installed files for a package.</td>
 </tr>
 <tr>
-<td><a href="#vipm-package-list-refresh"><code>vipm package-list-refresh</code></a></td>
-<td>Refresh repository metadata (legacy command, still supported).</td>
+<td><a href="#vipm-refresh"><code>vipm refresh</code></a></td>
+<td>Refresh all package sources (VIPM Desktop, CLI cache, NIPM feeds).</td>
 </tr>
 <tr>
 <td><a href="#vipm-activate"><code>vipm activate</code></a></td>
@@ -3106,7 +3062,7 @@
 </code></pre></div>
 <h3 id="common-issues">Common Issues</h3>
 <ul>
-<li><strong>Package not found</strong>: Run <code>vipm package-list-refresh</code> and verify the package ID at <a href="https://www.vipm.io">vipm.io</a>.</li>
+<li><strong>Package not found</strong>: Run <code>vipm refresh</code> and verify the package ID at <a href="https://www.vipm.io">vipm.io</a>.</li>
 <li><strong>Wrong LabVIEW version</strong>: Specify <code>--labview-version</code> and <code>--labview-bitness</code> to target the correct environment.</li>
 </ul>
 <h2 id="vipm-uninstall"><code>vipm uninstall</code></h2>
@@ -3273,12 +3229,11 @@
 <li>Combine multiple terms (e.g., <code>vipm search serial communication</code>) to narrow results.</li>
 <li>Append <code>--refresh</code> to ensure the latest catalog data before searching in CI.</li>
 </ul>
-<h2 id="vipm-package-list-refresh"><code>vipm package-list-refresh</code></h2>
-<p>Legacy command that refreshes VIPM's cached repository metadata. Still widely used in scripts.</p>
-<h3 id="syntax">Syntax</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>vipm<span class="w"> </span>package-list-refresh<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
-</code></pre></div>
-<h3 id="options">Options</h3>
+<h2 id="vipm-refresh"><code>vipm refresh</code></h2>
+<p>Refresh all package sources (VIPM Desktop, CLI cache, NIPM feeds).</p>
+<p><strong>Usage:</strong> <code>vipm refresh [OPTIONS]</code></p>
+<p><strong>Options:</strong></p>
+<div class="cli-options">
 <table>
 <thead>
 <tr>
@@ -3288,24 +3243,23 @@
 </thead>
 <tbody>
 <tr>
-<td><code>--timeout &lt;seconds&gt;</code></td>
-<td>Set how long VIPM waits for the refresh to finish (<code>-1</code> waits indefinitely).</td>
+<td><code>--no-cache</code></td>
+<td>Skip CLI cache update (repo indexes, specs, database)</td>
 </tr>
 <tr>
-<td><code>--lv-version &lt;YY.0&gt;</code></td>
-<td>Old-style LabVIEW version selector (prefer <code>--labview-version</code>).</td>
+<td><code>--no-nipm</code></td>
+<td>Skip NIPM feed update</td>
 </tr>
 <tr>
-<td><code>--show-progress</code></td>
-<td>Display a progress bar.</td>
+<td><code>--force</code></td>
+<td>Force re-download even if cached</td>
 </tr>
 </tbody>
 </table>
+</div>
+<p>Refreshes every package source the CLI consults: VIPM Desktop's repository list, the CLI's local cache (repo indexes, specs, database), and any configured NIPM feeds. Use <code>--no-cache</code> or <code>--no-nipm</code> to skip individual sources, and <code>--force</code> to re-download even when a cached copy looks current.</p>
 <h3 id="example">Example</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>vipm<span class="w"> </span>package-list-refresh
-</code></pre></div>
-<p>Expected output:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>✓ Package list refreshed successfully
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>vipm<span class="w"> </span>refresh
 </code></pre></div>
 <h3 id="common-issues_2">Common Issues</h3>
 <ul>
@@ -3342,7 +3296,7 @@
 </div>
 <p>Any argument omitted on interactive terminals will trigger a prompt.</p>
 <h3 id="example-output">Example Output</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>✓ Activation succeeded!
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>✓ Activation succeeded!
 </code></pre></div>
 <h3 id="common-issues_3">Common Issues</h3>
 <ul>
@@ -3400,14 +3354,14 @@
 </table>
 </div>
 <p>For LabVIEW project builds:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>vipm<span class="w"> </span>build<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span>--lvproj-build-spec<span class="w"> </span><span class="s2">&quot;My Build&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">  </span>--lvproj-target<span class="w"> </span><span class="s2">&quot;My Computer&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">  </span>path/to/project.lvproj
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>vipm<span class="w"> </span>build<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span>--lvproj-build-spec<span class="w"> </span><span class="s2">&quot;My Build&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span>--lvproj-target<span class="w"> </span><span class="s2">&quot;My Computer&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">  </span>path/to/project.lvproj
 </code></pre></div>
 <h3 id="example-output_1">Example Output</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Building VI Package from path/to/your_package.vipb
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>✓ Build completed: builds/your_package.vip
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Building VI Package from path/to/your_package.vipb
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>✓ Build completed: builds/your_package.vip
 </code></pre></div>
 <h3 id="dependency-state-verification">Dependency-State Verification</h3>
 <p>When <code>vipm build</code> runs against a <code>vipm.toml</code> project, it verifies the build environment matches the project's declared dependency state <em>before</em> executing any build target:</p>
@@ -3517,20 +3471,20 @@
 <p>Generates a <a href="https://cyclonedx.org/">CycloneDX</a> Software Bill of Materials. See the <a href="../../sbom/">SBOM documentation</a> for a tutorial and workflow guidance.</p>
 <h3 id="examples_5">Examples</h3>
 <p>Generate an SBOM from a LabVIEW project:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">  </span>--product-name<span class="w"> </span><span class="s2">&quot;My Instrument&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">  </span>--product-version<span class="w"> </span><span class="m">2</span>.1.0<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">  </span>--product-name<span class="w"> </span><span class="s2">&quot;My Instrument&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">  </span>--product-version<span class="w"> </span><span class="m">2</span>.1.0<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
 </code></pre></div>
 <p>Scope an SBOM to a specific build specification within a <code>.lvproj</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">  </span>--lvproj-build-spec<span class="w"> </span><span class="s2">&quot;My EXE Build&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">  </span>--lvproj-target<span class="w"> </span><span class="s2">&quot;My Computer&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">  </span>--lvproj-build-spec<span class="w"> </span><span class="s2">&quot;My EXE Build&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">  </span>--lvproj-target<span class="w"> </span><span class="s2">&quot;My Computer&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
 </code></pre></div>
 <p>The resulting SBOM reports only the packages whose code contributes to
 that build spec's deliverable — its declared source roots plus whatever
@@ -3552,27 +3506,27 @@ errors with exit code <code>2</code>. Those types bundle other build specs'
 outputs and declare NIPM dependencies through a different mechanism;
 for now, use <code>--lvproj-target</code> to scope to the containing target.</p>
 <p>Scope to a specific target without selecting a build spec (useful when running from source without building a binary):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">  </span>--lvproj-target<span class="w"> </span><span class="s2">&quot;My Computer&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">  </span>--lvproj-target<span class="w"> </span><span class="s2">&quot;My Computer&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
 </code></pre></div>
 <p>Generate from a vipm.toml, excluding dev-dependencies:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>vipm.toml<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">  </span>--no-dev<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>vipm.toml<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">  </span>--schema-version<span class="w"> </span><span class="m">1</span>.5<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">  </span>--no-dev<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
 </code></pre></div>
 <p>Expected output on success:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>SBOM written to build/bom.json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>SBOM written to build/bom.json
 </code></pre></div>
 <h3 id="exit-codes_2">Exit Codes</h3>
 <p>See <a href="#exit-codes">Exit Codes</a> for the canonical reference. <code>vipm sbom</code> uses codes <code>0</code>–<code>8</code>, <code>12</code>–<code>15</code>, <code>17</code>, and <code>18</code>. Any non-zero exit means the SBOM was <strong>not</strong> produced — the <code>--output</code> file is only written on exit code <code>0</code>.</p>
 <p>On failure, stderr contains a human-readable error message. Example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>error: No LabVIEW installation found for version &#39;2024&#39;.
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>help: Use &#39;vipm labview-list&#39; to see available versions
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>error: No LabVIEW installation found for version &#39;2024&#39;.
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>help: Use &#39;vipm labview-list&#39; to see available versions
 </code></pre></div>
 <h3 id="common-issues_5">Common Issues</h3>
 <ul>
@@ -3627,10 +3581,10 @@ for now, use <code>--lvproj-target</code> to scope to the containing target.</p>
 <p><code>TARGET</code> is the <code>vipm.toml</code> to update — if omitted, the CLI searches upward from the current directory.</p>
 <h3 id="examples_6">Examples</h3>
 <p>Sync vipm.toml from a LabVIEW project:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj
 </code></pre></div>
 <p>Preview changes without writing:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj<span class="w"> </span>--dry-run
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj<span class="w"> </span>--dry-run
 </code></pre></div>
 <h3 id="common-issues_6">Common Issues</h3>
 <ul>
@@ -3640,8 +3594,8 @@ for now, use <code>--lvproj-target</code> to scope to the containing target.</p>
 <p>Prints the version of the VIPM CLI and VIPM Desktop.</p>
 <p><strong>Usage:</strong> <code>vipm version</code></p>
 <p>Useful for support tickets and automation logs. Sample output:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>VIPM CLI version 2025.3.0
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>VIPM Desktop version 2025.3.0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>VIPM CLI version 2025.3.0
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>VIPM Desktop version 2025.3.0
 </code></pre></div>
 <h2 id="vipm-about"><code>vipm about</code></h2>
 <p>Prints information about the VIPM installation.</p>
