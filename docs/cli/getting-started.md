@@ -48,18 +48,12 @@ Expected output:
 
 Skip this step if you are using Community/Free features only.
 
-## Step 3 — Refresh Package Metadata
+## Step 3 — Refresh Package Sources
 
-Pull the latest package list so that installs succeed on the first try:
+Pull the latest data from every source the CLI consults — VIPM Desktop's repository list, the CLI cache, and NIPM feeds — so that installs succeed on the first try:
 
 ```bash
-vipm package-list-refresh
-```
-
-Expected output:
-
-```
-✓ Package list refreshed successfully
+vipm refresh
 ```
 
 Behind a proxy or on a restricted network? Configure proxy environment variables before running this command, or plan to sync from an internal VIPM repository.
@@ -85,7 +79,7 @@ To install everything defined in a `.vipc` configuration:
 vipm install path/to/project.vipc
 ```
 
-If a package cannot be found, rerun `vipm package-list-refresh` and verify the package name on [vipm.io](https://www.vipm.io) or in your `.vipc` file.
+If a package cannot be found, rerun `vipm refresh` and verify the package name on [vipm.io](https://www.vipm.io) or in your `.vipc` file.
 
 ## Step 5 — List Installed Packages
 
@@ -116,5 +110,5 @@ Add `--labview-version` to focus on a specific LabVIEW release if you have more 
 
 - **CLI not found**: Use the VIPM terminal shortcut installed with VIPM or add the install directory (for example, `C:/Program Files/JKI/VIPM` or `/usr/local/jki/vipm`) to your PATH.
 - **Activation fails**: Confirm the serial number, name, and email match your VIPM account exactly; rerun `vipm activate` after updating secrets or environment variables.
-- **Package install fails**: Refresh metadata (`vipm package-list-refresh`) and double-check the package ID; add `--labview-version` when multiple LabVIEW versions are installed.
+- **Package install fails**: Refresh package sources (`vipm refresh`) and double-check the package ID; add `--labview-version` when multiple LabVIEW versions are installed.
 - **Network issues**: Configure proxy variables (`http_proxy`, `https_proxy`) or use an internal repository mirror if the build machine cannot reach `vipm.io`.
