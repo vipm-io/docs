@@ -76,5 +76,6 @@ builds/my_library/MyLibrary.lvlib
 ## Next Steps
 
 - Read through **[the Getting Started guide](getting-started.md)** and follow the step-by-step instructions for using `vipm.toml` for your labview project dependencies, builds, and CI/CD workflow automations.
+- Need to use a different LabVIEW version on your machine than the team has pinned? See **[Workspace-Local Configuration](workspace-local-config.md)** for the per-developer `.vipm/config.toml` override.
 
 --8<-- "need-help.md"
