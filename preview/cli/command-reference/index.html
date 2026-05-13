@@ -3088,6 +3088,10 @@
 <td><code>-y</code>, <code>--yes</code></td>
 <td>Skip confirmation prompt when uninstalling from files</td>
 </tr>
+<tr>
+<td><code>--nipm</code></td>
+<td>Resolve the named package in the NIPM namespace. The canonical contract (see <code>docs/general/package-manager-filter.md</code>) specifies this form; the CLI returns NOT_IMPLEMENTED until the NIPM uninstall path is built. Not valid on VIPC or Dragon inputs, which are VIPM-only by format</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -3306,7 +3310,7 @@
 <h2 id="vipm-build"><code>vipm build</code></h2>
 <p><a class="md-button vipm-tier-pill vipm-tier-community" href="../../vipm-editions-comparison/#available-editions">VIPM Community</a></p>
 <p><a class="md-button vipm-tier-pill vipm-tier-pro" href="../../vipm-editions-comparison/#available-editions">VIPM Pro</a></p>
-<p>Builds project artifacts from various sources.</p>
+<p>Builds project artifacts from various sources (.lvproj and vipm.toml builds require LabVIEW 2024 and newer).</p>
 <p><strong>Usage:</strong> <code>vipm build [OPTIONS] [BUILD_SPEC]</code></p>
 <p><strong>Options:</strong></p>
 <div class="cli-options">
@@ -3350,6 +3354,10 @@
 <td><code>--rebuild-deps</code></td>
 <td>Force rebuild all dependencies (clean and rebuild even if outputs exist)</td>
 </tr>
+<tr>
+<td><code>--allow-package-drift</code></td>
+<td>Allow builds to proceed when installed packages disagree with vipm.toml / vipm.lock. Verification still runs but failures are emitted as warnings instead of errors</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -3385,7 +3393,7 @@
 <li><strong>Stale <code>vipm.lock</code></strong>: After editing <code>vipm.toml</code>, run <code>vipm lock</code> so the lock matches the manifest before building.</li>
 </ul>
 <h2 id="vipm-sbom"><code>vipm sbom</code></h2>
-<p>Generate a Software Bill of Materials.</p>
+<p>Generate a Software Bill of Materials (supports LabVIEW 2024 and newer).</p>
 <p><strong>Usage:</strong> <code>vipm sbom [OPTIONS] [INPUT]</code></p>
 <p><strong>Options:</strong></p>
 <div class="cli-options">
@@ -3535,7 +3543,7 @@ for now, use <code>--lvproj-target</code> to scope to the containing target.</p>
 <li><strong><code>--no-dev</code> on non-toml input</strong>: The <code>--no-dev</code> flag is only valid with <code>vipm.toml</code> input.</li>
 </ul>
 <h2 id="vipm-sync"><code>vipm sync</code></h2>
-<p>Synchronize vipm.toml with dependencies discovered by scanning a project.</p>
+<p>Synchronize vipm.toml with dependencies discovered by scanning a project (supports LabVIEW 2024 and newer).</p>
 <p><strong>Usage:</strong> <code>vipm sync [OPTIONS] [TARGET]</code></p>
 <p><strong>Options:</strong></p>
 <div class="cli-options">
