@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0-public",
   "cli_version": "dev",
-  "generated_on": "2026-05-08",
+  "generated_on": "2026-05-13",
   "global_options": [
     {
       "name": "refresh",
@@ -379,7 +379,7 @@
     },
     {
       "name": "build",
-      "description": "Builds project artifacts from various sources",
+      "description": "Builds project artifacts from various sources (.lvproj and vipm.toml builds require LabVIEW 2024 and newer)",
       "access": {
         "tier": "community",
         "community_requires_public_repo": true
@@ -521,6 +521,22 @@
           "conflicts_with": [
             "no_deps"
           ]
+        },
+        {
+          "name": "allow_package_drift",
+          "long": "--allow-package-drift",
+          "value_name": "ALLOW_PACKAGE_DRIFT",
+          "description": "Allow builds to proceed when installed packages disagree with vipm.toml / vipm.lock. Verification still runs but failures are emitted as warnings instead of errors",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
         }
       ],
       "subcommands": []
@@ -1158,13 +1174,29 @@
           "aliases": [],
           "visible_aliases": [],
           "conflicts_with": []
+        },
+        {
+          "name": "nipm",
+          "long": "--nipm",
+          "value_name": "NIPM",
+          "description": "Resolve the named package in the NIPM namespace. The canonical contract (see `docs/general/package-manager-filter.md`) specifies this form; the CLI returns NOT_IMPLEMENTED until the NIPM uninstall path is built. Not valid on VIPC or Dragon inputs, which are VIPM-only by format",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
         }
       ],
       "subcommands": []
     },
     {
       "name": "sbom",
-      "description": "Generate a Software Bill of Materials",
+      "description": "Generate a Software Bill of Materials (supports LabVIEW 2024 and newer)",
       "access": {
         "tier": "free",
         "community_requires_public_repo": true
@@ -1449,7 +1481,7 @@
     },
     {
       "name": "sync",
-      "description": "Synchronize vipm.toml with dependencies discovered by scanning a project",
+      "description": "Synchronize vipm.toml with dependencies discovered by scanning a project (supports LabVIEW 2024 and newer)",
       "access": {
         "tier": "free",
         "community_requires_public_repo": true
