@@ -627,6 +627,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../vipm-toml/workspace-local-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workspace-Local Config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../vipm-toml/nipm/" class="md-nav__link">
         
   
@@ -2188,7 +2216,7 @@
 <h2 id="labview-version-selection">LabVIEW Version Selection</h2>
 <p>Selecting which LabVIEW version VIPM uses is now more flexible and predictable.</p>
 <ul>
-<li><strong>Workspace-local override.</strong> Set the LabVIEW version for a single workspace via <code>vipm.toml</code> without affecting the global default. This lets a project pin a specific LabVIEW version for its dependencies, builds, and SBOMs, regardless of the user's globally-selected LabVIEW.</li>
+<li><strong>Workspace-local override (<code>.vipm/config.toml</code>).</strong> Drop a <code>.vipm/config.toml</code> next to your project's <code>vipm.toml</code> to set a different LabVIEW year and/or bitness for <strong>your local checkout only</strong> — without editing the team's <code>vipm.toml</code> and without retyping <code>--labview-version</code> on every command. Useful when you haven't installed the team-pinned LabVIEW year yet, when CI runners have different LabVIEW versions than developers, or when you're preparing a version bump. The file is per-developer; add <code>.vipm/</code> to your repo's <code>.gitignore</code>. See <a href="../../vipm-toml/workspace-local-config/">Workspace-Local Configuration</a> for the full guide.</li>
 <li><strong>Bitness preferences honored consistently.</strong> When you specify <code>--labview-bitness</code> on the command line or set the LabVIEW bitness in <code>vipm.toml</code>, that preference is now consistently respected when VIPM picks the LabVIEW version to use.</li>
 </ul>
 <h2 id="additional-improvements">Additional improvements</h2>
