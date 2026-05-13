@@ -43,7 +43,7 @@ Commands may additionally emit codes not listed here (e.g., authentication, netw
 | [`vipm uninstall`](#vipm-uninstall) | Remove packages from the selected LabVIEW installation. |
 | [`vipm list`](#vipm-list) | List installed packages or inspect a `.vipc`/`.dragon` file. |
 | [`vipm info`](#vipm-info) | Show metadata and installed files for a package. |
-| [`vipm package-list-refresh`](#vipm-package-list-refresh) | Refresh repository metadata (legacy command, still supported). |
+| [`vipm refresh`](#vipm-refresh) | Refresh all package sources (VIPM Desktop, CLI cache, NIPM feeds). |
 | [`vipm activate`](#vipm-activate) | Activate VIPM Pro using a serial number, name, and email. |
 | [`vipm build`](#vipm-build) | Build packages from `.vipb` specs or LabVIEW project build specs. |
 | [`vipm sbom`](#vipm-sbom) | Generate a CycloneDX SBOM from a project or manifest. |
@@ -86,7 +86,7 @@ Installing 2 packages
 
 ### Common Issues
 
-- **Package not found**: Run `vipm package-list-refresh` and verify the package ID at [vipm.io](https://www.vipm.io).
+- **Package not found**: Run `vipm refresh` and verify the package ID at [vipm.io](https://www.vipm.io).
 - **Wrong LabVIEW version**: Specify `--labview-version` and `--labview-bitness` to target the correct environment.
 
 ## `vipm uninstall`
@@ -190,34 +190,16 @@ Showing 5 packages matching "openg":
 - Combine multiple terms (e.g., `vipm search serial communication`) to narrow results.
 - Append `--refresh` to ensure the latest catalog data before searching in CI.
 
-## `vipm package-list-refresh`
+## `vipm refresh`
 
-Legacy command that refreshes VIPM's cached repository metadata. Still widely used in scripts.
+--8<-- "_generated/commands/refresh.md"
 
-### Syntax
-
-```bash
-vipm package-list-refresh [OPTIONS]
-```
-
-### Options
-
-| Option | Description |
-|--------|-------------|
-| `--timeout <seconds>` | Set how long VIPM waits for the refresh to finish (`-1` waits indefinitely). |
-| `--lv-version <YY.0>` | Old-style LabVIEW version selector (prefer `--labview-version`). |
-| `--show-progress` | Display a progress bar. |
+Refreshes every package source the CLI consults: VIPM Desktop's repository list, the CLI's local cache (repo indexes, specs, database), and any configured NIPM feeds. Use `--no-cache` or `--no-nipm` to skip individual sources, and `--force` to re-download even when a cached copy looks current.
 
 ### Example
 
 ```bash
-vipm package-list-refresh
-```
-
-Expected output:
-
-```
-✓ Package list refreshed successfully
+vipm refresh
 ```
 
 ### Common Issues

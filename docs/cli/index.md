@@ -14,8 +14,8 @@ Use these quick snippets to verify your environment, then jump to the [CLI Comma
 # Activate VIPM Pro (optional)
 
 
-# Refresh package list so installs see the latest metadata
-vipm package-list-refresh
+# Refresh package sources so installs see the latest metadata
+vipm refresh
 
 # Install packages by name or from a .vipc file
 vipm install oglib_boolean oglib_numeric

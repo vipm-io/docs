@@ -77,10 +77,10 @@ Once inside a running container, use the same CLI commands described in the [CLI
   vipm activate --serial-number "$VIPM_SERIAL_NUMBER" --name "$VIPM_FULL_NAME" --email "$VIPM_EMAIL"
   ```
 
-- **Refresh metadata** before every install to avoid stale caches when containers are rebuilt frequently:
+- **Refresh package sources** before every install to avoid stale caches when containers are rebuilt frequently:
 
   ```bash
-  vipm package-list-refresh
+  vipm refresh
   ```
 
 - **Install packages or `.vipc` files`** just like on desktop. If you have multiple LabVIEW versions in the container image, pair your command with `--labview-version` (and `--labview-bitness` when needed).

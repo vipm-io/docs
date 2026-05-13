@@ -43,6 +43,7 @@ _Update the tables above each time we complete or add scope so this document sta
 | 2025-11-22 | Reduced duplicated examples across CLI docs | ✅ | Streamlined `docs/cli/index.md` and `docs/cli/docker.md`; both now point to the command reference instead of repeating full command walkthroughs |
 | 2025-11-22 | Clarified CLI index navigation | ✅ | Updated `docs/cli/index.md` Getting Started section to explicitly link to downstream topic pages |
 | 2025-11-22 | Synced CLI pages with command reference availability | ✅ | Updated `docs/cli/index.md`, `docs/cli/getting-started.md`, `docs/cli/docker.md`, and `docs/cli/github-actions.md` to reference the live command reference and current troubleshooting guidance |
+| 2026-05-13 | Replaced `vipm package-list-refresh` examples with `vipm refresh` | ✅ | Modernized tutorial, CI examples, and reference content across `docs/cli/command-reference.md`, `getting-started.md`, `github-actions.md`, `docker.md`, and `index.md` to use the canonical `vipm refresh` command. The command-reference section now uses the generated snippet (`_generated/commands/refresh.md`) from `data/vipm-public-cli.json`, matching the pattern adopted for other commands in #95 |
 
 ## Decision Register
 
@@ -134,7 +135,7 @@ docs/cli/
 │   ├── list.md                       # vipm list command
 │   ├── build.md                      # vipm build command
 │   ├── vipm-activate.md              # vipm activate command
-│   └── package-list-refresh.md       # vipm package-list-refresh command
+│   └── refresh.md                    # vipm refresh command
 │
 ├── guides/                           # Task-oriented guides
 │   ├── index.md                      # Guides overview
@@ -234,7 +235,7 @@ vipm install project.vipc
 ## Common Issues
 
 **Package not found**
-- Run `vipm package-list-refresh` first
+- Run `vipm refresh` first
 - Check package name spelling
 ```
 
@@ -242,7 +243,7 @@ vipm install project.vipc
 
 Create a streamlined getting-started.md with:
 1. Installation verification
-2. First command (package-list-refresh)
+2. First command (refresh)
 3. Installing your first package
 4. Listing installed packages
 5. Next steps

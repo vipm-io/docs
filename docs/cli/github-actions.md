@@ -80,8 +80,8 @@ jobs:
             --name "${{ secrets.VIPM_FULL_NAME }}" \
             --email "${{ secrets.VIPM_EMAIL }}"
       
-      - name: Refresh package list
-        run: vipm package-list-refresh
+      - name: Refresh package sources
+        run: vipm refresh
       
       - name: Install project dependencies
         run: vipm install -y project.vipc
@@ -164,8 +164,8 @@ jobs:
             --name "${{ secrets.VIPM_FULL_NAME }}" \
             --email "${{ secrets.VIPM_EMAIL }}"
       
-      - name: Refresh package list
-        run: vipm package-list-refresh
+      - name: Refresh package sources
+        run: vipm refresh
       
       - name: Install dependencies
         run: vipm install -y project.vipc
@@ -237,7 +237,7 @@ If activation fails in CI:
 ### Package Installation Failures
 
 If package installation fails:
-- Run `vipm package-list-refresh` before installing packages
+- Run `vipm refresh` before installing packages
 - Check that package names are correct (case-sensitive)
 - Verify LabVIEW version compatibility
 
