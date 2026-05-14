@@ -4,22 +4,6 @@
   "generated_on": "2026-05-14",
   "global_options": [
     {
-      "name": "refresh",
-      "long": "--refresh",
-      "value_name": "REFRESH",
-      "description": "Force a refresh of VIPM's package list before performing the operation",
-      "defaults": [],
-      "required": false,
-      "multiple": false,
-      "possible_values": [
-        "true",
-        "false"
-      ],
-      "aliases": [],
-      "visible_aliases": [],
-      "conflicts_with": []
-    },
-    {
       "name": "labview_version",
       "long": "--labview-version",
       "value_name": "YYYY",
