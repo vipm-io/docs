@@ -1453,6 +1453,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#search-vipm-and-ni-packages-with-vipm-search-cli-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search VIPM and NI Packages with vipm search CLI Command
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ni-package-nipm-support-in-vipmtoml" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2028,6 +2039,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#search-vipm-and-ni-packages-with-vipm-search-cli-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search VIPM and NI Packages with vipm search CLI Command
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ni-package-nipm-support-in-vipmtoml" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2173,6 +2195,9 @@
 <h2 id="lookup-package-metadata-with-vipm-info-cli-command">Lookup Package Metadata with <code>vipm info</code> CLI Command</h2>
 <p>Look up metadata for any VIPM or NI package — name, version, description, vendor, license, and installed files. Supports both VIPM packages and NI packages via the <code>--nipm</code> flag.</p>
 <p>See the <a href="../../cli/command-reference/#vipm-info"><code>vipm info</code> command reference</a> for full options.</p>
+<h2 id="search-vipm-and-ni-packages-with-vipm-search-cli-command">Search VIPM and NI Packages with <code>vipm search</code> CLI Command</h2>
+<p><code>vipm search</code> now finds NI Package Manager (NIPM) packages alongside VIPM packages, with the same filter controls as other multi-PM commands. Both managers are included by default; use <code>--vipm</code> or <code>--nipm</code> to scope results to one, or <code>--no-vipm</code> / <code>--no-nipm</code> to exclude one.</p>
+<p>See the <a href="../../cli/command-reference/#vipm-search"><code>vipm search</code> command reference</a> for full options.</p>
 <h2 id="ni-package-nipm-support-in-vipmtoml">NI Package (NIPM) Support in <code>vipm.toml</code></h2>
 <p><a class="md-button vipm-tier-pill vipm-tier-community" href="../../vipm-editions-comparison/#available-editions">VIPM Community</a></p>
 <p>Manage NI Package Manager dependencies alongside VIPM packages in a single <code>vipm.toml</code> manifest. Declare NIPM feeds, production dependencies, and dev-dependencies in dedicated <code>[nipm.*]</code> sections. Add, remove, and lock NIPM packages using the familiar <code>vipm add --nipm</code>, <code>vipm remove --nipm</code>, and <code>vipm lock</code> commands.</p>

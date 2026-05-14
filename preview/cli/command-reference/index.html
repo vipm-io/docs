@@ -2879,10 +2879,6 @@
 <td>Selects 32-bit or 64-bit LabVIEW. Can be supplied with or without --labview-version; complements a year resolved from any source</td>
 </tr>
 <tr>
-<td><code>--json</code></td>
-<td>Output in JSON format <a class="md-button vipm-tier-pill-small vipm-tier-pro" href="../../vipm-editions-comparison/#available-editions">VIPM Pro</a></td>
-</tr>
-<tr>
 <td><code>--color-mode &lt;auto|always|never&gt;</code></td>
 <td>Control when to use colored output (default: <code>auto</code>)</td>
 </tr>
@@ -3242,7 +3238,23 @@
 <tbody>
 <tr>
 <td><code>--limit</code></td>
-<td>Limit the number of packages shown (default: 10)</td>
+<td>Limit the number of packages shown per manager (default: 10). When both VIPM and NIPM contribute, each section is capped independently — total output can be up to 2× this value</td>
+</tr>
+<tr>
+<td><code>--vipm</code></td>
+<td>Include only VIPM packages</td>
+</tr>
+<tr>
+<td><code>--nipm</code></td>
+<td>Include only NIPM packages</td>
+</tr>
+<tr>
+<td><code>--no-vipm</code></td>
+<td>Exclude VIPM packages from results</td>
+</tr>
+<tr>
+<td><code>--no-nipm</code></td>
+<td>Exclude NIPM packages from results</td>
 </tr>
 </tbody>
 </table>
