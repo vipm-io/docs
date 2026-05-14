@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0-public",
   "cli_version": "dev",
-  "generated_on": "2026-05-13",
+  "generated_on": "2026-05-14",
   "global_options": [
     {
       "name": "refresh",
@@ -44,27 +44,6 @@
       "aliases": [],
       "visible_aliases": [],
       "conflicts_with": []
-    },
-    {
-      "name": "json",
-      "long": "--json",
-      "value_name": "JSON",
-      "description": "Output in JSON format",
-      "defaults": [],
-      "required": false,
-      "multiple": false,
-      "possible_values": [
-        "true",
-        "false"
-      ],
-      "aliases": [],
-      "visible_aliases": [],
-      "conflicts_with": [],
-      "access": {
-        "tier": "professional",
-        "experimental": true,
-        "community_requires_public_repo": false
-      }
     },
     {
       "name": "color",
@@ -1106,7 +1085,7 @@
           "name": "limit",
           "long": "--limit",
           "value_name": "LIMIT",
-          "description": "Limit the number of packages shown (default: 10)",
+          "description": "Limit the number of packages shown per manager (default: 10). When both VIPM and NIPM contribute, each section is capped independently — total output can be up to 2× this value",
           "defaults": [],
           "required": false,
           "multiple": false,
@@ -1114,6 +1093,78 @@
           "aliases": [],
           "visible_aliases": [],
           "conflicts_with": []
+        },
+        {
+          "name": "vipm",
+          "long": "--vipm",
+          "value_name": "VIPM",
+          "description": "Include only VIPM packages",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "no_vipm"
+          ]
+        },
+        {
+          "name": "nipm",
+          "long": "--nipm",
+          "value_name": "NIPM",
+          "description": "Include only NIPM packages",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "no_nipm"
+          ]
+        },
+        {
+          "name": "no_vipm",
+          "long": "--no-vipm",
+          "value_name": "NO_VIPM",
+          "description": "Exclude VIPM packages from results",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "vipm"
+          ]
+        },
+        {
+          "name": "no_nipm",
+          "long": "--no-nipm",
+          "value_name": "NO_NIPM",
+          "description": "Exclude NIPM packages from results",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "nipm"
+          ]
         }
       ],
       "subcommands": []
