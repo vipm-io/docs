@@ -188,7 +188,7 @@ Showing 5 packages matching "openg":
 ### Tips
 
 - Combine multiple terms (e.g., `vipm search serial communication`) to narrow results.
-- Append `--refresh` to ensure the latest catalog data before searching in CI.
+- Run `vipm refresh` first to ensure the latest catalog data before searching in CI.
 
 ## `vipm refresh`
 
