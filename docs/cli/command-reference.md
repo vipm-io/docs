@@ -194,7 +194,7 @@ Showing 5 packages matching "openg":
 
 --8<-- "_generated/commands/refresh.md"
 
-Refreshes every package source the CLI consults: VIPM Desktop's repository list, the CLI's local cache (repo indexes, specs, database), and any configured NIPM feeds. Use `--no-cache` or `--no-nipm` to skip individual sources, and `--force` to re-download even when a cached copy looks current.
+Refreshes every package source the CLI consults: VIPM Desktop's repository list, the CLI's local cache (repo indexes, specs, database), and any configured NIPM feeds. Scope it to one package manager with `--vipm`/`--no-nipm` (VIPM sources only) or `--nipm`/`--no-vipm` (NIPM feeds only); `--no-cache` skips just the CLI cache, and `--force` re-downloads even when a cached copy looks current.
 
 ### Example
 
