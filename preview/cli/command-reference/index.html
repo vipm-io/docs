@@ -2867,10 +2867,6 @@
 </thead>
 <tbody>
 <tr>
-<td><code>--refresh</code></td>
-<td>Force a refresh of VIPM's package list before performing the operation</td>
-</tr>
-<tr>
 <td><code>--labview-version &lt;YYYY&gt;</code></td>
 <td>Performs the operation on or using the specified LabVIEW version. Accepts only YYYY format (4-digit year, e.g., 2020, 2024, 2025). Use --labview-bitness for 32/64-bit selection</td>
 </tr>
@@ -3271,7 +3267,7 @@
 <h3 id="tips">Tips</h3>
 <ul>
 <li>Combine multiple terms (e.g., <code>vipm search serial communication</code>) to narrow results.</li>
-<li>Append <code>--refresh</code> to ensure the latest catalog data before searching in CI.</li>
+<li>Run <code>vipm refresh</code> first to ensure the latest catalog data before searching in CI.</li>
 </ul>
 <h2 id="vipm-refresh"><code>vipm refresh</code></h2>
 <p>Refresh all package sources (VIPM Desktop, CLI cache, NIPM feeds).</p>
