@@ -2250,6 +2250,9 @@
 <li><code>vipm search</code>, <code>vipm build</code>, and <code>vipm sbom</code> reliably find and use the active <code>vipm.toml</code>.</li>
 <li><code>vipm sbom</code> on <code>.dragon</code> files supports both VIPM and NI Package Manager packages again.</li>
 <li><code>vipm about</code> shows one combined line when Desktop and CLI versions match, and warns when they differ.</li>
+<li>Preview CLI builds can show their activation expiration in <code>vipm about</code>, and <code>VIPM_COMMUNITY_EDITION=false</code> or <code>0</code> no longer enables Community Edition accidentally.</li>
+<li><code>vipm refresh</code> is now the explicit way to refresh package indexes before running another command. The former global <code>--refresh</code> flag has been removed, and stale-index error hints now point to <code>vipm refresh</code>.</li>
+<li>Repository detection ignores empty <code>.git</code> directories, so Community Edition access checks use the actual Git repository instead of stray temporary folders.</li>
 <li>Passing <code>--vipm</code> or <code>--nipm</code> to a command that doesn't accept them now produces a clear, consistent error.</li>
 <li>A non-VIPM TOML file named <code>vipm.toml</code> is now rejected with a clear error rather than partially parsed.</li>
 <li><code>vipm.lock</code> package ordering is now stable across machines and platforms, so <code>vipm lock</code> no longer produces spurious diffs.</li>
