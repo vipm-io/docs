@@ -3297,7 +3297,7 @@
 </tbody>
 </table>
 </div>
-<p>Refreshes every package source the CLI consults: VIPM Desktop's repository list, the CLI's local cache (repo indexes, specs, database), and any configured NIPM feeds. Use <code>--no-cache</code> or <code>--no-nipm</code> to skip individual sources, and <code>--force</code> to re-download even when a cached copy looks current.</p>
+<p>Refreshes every package source the CLI consults: VIPM Desktop's repository list, the CLI's local cache (repo indexes, specs, database), and any configured NIPM feeds. Scope it to one package manager with <code>--vipm</code>/<code>--no-nipm</code> (VIPM sources only) or <code>--nipm</code>/<code>--no-vipm</code> (NIPM feeds only); <code>--no-cache</code> skips just the CLI cache, and <code>--force</code> re-downloads even when a cached copy looks current.</p>
 <h3 id="example">Example</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>vipm<span class="w"> </span>refresh
 </code></pre></div>
