@@ -1,0 +1,69 @@
+/* Tier badge — compact, colored label appearing under a section heading.
+   Built on Material's .md-button so it's still a clickable link to the
+   editions-comparison page, but visually distinct from regular CTA buttons. */
+
+.md-typeset .md-button.vipm-tier-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.55rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  border: 1px solid transparent;
+}
+
+.md-typeset .md-button.vipm-tier-free {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.md-typeset .md-button.vipm-tier-community {
+  background-color: #fed7aa;
+  color: #9a3412;
+}
+
+.md-typeset .md-button.vipm-tier-pro {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.md-typeset .md-button.vipm-tier-pill:hover,
+.md-typeset .md-button.vipm-tier-pill:focus {
+  opacity: 0.85;
+  color: inherit;
+}
+
+/* Smaller variant for inline use inside tables (e.g., per-option Pro callouts) */
+.md-typeset .md-button.vipm-tier-pill-small {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.5rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.6rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  margin-left: 0.3em;
+}
+
+.md-typeset .md-button.vipm-tier-pill-small:hover,
+.md-typeset .md-button.vipm-tier-pill-small:focus {
+  opacity: 0.85;
+  color: inherit;
+}
+
+/* CLI options table — Flag column shrinks to fit its longest content;
+   the Description column takes the remaining width. width:1% combined
+   with white-space:nowrap is the canonical CSS idiom for this. */
+.md-typeset .cli-options table th:first-child,
+.md-typeset .cli-options table td:first-child {
+  white-space: nowrap;
+  width: 1%;
+}
