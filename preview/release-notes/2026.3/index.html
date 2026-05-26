@@ -1541,6 +1541,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#run-cli-package-workflows-with-less-manual-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run CLI Package Workflows with Less Manual Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discover-installed-labview-versions-from-the-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discover Installed LabVIEW Versions from the CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#additional-improvements" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2127,6 +2149,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#run-cli-package-workflows-with-less-manual-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run CLI Package Workflows with Less Manual Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discover-installed-labview-versions-from-the-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discover Installed LabVIEW Versions from the CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#additional-improvements" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2244,18 +2288,31 @@
 <li><strong>Workspace-local override (<code>.vipm/config.toml</code>).</strong> Drop a <code>.vipm/config.toml</code> next to your project's <code>vipm.toml</code> to set a different LabVIEW year and/or bitness for <strong>your local checkout only</strong> — without editing the team's <code>vipm.toml</code> and without retyping <code>--labview-version</code> on every command. Useful when you haven't installed the team-pinned LabVIEW year yet, when CI runners have different LabVIEW versions than developers, or when you're preparing a version bump. The file is per-developer; add <code>.vipm/</code> to your repo's <code>.gitignore</code>. See <a href="../../vipm-toml/workspace-local-config/">Workspace-Local Configuration</a> for the full guide.</li>
 <li><strong>Bitness preferences honored consistently.</strong> When you specify <code>--labview-bitness</code> on the command line or set the LabVIEW bitness in <code>vipm.toml</code>, that preference is now consistently respected when VIPM picks the LabVIEW version to use.</li>
 </ul>
+<h2 id="run-cli-package-workflows-with-less-manual-setup">Run CLI Package Workflows with Less Manual Setup</h2>
+<p>The VIPM CLI now makes package workflows clearer when they need VIPM Desktop or LabVIEW in the background. CLI commands show progress while startup is happening and launch VIPM Desktop and LabVIEW automatically, when needed, which is especially helpful in containers (Docker) and CI/CD environments.</p>
+<ul>
+<li><strong>[CLI] Visible VIPM Desktop and LabVIEW startup in the console.</strong> CLI commands that use VIPM Desktop, such as <code>vipm install</code>, <code>vipm uninstall</code>, and <code>vipm refresh</code>, show progress while VIPM Desktop opens.</li>
+<li><strong>[CLI] Faster VIPM package list refresh.</strong> <code>vipm refresh</code> updates the package cache directly before refreshing VIPM Desktop's package list, while showing progress in interactive terminals.</li>
+<li><strong>[CLI] More resilient interactive login.</strong> <code>vipm login</code> can continue even when the system keyring is unavailable (such as in containerized and CI/CD environments).</li>
+</ul>
+<h2 id="discover-installed-labview-versions-from-the-cli">Discover Installed LabVIEW Versions from the CLI</h2>
+<p>Professional Edition users can try the experimental <code>vipm labview list</code> command on Windows to list LabVIEW installations from the command line. This helps automation and troubleshooting scripts inspect which LabVIEW versions are available without opening VIPM Desktop.</p>
+<ul>
+<li><strong>Preview scope.</strong> <code>vipm labview list</code> is marked Experimental and requires Professional Edition while the cross-platform behavior is still being stabilized.</li>
+</ul>
 <h2 id="additional-improvements">Additional improvements</h2>
 <ul>
-<li>LabVIEW project scans run faster on large projects, so <code>vipm sync</code> and <code>vipm sbom</code> complete more quickly on sizeable <code>.lvproj</code> files.</li>
-<li><code>vipm search</code>, <code>vipm build</code>, and <code>vipm sbom</code> reliably find and use the active <code>vipm.toml</code>.</li>
-<li><code>vipm sbom</code> on <code>.dragon</code> files supports both VIPM and NI Package Manager packages again.</li>
-<li><code>vipm about</code> shows one combined line when Desktop and CLI versions match, and warns when they differ.</li>
-<li>Preview CLI builds can show their activation expiration in <code>vipm about</code>, and <code>VIPM_COMMUNITY_EDITION=false</code> or <code>0</code> no longer enables Community Edition accidentally.</li>
-<li><code>vipm refresh</code> is now the explicit way to refresh package indexes before running another command. The former global <code>--refresh</code> flag has been removed, and stale-index error hints now point to <code>vipm refresh</code>.</li>
-<li>Repository detection ignores empty <code>.git</code> directories, so Community Edition access checks use the actual Git repository instead of stray temporary folders.</li>
-<li>Passing <code>--vipm</code> or <code>--nipm</code> to a command that doesn't accept them now produces a clear, consistent error.</li>
-<li>A non-VIPM TOML file named <code>vipm.toml</code> is now rejected with a clear error rather than partially parsed.</li>
-<li><code>vipm.lock</code> package ordering is now stable across machines and platforms, so <code>vipm lock</code> no longer produces spurious diffs.</li>
+<li>[CLI] LabVIEW project scans run faster on large projects, so <code>vipm sync</code> and <code>vipm sbom</code> complete more quickly on sizeable <code>.lvproj</code> files.</li>
+<li>[CLI] <code>vipm search</code>, <code>vipm build</code>, and <code>vipm sbom</code> reliably find and use the active <code>vipm.toml</code>.</li>
+<li>[CLI] <code>vipm sbom</code> on <code>.dragon</code> files supports both VIPM and NI Package Manager packages again.</li>
+<li>[CLI] Now shows activation expiration in <code>vipm about</code>.</li>
+<li>[CLI] <code>vipm refresh</code> is now the explicit way to refresh package indexes before running another command. The former global <code>--refresh</code> flag has been removed, and stale-index error hints now point to <code>vipm refresh</code>.</li>
+<li>[CLI] Passing <code>--vipm</code> or <code>--nipm</code> to a command that doesn't accept them now produces a clear, consistent error.</li>
+<li>[CLI] A non-VIPM TOML file named <code>vipm.toml</code> is now rejected with a clear error rather than partially parsed.</li>
+<li>[CLI] <code>vipm.lock</code> package ordering is now stable across machines and platforms, so <code>vipm lock</code> no longer produces spurious diffs.</li>
+<li>[CLI] <code>vipm refresh</code> can now target a specific package manager with <code>--vipm</code> or <code>--nipm</code> for faster, scoped index updates.</li>
+<li>[CLI] <code>vipm install</code> now displays the correctly resolved LabVIEW version name instead of a raw version identifier.</li>
+<li>[CLI] <code>vipm install</code> failures now surface the underlying error output, making container/headless CI/CD troubleshooting easier.</li>
 </ul>
 <h2 id="need-help">Need Help?</h2>
 <ul>
