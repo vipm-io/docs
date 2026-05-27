@@ -30,6 +30,27 @@
       "conflicts_with": []
     },
     {
+      "name": "json",
+      "long": "--json",
+      "value_name": "JSON",
+      "description": "Output in JSON format",
+      "defaults": [],
+      "required": false,
+      "multiple": false,
+      "possible_values": [
+        "true",
+        "false"
+      ],
+      "aliases": [],
+      "visible_aliases": [],
+      "conflicts_with": [],
+      "access": {
+        "tier": "professional",
+        "experimental": true,
+        "community_requires_public_repo": false
+      }
+    },
+    {
       "name": "color",
       "long": "--color-mode",
       "value_name": "COLOR_MODE",
@@ -1981,6 +2002,48 @@
         }
       ],
       "subcommands": []
+    },
+    {
+      "name": "labview",
+      "description": "LabVIEW-related queries",
+      "access": {
+        "tier": "professional",
+        "experimental": true,
+        "community_requires_public_repo": true
+      },
+      "arguments": [],
+      "options": [],
+      "subcommands": [
+        {
+          "name": "list",
+          "description": "List LabVIEW installations discovered natively on the host",
+          "access": {
+            "tier": "professional",
+            "experimental": true,
+            "community_requires_public_repo": true
+          },
+          "arguments": [],
+          "options": [
+            {
+              "name": "running",
+              "long": "--running",
+              "value_name": "RUNNING",
+              "description": "Only list installations that currently have a running instance",
+              "defaults": [],
+              "required": false,
+              "multiple": false,
+              "possible_values": [
+                "true",
+                "false"
+              ],
+              "aliases": [],
+              "visible_aliases": [],
+              "conflicts_with": []
+            }
+          ],
+          "subcommands": []
+        }
+      ]
     }
   ]
 }

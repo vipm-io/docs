@@ -43,7 +43,12 @@ TIER_BADGES_BY_TIER = {
 
 
 def render_tier_badge(access: dict) -> str:
-    badges = TIER_BADGES_BY_TIER.get(access.get("tier"), [])
+    # Experimental is orthogonal to tier (an item can be e.g. professional AND
+    # experimental), so its badge is appended to the same group and rendered
+    # alongside any tier badge.
+    badges = list(TIER_BADGES_BY_TIER.get(access.get("tier"), []))
+    if access.get("experimental"):
+        badges.append("tier-experimental.md")
     if not badges:
         return ""
     return "".join(f'--8<-- "{b}"\n' for b in badges) + "\n"
@@ -68,6 +73,11 @@ def render_usage(cmd: dict) -> str:
 PRO_OPTION_BADGE = (
     "[VIPM Pro](../vipm-editions-comparison.md#available-editions)"
     "{ .md-button .vipm-tier-pill-small .vipm-tier-pro }"
+)
+
+EXPERIMENTAL_OPTION_BADGE = (
+    "[Experimental](../experimental.md)"
+    "{ .md-button .vipm-tier-pill-small .vipm-tier-experimental }"
 )
 
 
@@ -110,6 +120,8 @@ def render_option_row(opt: dict) -> str:
     access = opt.get("access") or {}
     if access.get("tier") == "professional":
         desc = f"{desc} {PRO_OPTION_BADGE}"
+    if access.get("experimental"):
+        desc = f"{desc} {EXPERIMENTAL_OPTION_BADGE}"
 
     return f"| {flag_cell} | {desc} |"
 
@@ -168,6 +180,8 @@ def render_global_option_row(opt: dict) -> str:
     access = opt.get("access") or {}
     if access.get("tier") == "professional":
         desc = f"{desc} {PRO_OPTION_BADGE}"
+    if access.get("experimental"):
+        desc = f"{desc} {EXPERIMENTAL_OPTION_BADGE}"
 
     return f"| {flag_cell} | {desc} |"
 

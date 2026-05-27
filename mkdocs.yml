@@ -60,6 +60,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - VIPM Editions: vipm-editions-comparison.md
+  - Experimental Features: experimental.md
   - Guides:
     - Software Bill of Materials (SBOM):
       - sbom/index.md
