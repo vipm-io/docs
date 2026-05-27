@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0-public",
   "cli_version": "dev",
-  "generated_on": "2026-05-14",
+  "generated_on": "2026-05-27",
   "global_options": [
     {
       "name": "labview_version",
@@ -28,6 +28,27 @@
       "aliases": [],
       "visible_aliases": [],
       "conflicts_with": []
+    },
+    {
+      "name": "json",
+      "long": "--json",
+      "value_name": "JSON",
+      "description": "Output in JSON format",
+      "defaults": [],
+      "required": false,
+      "multiple": false,
+      "possible_values": [
+        "true",
+        "false"
+      ],
+      "aliases": [],
+      "visible_aliases": [],
+      "conflicts_with": [],
+      "access": {
+        "tier": "professional",
+        "experimental": true,
+        "community_requires_public_repo": false
+      }
     },
     {
       "name": "color",
@@ -65,7 +86,7 @@
       "name": "show_progress",
       "long": "--show-progress",
       "value_name": "SHOW_PROGRESS",
-      "description": "Show real-time progress from VIPM Desktop during operations",
+      "description": "Force the real-time progress bar on. Progress is shown automatically in interactive TTY sessions and suppressed in non-interactive contexts (`--json`, `--quiet`, `VIPM_NONINTERACTIVE`, CI auto-detect, or when stderr is not a TTY). Pass this flag to force progress over `VIPM_NONINTERACTIVE` / CI / non-TTY (in which case it falls back to periodic single-line updates). It does NOT override `--json` or `--quiet`; those output modes always suppress progress",
       "defaults": [],
       "required": false,
       "multiple": false,
@@ -82,7 +103,7 @@
       "long": "--verbose",
       "short": "v",
       "value_name": "VERBOSE",
-      "description": "Show verbose diagnostic output (API calls, timing, file paths)",
+      "description": "Show additional per-operation detail (e.g. live VIPM Desktop status, per-phase progress)",
       "defaults": [],
       "required": false,
       "multiple": false,
@@ -151,6 +172,22 @@
           "required": false,
           "multiple": false,
           "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "direct_vipm_io",
+          "long": "--direct-vipm-io",
+          "value_name": "DIRECT_VIPM_IO",
+          "description": "Activate directly with vipm.io (for debugging purposes)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
           "aliases": [],
           "visible_aliases": [],
           "conflicts_with": []
@@ -1157,7 +1194,7 @@
       "name": "uninstall",
       "description": "Uninstalls one or more packages",
       "access": {
-        "tier": "community",
+        "tier": "free",
         "community_requires_public_repo": true
       },
       "arguments": [
@@ -1681,22 +1718,6 @@
           "conflicts_with": []
         },
         {
-          "name": "no_nipm",
-          "long": "--no-nipm",
-          "value_name": "NO_NIPM",
-          "description": "Skip NIPM feed update",
-          "defaults": [],
-          "required": false,
-          "multiple": false,
-          "possible_values": [
-            "true",
-            "false"
-          ],
-          "aliases": [],
-          "visible_aliases": [],
-          "conflicts_with": []
-        },
-        {
           "name": "force",
           "long": "--force",
           "value_name": "FORCE",
@@ -1711,6 +1732,78 @@
           "aliases": [],
           "visible_aliases": [],
           "conflicts_with": []
+        },
+        {
+          "name": "vipm",
+          "long": "--vipm",
+          "value_name": "VIPM",
+          "description": "Include only VIPM packages",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "no_vipm"
+          ]
+        },
+        {
+          "name": "nipm",
+          "long": "--nipm",
+          "value_name": "NIPM",
+          "description": "Include only NIPM packages",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "no_nipm"
+          ]
+        },
+        {
+          "name": "no_vipm",
+          "long": "--no-vipm",
+          "value_name": "NO_VIPM",
+          "description": "Exclude VIPM packages from results",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "vipm"
+          ]
+        },
+        {
+          "name": "no_nipm",
+          "long": "--no-nipm",
+          "value_name": "NO_NIPM",
+          "description": "Exclude NIPM packages from results",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [
+            "true",
+            "false"
+          ],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": [
+            "nipm"
+          ]
         }
       ],
       "subcommands": []
@@ -1909,6 +2002,48 @@
         }
       ],
       "subcommands": []
+    },
+    {
+      "name": "labview",
+      "description": "LabVIEW-related queries",
+      "access": {
+        "tier": "professional",
+        "experimental": true,
+        "community_requires_public_repo": true
+      },
+      "arguments": [],
+      "options": [],
+      "subcommands": [
+        {
+          "name": "list",
+          "description": "List LabVIEW installations discovered natively on the host",
+          "access": {
+            "tier": "professional",
+            "experimental": true,
+            "community_requires_public_repo": true
+          },
+          "arguments": [],
+          "options": [
+            {
+              "name": "running",
+              "long": "--running",
+              "value_name": "RUNNING",
+              "description": "Only list installations that currently have a running instance",
+              "defaults": [],
+              "required": false,
+              "multiple": false,
+              "possible_values": [
+                "true",
+                "false"
+              ],
+              "aliases": [],
+              "visible_aliases": [],
+              "conflicts_with": []
+            }
+          ],
+          "subcommands": []
+        }
+      ]
     }
   ]
 }

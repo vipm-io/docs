@@ -98,11 +98,19 @@ def _run(argv: list[str]) -> None:
 
 
 def _run_zensical_build() -> int | None:
+    # Build with --clean (clear Zensical's cache) every time. Steps 1-2
+    # regenerate the gitignored `_generated/` snippets, but Zensical's
+    # incremental cache keys on each page's own source and does NOT track
+    # `--8<--` snippet includes as dependencies — so a page like
+    # command-reference.md renders from stale cache when only its included
+    # snippet changed. A clean build forces a full re-render. (The fast
+    # incremental path is `just dev`, which does not use this orchestrator.)
+    #
     # Zensical 0.0.x exits 0 even when individual pages hit render errors
     # (e.g., a SnippetMissingError skips the page but the CLI succeeds).
     # Capture output and fail explicitly on any `Error:` line. Replace
     # this wrapper with `zensical build --strict` once upstream ships it.
-    argv = ["zensical", "build"]
+    argv = ["zensical", "build", "--clean"]
     print(f"→ {' '.join(argv)}", file=sys.stderr)
     result = subprocess.run(argv, capture_output=True, text=True)
     sys.stdout.write(result.stdout)
