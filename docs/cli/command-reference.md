@@ -13,6 +13,15 @@ These options are available on every command unless noted otherwise. Every comma
 
 --8<-- "_generated/global-options.md"
 
+## Progress Output
+
+Long-running commands display progress on stderr, adapting to where the command runs:
+
+- **Interactive terminals:** progress renders automatically — no flag required.
+- **Non-interactive contexts:** progress is suppressed automatically under `--json`, `--quiet`, `VIPM_NONINTERACTIVE=1`, detected CI environments, or when stderr is piped or redirected.
+- **`--show-progress`:** forces progress on even where it would normally be suppressed. When stderr is not a real terminal, it falls back to periodic single-line `[VIPM] X/Y …` updates. It does not override `--json` or `--quiet`, which always suppress progress.
+- **`--verbose`:** diagnostic output only — it does not produce progress. (Earlier releases emitted periodic `Progress: X/Y downloaded` lines under `--verbose`; that is no longer the case.)
+
 ## Exit Codes
 
 Every command returns exit code `0` on success and a non-zero value on failure. The codes are stable — once assigned, a value never changes meaning, so automation scripts can branch on them safely. A given command emits only the subset relevant to its operation; consult the per-command "Common Issues" notes for command-specific guidance.
@@ -353,12 +362,13 @@ SBOM written to build/bom.json
 
 See [Exit Codes](#exit-codes) for the canonical reference. `vipm sbom` uses codes `0`–`8`, `12`–`15`, `17`, and `18`. Any non-zero exit means the SBOM was **not** produced — the `--output` file is only written on exit code `0`.
 
-On failure, stderr contains a human-readable error message. Example:
+On failure, stderr contains a human-readable error message. When a requested LabVIEW version is not installed, the available versions are listed inline. Example:
 
 ```
-error: No LabVIEW installation found for version '2024'.
-help: Use 'vipm labview-list' to see available versions
+error: 2024 (64-bit). Available versions: 2021 (64-bit), 2024 (32-bit)
 ```
+
+To list installed LabVIEW versions directly, use `vipm labview list` (experimental, Professional Edition).
 
 ### Common Issues
 
