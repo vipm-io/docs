@@ -29,16 +29,21 @@ The VIPM CLI generates [CycloneDX](https://cyclonedx.org/) 1.5 SBOMs in JSON for
 | Input type | Description | LabVIEW required? |
 |------------|-------------|-------------------|
 | `vipm.toml` | Project manifest with declared dependencies | No |
-| `.lvproj` | LabVIEW project file — scans installed packages directly | Yes |
+| `.lvproj` | LabVIEW project file — scans installed packages directly | Yes (LabVIEW 2024 or newer) |
 | `.dragon` | Dragon configuration file | No |
 | `.vipc` | VIPM configuration file | No |
 
 Choose the input that matches your workflow. If your project already uses `vipm.toml`, that's the simplest path — no LabVIEW installation is needed. For existing LabVIEW projects, point directly at your `.lvproj` file. See [Workflows](workflows.md) for guidance on each approach.
 
+!!! note "LabVIEW 2024 or newer is required for `.lvproj` scans"
+    Generating an SBOM from a `.lvproj` file requires LabVIEW 2024 or newer; if an older target is resolved, the command exits with code `20` and no SBOM is written. Generate the SBOM from a `vipm.toml`, `.dragon`, or `.vipc` input to avoid the LabVIEW requirement.
+
+    --8<-- "labview-interop-link-reference.md"
+
 ## Prerequisites
 
 - **VIPM 2026 Q3 Preview** or later — [download here](../preview.md)
-- **LabVIEW** — required only when generating SBOMs from `.lvproj` files
+- **LabVIEW 2024 or newer** — required only when generating SBOMs from `.lvproj` files
 - **NI Package Manager** — required only when including NI packages in the SBOM
 
 Verify your CLI is available:

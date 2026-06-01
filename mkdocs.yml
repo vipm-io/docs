@@ -83,6 +83,7 @@ nav:
       - cli/index.md
       - cli/getting-started.md
       - cli/command-reference.md
+      - cli/labview-interop.md
       - cli/environment-variables.md
       - cli/docker.md
       - cli/github-actions.md
