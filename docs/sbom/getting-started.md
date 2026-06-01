@@ -24,6 +24,11 @@ VIPM CLI version 2026.3.x
 
 If the command is not found, install the [VIPM 2026 Q3 Preview](../preview.md) first.
 
+!!! note "`.lvproj` scans require LabVIEW 2024 or newer"
+    The examples below scan a `.lvproj` file, which requires the resolved LabVIEW target to be LabVIEW 2024 or newer. If you don't have LabVIEW 2024+ installed, generate the SBOM from a `vipm.toml`, `.dragon`, or `.vipc` input instead — none of those require LabVIEW. See the [SBOM Overview](index.md) for the full list of supported inputs.
+
+    --8<-- "labview-interop-link-reference.md"
+
 ## Step 2 — Generate an SBOM
 
 Run the `vipm sbom` command against your project. This example uses a `.lvproj` file:

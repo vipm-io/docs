@@ -48,6 +48,7 @@ Every command returns exit code `0` on success and a non-zero value on failure. 
 | `17` | Installed packages disagree with the project's declared state in `vipm.toml` or `vipm.lock`. Use `--allow-package-drift` to override. Applies to `vipm build` and `vipm sbom`. |
 | `18` | One or more files referenced by the scanned project could not be found on disk. Use `--allow-missing-files` to override. `vipm sbom` only. |
 | `19` | A detected component (VIPM Desktop, LabVIEW, or NI Package Manager) is from a newer year than this VIPM CLI. Upgrade VIPM CLI to a version whose year matches or exceeds the component's year. |
+| `20` | Resolved LabVIEW target is older than the minimum supported by the command. Install or select LabVIEW 2024 or newer. Applies to `vipm build` (`.lvproj` and `vipm.toml` builds), `vipm sbom` (`.lvproj` input), and `vipm sync` (project scans). |
 | `21` | The requested operation is recognized but not yet implemented in this CLI version. Lets scripts distinguish a feature gap from an unknown argument (code `2`) or a missing package (code `3`). |
 | `22` | Activation failed — the activation service declined the request, the returned code failed local verification, or the VIPM Desktop delegate reported a failure. Distinct from code `10` (login/credential issues). |
 | `124` | Operation timed out before completion (see `--timeout` and the `VIPM_TIMEOUT` environment variable) |
@@ -282,13 +283,16 @@ To bypass verification for a single invocation, pass `--allow-package-drift`. Th
 
 ### Exit Codes
 
-See [Exit Codes](#exit-codes) for the canonical reference. `vipm build` uses codes `0`–`8`, `11`–`15`, and `17`. Any non-zero exit means the build artifact was **not** produced.
+See [Exit Codes](#exit-codes) for the canonical reference. `vipm build` uses codes `0`–`8`, `11`–`15`, `17`, `19`, and `20`. Any non-zero exit means the build artifact was **not** produced.
 
 ### Common Issues
 
 - **Linux build limitations**: Review the [VIPM Preview docs](../preview.md) for current platform support notes.
 - **Missing dependencies**: Run `vipm install project.vipc` before invoking `vipm build` in CI.
 - **Stale `vipm.lock`**: After editing `vipm.toml`, run `vipm lock` so the lock matches the manifest before building.
+- **LabVIEW 2024 or newer required for project builds**: applies to `.lvproj` and `vipm.toml` builds (`.vipb` builds are not affected).
+
+    --8<-- "labview-interop-link-reference.md"
 
 ## `vipm sbom`
 
@@ -371,7 +375,7 @@ SBOM written to build/bom.json
 
 ### Exit Codes
 
-See [Exit Codes](#exit-codes) for the canonical reference. `vipm sbom` uses codes `0`–`8`, `12`–`15`, `17`, and `18`. Any non-zero exit means the SBOM was **not** produced — the `--output` file is only written on exit code `0`.
+See [Exit Codes](#exit-codes) for the canonical reference. `vipm sbom` uses codes `0`–`8`, `12`–`15`, and `17`–`20`. Any non-zero exit means the SBOM was **not** produced — the `--output` file is only written on exit code `0`.
 
 On failure, stderr contains a human-readable error message. When a requested LabVIEW version is not installed, the available versions are listed inline. Example:
 
@@ -385,6 +389,9 @@ To list installed LabVIEW versions directly, use `vipm labview list` (experiment
 
 - **Missing `--output`**: The `--output` flag is always required. `--format` defaults to `cyclonedx` and `--schema-version` defaults to `1.5`, so they can be omitted.
 - **Wrong LabVIEW version**: Use `--labview-version` and `--labview-bitness` to target the correct installation when scanning `.lvproj` files.
+- **LabVIEW 2024 or newer required for `.lvproj` scans**: other inputs (`vipm.toml`, `.dragon`, `.vipc`) do not require LabVIEW.
+
+    --8<-- "labview-interop-link-reference.md"
 - **`--no-dev` on non-toml input**: The `--no-dev` flag is only valid with `vipm.toml` input.
 
 ## `vipm sync`
@@ -407,9 +414,16 @@ Preview changes without writing:
 vipm sync --from MyProject.lvproj --dry-run
 ```
 
+### Exit Codes
+
+See [Exit Codes](#exit-codes) for the canonical reference. `vipm sync` uses codes `0`–`8`, `13`–`15`, and `18`–`20`.
+
 ### Common Issues
 
 - **No vipm.toml found**: Either specify the target path explicitly or run the command from a directory that contains (or is a child of a directory that contains) a `vipm.toml`.
+- **LabVIEW 2024 or newer required for project scans**: applies when scanning a `.lvproj` via `--from`.
+
+    --8<-- "labview-interop-link-reference.md"
 
 ## `vipm version`
 
