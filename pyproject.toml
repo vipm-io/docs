@@ -13,8 +13,8 @@ dependencies = [
     "zensical>=0.0.33",
 ]
 
-[tool.uv]
-dev-dependencies = [
+[dependency-groups]
+dev = [
     "pytest>=8",
     "ruff>=0.15.11",
 ]
