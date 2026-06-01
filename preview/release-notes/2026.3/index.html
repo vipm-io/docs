@@ -1071,6 +1071,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../cli/labview-interop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LabVIEW Compatibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../cli/environment-variables/" class="md-nav__link">
         
   
@@ -1561,6 +1589,17 @@
     <span class="md-ellipsis">
       
         LabVIEW Version Selection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labview-2024-or-newer-required-for-project-scans-and-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LabVIEW 2024 or Newer Required for Project Scans and Builds
       
     </span>
   </a>
@@ -2198,6 +2237,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#labview-2024-or-newer-required-for-project-scans-and-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LabVIEW 2024 or Newer Required for Project Scans and Builds
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#run-cli-package-workflows-with-less-manual-setup" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2362,6 +2412,18 @@
 <li><strong>Workspace-local override (<code>.vipm/config.toml</code>).</strong> Drop a <code>.vipm/config.toml</code> next to your project's <code>vipm.toml</code> to set a different LabVIEW year and/or bitness for <strong>your local checkout only</strong> — without editing the team's <code>vipm.toml</code> and without retyping <code>--labview-version</code> on every command. Useful when you haven't installed the team-pinned LabVIEW year yet, when CI runners have different LabVIEW versions than developers, or when you're preparing a version bump. The file is per-developer; add <code>.vipm/</code> to your repo's <code>.gitignore</code>. See <a href="../../vipm-toml/workspace-local-config/">Workspace-Local Configuration</a> for the full guide.</li>
 <li><strong>Bitness preferences honored consistently.</strong> When you specify <code>--labview-bitness</code> on the command line or set the LabVIEW bitness in <code>vipm.toml</code>, that preference is now consistently respected when VIPM picks the LabVIEW version to use.</li>
 </ul>
+<h2 id="labview-2024-or-newer-required-for-project-scans-and-builds">LabVIEW 2024 or Newer Required for Project Scans and Builds</h2>
+<p>Commands that scan or build LabVIEW projects now fail fast with exit code <code>20</code> (<code>LABVIEW_VERSION_TOO_OLD</code>) when the resolved LabVIEW target is older than 2024. Install or select LabVIEW 2024 or newer to resolve.</p>
+<p>This applies to:</p>
+<ul>
+<li><strong><code>vipm sbom</code></strong> on <code>.lvproj</code> inputs</li>
+<li><strong><code>vipm sync</code></strong> project scans (<code>--from &lt;project&gt;.lvproj</code>)</li>
+<li><strong><code>vipm build</code></strong> on <code>.lvproj</code> and <code>vipm.toml</code> builds (<code>.vipb</code> builds are not affected)</li>
+</ul>
+<p>The error reports which LabVIEW version was selected and where the selection came from (<code>--labview-version</code>, <code>vipm.toml</code>, the <code>.lvproj</code> file, or auto-detection), along with the other installed LabVIEW versions you can switch to. <code>vipm.toml</code>, <code>.dragon</code>, and <code>.vipc</code> SBOM inputs do not require LabVIEW and are not affected.</p>
+<p>Previously, running these commands against an older LabVIEW target would block on an OS-level dialog asking for the LabVIEW 2024 Run-Time Engine — automation and CI jobs would hang indefinitely. The new behavior is a strict improvement: fail fast, with a clear error, instead of hanging.</p>
+<p>See the updated <a href="../../cli/command-reference/#vipm-build"><code>vipm build</code></a>, <a href="../../cli/command-reference/#vipm-sbom"><code>vipm sbom</code></a>, and <a href="../../cli/command-reference/#vipm-sync"><code>vipm sync</code></a> references for command-specific details.</p>
+<p>See <a href="/cli/labview-interop.md">LabVIEW Compatibility</a> for the supported version range and version selection.</p>
 <h2 id="run-cli-package-workflows-with-less-manual-setup">Run CLI Package Workflows with Less Manual Setup</h2>
 <p>The VIPM CLI now makes package workflows clearer when they need VIPM Desktop or LabVIEW in the background. CLI commands show progress while startup is happening and launch VIPM Desktop and LabVIEW automatically, when needed, which is especially helpful in containers (Docker) and CI/CD environments.</p>
 <ul>

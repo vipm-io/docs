@@ -14,7 +14,7 @@
         <link rel="prev" href="../getting-started/">
       
       
-        <link rel="next" href="../environment-variables/">
+        <link rel="next" href="../labview-interop/">
       
       
         
@@ -1552,6 +1552,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#exit-codes_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit Codes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#common-issues_6" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1604,6 +1615,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labview-interop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LabVIEW Compatibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -2831,6 +2870,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#exit-codes_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit Codes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#common-issues_6" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3043,6 +3093,10 @@
 <tr>
 <td><code>19</code></td>
 <td>A detected component (VIPM Desktop, LabVIEW, or NI Package Manager) is from a newer year than this VIPM CLI. Upgrade VIPM CLI to a version whose year matches or exceeds the component's year.</td>
+</tr>
+<tr>
+<td><code>20</code></td>
+<td>Resolved LabVIEW target is older than the minimum supported by the command. Install or select LabVIEW 2024 or newer. Applies to <code>vipm build</code> (<code>.lvproj</code> and <code>vipm.toml</code> builds), <code>vipm sbom</code> (<code>.lvproj</code> input), and <code>vipm sync</code> (project scans).</td>
 </tr>
 <tr>
 <td><code>21</code></td>
@@ -3540,12 +3594,16 @@
 <p>Bare <code>.lvproj</code>/<code>.vipb</code> builds (no <code>vipm.toml</code>) skip this check; there's no manifest to verify against.</p>
 <p>To bypass verification for a single invocation, pass <code>--allow-package-drift</code>. The check still runs but failures become stderr warnings instead of hard errors, and the warning lists each drifted package so you see what you're accepting. There is no manifest field for this — the bypass is CLI-only by design.</p>
 <h3 id="exit-codes_1">Exit Codes</h3>
-<p>See <a href="#exit-codes">Exit Codes</a> for the canonical reference. <code>vipm build</code> uses codes <code>0</code>–<code>8</code>, <code>11</code>–<code>15</code>, and <code>17</code>. Any non-zero exit means the build artifact was <strong>not</strong> produced.</p>
+<p>See <a href="#exit-codes">Exit Codes</a> for the canonical reference. <code>vipm build</code> uses codes <code>0</code>–<code>8</code>, <code>11</code>–<code>15</code>, <code>17</code>, <code>19</code>, and <code>20</code>. Any non-zero exit means the build artifact was <strong>not</strong> produced.</p>
 <h3 id="common-issues_4">Common Issues</h3>
 <ul>
 <li><strong>Linux build limitations</strong>: Review the <a href="../../preview/">VIPM Preview docs</a> for current platform support notes.</li>
 <li><strong>Missing dependencies</strong>: Run <code>vipm install project.vipc</code> before invoking <code>vipm build</code> in CI.</li>
 <li><strong>Stale <code>vipm.lock</code></strong>: After editing <code>vipm.toml</code>, run <code>vipm lock</code> so the lock matches the manifest before building.</li>
+<li>
+<p><strong>LabVIEW 2024 or newer required for project builds</strong>: applies to <code>.lvproj</code> and <code>vipm.toml</code> builds (<code>.vipb</code> builds are not affected).</p>
+<p>See <a href="/cli/labview-interop.md">LabVIEW Compatibility</a> for the supported version range and version selection.</p>
+</li>
 </ul>
 <h2 id="vipm-sbom"><code>vipm sbom</code></h2>
 <p>Generate a Software Bill of Materials (supports LabVIEW 2024 and newer).</p>
@@ -3686,7 +3744,7 @@ for now, use <code>--lvproj-target</code> to scope to the containing target.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>SBOM written to build/bom.json
 </code></pre></div>
 <h3 id="exit-codes_2">Exit Codes</h3>
-<p>See <a href="#exit-codes">Exit Codes</a> for the canonical reference. <code>vipm sbom</code> uses codes <code>0</code>–<code>8</code>, <code>12</code>–<code>15</code>, <code>17</code>, and <code>18</code>. Any non-zero exit means the SBOM was <strong>not</strong> produced — the <code>--output</code> file is only written on exit code <code>0</code>.</p>
+<p>See <a href="#exit-codes">Exit Codes</a> for the canonical reference. <code>vipm sbom</code> uses codes <code>0</code>–<code>8</code>, <code>12</code>–<code>15</code>, and <code>17</code>–<code>20</code>. Any non-zero exit means the SBOM was <strong>not</strong> produced — the <code>--output</code> file is only written on exit code <code>0</code>.</p>
 <p>On failure, stderr contains a human-readable error message. When a requested LabVIEW version is not installed, the available versions are listed inline. Example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>error: 2024 (64-bit). Available versions: 2021 (64-bit), 2024 (32-bit)
 </code></pre></div>
@@ -3695,7 +3753,13 @@ for now, use <code>--lvproj-target</code> to scope to the containing target.</p>
 <ul>
 <li><strong>Missing <code>--output</code></strong>: The <code>--output</code> flag is always required. <code>--format</code> defaults to <code>cyclonedx</code> and <code>--schema-version</code> defaults to <code>1.5</code>, so they can be omitted.</li>
 <li><strong>Wrong LabVIEW version</strong>: Use <code>--labview-version</code> and <code>--labview-bitness</code> to target the correct installation when scanning <code>.lvproj</code> files.</li>
-<li><strong><code>--no-dev</code> on non-toml input</strong>: The <code>--no-dev</code> flag is only valid with <code>vipm.toml</code> input.</li>
+<li>
+<p><strong>LabVIEW 2024 or newer required for <code>.lvproj</code> scans</strong>: other inputs (<code>vipm.toml</code>, <code>.dragon</code>, <code>.vipc</code>) do not require LabVIEW.</p>
+<p>See <a href="/cli/labview-interop.md">LabVIEW Compatibility</a> for the supported version range and version selection.</p>
+</li>
+<li>
+<p><strong><code>--no-dev</code> on non-toml input</strong>: The <code>--no-dev</code> flag is only valid with <code>vipm.toml</code> input.</p>
+</li>
 </ul>
 <h2 id="vipm-sync"><code>vipm sync</code></h2>
 <p>Synchronize vipm.toml with dependencies discovered by scanning a project (supports LabVIEW 2024 and newer).</p>
@@ -3749,9 +3813,15 @@ for now, use <code>--lvproj-target</code> to scope to the containing target.</p>
 <p>Preview changes without writing:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj<span class="w"> </span>--dry-run
 </code></pre></div>
+<h3 id="exit-codes_3">Exit Codes</h3>
+<p>See <a href="#exit-codes">Exit Codes</a> for the canonical reference. <code>vipm sync</code> uses codes <code>0</code>–<code>8</code>, <code>13</code>–<code>15</code>, and <code>18</code>–<code>20</code>.</p>
 <h3 id="common-issues_6">Common Issues</h3>
 <ul>
 <li><strong>No vipm.toml found</strong>: Either specify the target path explicitly or run the command from a directory that contains (or is a child of a directory that contains) a <code>vipm.toml</code>.</li>
+<li>
+<p><strong>LabVIEW 2024 or newer required for project scans</strong>: applies when scanning a <code>.lvproj</code> via <code>--from</code>.</p>
+<p>See <a href="/cli/labview-interop.md">LabVIEW Compatibility</a> for the supported version range and version selection.</p>
+</li>
 </ul>
 <h2 id="vipm-version"><code>vipm version</code></h2>
 <p>Prints the version of the VIPM CLI and VIPM Desktop.</p>

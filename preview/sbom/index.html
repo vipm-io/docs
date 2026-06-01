@@ -1187,6 +1187,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../cli/labview-interop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LabVIEW Compatibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cli/environment-variables/" class="md-nav__link">
         
   
@@ -2080,7 +2108,7 @@ Download it to try these features and share your feedback.</p>
 <tr>
 <td><code>.lvproj</code></td>
 <td>LabVIEW project file — scans installed packages directly</td>
-<td>Yes</td>
+<td>Yes (LabVIEW 2024 or newer)</td>
 </tr>
 <tr>
 <td><code>.dragon</code></td>
@@ -2095,10 +2123,15 @@ Download it to try these features and share your feedback.</p>
 </tbody>
 </table>
 <p>Choose the input that matches your workflow. If your project already uses <code>vipm.toml</code>, that's the simplest path — no LabVIEW installation is needed. For existing LabVIEW projects, point directly at your <code>.lvproj</code> file. See <a href="workflows/">Workflows</a> for guidance on each approach.</p>
+<div class="admonition note">
+<p class="admonition-title">LabVIEW 2024 or newer is required for <code>.lvproj</code> scans</p>
+<p>Generating an SBOM from a <code>.lvproj</code> file requires LabVIEW 2024 or newer; if an older target is resolved, the command exits with code <code>20</code> and no SBOM is written. Generate the SBOM from a <code>vipm.toml</code>, <code>.dragon</code>, or <code>.vipc</code> input to avoid the LabVIEW requirement.</p>
+<p>See <a href="/cli/labview-interop.md">LabVIEW Compatibility</a> for the supported version range and version selection.</p>
+</div>
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
 <li><strong>VIPM 2026 Q3 Preview</strong> or later — <a href="../preview/">download here</a></li>
-<li><strong>LabVIEW</strong> — required only when generating SBOMs from <code>.lvproj</code> files</li>
+<li><strong>LabVIEW 2024 or newer</strong> — required only when generating SBOMs from <code>.lvproj</code> files</li>
 <li><strong>NI Package Manager</strong> — required only when including NI packages in the SBOM</li>
 </ul>
 <p>Verify your CLI is available:</p>

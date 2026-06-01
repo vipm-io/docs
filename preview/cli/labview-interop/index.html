@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.vipm.io/preview/building-packages/vi-packages-build-templates/">
+        <link rel="canonical" href="https://docs.vipm.io/preview/cli/labview-interop/">
       
       
-        <link rel="prev" href="../building-vi-packages-that-depend-on-other-software/">
+        <link rel="prev" href="../command-reference/">
       
       
-        <link rel="next" href="../../publishing-packages/">
+        <link rel="next" href="../environment-variables/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>VI Package Build Templates - Developer Docs</title>
+        <title>LabVIEW Compatibility - Developer Docs</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vi-package-build-templates" class="md-skip">
+        <a href="#labview-compatibility-for-vipm-cli" class="md-skip">
           Skip to content
         </a>
       
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VI Package Build Templates
+              LabVIEW Compatibility
             
           </span>
         </div>
@@ -715,20 +715,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
         
           
           <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
@@ -749,7 +747,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -767,7 +765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../building-packages/" class="md-nav__link">
         
   
   
@@ -795,7 +793,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../building-vi-packages-that-depend-on-other-software/" class="md-nav__link">
+      <a href="../../building-packages/building-vi-packages-that-depend-on-other-software/" class="md-nav__link">
         
   
   
@@ -820,19 +818,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      
-      
-        
-      
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../building-packages/vi-packages-build-templates/" class="md-nav__link">
         
   
   
@@ -848,7 +837,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -949,18 +937,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked>
         
           
           <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
@@ -981,7 +971,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -999,7 +989,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cli/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -1027,7 +1017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cli/getting-started/" class="md-nav__link">
+      <a href="../getting-started/" class="md-nav__link">
         
   
   
@@ -1055,7 +1045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cli/command-reference/" class="md-nav__link">
+      <a href="../command-reference/" class="md-nav__link">
         
   
   
@@ -1080,10 +1070,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../cli/labview-interop/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LabVIEW Compatibility
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1099,6 +1116,110 @@
   
 
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#operations-that-require-labview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operations that require LabVIEW
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-labview-version-range" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported LabVIEW version range
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported LabVIEW version range">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#below-the-minimum-exit-code-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Below the minimum (exit code 20)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#above-the-maximum-exit-code-19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Above the maximum (exit code 19)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selecting-which-labview-vipm-uses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selecting which LabVIEW VIPM uses
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-codes-from-labview-interop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit codes from LabVIEW interop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1111,7 +1232,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cli/environment-variables/" class="md-nav__link">
+      <a href="../environment-variables/" class="md-nav__link">
         
   
   
@@ -1139,7 +1260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cli/docker/" class="md-nav__link">
+      <a href="../docker/" class="md-nav__link">
         
   
   
@@ -1167,7 +1288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cli/github-actions/" class="md-nav__link">
+      <a href="../github-actions/" class="md-nav__link">
         
   
   
@@ -1856,6 +1977,11 @@
                       
                     
                     
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
                   
                   <div class="md-sidebar__inner">
                     
@@ -1867,6 +1993,97 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#operations-that-require-labview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operations that require LabVIEW
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-labview-version-range" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported LabVIEW version range
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported LabVIEW version range">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#below-the-minimum-exit-code-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Below the minimum (exit code 20)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#above-the-maximum-exit-code-19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Above the maximum (exit code 19)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selecting-which-labview-vipm-uses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selecting which LabVIEW VIPM uses
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-codes-from-labview-interop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit codes from LabVIEW interop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1884,9 +2101,92 @@
   
 
 
-<h1 id="vi-package-build-templates">VI Package Build Templates</h1>
-<p>VI Package Build Templates are just <code>.vipb</code> files with a <code>.vipt</code> file extension that tells VI Package Builder that the file is a template.</p>
-<p>When you open the template, VI Package Builder will ask you to set the Source Directory, Product Name and Company Name upon opening the .vipt file and then use those settings in the new .vipb. </p>
+<h1 id="labview-compatibility-for-vipm-cli">LabVIEW Compatibility for VIPM CLI</h1>
+<p>Several <code>vipm</code> commands scan or build LabVIEW projects by launching LabVIEW directly. This page covers which LabVIEW versions those operations support, how the CLI picks a version when several are installed, and how compatibility failures are reported.</p>
+<h2 id="operations-that-require-labview">Operations that require LabVIEW</h2>
+<p>The CLI launches LabVIEW when a command operates on a LabVIEW project file or runs a LabVIEW Application Builder build:</p>
+<ul>
+<li><a href="../command-reference/#vipm-sbom"><code>vipm sbom &lt;project&gt;.lvproj</code></a> — project scan for SBOM generation</li>
+<li><a href="../command-reference/#vipm-sync"><code>vipm sync --from &lt;project&gt;.lvproj</code></a> — project scan to update <code>vipm.toml</code></li>
+<li><a href="../command-reference/#vipm-build"><code>vipm build &lt;project&gt;.lvproj</code></a> — LabVIEW Application Builder build from a <code>.lvproj</code></li>
+<li><a href="../command-reference/#vipm-build"><code>vipm build</code></a> on a <code>vipm.toml</code> LabVIEW build target — LabVIEW Application Builder build from a manifest</li>
+</ul>
+<p>Inputs that do <strong>not</strong> launch LabVIEW:</p>
+<ul>
+<li><code>vipm sbom</code> on <code>vipm.toml</code>, <code>.dragon</code>, or <code>.vipc</code> — parsed directly</li>
+<li><code>vipm build</code> on a <code>.vipb</code> file — handled without the LabVIEW Application Builder</li>
+</ul>
+<h2 id="supported-labview-version-range">Supported LabVIEW version range</h2>
+<p>VIPM CLI's LabVIEW interop is bounded on both sides:</p>
+<table>
+<thead>
+<tr>
+<th>Bound</th>
+<th>Constraint</th>
+<th>Exit code on failure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Minimum</td>
+<td>LabVIEW 2024 (or newer)</td>
+<td><a href="../command-reference/#exit-codes"><code>20</code></a> (<code>LABVIEW_VERSION_TOO_OLD</code>)</td>
+</tr>
+<tr>
+<td>Maximum</td>
+<td>The CLI's own version year — e.g., VIPM CLI 2026 supports LabVIEW up to 2026</td>
+<td><a href="../command-reference/#exit-codes"><code>19</code></a> (<code>COMPONENT_INCOMPATIBLE</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>If your installed LabVIEW falls outside this window, install a supported LabVIEW year or upgrade VIPM CLI to a year that matches or exceeds your LabVIEW.</p>
+<h3 id="below-the-minimum-exit-code-20">Below the minimum (exit code <code>20</code>)</h3>
+<p>If the resolved LabVIEW target is older than 2024, the command fails fast with exit code <code>20</code> (<code>LABVIEW_VERSION_TOO_OLD</code>) and reports which LabVIEW version was selected, where the selection came from (<code>--labview-version</code>, <code>vipm.toml</code>, the <code>.lvproj</code> file, or auto-detection), and the other installed LabVIEW versions you can switch to. Install or select LabVIEW 2024 or newer. See <a href="/cli/labview-interop.md">[LabVIEW Compatibility]</a></p>
+<h3 id="above-the-maximum-exit-code-19">Above the maximum (exit code <code>19</code>)</h3>
+<p>If the resolved LabVIEW year is newer than this VIPM CLI year, the command fails with exit code <code>19</code> (<code>COMPONENT_INCOMPATIBLE</code>) and asks you to upgrade VIPM CLI to a year that matches or exceeds the LabVIEW year. The same upper-bound check also applies to VIPM Desktop and NI Package Manager — see <a href="../command-reference/#exit-codes">Exit Codes</a>.</p>
+<h2 id="selecting-which-labview-vipm-uses">Selecting which LabVIEW VIPM uses</h2>
+<p>When multiple LabVIEW versions are installed, VIPM picks a target from these sources:</p>
+<ul>
+<li><strong>Command line.</strong> <code>--labview-version YYYY</code> and <code>--labview-bitness 32|64</code> on any command that resolves a LabVIEW target.</li>
+<li><strong>Project manifest.</strong> <code>[project] labview-version</code> and <code>labview-bitness</code> in <code>vipm.toml</code>.</li>
+<li><strong>Workspace-local override.</strong> A <code>.vipm/config.toml</code> next to your project's <code>vipm.toml</code> overrides the selection for your local checkout only. See <a href="../../vipm-toml/workspace-local-config/">Workspace-Local Configuration</a>.</li>
+<li><strong>Project file.</strong> <code>.lvproj</code> files carry an <code>LVVersion</code> attribute that pins the target version.</li>
+</ul>
+<p>When a LabVIEW-needing command fails because the resolved version doesn't work (codes <code>4</code>, <code>19</code>, or <code>20</code>), the error reports the resolved LabVIEW version, the source it was picked from, and the other installed LabVIEW versions you could switch to.</p>
+<h2 id="exit-codes-from-labview-interop">Exit codes from LabVIEW interop</h2>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Constant</th>
+<th>Fires when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>4</code></td>
+<td><code>LABVIEW_VERSION_NOT_FOUND</code></td>
+<td>The requested LabVIEW version is not installed</td>
+</tr>
+<tr>
+<td><code>19</code></td>
+<td><code>COMPONENT_INCOMPATIBLE</code></td>
+<td>The resolved LabVIEW year is newer than this VIPM CLI (upper bound)</td>
+</tr>
+<tr>
+<td><code>20</code></td>
+<td><code>LABVIEW_VERSION_TOO_OLD</code></td>
+<td>The resolved LabVIEW year is older than 2024 (lower bound)</td>
+</tr>
+</tbody>
+</table>
+<p>See the <a href="../command-reference/#exit-codes">Exit Codes</a> table for the canonical reference across all codes.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../command-reference/">CLI Command Reference</a> — per-command options including <code>--labview-version</code> and <code>--labview-bitness</code></li>
+<li><a href="../../vipm-toml/workspace-local-config/">Workspace-Local Configuration</a> — <code>.vipm/config.toml</code> LabVIEW override</li>
+<li><a href="../../sbom/">SBOM Overview</a> — when LabVIEW is needed for SBOM generation</li>
+</ul>
 
 
 
@@ -1895,6 +2195,9 @@
 
 
 
+
+  
+  
 
 
 

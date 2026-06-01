@@ -1198,6 +1198,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../cli/labview-interop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LabVIEW Compatibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../cli/environment-variables/" class="md-nav__link">
         
   
@@ -2076,6 +2104,11 @@ Download it to try these features and share your feedback.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>VIPM CLI version 2026.3.x
 </code></pre></div>
 <p>If the command is not found, install the <a href="../../preview/">VIPM 2026 Q3 Preview</a> first.</p>
+<div class="admonition note">
+<p class="admonition-title"><code>.lvproj</code> scans require LabVIEW 2024 or newer</p>
+<p>The examples below scan a <code>.lvproj</code> file, which requires the resolved LabVIEW target to be LabVIEW 2024 or newer. If you don't have LabVIEW 2024+ installed, generate the SBOM from a <code>vipm.toml</code>, <code>.dragon</code>, or <code>.vipc</code> input instead — none of those require LabVIEW. See the <a href="../">SBOM Overview</a> for the full list of supported inputs.</p>
+<p>See <a href="/cli/labview-interop.md">LabVIEW Compatibility</a> for the supported version range and version selection.</p>
+</div>
 <h2 id="step-2-generate-an-sbom">Step 2 — Generate an SBOM</h2>
 <p>Run the <code>vipm sbom</code> command against your project. This example uses a <code>.lvproj</code> file:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span><span class="s2">&quot;C:\MyProject\MyProject.lvproj&quot;</span><span class="w"> </span>^
