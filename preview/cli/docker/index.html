@@ -1268,6 +1268,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#display-and-labview-setup-linux-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display and LabVIEW Setup (Linux Containers)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#vipm-cli-commands-in-containers" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2118,6 +2129,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#display-and-labview-setup-linux-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display and LabVIEW Setup (Linux Containers)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#vipm-cli-commands-in-containers" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2233,6 +2255,37 @@
 <p>Build and run your container:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>vipm-labview
 </code></pre></div>
+<h2 id="display-and-labview-setup-linux-containers">Display and LabVIEW Setup (Linux Containers)</h2>
+<div class="admonition important">
+<p class="admonition-title">Display setup required before VIPM commands (Linux only)</p>
+<p>On Linux containers, VIPM commands that interact with LabVIEW need a running display server. Create a <code>setup-display.sh</code> script and source it before running <code>vipm</code> commands:</p>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+TARGET_DISPLAY=:99
+export DISPLAY=&quot;$TARGET_DISPLAY&quot;
+if ! pgrep -x Xvfb &gt; /dev/null; then
+    Xvfb &quot;$TARGET_DISPLAY&quot; -screen 0 1280x720x24 -ac +extension GLX +render -noreset \
+        &gt; /tmp/xvfb.log 2&gt;&amp;1 &amp;
+fi
+# Without this marker file the LabVIEW Runtime Engine may not start properly.
+mkdir -p /tmp/natinst &amp;&amp; echo &quot;1&quot; &gt; /tmp/natinst/LVContainer.txt
+echo &quot;$(pgrep -x Xvfb &gt; /dev/null &amp;&amp; echo &quot;Xvfb running (DISPLAY=$TARGET_DISPLAY)&quot; || echo &quot;WARNING: Xvfb is required by vipm, but failed to start; DISPLAY=$DISPLAY may not work. Check /tmp/xvfb.log for details.&quot;)&quot;
+</code></pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Launch LabVIEW in headless mode before install/build commands (Linux only)</p>
+<p>Commands that install or build packages need LabVIEW running in the background. Launch it non-blocking with the <code>--headless</code> flag:</p>
+<div class="highlight"><pre><span></span><code>/usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &amp;
+</code></pre></div>
+<p>The trailing <code>&amp;</code> runs it in the background so the shell continues to the <code>vipm</code> command.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Headless LabVIEW</p>
+<p>The <code>--headless</code> flag prevents LabVIEW from opening a GUI and works on both Windows and Linux. It should be used in any CI/CD or containerized workflow. See <a href="https://github.com/ni/labview-for-containers/blob/main/docs/headless-labview.md">Headless LabVIEW</a> for details.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">LabVIEW containers are new</p>
+<p>The official NI LabVIEW container images and the tooling around them are still maturing. JKI and NI are actively polishing the rough edges — expect these setup steps to simplify over time.</p>
+</div>
 <h2 id="vipm-cli-commands-in-containers">VIPM CLI Commands in Containers</h2>
 <p>Once inside a running container, use the same CLI commands described in the <a href="../command-reference/">CLI Command Reference</a>. The examples below highlight container-specific considerations:</p>
 <ul>
