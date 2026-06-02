@@ -12,8 +12,28 @@ VIPM previews give you early access to upcoming features before they're included
 - [Download the Windows installer](https://packages.jki.net/vipm/preview/vipm-setup-latest-preview.exe)
 - Or install via command line:
 
+    **Silent install — PowerShell:**
+
+    ```powershell
+    $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri "https://packages.jki.net/vipm/preview/vipm-setup-latest-preview.exe" -OutFile "$env:TEMP\vipm-setup.exe"; Start-Process -Wait -FilePath "$env:TEMP\vipm-setup.exe" -ArgumentList "/exenoui /qn"; Remove-Item "$env:TEMP\vipm-setup.exe" -Force
+    ```
+
+    **Silent install — cmd.exe:**
+
     ```shell
     curl.exe -L https://packages.jki.net/vipm/preview/vipm-setup-latest-preview.exe -o %TEMP%\vipm-setup.exe && start /wait %TEMP%\vipm-setup.exe /quiet /norestart && del %TEMP%\vipm-setup.exe
+    ```
+
+    **Interactive install — PowerShell:**
+
+    ```powershell
+    $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri "https://packages.jki.net/vipm/preview/vipm-setup-latest-preview.exe" -OutFile "$env:TEMP\vipm-setup.exe"; Start-Process -Wait -FilePath "$env:TEMP\vipm-setup.exe"; Remove-Item "$env:TEMP\vipm-setup.exe" -Force
+    ```
+
+    **Interactive install — cmd.exe:**
+
+    ```shell
+    curl.exe -L https://packages.jki.net/vipm/preview/vipm-setup-latest-preview.exe -o %TEMP%\vipm-setup.exe && start /wait %TEMP%\vipm-setup.exe && del %TEMP%\vipm-setup.exe
     ```
 
 ### Linux
