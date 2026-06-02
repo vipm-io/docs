@@ -43,6 +43,22 @@ You can find your VIPM Pro serial number on the [VIPM account page](https://www.
 !!! tip "Prompts are auto-disabled in CI"
     VIPM automatically detects CI environments like GitHub Actions and enables non-interactive mode — confirmation prompts are auto-accepted and missing parameters cause immediate errors instead of hanging. No extra configuration is needed. You can also use the `-y` flag or `VIPM_ASSUME_YES=1` for explicit control. See [Environment Variables](environment-variables.md) for details.
 
+!!! note "LabVIEW containers are new"
+    The official NI LabVIEW container images and the tooling around them are still maturing. JKI and NI are actively polishing the rough edges — expect the setup steps (Xvfb, display configuration, runtime markers) to simplify over time.
+
+!!! important "Display setup required for every step (Linux containers)"
+    VIPM commands that interact with LabVIEW need a running display server on Linux. In GitHub Actions containers, processes don't survive between steps, so the display must be re-established at the top of every step that uses `vipm`. The workflow examples below include a step that writes `setup-display.sh` at the top of the job, then each subsequent step sources it.
+
+!!! important "Launch LabVIEW in headless mode before install/build steps (Linux containers)"
+    Steps that install or build packages need LabVIEW running in the background. Launch it non-blocking with the `--headless` flag before any `vipm` command that interacts with LabVIEW:
+
+        /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
+
+    The trailing `&` runs it in the background so the step continues to the `vipm` command.
+
+!!! tip "Headless LabVIEW"
+    The `--headless` flag prevents LabVIEW from opening a GUI and works on both Windows and Linux. It should be used in any CI/CD or containerized workflow. See [Headless LabVIEW](https://github.com/ni/labview-for-containers/blob/main/docs/headless-labview.md) for details.
+
 ### Basic Workflow Example
 
 Create a file at `.github/workflows/vipm-ci.yml`:
@@ -63,9 +79,26 @@ jobs:
     container:
       image: nationalinstruments/labview:2026q1patch2-linux
     
+    env:
+      LABVIEW_VERSION_YEAR: "2026"
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      
+      - name: Create display setup script
+        run: |
+          cat > setup-display.sh << 'EOF'
+          TARGET_DISPLAY=:99
+          export DISPLAY="$TARGET_DISPLAY"
+          if ! pgrep -x Xvfb > /dev/null; then
+              Xvfb "$TARGET_DISPLAY" -screen 0 1280x720x24 -ac +extension GLX +render -noreset \
+                  > /tmp/xvfb.log 2>&1 &
+          fi
+          # Without this marker file the LabVIEW Runtime Engine may not start properly.
+          mkdir -p /tmp/natinst && echo "1" > /tmp/natinst/LVContainer.txt
+          echo "$(pgrep -x Xvfb > /dev/null && echo "Xvfb running (DISPLAY=$TARGET_DISPLAY)" || echo "WARNING: Xvfb is required by vipm, but failed to start; DISPLAY=$DISPLAY may not work. Check /tmp/xvfb.log for details.")"
+          EOF
       
       - name: Install VIPM
         run: |
@@ -75,19 +108,27 @@ jobs:
       
       - name: Activate VIPM
         run: |
+          source setup-display.sh
           vipm activate \
             --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" \
             --name "${{ secrets.VIPM_FULL_NAME }}" \
             --email "${{ secrets.VIPM_EMAIL }}"
       
       - name: Refresh package sources
-        run: vipm refresh
+        run: |
+          source setup-display.sh
+          vipm refresh
       
       - name: Install project dependencies
-        run: vipm install -y project.vipc
+        run: |
+          source setup-display.sh
+          /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
+          vipm install -y project.vipc
       
       - name: List installed packages
-        run: vipm list --installed
+        run: |
+          source setup-display.sh
+          vipm list --installed
 ```
 
 ### Installing Specific Packages
@@ -148,8 +189,24 @@ jobs:
     container:
       image: nationalinstruments/labview:2026q1patch2-linux
     
+    env:
+      LABVIEW_VERSION_YEAR: "2026"
+    
     steps:
       - uses: actions/checkout@v4
+      
+      - name: Create display setup script
+        run: |
+          cat > setup-display.sh << 'EOF'
+          TARGET_DISPLAY=:99
+          export DISPLAY="$TARGET_DISPLAY"
+          if ! pgrep -x Xvfb > /dev/null; then
+              Xvfb "$TARGET_DISPLAY" -screen 0 1280x720x24 -ac +extension GLX +render -noreset \
+                  > /tmp/xvfb.log 2>&1 &
+          fi
+          mkdir -p /tmp/natinst && echo "1" > /tmp/natinst/LVContainer.txt
+          echo "$(pgrep -x Xvfb > /dev/null && echo "Xvfb running (DISPLAY=$TARGET_DISPLAY)" || echo "WARNING: Xvfb is required by vipm, but failed to start; DISPLAY=$DISPLAY may not work. Check /tmp/xvfb.log for details.")"
+          EOF
       
       - name: Install VIPM
         run: |
@@ -159,70 +216,42 @@ jobs:
       
       - name: Activate VIPM
         run: |
+          source setup-display.sh
           vipm activate \
             --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" \
             --name "${{ secrets.VIPM_FULL_NAME }}" \
             --email "${{ secrets.VIPM_EMAIL }}"
       
       - name: Refresh package sources
-        run: vipm refresh
+        run: |
+          source setup-display.sh
+          vipm refresh
       
       - name: Install dependencies
-        run: vipm install -y project.vipc
+        run: |
+          source setup-display.sh
+          /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
+          vipm install -y project.vipc
       
       - name: Build project
         run: |
+          source setup-display.sh
+          /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
           # Add your LabVIEW build commands here
           echo "Building LabVIEW project..."
       
       - name: Run tests
         run: |
+          source setup-display.sh
+          /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
           # Add your test commands here
           echo "Running tests..."
       
       - name: List installed packages
         if: always()
-        run: vipm list --installed
-```
-
-### Release Workflow
-
-```yaml
-name: Release
-
-on:
-  release:
-    types: [created]
-
-jobs:
-  build-package:
-    runs-on: ubuntu-latest
-    container:
-      image: nationalinstruments/labview:2026q1patch2-linux
-    
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Install VIPM
         run: |
-          wget -O /tmp/vipm.deb https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.deb
-          sudo dpkg -i /tmp/vipm.deb
-          rm /tmp/vipm.deb
-      
-      - name: Activate VIPM
-        run: |
-          vipm activate \
-            --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" \
-            --name "${{ secrets.VIPM_FULL_NAME }}" \
-            --email "${{ secrets.VIPM_EMAIL }}"
-      
-      - name: Build VI Package
-        run: vipm build source/MyPackage.vipb
-      
-      - name: Upload to Release
-        run: gh release upload ${{ github.event.release.tag_name }} builds/*.vip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          source setup-display.sh
+          vipm list --installed
 ```
 
 ## Troubleshooting
