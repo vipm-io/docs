@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     
     container:
-      image: nationalinstruments/labview:latest
+      image: nationalinstruments/labview:2026q1patch2-linux
     
     steps:
       - name: Checkout code
@@ -146,7 +146,7 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     container:
-      image: nationalinstruments/labview:latest
+      image: nationalinstruments/labview:2026q1patch2-linux
     
     steps:
       - uses: actions/checkout@v4
@@ -198,7 +198,7 @@ jobs:
   build-package:
     runs-on: ubuntu-latest
     container:
-      image: nationalinstruments/labview:latest
+      image: nationalinstruments/labview:2026q1patch2-linux
     
     steps:
       - uses: actions/checkout@v4
