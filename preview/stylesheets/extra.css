@@ -64,6 +64,15 @@
   color: inherit;
 }
 
+/* Preview download CTA — oversized primary button on the home page */
+.md-typeset .md-button.vipm-preview-cta {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  margin: 0.5rem 0 1rem;
+}
+
 /* CLI options table — Flag column shrinks to fit its longest content;
    the Description column takes the remaining width. width:1% combined
    with white-space:nowrap is the canonical CSS idiom for this. */
