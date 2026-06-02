@@ -67,6 +67,35 @@ Build and run your container:
 docker compose run --rm vipm-labview
 ```
 
+## Display and LabVIEW Setup (Linux Containers)
+
+!!! important "Display setup required before VIPM commands (Linux only)"
+    On Linux containers, VIPM commands that interact with LabVIEW need a running display server. Create a `setup-display.sh` script and source it before running `vipm` commands:
+
+        #!/bin/bash
+        TARGET_DISPLAY=:99
+        export DISPLAY="$TARGET_DISPLAY"
+        if ! pgrep -x Xvfb > /dev/null; then
+            Xvfb "$TARGET_DISPLAY" -screen 0 1280x720x24 -ac +extension GLX +render -noreset \
+                > /tmp/xvfb.log 2>&1 &
+        fi
+        # Without this marker file the LabVIEW Runtime Engine may not start properly.
+        mkdir -p /tmp/natinst && echo "1" > /tmp/natinst/LVContainer.txt
+        echo "$(pgrep -x Xvfb > /dev/null && echo "Xvfb running (DISPLAY=$TARGET_DISPLAY)" || echo "WARNING: Xvfb is required by vipm, but failed to start; DISPLAY=$DISPLAY may not work. Check /tmp/xvfb.log for details.")"
+
+!!! important "Launch LabVIEW in headless mode before install/build commands (Linux only)"
+    Commands that install or build packages need LabVIEW running in the background. Launch it non-blocking with the `--headless` flag:
+
+        /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
+
+    The trailing `&` runs it in the background so the shell continues to the `vipm` command.
+
+!!! tip "Headless LabVIEW"
+    The `--headless` flag prevents LabVIEW from opening a GUI and works on both Windows and Linux. It should be used in any CI/CD or containerized workflow. See [Headless LabVIEW](https://github.com/ni/labview-for-containers/blob/main/docs/headless-labview.md) for details.
+
+!!! note "LabVIEW containers are new"
+    The official NI LabVIEW container images and the tooling around them are still maturing. JKI and NI are actively polishing the rough edges — expect these setup steps to simplify over time.
+
 ## VIPM CLI Commands in Containers
 
 Once inside a running container, use the same CLI commands described in the [CLI Command Reference](command-reference.md). The examples below highlight container-specific considerations:
