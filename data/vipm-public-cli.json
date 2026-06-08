@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0-public",
   "cli_version": "dev",
-  "generated_on": "2026-06-01",
+  "generated_on": "2026-06-08",
   "global_options": [
     {
       "name": "labview_version",
@@ -2044,6 +2044,133 @@
           "subcommands": []
         }
       ]
+    }
+  ],
+  "exit_codes": [
+    {
+      "code": 0,
+      "name": "SUCCESS",
+      "description": "Operation completed successfully"
+    },
+    {
+      "code": 1,
+      "name": "GENERAL_ERROR",
+      "description": "Unexpected or unclassified error"
+    },
+    {
+      "code": 2,
+      "name": "COMMAND_SYNTAX_ERROR",
+      "description": "Invalid arguments or failed input validation"
+    },
+    {
+      "code": 3,
+      "name": "PACKAGE_NOT_FOUND",
+      "description": "Requested package or version does not exist in any repository or manifest"
+    },
+    {
+      "code": 4,
+      "name": "LABVIEW_VERSION_NOT_FOUND",
+      "description": "Requested LabVIEW version is not installed"
+    },
+    {
+      "code": 5,
+      "name": "NETWORK_REPOSITORY_ERROR",
+      "description": "Network or repository access failure"
+    },
+    {
+      "code": 6,
+      "name": "ENTITLEMENT_ERROR",
+      "description": "Insufficient edition, license, or activation"
+    },
+    {
+      "code": 7,
+      "name": "DEPENDENCY_CONFLICT",
+      "description": "Package dependency conflict"
+    },
+    {
+      "code": 8,
+      "name": "IO_ERROR",
+      "description": "File system or IO failure"
+    },
+    {
+      "code": 9,
+      "name": "PACKAGE_ALREADY_INSTALLED",
+      "description": "Package is already installed"
+    },
+    {
+      "code": 10,
+      "name": "AUTHENTICATION_FAILURE",
+      "description": "Login or credential failure"
+    },
+    {
+      "code": 11,
+      "name": "BUILD_FAILED",
+      "description": "LabVIEW build operation failed"
+    },
+    {
+      "code": 12,
+      "name": "BUILD_TARGET_NOT_FOUND",
+      "description": "Named build target not found in project"
+    },
+    {
+      "code": 13,
+      "name": "INVALID_FILE_TYPE",
+      "description": "Unsupported or unrecognized file type"
+    },
+    {
+      "code": 14,
+      "name": "FILE_PARSE_ERROR",
+      "description": "Malformed manifest, project file, or configuration"
+    },
+    {
+      "code": 15,
+      "name": "FILE_NOT_FOUND",
+      "description": "A required file does not exist"
+    },
+    {
+      "code": 16,
+      "name": "CONFIRMATION_REQUIRED",
+      "description": "Operation needs user confirmation (e.g. JSON mode without --yes)"
+    },
+    {
+      "code": 17,
+      "name": "PACKAGE_DRIFT",
+      "description": "Installed packages disagree with the project's declared state (vipm.toml / vipm.lock)"
+    },
+    {
+      "code": 18,
+      "name": "MISSING_REFERENCED_FILES",
+      "description": "One or more files referenced by a scanned project were not found on disk"
+    },
+    {
+      "code": 19,
+      "name": "COMPONENT_INCOMPATIBLE",
+      "description": "Detected component version is too new for this CLI version"
+    },
+    {
+      "code": 20,
+      "name": "LABVIEW_VERSION_TOO_OLD",
+      "description": "Resolved LabVIEW target is older than the minimum supported by this command"
+    },
+    {
+      "code": 21,
+      "name": "NOT_IMPLEMENTED",
+      "description": "The invoked operation is specified by the canonical contract but the CLI hasn't built it yet"
+    },
+    {
+      "code": 22,
+      "name": "ACTIVATION_FAILED",
+      "description": "Activation failed — the service declined the request, the returned code failed verification, or the VIPM Desktop delegate reported a failure"
+    },
+    {
+      "code": 124,
+      "name": "TIMEOUT",
+      "description": "Operation timed out before completion"
+    },
+    {
+      "code": 130,
+      "name": "USER_INTERRUPTED",
+      "description": "Operation interrupted by user (Ctrl+C / SIGINT)"
     }
   ]
 }
