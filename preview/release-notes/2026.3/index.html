@@ -1651,6 +1651,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#automatic-package-database-repair-after-labview-quarterly-upgrades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic Package Database Repair After LabVIEW Quarterly Upgrades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#additional-improvements" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2292,6 +2303,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#automatic-package-database-repair-after-labview-quarterly-upgrades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic Package Database Repair After LabVIEW Quarterly Upgrades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#additional-improvements" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2452,6 +2474,10 @@
 <li><strong>Up-to-date package lists.</strong> <code>vipm refresh</code> updates the CLI package cache before refreshing VIPM Desktop's package list, reducing stale results, and shows progress in interactive terminals.</li>
 <li><strong>Actionable, quieter output.</strong> When a package spec fails to download, <code>vipm refresh</code> reports an actionable error; full per-spec failure detail appears only with <code>--verbose</code>, keeping default output quiet.</li>
 </ul>
+<h2 id="automatic-package-database-repair-after-labview-quarterly-upgrades">Automatic Package Database Repair After LabVIEW Quarterly Upgrades</h2>
+<p>Fixed an issue where upgrading an existing LabVIEW installation from a Q1 release to a Q3 release (e.g. LabVIEW 2025 Q1 to LabVIEW 2025 Q3) could leave VIPM's package installation database for the older LabVIEW version nested inside the newer version's database directory. When this happened, VIPM's package list appeared empty even though the packages were still installed.</p>
+<p>VIPM Desktop now detects this condition — at startup, when the package list is refreshed, and when the active LabVIEW target changes — and automatically repairs the package installation database. After a repair, we recommend uninstalling all packages and reinstalling the ones you need, to be certain the system is in a known good state.</p>
+<p>See the <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/130">tracking issue</a> for full details, including a manual repair procedure you can use with earlier VIPM versions.</p>
 <h2 id="additional-improvements">Additional improvements</h2>
 <ul>
 <li>[CLI] LabVIEW project scans run faster on large projects, so <code>vipm sync</code> and <code>vipm sbom</code> complete more quickly on sizeable <code>.lvproj</code> files.</li>
