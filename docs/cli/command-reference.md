@@ -64,11 +64,13 @@ Every command returns exit code `0` on success and a non-zero value on failure. 
 | [`vipm uninstall`](#vipm-uninstall) | Remove packages from the selected LabVIEW installation. |
 | [`vipm list`](#vipm-list) | List installed packages or inspect a `.vipc`/`.dragon` file. |
 | [`vipm info`](#vipm-info) | Show metadata and installed files for a package. |
+| [`vipm search`](#vipm-search) | Search for VIPM and NI packages. |
 | [`vipm refresh`](#vipm-refresh) | Refresh all package sources (VIPM Desktop, CLI cache, NIPM feeds). |
 | [`vipm activate`](#vipm-activate) | Activate VIPM Pro using a serial number, name, and email. |
 | [`vipm build`](#vipm-build) | Build packages from `.vipb` specs or LabVIEW project build specs. |
 | [`vipm sbom`](#vipm-sbom) | Generate a CycloneDX SBOM from a project or manifest. |
 | [`vipm sync`](#vipm-sync) | Reconcile vipm.toml from a LabVIEW project scan. |
+| [`vipm lock`](#vipm-lock) | Generate or check `vipm.lock` from `vipm.toml`. |
 | [`vipm version`](#vipm-version) | Output the CLI and Desktop version numbers. |
 | [`vipm about`](#vipm-about) | Print installation details (paths, versions). |
 
@@ -424,6 +426,12 @@ See [Exit Codes](#exit-codes) for the canonical reference. `vipm sync` uses code
 - **LabVIEW 2024 or newer required for project scans**: applies when scanning a `.lvproj` via `--from`.
 
     --8<-- "labview-interop-link-reference.md"
+
+## `vipm lock`
+
+--8<-- "_generated/commands/lock.md"
+
+Creating `vipm.lock` is opt-in: only `vipm lock` creates the file; `vipm install` refreshes an existing lock without creating one. See the [Lock Files guide](../vipm-toml/getting-started.md#lock-files) for what the lock file records and how to use `vipm lock --check` in CI.
 
 ## `vipm version`
 
