@@ -71,6 +71,7 @@ nav:
     - Using vipm.toml Files:
       - vipm-toml/index.md
       - vipm-toml/getting-started.md
+      - vipm-toml/lock-files.md
       - vipm-toml/workspace-local-config.md
       - vipm-toml/nipm.md
     - Building Packages:
