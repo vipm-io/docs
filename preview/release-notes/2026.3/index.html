@@ -2545,6 +2545,7 @@
 <li>[CLI] <code>vipm install</code> failures now surface the underlying error output, making container/headless CI/CD troubleshooting easier.</li>
 <li>[CLI] <code>vipm uninstall</code> is now available in Free Edition, matching <code>vipm install</code> — previously, removing packages from the command line required a higher edition.</li>
 <li>[CLI] <code>vipm help --json</code> now publishes a machine-readable catalog of every CLI exit code (number, stable name, and description), so scripts and integrations can interpret exit codes without scraping documentation.</li>
+<li>[CLI] <code>vipm install</code> from a <code>vipm.toml</code> with many already-installed dependencies now reports them as a single summary line instead of one notice per package; pass <code>--verbose</code> for the full per-package plan.</li>
 </ul>
 <h2 id="need-help">Need Help?</h2>
 <ul>
