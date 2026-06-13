@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0-public",
   "cli_version": "dev",
-  "generated_on": "2026-06-08",
+  "generated_on": "2026-06-13",
   "global_options": [
     {
       "name": "labview_version",
@@ -420,7 +420,7 @@
           "name": "lvproj_build_spec",
           "long": "--lvproj-build-spec",
           "value_name": "LVPROJ_BUILD_SPEC",
-          "description": "Name of the build specification within a LabVIEW project file (only for .lvproj files)",
+          "description": "Name of the build specification within a LabVIEW project (.lvproj) file. If omitted, all build specs under the target are built. For vipm.toml build entries of type lvproj, overrides the entry's spec field. Not applicable to .vipb builds",
           "defaults": [],
           "required": false,
           "multiple": false,
@@ -435,7 +435,7 @@
           "name": "lvproj_target",
           "long": "--lvproj-target",
           "value_name": "LVPROJ_TARGET",
-          "description": "Scope build-spec lookup to a specific target within the .lvproj file",
+          "description": "Target within the LabVIEW project (.lvproj) file under which build specs are looked up and built. Defaults to \"My Computer\". For vipm.toml build entries of type lvproj, overrides the entry's target field. Not applicable to .vipb builds",
           "defaults": [],
           "required": false,
           "multiple": false,
@@ -1419,7 +1419,7 @@
           "name": "lvproj_target",
           "long": "--lvproj-target",
           "value_name": "TARGET",
-          "description": "Scope the dependency scan to a specific .lvproj target. May be used alone (scans only that target) or with --lvproj-build-spec (validates the spec is under that target). Omit to scan the whole project",
+          "description": "Scope the dependency scan to a specific .lvproj target. May be used alone (scans only that target) or with --lvproj-build-spec (validates the spec is under that target). Omitting both --lvproj-target and --lvproj-build-spec scans the whole project; omitting only --lvproj-target keeps the scan scoped to the build spec, whose containing target is inferred when the spec name is unique within the LabVIEW project (.lvproj) file",
           "defaults": [],
           "required": false,
           "multiple": false,
