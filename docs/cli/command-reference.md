@@ -26,33 +26,7 @@ Long-running commands display progress on stderr, adapting to where the command 
 
 Every command returns exit code `0` on success and a non-zero value on failure. The codes are stable — once assigned, a value never changes meaning, so automation scripts can branch on them safely. A given command emits only the subset relevant to its operation; consult the per-command "Common Issues" notes for command-specific guidance.
 
-| Code | Meaning |
-|------|---------|
-| `0` | Success |
-| `1` | Unexpected or unclassified error |
-| `2` | Invalid arguments or failed input validation. Also covers `vipm.lock` being stale or incomplete during dependency-state verification (run `vipm lock`, or pass `--allow-package-drift`). |
-| `3` | Requested package or version does not exist in any repository or manifest |
-| `4` | Requested LabVIEW version is not installed |
-| `5` | Network or repository access failure |
-| `6` | Insufficient edition, license, or activation |
-| `7` | Package dependency conflict |
-| `8` | File system or IO failure |
-| `9` | Package is already installed |
-| `10` | Login or credential failure |
-| `11` | LabVIEW build operation failed (compilation error, App Builder failure, etc.) — `vipm build` only |
-| `12` | Named build target not found in the project |
-| `13` | Input file is not a supported type |
-| `14` | Input file exists but is malformed |
-| `15` | A required file does not exist |
-| `16` | Operation needs user confirmation but cannot prompt (e.g. `--json` mode without `--yes`, or `VIPM_NONINTERACTIVE=1` set). Pass `--yes`/`-y` or `VIPM_ASSUME_YES=1` to auto-confirm. |
-| `17` | Installed packages disagree with the project's declared state in `vipm.toml` or `vipm.lock`. Use `--allow-package-drift` to override. Applies to `vipm build` and `vipm sbom`. |
-| `18` | One or more files referenced by the scanned project could not be found on disk. Use `--allow-missing-files` to override. `vipm sbom` only. |
-| `19` | A detected component (VIPM Desktop, LabVIEW, or NI Package Manager) is from a newer year than this VIPM CLI. Upgrade VIPM CLI to a version whose year matches or exceeds the component's year. |
-| `20` | Resolved LabVIEW target is older than the minimum supported by the command. Install or select LabVIEW 2024 or newer. Applies to `vipm build` (`.lvproj` and `vipm.toml` builds), `vipm sbom` (`.lvproj` input), and `vipm sync` (project scans). |
-| `21` | The requested operation is recognized but not yet implemented in this CLI version. Lets scripts distinguish a feature gap from an unknown argument (code `2`) or a missing package (code `3`). |
-| `22` | Activation failed — the activation service declined the request, the returned code failed local verification, or the VIPM Desktop delegate reported a failure. Distinct from code `10` (login/credential issues). |
-| `124` | Operation timed out before completion (see `--timeout` and the `VIPM_TIMEOUT` environment variable) |
-| `130` | Operation interrupted by the user (Ctrl+C / SIGINT) |
+--8<-- "_generated/exit-codes.md"
 
 `vipm <command> --help` is the authoritative source for which codes a specific command emits. On failure, stderr always contains a human-readable error message.
 

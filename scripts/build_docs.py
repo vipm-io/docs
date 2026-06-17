@@ -38,6 +38,7 @@ SITE_DIR = REPO_ROOT / "site"
 
 RELEASE_NOTES_INDEX = SITE_DIR / "release-notes" / "index.html"
 REPORT_A_PROBLEM_INDEX = SITE_DIR / "report-a-problem" / "index.html"
+COMMAND_REFERENCE_INDEX = SITE_DIR / "cli" / "command-reference" / "index.html"
 
 
 def _post_release_notes_table_rendered() -> str | None:
@@ -86,9 +87,32 @@ def _post_report_a_problem_redirect() -> str | None:
     return None
 
 
+def _post_cli_exit_code_names_rendered() -> str | None:
+    if not COMMAND_REFERENCE_INDEX.is_file():
+        return (
+            f"missing rendered page: {COMMAND_REFERENCE_INDEX.relative_to(REPO_ROOT)}"
+        )
+    html = COMMAND_REFERENCE_INDEX.read_text()
+    markers = [
+        "<th>Exit Code</th>",
+        "<code>SUCCESS</code>",
+        "<code>USER_INTERRUPTED</code>",
+    ]
+    missing = [marker for marker in markers if marker not in html]
+    if missing:
+        return (
+            f"{COMMAND_REFERENCE_INDEX.relative_to(REPO_ROOT)} is missing rendered "
+            f"CLI exit-code name marker(s): {', '.join(missing)}. Check the "
+            f"`_generated/exit-codes.md` snippet include in "
+            f"docs/cli/command-reference.md."
+        )
+    return None
+
+
 POST_BUILD_CHECKS = [
     _post_release_notes_table_rendered,
     _post_report_a_problem_redirect,
+    _post_cli_exit_code_names_rendered,
 ]
 
 

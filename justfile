@@ -3,9 +3,10 @@
 list:
     @just --list
 
-# regenerate generated source snippets (release-notes table)
+# regenerate generated source snippets
 prebuild:
     uv run python scripts/generate_release_notes_table.py
+    uv run python scripts/generate_cli_snippets.py
 
 # build and serve locally (auto-finds open port starting at 8000)
 dev: prebuild

@@ -24,7 +24,9 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SOURCE = REPO_ROOT / "data" / "vipm-public-cli.json"
-OUTDIR = REPO_ROOT / "docs" / ".snippets" / "_generated" / "commands"
+GENERATED_DIR = REPO_ROOT / "docs" / ".snippets" / "_generated"
+OUTDIR = GENERATED_DIR / "commands"
+EXIT_CODES_SNIPPET = GENERATED_DIR / "exit-codes.md"
 
 # Per-tier badge inclusion. "Free" and "always_allowed" mean "available
 # in all editions" — readers can infer that from the absence of a badge,
@@ -205,6 +207,27 @@ def render_global_options_snippet(global_options: list) -> str:
     return "\n".join(lines) + "\n"
 
 
+def render_exit_code_row(exit_code: dict) -> str:
+    code = exit_code["code"]
+    name = exit_code["name"]
+    desc = exit_code["description"].replace("|", "\\|").replace("\n", " ")
+    return f"| `{code}` `{name}` | {desc} |"
+
+
+def render_exit_codes_snippet(exit_codes: list) -> str:
+    rows = [render_exit_code_row(exit_code) for exit_code in exit_codes]
+    lines = [
+        '<div class="cli-options cli-exit-codes" markdown>',
+        "",
+        "| Exit Code | Meaning |",
+        "|---|---|",
+        *rows,
+        "",
+        "</div>",
+    ]
+    return "\n".join(lines) + "\n"
+
+
 def main() -> None:
     if not SOURCE.is_file():
         sys.exit(f"missing source: {SOURCE}")
@@ -221,10 +244,12 @@ def main() -> None:
     global_snippet_path.write_text(
         render_global_options_snippet(data.get("global_options", []))
     )
+    EXIT_CODES_SNIPPET.write_text(render_exit_codes_snippet(data.get("exit_codes", [])))
 
     print(
         f"wrote {written} command snippet(s) to {OUTDIR.relative_to(REPO_ROOT)}, "
-        f"plus {global_snippet_path.relative_to(REPO_ROOT)}"
+        f"plus {global_snippet_path.relative_to(REPO_ROOT)} and "
+        f"{EXIT_CODES_SNIPPET.relative_to(REPO_ROOT)}"
     )
 
 
