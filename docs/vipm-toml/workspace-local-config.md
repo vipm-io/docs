@@ -4,8 +4,8 @@ title: Workspace-Local Config
 
 # Workspace-Local Configuration (`.vipm/config.toml`)
 
-!!! warning "Preview Feature"
-    Workspace-local configuration requires **VIPM Desktop 2026 Q3 Preview** or later. This feature is not available in stable releases. See the [Preview page](../preview.md) for installation instructions.
+!!! note "Availability"
+    Workspace-local configuration requires **VIPM Desktop 2026 Q3** or later.
 
 `.vipm/config.toml` is a **per-developer, non-committed** companion to `vipm.toml`. It lets you override the LabVIEW version your local commands use — without editing the team's shared `vipm.toml` and without retyping `--labview-version` on every invocation.
 
