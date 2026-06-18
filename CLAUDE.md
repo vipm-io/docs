@@ -14,7 +14,7 @@ Documentation site for [docs.vipm.io](https://docs.vipm.io), built with **Zensic
 - `just check` — No-fix pre-push check: `ruff format --check` + `ruff check` + `pytest`
 - `just test` — Run pytest suite for `scripts/`
 - `just build` — Full pipeline: generate snippets → validate inputs → `zensical build` → validate rendered outputs. Delegates to `scripts/build_docs.py`.
-- `just prebuild` — Regenerate generated snippets only (release-notes table)
+- `just prebuild` — Regenerate generated snippets only (release-notes table and CLI snippets)
 
 Always rebuild after documentation changes and review the output.
 
@@ -22,7 +22,7 @@ Always rebuild after documentation changes and review the output.
 
 - `mkdocs.yml` — Site configuration (Zensical reads mkdocs.yml directly): nav structure, theme, markdown extensions, social links, version provider
 - `docs/` — All documentation content (Markdown files, assets)
-- `docs/.snippets/` — Reusable Markdown snippets included via `pymdownx.snippets` extension. `release-notes-table.md` is generated and gitignored.
+- `docs/.snippets/` — Reusable Markdown snippets included via `pymdownx.snippets` extension. `release-notes-table.md` and `_generated/` CLI snippets are generated and gitignored.
 - `overrides/` — Theme overrides (custom icons in `.icons/custom/`)
 - `scripts/generate_release_notes_table.py` — Prebuild script that reads frontmatter from `docs/release-notes/*.md` and writes the release-notes-table snippet. Runs before every `zensical build` so the rendered site has a fresh table. Replaced the former `hooks.py:on_page_markdown` (Zensical has no native hook API and invokes the build as a subprocess during `mike deploy`, so runtime shims are not an option).
 - `scripts/validate_docs_build.py` — Pre-build validator: checks that generator outputs (e.g., the release-notes snippet) exist and have the expected shape before `zensical build` consumes them.

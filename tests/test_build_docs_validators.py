@@ -53,6 +53,50 @@ def test_pre_build_snippet_with_rows_ok(tmp_path, monkeypatch):
     assert validate_docs_build._check_release_notes_table() is None
 
 
+# --- validate_docs_build._check_exit_codes_table ------------------------
+
+
+def test_pre_build_missing_exit_codes_table(tmp_path, monkeypatch):
+    snippet = tmp_path / "missing" / "exit-codes.md"
+    monkeypatch.setattr(validate_docs_build, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(validate_docs_build, "EXIT_CODES_TABLE", snippet)
+
+    result = validate_docs_build._check_exit_codes_table()
+
+    assert result is not None
+    assert "missing:" in result
+    assert "exit-codes.md" in result
+
+
+def test_pre_build_exit_codes_table_without_combined_column_fails(
+    tmp_path, monkeypatch
+):
+    snippet = tmp_path / "exit-codes.md"
+    snippet.write_text(
+        "| Code | Name | Meaning |\n|---|---|---|\n| `0` | `SUCCESS` | Success |\n"
+    )
+    monkeypatch.setattr(validate_docs_build, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(validate_docs_build, "EXIT_CODES_TABLE", snippet)
+
+    result = validate_docs_build._check_exit_codes_table()
+
+    assert result is not None
+    assert "Exit Code | Meaning" in result
+
+
+def test_pre_build_exit_codes_table_with_named_rows_ok(tmp_path, monkeypatch):
+    snippet = tmp_path / "exit-codes.md"
+    snippet.write_text(
+        "| Exit Code | Meaning |\n"
+        "|---|---|\n"
+        "| `0` `SUCCESS` | Operation completed successfully |\n"
+    )
+    monkeypatch.setattr(validate_docs_build, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(validate_docs_build, "EXIT_CODES_TABLE", snippet)
+
+    assert validate_docs_build._check_exit_codes_table() is None
+
+
 # --- build_docs._post_release_notes_table_rendered ----------------------
 
 
@@ -162,3 +206,50 @@ def test_post_report_a_problem_missing_refresh_fails(tmp_path, monkeypatch):
     result = build_docs._post_report_a_problem_redirect()
 
     assert result is not None
+
+
+# --- build_docs._post_cli_exit_code_names_rendered ----------------------
+
+
+def _point_command_reference_at(monkeypatch, tmp_path: Path, html_path: Path) -> None:
+    monkeypatch.setattr(build_docs, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(build_docs, "COMMAND_REFERENCE_INDEX", html_path)
+
+
+def test_post_cli_exit_code_names_missing_file(tmp_path, monkeypatch):
+    html_path = tmp_path / "site" / "cli" / "command-reference" / "index.html"
+    _point_command_reference_at(monkeypatch, tmp_path, html_path)
+
+    result = build_docs._post_cli_exit_code_names_rendered()
+
+    assert result is not None
+    assert "missing rendered page" in result
+
+
+def test_post_cli_exit_code_names_without_exit_code_column_fails(tmp_path, monkeypatch):
+    html_path = tmp_path / "site" / "cli" / "command-reference" / "index.html"
+    _write_html(
+        html_path,
+        "<table><tr><th>Code</th><th>Name</th><th>Meaning</th></tr>"
+        "<tr><td><code>0</code></td><td>Success</td></tr></table>",
+    )
+    _point_command_reference_at(monkeypatch, tmp_path, html_path)
+
+    result = build_docs._post_cli_exit_code_names_rendered()
+
+    assert result is not None
+    assert "<th>Exit Code</th>" in result
+
+
+def test_post_cli_exit_code_names_rendered_ok(tmp_path, monkeypatch):
+    html_path = tmp_path / "site" / "cli" / "command-reference" / "index.html"
+    _write_html(
+        html_path,
+        "<table><tr><th>Exit Code</th><th>Meaning</th></tr>"
+        "<tr><td><code>0</code> <code>SUCCESS</code></td><td>Success</td></tr>"
+        "<tr><td><code>130</code> <code>USER_INTERRUPTED</code></td>"
+        "<td>Interrupted</td></tr></table>",
+    )
+    _point_command_reference_at(monkeypatch, tmp_path, html_path)
+
+    assert build_docs._post_cli_exit_code_names_rendered() is None
