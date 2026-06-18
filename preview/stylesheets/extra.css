@@ -81,3 +81,11 @@
   white-space: nowrap;
   width: 1%;
 }
+
+/* CLI exit-code table — the combined code/name cell is a compact identifier;
+   keep it unwrapped and let Meaning take the remaining width. */
+.md-typeset .cli-exit-codes table th:first-child,
+.md-typeset .cli-exit-codes table td:first-child {
+  white-space: nowrap;
+  width: 1%;
+}

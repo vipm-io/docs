@@ -3028,116 +3028,126 @@
 </ul>
 <h2 id="exit-codes">Exit Codes</h2>
 <p>Every command returns exit code <code>0</code> on success and a non-zero value on failure. The codes are stable — once assigned, a value never changes meaning, so automation scripts can branch on them safely. A given command emits only the subset relevant to its operation; consult the per-command "Common Issues" notes for command-specific guidance.</p>
+<div class="cli-options cli-exit-codes">
 <table>
 <thead>
 <tr>
-<th>Code</th>
+<th>Exit Code</th>
 <th>Meaning</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>0</code></td>
-<td>Success</td>
+<td><code>0</code> <code>SUCCESS</code></td>
+<td>Operation completed successfully</td>
 </tr>
 <tr>
-<td><code>1</code></td>
+<td><code>1</code> <code>GENERAL_ERROR</code></td>
 <td>Unexpected or unclassified error</td>
 </tr>
 <tr>
-<td><code>2</code></td>
-<td>Invalid arguments or failed input validation. Also covers <code>vipm.lock</code> being stale or incomplete during dependency-state verification (run <code>vipm lock</code>, or pass <code>--allow-package-drift</code>).</td>
+<td><code>2</code> <code>COMMAND_SYNTAX_ERROR</code></td>
+<td>Invalid arguments or failed input validation</td>
 </tr>
 <tr>
-<td><code>3</code></td>
+<td><code>3</code> <code>PACKAGE_NOT_FOUND</code></td>
 <td>Requested package or version does not exist in any repository or manifest</td>
 </tr>
 <tr>
-<td><code>4</code></td>
+<td><code>4</code> <code>LABVIEW_VERSION_NOT_FOUND</code></td>
 <td>Requested LabVIEW version is not installed</td>
 </tr>
 <tr>
-<td><code>5</code></td>
+<td><code>5</code> <code>NETWORK_REPOSITORY_ERROR</code></td>
 <td>Network or repository access failure</td>
 </tr>
 <tr>
-<td><code>6</code></td>
+<td><code>6</code> <code>ENTITLEMENT_ERROR</code></td>
 <td>Insufficient edition, license, or activation</td>
 </tr>
 <tr>
-<td><code>7</code></td>
+<td><code>7</code> <code>DEPENDENCY_CONFLICT</code></td>
 <td>Package dependency conflict</td>
 </tr>
 <tr>
-<td><code>8</code></td>
+<td><code>8</code> <code>IO_ERROR</code></td>
 <td>File system or IO failure</td>
 </tr>
 <tr>
-<td><code>9</code></td>
+<td><code>9</code> <code>PACKAGE_ALREADY_INSTALLED</code></td>
 <td>Package is already installed</td>
 </tr>
 <tr>
-<td><code>10</code></td>
+<td><code>10</code> <code>AUTHENTICATION_FAILURE</code></td>
 <td>Login or credential failure</td>
 </tr>
 <tr>
-<td><code>11</code></td>
-<td>LabVIEW build operation failed (compilation error, App Builder failure, etc.) — <code>vipm build</code> only</td>
+<td><code>11</code> <code>BUILD_FAILED</code></td>
+<td>LabVIEW build operation failed</td>
 </tr>
 <tr>
-<td><code>12</code></td>
-<td>Named build target not found in the project</td>
+<td><code>12</code> <code>BUILD_TARGET_NOT_FOUND</code></td>
+<td>Named build target not found in project</td>
 </tr>
 <tr>
-<td><code>13</code></td>
-<td>Input file is not a supported type</td>
+<td><code>13</code> <code>INVALID_FILE_TYPE</code></td>
+<td>Unsupported or unrecognized file type</td>
 </tr>
 <tr>
-<td><code>14</code></td>
-<td>Input file exists but is malformed</td>
+<td><code>14</code> <code>FILE_PARSE_ERROR</code></td>
+<td>Malformed manifest, project file, or configuration</td>
 </tr>
 <tr>
-<td><code>15</code></td>
+<td><code>15</code> <code>FILE_NOT_FOUND</code></td>
 <td>A required file does not exist</td>
 </tr>
 <tr>
-<td><code>16</code></td>
-<td>Operation needs user confirmation but cannot prompt (e.g. <code>--json</code> mode without <code>--yes</code>, or <code>VIPM_NONINTERACTIVE=1</code> set). Pass <code>--yes</code>/<code>-y</code> or <code>VIPM_ASSUME_YES=1</code> to auto-confirm.</td>
+<td><code>16</code> <code>CONFIRMATION_REQUIRED</code></td>
+<td>Operation needs user confirmation (e.g. JSON mode without --yes)</td>
 </tr>
 <tr>
-<td><code>17</code></td>
-<td>Installed packages disagree with the project's declared state in <code>vipm.toml</code> or <code>vipm.lock</code>. Use <code>--allow-package-drift</code> to override. Applies to <code>vipm build</code> and <code>vipm sbom</code>.</td>
+<td><code>17</code> <code>PACKAGE_DRIFT</code></td>
+<td>Installed packages disagree with the project's declared state (vipm.toml / vipm.lock)</td>
 </tr>
 <tr>
-<td><code>18</code></td>
-<td>One or more files referenced by the scanned project could not be found on disk. Use <code>--allow-missing-files</code> to override. <code>vipm sbom</code> only.</td>
+<td><code>18</code> <code>MISSING_REFERENCED_FILES</code></td>
+<td>One or more files referenced by a scanned project were not found on disk</td>
 </tr>
 <tr>
-<td><code>19</code></td>
-<td>A detected component (VIPM Desktop, LabVIEW, or NI Package Manager) is from a newer year than this VIPM CLI. Upgrade VIPM CLI to a version whose year matches or exceeds the component's year.</td>
+<td><code>19</code> <code>COMPONENT_INCOMPATIBLE</code></td>
+<td>Detected component version is too new for this CLI version</td>
 </tr>
 <tr>
-<td><code>20</code></td>
-<td>Resolved LabVIEW target is older than the minimum supported by the command. Install or select LabVIEW 2024 or newer. Applies to <code>vipm build</code> (<code>.lvproj</code> and <code>vipm.toml</code> builds), <code>vipm sbom</code> (<code>.lvproj</code> input), and <code>vipm sync</code> (project scans).</td>
+<td><code>20</code> <code>LABVIEW_VERSION_TOO_OLD</code></td>
+<td>Resolved LabVIEW target is older than the minimum supported by this command</td>
 </tr>
 <tr>
-<td><code>21</code></td>
-<td>The requested operation is recognized but not yet implemented in this CLI version. Lets scripts distinguish a feature gap from an unknown argument (code <code>2</code>) or a missing package (code <code>3</code>).</td>
+<td><code>21</code> <code>NOT_IMPLEMENTED</code></td>
+<td>The invoked operation is specified by the canonical contract but the CLI hasn't built it yet</td>
 </tr>
 <tr>
-<td><code>22</code></td>
-<td>Activation failed — the activation service declined the request, the returned code failed local verification, or the VIPM Desktop delegate reported a failure. Distinct from code <code>10</code> (login/credential issues).</td>
+<td><code>22</code> <code>ACTIVATION_FAILED</code></td>
+<td>Activation failed — the service declined the request, the returned code failed verification, or the VIPM Desktop delegate reported a failure</td>
 </tr>
 <tr>
-<td><code>124</code></td>
-<td>Operation timed out before completion (see <code>--timeout</code> and the <code>VIPM_TIMEOUT</code> environment variable)</td>
+<td><code>23</code> <code>PROJECT_HAS_UNSAVED_CHANGES</code></td>
+<td>The project is open in a running LabVIEW IDE with unsaved changes, so the on-disk .lvproj is stale</td>
 </tr>
 <tr>
-<td><code>130</code></td>
-<td>Operation interrupted by the user (Ctrl+C / SIGINT)</td>
+<td><code>24</code> <code>LABVIEW_VI_SERVER_UNAVAILABLE</code></td>
+<td>LabVIEW VI Server is disabled or not reachable on the resolved target port</td>
+</tr>
+<tr>
+<td><code>124</code> <code>TIMEOUT</code></td>
+<td>Operation timed out before completion</td>
+</tr>
+<tr>
+<td><code>130</code> <code>USER_INTERRUPTED</code></td>
+<td>Operation interrupted by user (Ctrl+C / SIGINT)</td>
 </tr>
 </tbody>
 </table>
+</div>
 <p><code>vipm &lt;command&gt; --help</code> is the authoritative source for which codes a specific command emits. On failure, stderr always contains a human-readable error message.</p>
 <h2 id="command-quick-look">Command Quick Look</h2>
 <table>
@@ -3665,6 +3675,10 @@
 <td>Unique identifier for this BOM's lineage (urn:uuid:... format)</td>
 </tr>
 <tr>
+<td><code>--document-timestamp</code></td>
+<td>Pin metadata.timestamp to a fixed ISO 8601 instant for reproducible output (overrides the SOURCE_DATE_EPOCH env var; default: generation time). Pair with --document-serial-number for byte-identical SBOMs</td>
+</tr>
+<tr>
 <td><code>--output</code></td>
 <td>Output file path</td>
 </tr>
@@ -3679,6 +3693,10 @@
 <tr>
 <td><code>--product-type</code></td>
 <td>Component type of the software described by the SBOM (default: application)</td>
+</tr>
+<tr>
+<td><code>--product-supplier</code></td>
+<td>Software producer / supplier of the software described by the SBOM (CycloneDX <code>metadata.component.supplier</code>). Overrides the build-spec company name when both are present</td>
 </tr>
 <tr>
 <td><code>--lvproj-build-spec</code></td>
