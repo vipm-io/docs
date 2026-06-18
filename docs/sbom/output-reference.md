@@ -291,6 +291,8 @@ The CLI reads the declared dependencies from your manifest:
 
 With a lock file, the SBOM includes the exact resolved versions. Without one, version specifiers from the manifest are used directly.
 
+For how the lock file is created and what it records, see the [Lock Files guide](../vipm-toml/lock-files.md).
+
 Path, git, and URL dependencies are excluded from the SBOM — only registry dependencies with version specifiers are included.
 
 The SBOM is only as accurate as the dependencies declared in `vipm.toml`. Use [`vipm sync`](workflows.md#keeping-vipmtoml-in-sync-with-your-project) to reconcile your manifest with the packages actually used by your LabVIEW project before generating an SBOM.

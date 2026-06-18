@@ -43,6 +43,8 @@ Every command returns exit code `0` on success and a non-zero value on failure. 
 | [`vipm activate`](#vipm-activate) | Activate VIPM Pro using a serial number, name, and email. |
 | [`vipm build`](#vipm-build) | Build packages from `.vipb` specs or LabVIEW project build specs. |
 | [`vipm sbom`](#vipm-sbom) | Generate a CycloneDX SBOM from a project or manifest. |
+| [`vipm add`](#vipm-add) | Add dependencies to `vipm.toml` (optionally install them). |
+| [`vipm remove`](#vipm-remove) | Remove dependencies from `vipm.toml`. |
 | [`vipm sync`](#vipm-sync) | Reconcile vipm.toml from a LabVIEW project scan. |
 | [`vipm lock`](#vipm-lock) | Generate or check `vipm.lock` from `vipm.toml`. |
 | [`vipm version`](#vipm-version) | Output the CLI and Desktop version numbers. |
@@ -370,6 +372,85 @@ To list installed LabVIEW versions directly, use `vipm labview list` (experiment
     --8<-- "labview-interop-link-reference.md"
 - **`--no-dev` on non-toml input**: The `--no-dev` flag is only valid with `vipm.toml` input.
 
+## `vipm add`
+
+--8<-- "_generated/commands/add.md"
+
+`vipm add` edits `vipm.toml` only — it records the resolved version in `[dependencies]` (or `[dev-dependencies]` with `-D`/`--dev`) and does **not** download or install anything by default. It searches upward from the current directory for a `vipm.toml`, so you can run it from a subdirectory. Use `--install` to download, install, and refresh an existing `vipm.lock` in one step; `--install` is not supported together with `--nipm`. `vipm add` never creates a `vipm.lock` — see [Lock Files](../vipm-toml/lock-files.md).
+
+### Examples
+
+Add one or more dependencies (latest available version):
+
+```bash
+vipm add oglib_array oglib_error
+```
+
+Pin a specific version:
+
+```bash
+vipm add oglib_array@6.0.1.20
+```
+
+Add a dev-only dependency (test frameworks, tooling):
+
+```bash
+vipm add --dev caraya
+```
+
+Add and install in one step (refreshes an existing `vipm.lock`):
+
+```bash
+vipm add --install oglib_array
+```
+
+Expected output:
+
+```
+Added oglib_array @ 6.0.1.20 to [dependencies]
+✓ Added 1 package to [dependencies]
+Run 'vipm install' to download and install the new dependencies
+```
+
+### Common Issues
+
+- **No `vipm.toml` found**: Run `vipm init` first, or run `vipm add` from a directory inside the project.
+- **Package not found**: Run `vipm refresh` and verify the package ID at [vipm.io](https://www.vipm.io); when a name is close, the error lists suggestions.
+- **`--install` with `--nipm`**: NIPM dependencies cannot be installed by `add`; add them, then install separately.
+
+## `vipm remove`
+
+--8<-- "_generated/commands/remove.md"
+
+`vipm remove` deletes the named dependencies from `vipm.toml` only — it does **not** uninstall them from LabVIEW (use `vipm uninstall` for that) and it does **not** create a `vipm.lock`. If a `vipm.lock` already exists it is left untouched; reconcile it afterward with `vipm lock`. Pass `-D`/`--dev` to target `[dev-dependencies]` and `--nipm` to target the NIPM sections. Like `vipm add`, it searches upward for a `vipm.toml`.
+
+### Examples
+
+Remove one or more dependencies:
+
+```bash
+vipm remove oglib_array oglib_error
+```
+
+Remove a dev dependency:
+
+```bash
+vipm remove --dev caraya
+```
+
+Expected output:
+
+```
+Removed oglib_array from [dependencies]
+✓ Removed 1 package from [dependencies]
+```
+
+### Common Issues
+
+- **Package not in the manifest**: `vipm remove` errors if the package isn't in the targeted section; the message suggests close matches from other dependency groups (including the exact `vipm remove` command to use).
+- **Still installed in LabVIEW**: Removing from `vipm.toml` does not uninstall the package — run `vipm uninstall <package>` if you also want it gone from LabVIEW.
+- **Lock now out of sync**: After removing, run `vipm lock` (or `vipm lock --check` in CI) to bring an existing `vipm.lock` back in line with `vipm.toml`.
+
 ## `vipm sync`
 
 --8<-- "_generated/commands/sync.md"
@@ -405,7 +486,29 @@ See [Exit Codes](#exit-codes) for the canonical reference. `vipm sync` uses code
 
 --8<-- "_generated/commands/lock.md"
 
-Creating `vipm.lock` is opt-in: only `vipm lock` creates the file; `vipm install` refreshes an existing lock without creating one. See the [Lock Files guide](../vipm-toml/getting-started.md#lock-files) for what the lock file records and how to use `vipm lock --check` in CI.
+Creating `vipm.lock` is opt-in: `vipm lock` is the **only** command that creates the file. It resolves the full dependency graph declared in `vipm.toml` — including transitive and dev-dependencies, which are always recorded — and writes `vipm.lock` next to the manifest. It searches upward from the current directory for `vipm.toml`, and if nothing changed it leaves the file untouched. Once a lock exists, `vipm install` refreshes it; `vipm add` and `vipm remove` leave it alone. See the [Lock Files guide](../vipm-toml/lock-files.md) for what the lock records and how it's consumed.
+
+Use `--best-effort` to keep going when some package specs can't be fetched: the command writes what it can resolve and warns instead of erroring.
+
+### Checking the lock in CI
+
+`vipm lock --check` verifies that `vipm.lock` matches `vipm.toml` without writing anything:
+
+```bash
+vipm lock --check
+```
+
+- **In sync** → exit code `0` and `vipm.lock is in sync with vipm.toml`.
+- **Out of sync** → exit code `2` (`COMMAND_SYNTAX_ERROR`), with a message telling you to run `vipm lock`.
+- **No lock file** → exit code `2`; `--check` requires an existing `vipm.lock`.
+
+See [Exit Codes](#exit-codes) for the canonical reference and [Checking lock file sync](../vipm-toml/lock-files.md#checking-lock-file-sync-in-ci) for the CI workflow.
+
+### Common Issues
+
+- **No `vipm.lock` to check**: `vipm lock --check` fails on a missing lock; create one first with `vipm lock`, then commit it.
+- **Lock drift after editing `vipm.toml`**: Re-run `vipm lock` after `vipm add`/`vipm remove` (or any manual edit) so the lock matches the manifest.
+- **Specs temporarily unfetchable**: Use `vipm lock --best-effort` to write a partial lock with warnings instead of failing outright.
 
 ## `vipm version`
 
