@@ -31,6 +31,9 @@
         <loc>https://docs.vipm.io/preview/vipm-toml/getting-started/</loc>
       </url>
       <url>
+        <loc>https://docs.vipm.io/preview/vipm-toml/lock-files/</loc>
+      </url>
+      <url>
         <loc>https://docs.vipm.io/preview/vipm-toml/workspace-local-config/</loc>
       </url>
       <url>
