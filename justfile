@@ -1,5 +1,8 @@
 # This file contains useful commands for development tasks.
 
+# run recipe lines in bash on every platform
+set shell := ["bash", "-cu"]
+
 list:
     @just --list
 
