@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0-public",
   "cli_version": "dev",
-  "generated_on": "2026-06-13",
+  "generated_on": "2026-06-18",
   "global_options": [
     {
       "name": "labview_version",
@@ -1349,6 +1349,19 @@
           "conflicts_with": []
         },
         {
+          "name": "document_timestamp",
+          "long": "--document-timestamp",
+          "value_name": "ISO8601",
+          "description": "Pin metadata.timestamp to a fixed ISO 8601 instant for reproducible output (overrides the SOURCE_DATE_EPOCH env var; default: generation time). Pair with --document-serial-number for byte-identical SBOMs",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
           "name": "output",
           "long": "--output",
           "value_name": "OUTPUT",
@@ -1392,6 +1405,19 @@
           "long": "--product-type",
           "value_name": "TYPE",
           "description": "Component type of the software described by the SBOM (default: application)",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
+          "name": "product_supplier",
+          "long": "--product-supplier",
+          "value_name": "SUPPLIER",
+          "description": "Software producer / supplier of the software described by the SBOM (CycloneDX `metadata.component.supplier`). Overrides the build-spec company name when both are present",
           "defaults": [],
           "required": false,
           "multiple": false,
@@ -2161,6 +2187,16 @@
       "code": 22,
       "name": "ACTIVATION_FAILED",
       "description": "Activation failed — the service declined the request, the returned code failed verification, or the VIPM Desktop delegate reported a failure"
+    },
+    {
+      "code": 23,
+      "name": "PROJECT_HAS_UNSAVED_CHANGES",
+      "description": "The project is open in a running LabVIEW IDE with unsaved changes, so the on-disk .lvproj is stale"
+    },
+    {
+      "code": 24,
+      "name": "LABVIEW_VI_SERVER_UNAVAILABLE",
+      "description": "LabVIEW VI Server is disabled or not reachable on the resolved target port"
     },
     {
       "code": 124,
