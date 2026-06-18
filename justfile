@@ -6,19 +6,14 @@ set shell := ["bash", "-cu"]
 list:
     @just --list
 
-# regenerate generated source snippets (release-notes table)
+# regenerate generated source snippets
 prebuild:
     uv run python scripts/generate_release_notes_table.py
+    uv run python scripts/generate_cli_snippets.py
 
 # build and serve locally (auto-finds open port starting at 8000)
 dev: prebuild
-    #!/usr/bin/env bash
-    port=8000
-    while ss -tlnp | grep -q ":$port "; do
-        port=$((port + 1))
-    done
-    echo "Serving on http://localhost:$port"
-    uv run zensical serve --dev-addr "localhost:$port"
+    uv run python scripts/dev_serve.py
 
 # format Python code with ruff
 format:
