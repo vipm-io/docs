@@ -2276,7 +2276,7 @@
 <li><strong>Drift checking</strong> — <a href="#checking-lock-file-sync-in-ci"><code>vipm lock --check</code></a> fails CI when <code>vipm.toml</code> and <code>vipm.lock</code> disagree.</li>
 <li><strong>Dependency-state verification</strong> — <code>vipm build</code> and <code>vipm sbom</code> verify that installed packages agree with the project's declared state (<code>vipm.toml</code> / <code>vipm.lock</code>) before producing output. See <a href="../../cli/command-reference/#dependency-state-verification">Dependency-State Verification</a>.</li>
 <li><strong>SBOM generation</strong> — when a fresh <code>vipm.lock</code> is present, <code>vipm sbom</code> takes resolved versions from it. See the <a href="../../sbom/output-reference/">SBOM Output Reference</a>.</li>
-<li><code>vipm install</code> resolves versions from <code>vipm.toml</code> and refreshes the lock afterward; it does not yet select install versions from the lock file.</li>
+<li><code>vipm install</code> installs directly from an in-sync <code>vipm.lock</code> when one exists (the locked VIPM closure), falling back to resolving from <code>vipm.toml</code> when the lock is missing, out of sync, or when <code>--upgrade</code> is passed; it refreshes an existing lock afterward. Lock-based install selection currently applies to VIPM packages; NIPM packages still install via manifest resolution.</li>
 </ul>
 <h2 id="best-practices">Best practices</h2>
 <ul>

@@ -2332,6 +2332,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>vipm<span class="w"> </span>lock
 </code></pre></div>
 <p>The lock file records each NIPM package's name, version, feed URL, and checksum (when available).</p>
+<p>See the <a href="../lock-files/">Lock Files guide</a> for the full lock contract — what <code>vipm.lock</code> records for every dependency, when it is created and refreshed, and how to verify it in CI with <code>vipm lock --check</code>.</p>
 <h3 id="installing">Installing</h3>
 <p>When you run <code>vipm install</code> on a project with NIPM dependencies, VIPM installs both VIPM and NIPM packages:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>vipm<span class="w"> </span>install
