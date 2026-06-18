@@ -93,6 +93,8 @@ vipm lock
 
 The lock file records each NIPM package's name, version, feed URL, and checksum (when available).
 
+See the [Lock Files guide](lock-files.md) for the full lock contract — what `vipm.lock` records for every dependency, when it is created and refreshed, and how to verify it in CI with `vipm lock --check`.
+
 ### Installing
 
 When you run `vipm install` on a project with NIPM dependencies, VIPM installs both VIPM and NIPM packages:
