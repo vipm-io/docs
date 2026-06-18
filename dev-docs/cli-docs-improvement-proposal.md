@@ -44,6 +44,7 @@ _Update the tables above each time we complete or add scope so this document sta
 | 2025-11-22 | Clarified CLI index navigation | ✅ | Updated `docs/cli/index.md` Getting Started section to explicitly link to downstream topic pages |
 | 2025-11-22 | Synced CLI pages with command reference availability | ✅ | Updated `docs/cli/index.md`, `docs/cli/getting-started.md`, `docs/cli/docker.md`, and `docs/cli/github-actions.md` to reference the live command reference and current troubleshooting guidance |
 | 2026-05-13 | Replaced `vipm package-list-refresh` examples with `vipm refresh` | ✅ | Modernized tutorial, CI examples, and reference content across `docs/cli/command-reference.md`, `getting-started.md`, `github-actions.md`, `docker.md`, and `index.md` to use the canonical `vipm refresh` command. The command-reference section now uses the generated snippet (`_generated/commands/refresh.md`) from `data/vipm-public-cli.json`, matching the pattern adopted for other commands in #95 |
+| 2026-06-17 | Generated the command-reference exit-code table from public CLI JSON | ✅ | The Exit Codes table now includes the stable `name` field from `data/vipm-public-cli.json` via `_generated/exit-codes.md`, with validation guarding the combined `Exit Code | Meaning` shape. |
 
 ## Decision Register
 

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0-public",
   "cli_version": "dev",
-  "generated_on": "2026-06-08",
+  "generated_on": "2026-06-18",
   "global_options": [
     {
       "name": "labview_version",
@@ -420,7 +420,7 @@
           "name": "lvproj_build_spec",
           "long": "--lvproj-build-spec",
           "value_name": "LVPROJ_BUILD_SPEC",
-          "description": "Name of the build specification within a LabVIEW project file (only for .lvproj files)",
+          "description": "Name of the build specification within a LabVIEW project (.lvproj) file. If omitted, all build specs under the target are built. For vipm.toml build entries of type lvproj, overrides the entry's spec field. Not applicable to .vipb builds",
           "defaults": [],
           "required": false,
           "multiple": false,
@@ -435,7 +435,7 @@
           "name": "lvproj_target",
           "long": "--lvproj-target",
           "value_name": "LVPROJ_TARGET",
-          "description": "Scope build-spec lookup to a specific target within the .lvproj file",
+          "description": "Target within the LabVIEW project (.lvproj) file under which build specs are looked up and built. Defaults to \"My Computer\". For vipm.toml build entries of type lvproj, overrides the entry's target field. Not applicable to .vipb builds",
           "defaults": [],
           "required": false,
           "multiple": false,
@@ -1349,6 +1349,19 @@
           "conflicts_with": []
         },
         {
+          "name": "document_timestamp",
+          "long": "--document-timestamp",
+          "value_name": "ISO8601",
+          "description": "Pin metadata.timestamp to a fixed ISO 8601 instant for reproducible output (overrides the SOURCE_DATE_EPOCH env var; default: generation time). Pair with --document-serial-number for byte-identical SBOMs",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
           "name": "output",
           "long": "--output",
           "value_name": "OUTPUT",
@@ -1401,6 +1414,19 @@
           "conflicts_with": []
         },
         {
+          "name": "product_supplier",
+          "long": "--product-supplier",
+          "value_name": "SUPPLIER",
+          "description": "Software producer / supplier of the software described by the SBOM (CycloneDX `metadata.component.supplier`). Overrides the build-spec company name when both are present",
+          "defaults": [],
+          "required": false,
+          "multiple": false,
+          "possible_values": [],
+          "aliases": [],
+          "visible_aliases": [],
+          "conflicts_with": []
+        },
+        {
           "name": "lvproj_build_spec",
           "long": "--lvproj-build-spec",
           "value_name": "NAME",
@@ -1419,7 +1445,7 @@
           "name": "lvproj_target",
           "long": "--lvproj-target",
           "value_name": "TARGET",
-          "description": "Scope the dependency scan to a specific .lvproj target. May be used alone (scans only that target) or with --lvproj-build-spec (validates the spec is under that target). Omit to scan the whole project",
+          "description": "Scope the dependency scan to a specific .lvproj target. May be used alone (scans only that target) or with --lvproj-build-spec (validates the spec is under that target). Omitting both --lvproj-target and --lvproj-build-spec scans the whole project; omitting only --lvproj-target keeps the scan scoped to the build spec, whose containing target is inferred when the spec name is unique within the LabVIEW project (.lvproj) file",
           "defaults": [],
           "required": false,
           "multiple": false,
@@ -2161,6 +2187,16 @@
       "code": 22,
       "name": "ACTIVATION_FAILED",
       "description": "Activation failed — the service declined the request, the returned code failed verification, or the VIPM Desktop delegate reported a failure"
+    },
+    {
+      "code": 23,
+      "name": "PROJECT_HAS_UNSAVED_CHANGES",
+      "description": "The project is open in a running LabVIEW IDE with unsaved changes, so the on-disk .lvproj is stale"
+    },
+    {
+      "code": 24,
+      "name": "LABVIEW_VI_SERVER_UNAVAILABLE",
+      "description": "LabVIEW VI Server is disabled or not reachable on the resolved target port"
     },
     {
       "code": 124,
