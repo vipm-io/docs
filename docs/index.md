@@ -1,6 +1,6 @@
 # VIPM Desktop
 
-[Download VIPM 2026 Q3](preview.md){ .md-button .md-button--primary .vipm-preview-cta }
+[Download VIPM 2026 Q3](https://vipm.io/desktop){ .md-button .md-button--primary .vipm-preview-cta }
 
 ## Downloading VIPM
 
