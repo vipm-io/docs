@@ -89,3 +89,39 @@
   white-space: nowrap;
   width: 1%;
 }
+
+/* Persistent "Download VIPM" call-to-action in the header (every page) */
+.md-header__button.md-download-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0.4rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 0.2rem;
+  background-color: #ff5800;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 1;
+}
+.md-header__button.md-download-cta:hover,
+.md-header__button.md-download-cta:focus {
+  background-color: #e64f00;
+  color: #fff;
+  opacity: 1;
+}
+.md-header__button.md-download-cta svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+}
+/* On narrow screens, show just the download icon to save space */
+@media screen and (max-width: 76.1875em) {
+  .md-download-cta__label {
+    display: none;
+  }
+  .md-header__button.md-download-cta {
+    padding: 0.35rem;
+  }
+}
