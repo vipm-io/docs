@@ -1,4 +1,6 @@
+---
 title: Getting Started
+---
 
 # Getting Started with the VIPM CLI
 
