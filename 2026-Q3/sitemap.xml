@@ -4,6 +4,9 @@
         <loc>https://docs.vipm.io/2026-Q3/</loc>
       </url>
       <url>
+        <loc>https://docs.vipm.io/2026-Q3/installation/</loc>
+      </url>
+      <url>
         <loc>https://docs.vipm.io/2026-Q3/vipm-editions-comparison/</loc>
       </url>
       <url>
@@ -76,10 +79,7 @@
         <loc>https://docs.vipm.io/2026-Q3/linux/</loc>
       </url>
       <url>
-        <loc>https://docs.vipm.io/2026-Q3/linux/ubuntu/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vipm.io/2026-Q3/linux/VIPM%20Linux%20Crash%20on%20Package%20Installation%20-%20Permission%20Fix/</loc>
+        <loc>https://docs.vipm.io/2026-Q3/linux/permissions-guide/</loc>
       </url>
       <url>
         <loc>https://docs.vipm.io/2026-Q3/release-notes/</loc>
