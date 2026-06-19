@@ -6,16 +6,16 @@ Welcome to the VIPM Linux documentation! VIPM (VI Package Manager) is now availa
 
 ## Installation
 
-For the latest and best experience, we recommend installing the [**VIPM 2026 Q1 Preview**](../preview.md) release, which includes:
+For the latest and best experience, we recommend installing the [**VIPM 2026 Q3**](../preview.md) release, which includes:
 
 - **VIPM CLI** - Command-line interface for automation and CI/CD workflows
 - **Native Linux Installers** - Available in both DEB and RPM package formats
 - **Full Package Management** - Install, update, and remove LabVIEW packages
 - **VI Package Building** - Build .vip packages natively on Linux
 
-### Get Started with VIPM 2026 Q1 Preview
+### Get Started with VIPM 2026 Q3
 
-Visit the [VIPM 2026Q1 Preview page](../preview.md) for installation instructions and the latest features.
+Visit the [VIPM 2026 Q3 page](../preview.md) for installation instructions and the latest features.
 
 ## Documentation
 

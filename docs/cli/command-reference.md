@@ -4,7 +4,7 @@ title: Command Reference
 
 Use this page to look up syntax, options, and common workflows for the most frequently used VIPM CLI commands. For additional details, remember that `vipm help` lists every command and `vipm <command> --help` prints the authoritative help text for a single command.
 
-!!! info "vipm.toml Commands (Preview)"
+!!! info "vipm.toml Commands"
     Looking for `vipm init`, `vipm add`, `vipm remove`, `vipm lock`, or `vipm clean`? These commands work with the new `vipm.toml` project configuration format. See the [vipm.toml Getting Started guide](../vipm-toml/getting-started.md) for details. For managing NI packages (NIPM) in vipm.toml, see [NI Packages (NIPM)](../vipm-toml/nipm.md).
 
 ## Global Options

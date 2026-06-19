@@ -4,8 +4,6 @@ title: Workflows
 
 # SBOM Workflows
 
---8<-- "sbom-preview.md"
-
 The VIPM CLI supports several input types for SBOM generation. This page helps you choose the right approach for your project and shows how to integrate SBOM generation into CI/CD pipelines.
 
 ## Manifest-based generation (vipm.toml)

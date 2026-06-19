@@ -4,8 +4,6 @@ title: SBOM Overview
 
 # Software Bill of Materials (SBOM)
 
---8<-- "sbom-preview.md"
-
 A Software Bill of Materials (SBOM) is a machine-readable inventory of every software component in your product — including package names, versions, suppliers, licenses, and cryptographic hashes. SBOMs give you and your customers visibility into exactly what ships in your software.
 
 ## Why SBOMs matter
@@ -42,7 +40,7 @@ Choose the input that matches your workflow. If your project already uses `vipm.
 
 ## Prerequisites
 
-- **VIPM 2026 Q3 Preview** or later — [download here](../preview.md)
+- **VIPM 2026 Q3** or later — [download here](../preview.md)
 - **LabVIEW 2024 or newer** — required only when generating SBOMs from `.lvproj` files
 - **NI Package Manager** — required only when including NI packages in the SBOM
 

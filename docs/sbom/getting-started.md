@@ -4,8 +4,6 @@ title: Getting Started
 
 # Getting Started with SBOM Generation
 
---8<-- "sbom-preview.md"
-
 This guide walks you through generating your first CycloneDX SBOM with the VIPM CLI.
 
 ## Step 1 — Verify the CLI is available
@@ -22,7 +20,7 @@ Expected output:
 VIPM CLI version 2026.3.x
 ```
 
-If the command is not found, install the [VIPM 2026 Q3 Preview](../preview.md) first.
+If the command is not found, install the [VIPM 2026 Q3](../preview.md) first.
 
 !!! note "`.lvproj` scans require LabVIEW 2024 or newer"
     The examples below scan a `.lvproj` file, which requires the resolved LabVIEW target to be LabVIEW 2024 or newer. If you don't have LabVIEW 2024+ installed, generate the SBOM from a `vipm.toml`, `.dragon`, or `.vipc` input instead — none of those require LabVIEW. See the [SBOM Overview](index.md) for the full list of supported inputs.

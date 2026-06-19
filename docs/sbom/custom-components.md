@@ -4,8 +4,6 @@ title: Custom Components
 
 # Adding Custom Components to Your SBOM
 
---8<-- "sbom-preview.md"
-
 ## Background
 
 `vipm sbom` automatically discovers VIPM and NIPM packages in your project, but LabVIEW applications can depend on components that neither package manager tracks — DLLs, firmware, hardware modules, and other third-party artifacts.
