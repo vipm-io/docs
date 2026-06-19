@@ -4,8 +4,6 @@ title: Overview
 
 # Using VIPM via Command-Line Interface (CLI)
 
---8<-- "preview-available.md"
-
 VIPM includes a powerful command-line interface (CLI) that enables automation, integration with CI/CD pipelines, and usage in containerized environments. The CLI also supports [SBOM generation](../sbom/index.md) for producing CycloneDX software inventories of your LabVIEW projects.
 
 ## Example Commands

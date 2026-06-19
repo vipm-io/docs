@@ -15,9 +15,7 @@ You can download VIPM from the following locations:
 
 ## Installing VIPM
 
-The following are some specialized installation guides:
-
-- [How to install on Ubuntu Linux](linux/ubuntu.md)
+See the [**Installing VIPM**](installation.md) page for download links and command-line install instructions for the current release (Windows and Linux).
 
 ## Finding VIPM Community Packages
 
