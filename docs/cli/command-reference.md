@@ -1,4 +1,6 @@
+---
 title: Command Reference
+---
 
 # VIPM CLI Command Reference
 
