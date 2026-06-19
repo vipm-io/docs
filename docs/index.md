@@ -1,7 +1,5 @@
 # VIPM Desktop
 
-[Download VIPM 2026 Q3](https://vipm.io/desktop){ .md-button .md-button--primary .vipm-preview-cta }
-
 ## Downloading VIPM
 
 You can download VIPM from the following locations:
