@@ -145,7 +145,7 @@ Building VI Package from path/to/your_package.vipb
 ✓ Build completed: builds/your_package.vip
 ```
 
-**Note**: Package building on Linux is currently under development and may have some limitations. Check the [VIPM 2026 Q3](https://docs.vipm.io/preview/) for the latest updates.
+**Note**: Package building on Linux is currently under development and may have some limitations. Check the [VIPM 2026 Q3 release notes](../release-notes/2026.3.md) for the latest updates.
 
 ## Use Cases for Containers
 
