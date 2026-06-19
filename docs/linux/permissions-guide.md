@@ -1,6 +1,8 @@
-# VIPM Linux Crash on Package Installation - Permission Fix
+---
+title: Permissions Guide
+---
 
---8<-- "preview-available.md"
+# VIPM Linux Crash on Package Installation - Permission Fix
 
 ## Problem
 
@@ -97,7 +99,7 @@ sudo ./fix-vipm-permissions.sh
 If issues persist, check:
 - File handle limits: `cat /etc/sysctl.d/vipm-files.conf`
 - System logs: `journalctl -xe | grep -i vipm`
-- See **VIPM Linux Installation Guide** for comprehensive setup
+- See [Installing VIPM](../installation.md) for installation instructions
 
 ## References
 
