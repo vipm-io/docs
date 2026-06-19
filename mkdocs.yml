@@ -3,7 +3,7 @@ site_url: https://docs.vipm.io
 repo_name: vipm-io/docs
 edit_uri: edit/main/docs/
 repo_url: https://github.com/vipm-io/docs
-copyright: Copyright &copy; 2026 VIPM Community Contributors
+copyright: 'Copyright &copy; 2026 VIPM Community Contributors &nbsp;&middot;&nbsp; <a href="https://docs.vipm.io/latest/versions/">Documentation versions</a>'
 
 theme:
   name: material
@@ -29,9 +29,6 @@ theme:
 
 extra:
   homepage: https://vipm.io
-  version:
-    provider: mike
-    default: latest
   social:
     - icon: custom/vipm
       link: https://vipm.io
