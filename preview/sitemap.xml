@@ -4,6 +4,9 @@
         <loc>https://docs.vipm.io/preview/</loc>
       </url>
       <url>
+        <loc>https://docs.vipm.io/preview/installation/</loc>
+      </url>
+      <url>
         <loc>https://docs.vipm.io/preview/vipm-editions-comparison/</loc>
       </url>
       <url>
@@ -76,10 +79,7 @@
         <loc>https://docs.vipm.io/preview/linux/</loc>
       </url>
       <url>
-        <loc>https://docs.vipm.io/preview/linux/ubuntu/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vipm.io/preview/linux/VIPM%20Linux%20Crash%20on%20Package%20Installation%20-%20Permission%20Fix/</loc>
+        <loc>https://docs.vipm.io/preview/linux/permissions-guide/</loc>
       </url>
       <url>
         <loc>https://docs.vipm.io/preview/release-notes/</loc>
