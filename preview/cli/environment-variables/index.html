@@ -1288,6 +1288,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#vipm_desktop_liveliness_timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>VIPM_DESKTOP_LIVELINESS_TIMEOUT</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vipm_network_liveliness_timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>VIPM_NETWORK_LIVELINESS_TIMEOUT</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2198,6 +2220,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#vipm_desktop_liveliness_timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>VIPM_DESKTOP_LIVELINESS_TIMEOUT</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vipm_network_liveliness_timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>VIPM_NETWORK_LIVELINESS_TIMEOUT</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2488,30 +2532,55 @@
 <li>Default — fully interactive</li>
 </ol>
 <h2 id="timeouts">Timeouts</h2>
+<p>Total operation timeouts and liveliness timeouts are independent. A total timeout
+limits the complete command duration, while a liveliness timeout stops an operation
+only after it stops making progress.</p>
 <h3 id="vipm_timeout"><code>VIPM_TIMEOUT</code></h3>
 <p>Overrides the default operation timeout (in seconds). When set, this takes precedence over the <code>--timeout</code> flag and any CI-adjusted defaults.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_TIMEOUT</span><span class="o">=</span><span class="m">300</span><span class="w">   </span><span class="c1"># 5 minutes</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>vipm<span class="w"> </span>install<span class="w"> </span>project.vipc
 </code></pre></div>
+<h3 id="vipm_desktop_liveliness_timeout"><code>VIPM_DESKTOP_LIVELINESS_TIMEOUT</code></h3>
+<p>Sets how long the CLI waits, in seconds, without a progress update from VIPM Desktop
+before stopping the operation. The default is 60 seconds. Each progress update
+restarts the timer.</p>
+<p>Set this to a larger value when VIPM Desktop operations make progress less
+frequently, or to a negative value to disable this liveliness timeout.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_DESKTOP_LIVELINESS_TIMEOUT</span><span class="o">=</span><span class="m">120</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>vipm<span class="w"> </span>install<span class="w"> </span>project.vipc
+</code></pre></div>
+<p>This setting does not change the total operation timeout configured by
+<code>VIPM_TIMEOUT</code> or <code>--timeout</code>.</p>
+<h3 id="vipm_network_liveliness_timeout"><code>VIPM_NETWORK_LIVELINESS_TIMEOUT</code></h3>
+<p>Sets how long the CLI waits, in seconds, without receiving data during a download
+before stopping the operation. The default is 30 seconds. Each successful read
+restarts the timer.</p>
+<p>Set this to a larger value for slow or intermittent networks, or to a negative value
+to disable this liveliness timeout.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_NETWORK_LIVELINESS_TIMEOUT</span><span class="o">=</span><span class="m">90</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>vipm<span class="w"> </span>install<span class="w"> </span>project.vipc
+</code></pre></div>
+<p>This setting does not change the total operation timeout configured by
+<code>VIPM_TIMEOUT</code> or <code>--timeout</code>.</p>
 <h2 id="debugging">Debugging</h2>
 <h3 id="vipm_debug"><code>VIPM_DEBUG</code></h3>
 <p>Enables verbose debug output for troubleshooting.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_DEBUG</span><span class="o">=</span><span class="m">1</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>vipm<span class="w"> </span>install<span class="w"> </span>oglib_boolean
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_DEBUG</span><span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>vipm<span class="w"> </span>install<span class="w"> </span>oglib_boolean
 </code></pre></div>
 <h2 id="output">Output</h2>
 <h3 id="no_color"><code>NO_COLOR</code></h3>
 <p>Disables colored output, following the <a href="https://no-color.org/">no-color.org</a> standard. Equivalent to <code>--color-mode never</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">NO_COLOR</span><span class="o">=</span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">NO_COLOR</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
 <h3 id="source_date_epoch"><code>SOURCE_DATE_EPOCH</code></h3>
 <p>When set, VIPM uses this Unix timestamp for timestamps in structured output instead of the current time. This supports <a href="https://reproducible-builds.org/specs/source-date-epoch/">reproducible builds</a>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SOURCE_DATE_EPOCH</span><span class="o">=</span><span class="m">1710000000</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SOURCE_DATE_EPOCH</span><span class="o">=</span><span class="m">1710000000</span>
 </code></pre></div>
 <h2 id="edition">Edition</h2>
 <h3 id="vipm_community_edition"><code>VIPM_COMMUNITY_EDITION</code></h3>
 <p>Forces VIPM to operate in Community Edition mode, regardless of activation status.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_COMMUNITY_EDITION</span><span class="o">=</span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_COMMUNITY_EDITION</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
 <h2 id="related-resources">Related Resources</h2>
 <ul>
