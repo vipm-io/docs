@@ -81,6 +81,39 @@
   width: 1%;
 }
 
+/* Keep copy controls beside, not over, long command text. */
+.md-typeset .highlight.copy > pre {
+  background-color: var(--md-code-bg-color);
+}
+
+.md-typeset .highlight.copy > pre > code {
+  box-sizing: border-box;
+  width: calc(100% - 2.25em);
+  min-width: 0;
+}
+
+.md-typeset .highlight.copy .md-code__button {
+  background-color: var(--md-code-bg-color);
+  color: var(--md-default-fg-color--light);
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+.md-typeset .highlight.copy:hover .md-code__button {
+  opacity: 1;
+}
+
+@media screen and (max-width: 44.984375em) {
+  .md-content__inner > .highlight.copy {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .md-content__inner > .highlight.copy > pre > code {
+    border-radius: 0.1rem;
+  }
+}
+
 /* Persistent "Download VIPM" call-to-action in the header (every page) */
 .md-header__button.md-download-cta {
   display: inline-flex;
