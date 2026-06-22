@@ -23,10 +23,27 @@ format:
 lint:
     uv run ruff check
 
-# no-fix check used before pushing: format check + lint + tests
+# verify pyproject.toml and uv.lock are in sync
+lock:
+    uv lock --check
+
+# run static type checks
+typecheck:
+    uv run pyrefly check .
+
+# lint and audit GitHub Actions workflows
+workflow-check:
+    uv run actionlint
+    uv run zizmor --offline .github/workflows
+
+# no-fix check used before pushing: lockfile, format, lint, types, workflow checks, tests
 check:
+    uv lock --check
     uv run ruff format --check
     uv run ruff check
+    uv run pyrefly check .
+    uv run actionlint
+    uv run zizmor --offline .github/workflows
     uv run pytest
 
 # run unit tests for scripts and validators

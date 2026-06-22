@@ -19,20 +19,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+        with:
+          persist-credentials: false
 
       - name: Install uv
         if: github.event.action != 'closed'
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b  # v8.1.0
         with:
-          enable-cache: true
+          enable-cache: false
 
       - name: Set up Python
         if: github.event.action != 'closed'
         run: uv python install
 
+      - name: Check dependency lockfile
+        if: github.event.action != 'closed'
+        run: uv lock --check
+
       - name: Sync dependencies
         if: github.event.action != 'closed'
-        run: uv sync
+        run: uv sync --locked
 
       - name: Lint (ruff check)
         if: github.event.action != 'closed'
@@ -40,6 +46,15 @@ jobs:
       - name: Format check (ruff format --check)
         if: github.event.action != 'closed'
         run: uv run ruff format --check
+      - name: Type check
+        if: github.event.action != 'closed'
+        run: uv run pyrefly check .
+      - name: Lint GitHub Actions workflows
+        if: github.event.action != 'closed'
+        run: uv run actionlint
+      - name: Audit GitHub Actions workflows
+        if: github.event.action != 'closed'
+        run: uv run zizmor --offline .github/workflows
       - name: Run unit tests
         if: github.event.action != 'closed'
         run: uv run pytest
