@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="zensical-0.0.33">
+      <meta name="generator" content="zensical-0.0.46">
     
     
       
@@ -32,7 +32,7 @@
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.53a7feaf.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.19d3147f.min.css">
       
         
           
@@ -58,7 +58,7 @@
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -131,7 +131,31 @@
     
     
     
-    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
     
   
 </form>
@@ -233,8 +257,7 @@
   <span class="md-ellipsis">
     
   
-    Home
-  
+  Home
 
     
   </span>
@@ -260,8 +283,7 @@
   <span class="md-ellipsis">
     
   
-    Installing VIPM
-  
+  Installing VIPM
 
     
   </span>
@@ -287,8 +309,7 @@
   <span class="md-ellipsis">
     
   
-    VIPM Editions
-  
+  VIPM Editions
 
     
   </span>
@@ -314,8 +335,7 @@
   <span class="md-ellipsis">
     
   
-    Experimental Features
-  
+  Experimental Features
 
     
   </span>
@@ -354,8 +374,7 @@
   <span class="md-ellipsis">
     
   
-    Guides
-  
+  Guides
 
     
   </span>
@@ -370,8 +389,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Guides
-  
+  Guides
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -401,8 +419,7 @@
   <span class="md-ellipsis">
     
   
-    Software Bill of Materials (SBOM)
-  
+  Software Bill of Materials (SBOM)
 
     
   </span>
@@ -417,8 +434,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Software Bill of Materials (SBOM)
-  
+  Software Bill of Materials (SBOM)
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -437,8 +453,7 @@
   <span class="md-ellipsis">
     
   
-    SBOM Overview
-  
+  SBOM Overview
 
     
   </span>
@@ -465,8 +480,7 @@
   <span class="md-ellipsis">
     
   
-    Getting Started
-  
+  Getting Started
 
     
   </span>
@@ -493,8 +507,7 @@
   <span class="md-ellipsis">
     
   
-    Workflows
-  
+  Workflows
 
     
   </span>
@@ -521,8 +534,7 @@
   <span class="md-ellipsis">
     
   
-    SBOM Output Reference
-  
+  SBOM Output Reference
 
     
   </span>
@@ -549,8 +561,7 @@
   <span class="md-ellipsis">
     
   
-    Custom Components
-  
+  Custom Components
 
     
   </span>
@@ -598,8 +609,7 @@
   <span class="md-ellipsis">
     
   
-    Using vipm.toml Files
-  
+  Using vipm.toml Files
 
     
   </span>
@@ -614,8 +624,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Using vipm.toml Files
-  
+  Using vipm.toml Files
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -634,8 +643,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
-  
+  Overview
 
     
   </span>
@@ -671,8 +679,7 @@
   <span class="md-ellipsis">
     
   
-    Getting Started
-  
+  Getting Started
 
     
   </span>
@@ -689,8 +696,7 @@
   <span class="md-ellipsis">
     
   
-    Getting Started
-  
+  Getting Started
 
     
   </span>
@@ -718,9 +724,9 @@
         <li class="md-nav__item">
   <a href="#table-of-contents" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Table of Contents
-      
+      </span>
     </span>
   </a>
   
@@ -729,9 +735,9 @@
         <li class="md-nav__item">
   <a href="#what-is-vipmtoml" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         What is vipm.toml?
-      
+      </span>
     </span>
   </a>
   
@@ -740,9 +746,9 @@
         <li class="md-nav__item">
   <a href="#what-is-vipmlock" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         What is vipm.lock?
-      
+      </span>
     </span>
   </a>
   
@@ -751,9 +757,9 @@
         <li class="md-nav__item">
   <a href="#creating-a-new-project" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Creating a New Project
-      
+      </span>
     </span>
   </a>
   
@@ -763,9 +769,9 @@
           <li class="md-nav__item">
   <a href="#initialize-a-vipmtoml-file" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Initialize a vipm.toml File
-      
+      </span>
     </span>
   </a>
   
@@ -774,9 +780,9 @@
           <li class="md-nav__item">
   <a href="#example-generated-file" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Example Generated File
-      
+      </span>
     </span>
   </a>
   
@@ -790,9 +796,9 @@
         <li class="md-nav__item">
   <a href="#managing-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Managing Dependencies
-      
+      </span>
     </span>
   </a>
   
@@ -802,9 +808,9 @@
           <li class="md-nav__item">
   <a href="#adding-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Adding Dependencies
-      
+      </span>
     </span>
   </a>
   
@@ -814,9 +820,9 @@
           <li class="md-nav__item">
   <a href="#notes-on-vipm-add" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Notes on vipm add
-      
+      <span class="md-typeset">
+        Notes on <code>vipm add</code>
+      </span>
     </span>
   </a>
   
@@ -830,9 +836,9 @@
           <li class="md-nav__item">
   <a href="#removing-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Removing Dependencies
-      
+      </span>
     </span>
   </a>
   
@@ -842,9 +848,9 @@
           <li class="md-nav__item">
   <a href="#notes-on-vipm-remove" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Notes on vipm remove
-      
+      <span class="md-typeset">
+        Notes on <code>vipm remove</code>
+      </span>
     </span>
   </a>
   
@@ -858,9 +864,9 @@
           <li class="md-nav__item">
   <a href="#installing-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Installing Dependencies
-      
+      </span>
     </span>
   </a>
   
@@ -874,9 +880,9 @@
         <li class="md-nav__item">
   <a href="#lock-files" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Lock Files
-      
+      </span>
     </span>
   </a>
   
@@ -885,9 +891,9 @@
         <li class="md-nav__item">
   <a href="#building-your-project" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Building Your Project
-      
+      </span>
     </span>
   </a>
   
@@ -897,9 +903,9 @@
           <li class="md-nav__item">
   <a href="#defining-builds" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Defining Builds
-      
+      </span>
     </span>
   </a>
   
@@ -908,9 +914,9 @@
           <li class="md-nav__item">
   <a href="#running-builds" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Running Builds
-      
+      </span>
     </span>
   </a>
   
@@ -919,9 +925,9 @@
           <li class="md-nav__item">
   <a href="#supported-build-types" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Supported Build Types
-      
+      </span>
     </span>
   </a>
   
@@ -930,9 +936,9 @@
           <li class="md-nav__item">
   <a href="#build-output-directories" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Build Output Directories
-      
+      </span>
     </span>
   </a>
   
@@ -941,9 +947,9 @@
           <li class="md-nav__item">
   <a href="#variable-substitution" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Variable Substitution
-      
+      </span>
     </span>
   </a>
   
@@ -953,9 +959,9 @@
           <li class="md-nav__item">
   <a href="#supported-variables" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Supported Variables
-      
+      </span>
     </span>
   </a>
   
@@ -964,9 +970,9 @@
           <li class="md-nav__item">
   <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Example
-      
+      </span>
     </span>
   </a>
   
@@ -980,9 +986,9 @@
           <li class="md-nav__item">
   <a href="#build-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Build Dependencies
-      
+      </span>
     </span>
   </a>
   
@@ -996,9 +1002,9 @@
         <li class="md-nav__item">
   <a href="#cleaning-build-outputs" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Cleaning Build Outputs
-      
+      </span>
     </span>
   </a>
   
@@ -1007,9 +1013,9 @@
         <li class="md-nav__item">
   <a href="#complete-example" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Complete Example
-      
+      </span>
     </span>
   </a>
   
@@ -1019,9 +1025,9 @@
           <li class="md-nav__item">
   <a href="#typical-workflow" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Typical Workflow
-      
+      </span>
     </span>
   </a>
   
@@ -1035,9 +1041,9 @@
         <li class="md-nav__item">
   <a href="#cicd-workflows" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         CI/CD Workflows
-      
+      </span>
     </span>
   </a>
   
@@ -1047,9 +1053,9 @@
           <li class="md-nav__item">
   <a href="#github-actions" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         GitHub Actions
-      
+      </span>
     </span>
   </a>
   
@@ -1058,9 +1064,9 @@
           <li class="md-nav__item">
   <a href="#gitlab-ci" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         GitLab CI
-      
+      </span>
     </span>
   </a>
   
@@ -1069,9 +1075,9 @@
           <li class="md-nav__item">
   <a href="#jenkins-pipeline" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Jenkins Pipeline
-      
+      </span>
     </span>
   </a>
   
@@ -1080,9 +1086,9 @@
           <li class="md-nav__item">
   <a href="#ci-best-practices" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         CI Best Practices
-      
+      </span>
     </span>
   </a>
   
@@ -1096,9 +1102,9 @@
         <li class="md-nav__item">
   <a href="#command-reference" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Command Reference
-      
+      </span>
     </span>
   </a>
   
@@ -1107,9 +1113,9 @@
         <li class="md-nav__item">
   <a href="#need-help" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Need Help?
-      
+      </span>
     </span>
   </a>
   
@@ -1138,8 +1144,7 @@
   <span class="md-ellipsis">
     
   
-    Lock Files
-  
+  Lock Files
 
     
   </span>
@@ -1166,8 +1171,7 @@
   <span class="md-ellipsis">
     
   
-    Workspace-Local Config
-  
+  Workspace-Local Config
 
     
   </span>
@@ -1194,8 +1198,7 @@
   <span class="md-ellipsis">
     
   
-    NI Packages (NIPM)
-  
+  NI Packages (NIPM)
 
     
   </span>
@@ -1241,8 +1244,7 @@
   <span class="md-ellipsis">
     
   
-    Building Packages
-  
+  Building Packages
 
     
   </span>
@@ -1257,8 +1259,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Building Packages
-  
+  Building Packages
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1277,8 +1278,7 @@
   <span class="md-ellipsis">
     
   
-    Building Packages
-  
+  Building Packages
 
     
   </span>
@@ -1305,8 +1305,7 @@
   <span class="md-ellipsis">
     
   
-    Building VI Packages that Depend on other Software
-  
+  Building VI Packages that Depend on other Software
 
     
   </span>
@@ -1333,8 +1332,7 @@
   <span class="md-ellipsis">
     
   
-    VI Package Build Templates
-  
+  VI Package Build Templates
 
     
   </span>
@@ -1380,8 +1378,7 @@
   <span class="md-ellipsis">
     
   
-    Publishing Packages
-  
+  Publishing Packages
 
     
   </span>
@@ -1396,8 +1393,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Publishing Packages
-  
+  Publishing Packages
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1416,8 +1412,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
-  
+  Overview
 
     
   </span>
@@ -1463,8 +1458,7 @@
   <span class="md-ellipsis">
     
   
-    Command-Line Interface (CLI)
-  
+  Command-Line Interface (CLI)
 
     
   </span>
@@ -1479,8 +1473,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Command-Line Interface (CLI)
-  
+  Command-Line Interface (CLI)
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1499,8 +1492,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
-  
+  Overview
 
     
   </span>
@@ -1527,8 +1519,7 @@
   <span class="md-ellipsis">
     
   
-    Getting Started
-  
+  Getting Started
 
     
   </span>
@@ -1555,8 +1546,7 @@
   <span class="md-ellipsis">
     
   
-    Command Reference
-  
+  Command Reference
 
     
   </span>
@@ -1583,8 +1573,7 @@
   <span class="md-ellipsis">
     
   
-    LabVIEW Compatibility
-  
+  LabVIEW Compatibility
 
     
   </span>
@@ -1611,8 +1600,7 @@
   <span class="md-ellipsis">
     
   
-    Environment Variables
-  
+  Environment Variables
 
     
   </span>
@@ -1639,8 +1627,7 @@
   <span class="md-ellipsis">
     
   
-    Docker Containers
-  
+  Docker Containers
 
     
   </span>
@@ -1667,8 +1654,7 @@
   <span class="md-ellipsis">
     
   
-    GitHub Actions and CI/CD
-  
+  GitHub Actions and CI/CD
 
     
   </span>
@@ -1714,8 +1700,7 @@
   <span class="md-ellipsis">
     
   
-    VIPM on Linux
-  
+  VIPM on Linux
 
     
   </span>
@@ -1730,8 +1715,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    VIPM on Linux
-  
+  VIPM on Linux
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1750,8 +1734,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
-  
+  Overview
 
     
   </span>
@@ -1778,8 +1761,7 @@
   <span class="md-ellipsis">
     
   
-    Permissions Guide
-  
+  Permissions Guide
 
     
   </span>
@@ -1832,8 +1814,7 @@
   <span class="md-ellipsis">
     
   
-    Release Notes
-  
+  Release Notes
 
     
   </span>
@@ -1848,8 +1829,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Release Notes
-  
+  Release Notes
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1868,8 +1848,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
-  
+  Overview
 
     
   </span>
@@ -1896,8 +1875,7 @@
   <span class="md-ellipsis">
     
   
-    VIPM 2026 Q3
-  
+  VIPM 2026 Q3
 
     
   </span>
@@ -1924,8 +1902,7 @@
   <span class="md-ellipsis">
     
   
-    VIPM 2026 Q1
-  
+  VIPM 2026 Q1
 
     
   </span>
@@ -1952,8 +1929,7 @@
   <span class="md-ellipsis">
     
   
-    VIPM 2025 Q3 f1
-  
+  VIPM 2025 Q3 f1
 
     
   </span>
@@ -1980,8 +1956,7 @@
   <span class="md-ellipsis">
     
   
-    VIPM 2025 Q3
-  
+  VIPM 2025 Q3
 
     
   </span>
@@ -2008,8 +1983,7 @@
   <span class="md-ellipsis">
     
   
-    VIPM 2024 Q3
-  
+  VIPM 2024 Q3
 
     
   </span>
@@ -2036,8 +2010,7 @@
   <span class="md-ellipsis">
     
   
-    VIPM 2024 Q1
-  
+  VIPM 2024 Q1
 
     
   </span>
@@ -2064,8 +2037,7 @@
   <span class="md-ellipsis">
     
   
-    VIPM 2023 Q3
-  
+  VIPM 2023 Q3
 
     
   </span>
@@ -2092,8 +2064,7 @@
   <span class="md-ellipsis">
     
   
-    VIPM 2023 Q1
-  
+  VIPM 2023 Q1
 
     
   </span>
@@ -2127,8 +2098,7 @@
   <span class="md-ellipsis">
     
   
-    Early Access Preview Releases
-  
+  Early Access Preview Releases
 
     
   </span>
@@ -2154,8 +2124,7 @@
   <span class="md-ellipsis">
     
   
-    VIPM Platform Security
-  
+  VIPM Platform Security
 
     
   </span>
@@ -2181,8 +2150,7 @@
   <span class="md-ellipsis">
     
   
-    Support
-  
+  Support
 
     
   </span>
@@ -2219,8 +2187,7 @@
   <span class="md-ellipsis">
     
   
-    Troubleshooting
-  
+  Troubleshooting
 
     
   </span>
@@ -2235,8 +2202,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Troubleshooting
-  
+  Troubleshooting
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -2255,8 +2221,7 @@
   <span class="md-ellipsis">
     
   
-    Common Issues
-  
+  Common Issues
 
     
   </span>
@@ -2283,8 +2248,7 @@
   <span class="md-ellipsis">
     
   
-    Are VIPM's Online Services Down?
-  
+  Are VIPM's Online Services Down?
 
     
   </span>
@@ -2347,9 +2311,9 @@
         <li class="md-nav__item">
   <a href="#table-of-contents" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Table of Contents
-      
+      </span>
     </span>
   </a>
   
@@ -2358,9 +2322,9 @@
         <li class="md-nav__item">
   <a href="#what-is-vipmtoml" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         What is vipm.toml?
-      
+      </span>
     </span>
   </a>
   
@@ -2369,9 +2333,9 @@
         <li class="md-nav__item">
   <a href="#what-is-vipmlock" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         What is vipm.lock?
-      
+      </span>
     </span>
   </a>
   
@@ -2380,9 +2344,9 @@
         <li class="md-nav__item">
   <a href="#creating-a-new-project" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Creating a New Project
-      
+      </span>
     </span>
   </a>
   
@@ -2392,9 +2356,9 @@
           <li class="md-nav__item">
   <a href="#initialize-a-vipmtoml-file" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Initialize a vipm.toml File
-      
+      </span>
     </span>
   </a>
   
@@ -2403,9 +2367,9 @@
           <li class="md-nav__item">
   <a href="#example-generated-file" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Example Generated File
-      
+      </span>
     </span>
   </a>
   
@@ -2419,9 +2383,9 @@
         <li class="md-nav__item">
   <a href="#managing-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Managing Dependencies
-      
+      </span>
     </span>
   </a>
   
@@ -2431,9 +2395,9 @@
           <li class="md-nav__item">
   <a href="#adding-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Adding Dependencies
-      
+      </span>
     </span>
   </a>
   
@@ -2443,9 +2407,9 @@
           <li class="md-nav__item">
   <a href="#notes-on-vipm-add" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Notes on vipm add
-      
+      <span class="md-typeset">
+        Notes on <code>vipm add</code>
+      </span>
     </span>
   </a>
   
@@ -2459,9 +2423,9 @@
           <li class="md-nav__item">
   <a href="#removing-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Removing Dependencies
-      
+      </span>
     </span>
   </a>
   
@@ -2471,9 +2435,9 @@
           <li class="md-nav__item">
   <a href="#notes-on-vipm-remove" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Notes on vipm remove
-      
+      <span class="md-typeset">
+        Notes on <code>vipm remove</code>
+      </span>
     </span>
   </a>
   
@@ -2487,9 +2451,9 @@
           <li class="md-nav__item">
   <a href="#installing-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Installing Dependencies
-      
+      </span>
     </span>
   </a>
   
@@ -2503,9 +2467,9 @@
         <li class="md-nav__item">
   <a href="#lock-files" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Lock Files
-      
+      </span>
     </span>
   </a>
   
@@ -2514,9 +2478,9 @@
         <li class="md-nav__item">
   <a href="#building-your-project" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Building Your Project
-      
+      </span>
     </span>
   </a>
   
@@ -2526,9 +2490,9 @@
           <li class="md-nav__item">
   <a href="#defining-builds" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Defining Builds
-      
+      </span>
     </span>
   </a>
   
@@ -2537,9 +2501,9 @@
           <li class="md-nav__item">
   <a href="#running-builds" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Running Builds
-      
+      </span>
     </span>
   </a>
   
@@ -2548,9 +2512,9 @@
           <li class="md-nav__item">
   <a href="#supported-build-types" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Supported Build Types
-      
+      </span>
     </span>
   </a>
   
@@ -2559,9 +2523,9 @@
           <li class="md-nav__item">
   <a href="#build-output-directories" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Build Output Directories
-      
+      </span>
     </span>
   </a>
   
@@ -2570,9 +2534,9 @@
           <li class="md-nav__item">
   <a href="#variable-substitution" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Variable Substitution
-      
+      </span>
     </span>
   </a>
   
@@ -2582,9 +2546,9 @@
           <li class="md-nav__item">
   <a href="#supported-variables" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Supported Variables
-      
+      </span>
     </span>
   </a>
   
@@ -2593,9 +2557,9 @@
           <li class="md-nav__item">
   <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Example
-      
+      </span>
     </span>
   </a>
   
@@ -2609,9 +2573,9 @@
           <li class="md-nav__item">
   <a href="#build-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Build Dependencies
-      
+      </span>
     </span>
   </a>
   
@@ -2625,9 +2589,9 @@
         <li class="md-nav__item">
   <a href="#cleaning-build-outputs" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Cleaning Build Outputs
-      
+      </span>
     </span>
   </a>
   
@@ -2636,9 +2600,9 @@
         <li class="md-nav__item">
   <a href="#complete-example" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Complete Example
-      
+      </span>
     </span>
   </a>
   
@@ -2648,9 +2612,9 @@
           <li class="md-nav__item">
   <a href="#typical-workflow" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Typical Workflow
-      
+      </span>
     </span>
   </a>
   
@@ -2664,9 +2628,9 @@
         <li class="md-nav__item">
   <a href="#cicd-workflows" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         CI/CD Workflows
-      
+      </span>
     </span>
   </a>
   
@@ -2676,9 +2640,9 @@
           <li class="md-nav__item">
   <a href="#github-actions" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         GitHub Actions
-      
+      </span>
     </span>
   </a>
   
@@ -2687,9 +2651,9 @@
           <li class="md-nav__item">
   <a href="#gitlab-ci" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         GitLab CI
-      
+      </span>
     </span>
   </a>
   
@@ -2698,9 +2662,9 @@
           <li class="md-nav__item">
   <a href="#jenkins-pipeline" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Jenkins Pipeline
-      
+      </span>
     </span>
   </a>
   
@@ -2709,9 +2673,9 @@
           <li class="md-nav__item">
   <a href="#ci-best-practices" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         CI Best Practices
-      
+      </span>
     </span>
   </a>
   
@@ -2725,9 +2689,9 @@
         <li class="md-nav__item">
   <a href="#command-reference" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Command Reference
-      
+      </span>
     </span>
   </a>
   
@@ -2736,9 +2700,9 @@
         <li class="md-nav__item">
   <a href="#need-help" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Need Help?
-      
+      </span>
     </span>
   </a>
   
@@ -3464,10 +3428,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["search.suggest","search.highlight","search.share"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["search.suggest","search.highlight","search.share"],"search":"../../assets/javascripts/workers/search.b6b7e04f.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.63456bd9.min.js"></script>
+      <script src="../../assets/javascripts/bundle.ee611ef6.min.js"></script>
       
     
   </body>
