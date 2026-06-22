@@ -130,11 +130,13 @@ def _run_zensical_build() -> int | None:
     # snippet changed. A clean build forces a full re-render. (The fast
     # incremental path is `just dev`, which does not use this orchestrator.)
     #
+    # Use --strict so enabled validation warnings, including broken internal
+    # links and anchors, fail CI instead of shipping silently.
+    #
     # Zensical 0.0.x exits 0 even when individual pages hit render errors
     # (e.g., a SnippetMissingError skips the page but the CLI succeeds).
-    # Capture output and fail explicitly on any `Error:` line. Replace
-    # this wrapper with `zensical build --strict` once upstream ships it.
-    argv = ["zensical", "build", "--clean"]
+    # Capture output and fail explicitly on any `Error:` line.
+    argv = ["zensical", "build", "--clean", "--strict"]
     print(f"→ {' '.join(argv)}", file=sys.stderr)
     result = subprocess.run(argv, capture_output=True, text=True)
     sys.stdout.write(result.stdout)
