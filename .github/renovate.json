@@ -1,0 +1,45 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "helpers:pinGitHubActionDigests"],
+  "dependencyDashboard": true,
+  "configMigration": true,
+  "labels": ["dependencies"],
+  "timezone": "America/Los_Angeles",
+  "schedule": ["* 4-8 * * 1"],
+  "prConcurrentLimit": 3,
+  "prHourlyLimit": 1,
+  "rangeStrategy": "bump",
+  "enabledManagers": ["github-actions", "pep621", "renovate-config"],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["* 4-8 * * 1"]
+  },
+  "packageRules": [
+    {
+      "description": "Keep Python runtime upgrades deliberate.",
+      "matchManagers": ["pep621"],
+      "matchDepTypes": ["requires-python"],
+      "enabled": false
+    },
+    {
+      "description": "Group non-major Python runtime dependency updates.",
+      "matchManagers": ["pep621"],
+      "matchDepTypes": ["project.dependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "Python runtime dependencies"
+    },
+    {
+      "description": "Group non-major Python dev dependency updates.",
+      "matchManagers": ["pep621"],
+      "matchDepTypes": ["dependency-groups"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "Python dev dependencies"
+    },
+    {
+      "description": "Group non-major GitHub Actions updates.",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor", "patch", "digest", "pin"],
+      "groupName": "GitHub Actions"
+    }
+  ]
+}
