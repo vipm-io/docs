@@ -15,10 +15,12 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "actionlint-py>=1.7.12.24",
     "pyrefly>=1.1.1",
     "pytest>=9.1.1",
     "ruff>=0.15.18",
     "types-pyyaml>=6.0.12.20260518",
+    "zizmor>=1.26.1",
 ]
 
 [tool.pytest.ini_options]
