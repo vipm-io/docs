@@ -19,6 +19,23 @@ on:
         required: false
         default: 'false'
         type: boolean
+  workflow_call:
+    inputs:
+      version:
+        description: 'Version label to deploy'
+        required: false
+        default: ''
+        type: string
+      set_latest:
+        description: 'Set the deployed version as latest'
+        required: false
+        default: false
+        type: boolean
+      republish_current_latest:
+        description: 'Republish main to the version currently aliased as latest'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   build:
@@ -26,11 +43,13 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+      # v7.0.0 -> 9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
         with:
           persist-credentials: false
       - name: Install uv
-        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b  # v8.1.0
+        # v8.2.0 -> fac544c07dec837d0ccb6301d7b5580bf5edae39
+        uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39
         with:
           enable-cache: false
       - name: Set up Python
@@ -54,7 +73,8 @@ jobs:
       - name: Build and validate docs site
         run: uv run python scripts/build_docs.py
       - name: Upload site artifact
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+        # v7.0.1 -> 043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
           name: site-pr-${{ github.event.pull_request.number || github.run_number }}
           path: site/
@@ -67,12 +87,14 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+      # v7.0.0 -> 9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Install uv
-        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b  # v8.1.0
+        # v8.2.0 -> fac544c07dec837d0ccb6301d7b5580bf5edae39
+        uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39
         with:
           enable-cache: false
       - name: Set up Python
@@ -96,13 +118,25 @@ jobs:
         run: uv run python scripts/validate_docs_build.py
       - name: Deploy with mike
         env:
+          REPUBLISH_CURRENT_LATEST: ${{ inputs.republish_current_latest }}
           REF: ${{ github.ref }}
           REF_NAME: ${{ github.ref_name }}
-          SET_LATEST: ${{ github.event.inputs.set_latest }}
-          VERSION_INPUT: ${{ github.event.inputs.version }}
+          SET_LATEST: ${{ inputs.set_latest }}
+          VERSION_INPUT: ${{ inputs.version }}
         run: |
           # Determine version label
-          if [ -n "$VERSION_INPUT" ]; then
+          if [ "$REPUBLISH_CURRENT_LATEST" = "true" ]; then
+            git fetch origin gh-pages
+            VERSION="$(
+              git show origin/gh-pages:versions.json |
+                jq -er '
+                  [.[] | select((.aliases // []) | index("latest")) | .version]
+                  | if length == 1 then .[0]
+                    else error("expected exactly one version aliased as latest")
+                    end
+                '
+            )"
+          elif [ -n "$VERSION_INPUT" ]; then
             VERSION="$VERSION_INPUT"
           elif [ "$REF" = "refs/heads/main" ]; then
             VERSION="preview"
@@ -118,7 +152,7 @@ jobs:
           echo "Deploying version: $VERSION"
 
           # Determine if this version should be aliased as "latest"
-          if [ "$SET_LATEST" = "true" ]; then
+          if [ "$REPUBLISH_CURRENT_LATEST" = "true" ] || [ "$SET_LATEST" = "true" ]; then
             uv run mike deploy --push --update-aliases "$VERSION" latest
           elif [ "$VERSION" = "preview" ]; then
             uv run mike deploy --push "$VERSION"

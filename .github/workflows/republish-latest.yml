@@ -1,0 +1,19 @@
+name: Republish current latest docs
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: republish-current-latest-docs
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  republish:
+    permissions:
+      contents: write
+    uses: ./.github/workflows/ci.yml
+    with:
+      republish_current_latest: true
