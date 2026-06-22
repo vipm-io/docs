@@ -73,6 +73,16 @@ This is used for:
 - Redeploying a hotfix to an existing version
 - Bootstrapping historical versions
 
+### Republish the current `latest` version
+
+Use the **Republish current latest docs** workflow to publish the current `main`
+branch to whichever release version already owns the `latest` alias. This workflow
+has no inputs: select **Run workflow** and confirm the run.
+
+The workflow reads `versions.json` from `gh-pages`, requires exactly one version to
+own the `latest` alias, and republishes that version while preserving the alias. Use
+the general **ci** workflow instead when changing which release is `latest`.
+
 ### PR builds
 
 Pull requests build without deploying any version. The `pr-preview-action` in `preview.yml` handles ephemeral PR previews separately. (Zensical 0.0.x does not yet support a `--strict` mode, so CI cannot fail on warnings the way the MkDocs-era pipeline did.)
@@ -161,4 +171,5 @@ Hotfixes to shipped docs are committed to the maintenance branch and CI redeploy
 | `mkdocs.yml` | `extra.version` enables the version switcher |
 | `pyproject.toml` | `mike` dependency |
 | `.github/workflows/ci.yml` | Deploy logic (auto + manual) |
+| `.github/workflows/republish-latest.yml` | One-click republish of `main` to the current `latest` release |
 | `.github/workflows/preview.yml` | PR preview deploys (unchanged) |
