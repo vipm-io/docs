@@ -92,6 +92,10 @@ When multiple settings apply, VIPM uses this precedence order:
 
 ## Timeouts
 
+Total operation timeouts and liveliness timeouts are independent. A total timeout
+limits the complete command duration, while a liveliness timeout stops an operation
+only after it stops making progress.
+
 ### `VIPM_TIMEOUT`
 
 Overrides the default operation timeout (in seconds). When set, this takes precedence over the `--timeout` flag and any CI-adjusted defaults.
@@ -100,6 +104,40 @@ Overrides the default operation timeout (in seconds). When set, this takes prece
 export VIPM_TIMEOUT=300   # 5 minutes
 vipm install project.vipc
 ```
+
+### `VIPM_DESKTOP_LIVELINESS_TIMEOUT`
+
+Sets how long the CLI waits, in seconds, without a progress update from VIPM Desktop
+before stopping the operation. The default is 60 seconds. Each progress update
+restarts the timer.
+
+Set this to a larger value when VIPM Desktop operations make progress less
+frequently, or to a negative value to disable this liveliness timeout.
+
+```bash
+export VIPM_DESKTOP_LIVELINESS_TIMEOUT=120
+vipm install project.vipc
+```
+
+This setting does not change the total operation timeout configured by
+`VIPM_TIMEOUT` or `--timeout`.
+
+### `VIPM_NETWORK_LIVELINESS_TIMEOUT`
+
+Sets how long the CLI waits, in seconds, without receiving data during a download
+before stopping the operation. The default is 30 seconds. Each successful read
+restarts the timer.
+
+Set this to a larger value for slow or intermittent networks, or to a negative value
+to disable this liveliness timeout.
+
+```bash
+export VIPM_NETWORK_LIVELINESS_TIMEOUT=90
+vipm install project.vipc
+```
+
+This setting does not change the total operation timeout configured by
+`VIPM_TIMEOUT` or `--timeout`.
 
 ## Debugging
 
