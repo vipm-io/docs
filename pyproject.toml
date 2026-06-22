@@ -15,12 +15,17 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "pyrefly>=1.1.1",
     "pytest>=9.1.1",
     "ruff>=0.15.18",
+    "types-pyyaml>=6.0.12.20260518",
 ]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.pyrefly]
+search-path = ["scripts"]
 
 [tool.ruff]
 target-version = "py313"

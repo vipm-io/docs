@@ -48,7 +48,8 @@ def render_tier_badge(access: dict) -> str:
     # Experimental is orthogonal to tier (an item can be e.g. professional AND
     # experimental), so its badge is appended to the same group and rendered
     # alongside any tier badge.
-    badges = list(TIER_BADGES_BY_TIER.get(access.get("tier"), []))
+    tier = access.get("tier")
+    badges = list(TIER_BADGES_BY_TIER.get(tier, [])) if isinstance(tier, str) else []
     if access.get("experimental"):
         badges.append("tier-experimental.md")
     if not badges:
