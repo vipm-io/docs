@@ -2,8 +2,8 @@
 
 VIPM previews give you early access to upcoming features before they're included in a stable release.
 
-!!! tip "Preview Documentation"
-    Full documentation for preview features is available at [docs.vipm.io/preview](https://docs.vipm.io/preview/).
+!!! tip "Latest Preview Release"
+    [VIPM 2026 Q3 f1 Preview](release-notes/2026.3.1.md) is the latest preview release — see its release notes for what's new.
 
 ## Installation
 
