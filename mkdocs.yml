@@ -109,6 +109,7 @@ nav:
       - linux/permissions-guide.md
   - Release Notes:
     - release-notes/index.md
+    - release-notes/2026.3.1.md
     - release-notes/2026.3.md
     - release-notes/2026.1.md
     - release-notes/2025.3.1.md
