@@ -84,6 +84,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    # Serialize gh-pages pushes across every invocation path of this workflow
+    # (push to main, push to release/*, workflow_dispatch, and workflow_call
+    # from republish-latest.yml). Without this, two `mike deploy --push` runs
+    # can race and the loser is rejected ("cannot lock ref refs/heads/gh-pages"),
+    # leaving one alias (preview or latest) un-updated.
+    concurrency:
+      group: gh-pages-deploy
+      cancel-in-progress: false
     permissions:
       contents: write
     steps:
