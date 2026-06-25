@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Preview release addressing Linux file path handling for VI package builds and a LabVIEW architecture mismatch in SBOM generation.">
+        <meta name="description" content="Preview release making the VI Package Builder Save Version feature available in Community and Pro, plus Linux file path handling for VI package builds and a LabVIEW architecture mismatch in SBOM generation.">
       
       
       
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#build-3977" class="md-skip">
+        <a href="#build-tbd" class="md-skip">
           Skip to content
         </a>
       
@@ -1476,6 +1476,34 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#build-tbd" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Build TBD
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build TBD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Fixes
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#build-3977" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1488,7 +1516,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fixes" class="md-nav__link">
+  <a href="#fixes_1" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
         Fixes
@@ -1967,6 +1995,34 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#build-tbd" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Build TBD
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build TBD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Fixes
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#build-3977" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1979,7 +2035,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fixes" class="md-nav__link">
+  <a href="#fixes_1" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
         Fixes
@@ -2029,9 +2085,15 @@
 <p class="admonition-title">Preview Release</p>
 <p>This is a preview release. See <a href="https://docs.vipm.io/latest/preview/">VIPM Preview</a> for instructions on how to obtain and install this preview build.</p>
 </div>
-<p>VIPM 2026 Q3 f1 is a preview release that builds upon <a href="../2026.3/">VIPM 2026 Q3</a> and addresses issues related to file path handling on Linux and a LabVIEW architecture mismatch during SBOM generation.</p>
-<h2 id="build-3977">Build 3977</h2>
+<p>VIPM 2026 Q3 f1 is a preview release that builds upon <a href="../2026.3/">VIPM 2026 Q3</a> and addresses the VI Package Builder Save Version preview feature being unavailable outside Professional Edition, file path handling on Linux, and a LabVIEW architecture mismatch during SBOM generation.</p>
+<!-- Replace "TBD" with the build number once the preview build containing this fix is cut. -->
+<h2 id="build-tbd">Build TBD</h2>
 <h3 id="fixes">Fixes</h3>
+<ul>
+<li><strong>"Save Version" available in Community and Pro</strong>: Resolved an issue where the VI Package Builder <strong>Save Version</strong> preview feature always reported a Professional-Edition-only error regardless of your edition, which blocked the feature for everyone. It is now available in <strong>Community Edition</strong> (non-commercial use) and <strong>Professional Edition</strong>. See the <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/136">tracking issue #136</a>.</li>
+</ul>
+<h2 id="build-3977">Build 3977</h2>
+<h3 id="fixes_1">Fixes</h3>
 <ul>
 <li><strong>Linux file path handling</strong>: Resolved issues with file path handling on Linux so that building VI packages works correctly, including <code>.vipb</code> files created on Windows that previously lost their path information when opened on Linux. See the <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/132">tracking issue #132</a>.</li>
 <li><strong>SBOM architecture mismatch</strong>: Resolved an issue where generated SBOMs could attribute LabVIEW library VIs (from <code>vi.lib</code> or <code>instr.lib</code>) to the wrong NIPM package or the wrong architecture (32-bit vs 64-bit). See the <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/133">tracking issue #133</a>.</li>
