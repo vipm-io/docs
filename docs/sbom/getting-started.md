@@ -57,7 +57,7 @@ The only required flag is `--output`. The `--format` and `--schema-version` flag
 Open `bom.json` to see the generated CycloneDX document. Key sections include:
 
 - **`metadata.component`** — your product (name, version, type)
-- **`metadata.tools`** — records that VIPM CLI generated the SBOM
+- **`metadata.tools`** — records the toolchain behind the SBOM: VIPM CLI always, plus VIPM Desktop and LabVIEW when they took part in producing its contents
 - **`components`** — the list of dependencies, each with a package URL (`purl`), license, vendor, description, and hashes
 
 ## Step 4 — Add product metadata
