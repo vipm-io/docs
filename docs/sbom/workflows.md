@@ -187,7 +187,7 @@ The generated JSON follows the [CycloneDX 1.5 specification](https://cyclonedx.o
 Contains information about the SBOM itself:
 
 - **`metadata.timestamp`** — when the SBOM was generated (ISO 8601)
-- **`metadata.tools`** — identifies the generating toolchain: VIPM CLI, plus VIPM Desktop and LabVIEW when they took part in producing the SBOM's contents
+- **`metadata.tools`** — identifies the generating toolchain: VIPM CLI, plus VIPM Desktop, LabVIEW, and NI Package Manager when they took part in producing the SBOM's contents
 - **`metadata.component`** — your product: the name, version, and type set via `--product-name`, `--product-version`, and `--product-type`
 
 ### `components`
