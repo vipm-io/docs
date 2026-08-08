@@ -2240,7 +2240,7 @@ so declarations do not apply there.</p>
 <tr>
 <td><code>depends-on</code></td>
 <td>no</td>
-<td>Dependency references to other components in the SBOM — see below.</td>
+<td>Dependency references to other components in the SBOM, by name or purl — see below.</td>
 </tr>
 </tbody>
 </table>
@@ -2249,13 +2249,15 @@ invalid <code>purl</code>, a duplicate declaration, or a blank field fails the c
 every problem, so a bad declaration can never produce a silently wrong SBOM.</p>
 <h3 id="declaring-dependencies-between-components">Declaring dependencies between components</h3>
 <p>The <code>depends-on</code> field records that a component depends on other components in the SBOM — either
-discovered packages or other declared components — by name, or by <code>name@version</code> when several
-versions are present:</p>
+discovered packages or other declared components. Reference a component by name, by <code>name@version</code>
+when several versions are present, or by its purl (<code>pkg:...</code>) when even the name and version are
+shared — for example, two components that legitimately carry the same name and version under
+different purls:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">[[sbom.component]]</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;motor-controller-firmware&quot;</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;3.2.0&quot;</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;firmware&quot;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">depends-on</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;libusb@1.0.27&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;oglib_error&quot;</span><span class="p">]</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">depends-on</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;libusb@1.0.27&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;oglib_error&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pkg:generic/vendor-runtime@2.1.0&quot;</span><span class="p">]</span>
 </code></pre></div>
 <p>These references become edges in the SBOM's dependency graph (CycloneDX <code>dependencies</code>). A reference
 that matches nothing in the generated SBOM — or that ambiguously matches several components — fails
