@@ -68,6 +68,7 @@ builds/my_library/MyLibrary.lvlib
 | ✅ **Lock files** | Reproducible builds with `vipm.lock` |
 | ✅ **Build system** | Define PPL, EXE, and package builds in one file |
 | ✅ **CI/CD ready** | `vipm lock --check` for validation |
+| ✅ **SBOM declarations** | Declare non-package-manager components for your SBOM with [`[[sbom.component]]`](../sbom/custom-components.md) |
 
 ## Next Steps
 

@@ -152,7 +152,7 @@ The table below describes each field and where the data originates.
 | `licenses` | Array of license entries. See [License handling](#license-handling). | VIPM: `license` from package spec. NIPM: `Eula` field. |
 | `hashes` | Cryptographic checksums. See [Hash algorithms](#hash-algorithms). | VIPM: cached hashes. NIPM: hash fields from NIPM CLI. |
 | `externalReferences` | Links related to the component. Currently a single `website` entry is emitted when a homepage URL is available. | VIPM: `url` from package spec. NIPM: `Homepage` field. |
-| `properties` | Tool-specific extensions under the `vipm:` namespace — `vipm:display-name` (human-readable package name) and `vipm:display-version` (human-readable version), each emitted when available. | VIPM: `display_name` from package spec (`display_version` not currently populated). NIPM: `DisplayName` and `DisplayVersion` fields. |
+| `properties` | Tool-specific extensions under the `vipm:` namespace — `vipm:display-name` (human-readable package name) and `vipm:display-version` (human-readable version), each emitted when available, plus `vipm:component:source` on every component, naming how it entered the SBOM: `declared` (a `[[sbom.component]]` entry in `vipm.toml`), `manifest` (direct manifest dependency), `transitive` (lock-resolved dependency of another package), or `project-scan` (discovered by scanning a LabVIEW project). See [Custom Components](custom-components.md). | VIPM: `display_name` from package spec (`display_version` not currently populated). NIPM: `DisplayName` and `DisplayVersion` fields. Source channel: determined by the generation pipeline. |
 
 Fields are omitted from the JSON when no data is available (e.g., if a package has no description, the `description` key is absent).
 
