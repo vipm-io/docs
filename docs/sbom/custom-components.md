@@ -68,7 +68,7 @@ so declarations do not apply there.
 | `supplier` | no | Supplier as `Name <email>` or a bare organization name. |
 | `description` | no | Human-readable description. |
 | `homepage` | no | Project or vendor URL, emitted as a `website` external reference. |
-| `depends-on` | no | Dependency references to other components in the SBOM — see below. |
+| `depends-on` | no | Dependency references to other components in the SBOM, by name or purl — see below. |
 
 Declarations are validated when the manifest is loaded: a missing `name`, an unknown `type`, an
 invalid `purl`, a duplicate declaration, or a blank field fails the command with a message naming
@@ -77,15 +77,17 @@ every problem, so a bad declaration can never produce a silently wrong SBOM.
 ### Declaring dependencies between components
 
 The `depends-on` field records that a component depends on other components in the SBOM — either
-discovered packages or other declared components — by name, or by `name@version` when several
-versions are present:
+discovered packages or other declared components. Reference a component by name, by `name@version`
+when several versions are present, or by its purl (`pkg:...`) when even the name and version are
+shared — for example, two components that legitimately carry the same name and version under
+different purls:
 
 ```toml
 [[sbom.component]]
 name = "motor-controller-firmware"
 version = "3.2.0"
 type = "firmware"
-depends-on = ["libusb@1.0.27", "oglib_error"]
+depends-on = ["libusb@1.0.27", "oglib_error", "pkg:generic/vendor-runtime@2.1.0"]
 ```
 
 These references become edges in the SBOM's dependency graph (CycloneDX `dependencies`). A reference
