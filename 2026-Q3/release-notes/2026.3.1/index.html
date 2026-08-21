@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Preview release with SBOM accuracy and CLI reliability improvements, the VI Package Builder Save Version feature available in Community and Pro, and continued Linux path handling fixes.">
+        <meta name="description" content="Maintenance release with SBOM accuracy and CLI reliability improvements, the VI Package Builder Save Version preview feature available in Community and Pro, and Linux file path handling fixes.">
       
       
       
@@ -27,7 +27,7 @@
     
     
       
-        <title>VIPM 2026 Q3 f1 Preview - Developer Docs</title>
+        <title>VIPM 2026 Q3 f1 - Developer Docs</title>
       
     
     
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#build-4017" class="md-skip">
+        <a href="#improvements" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VIPM 2026 Q3 f1 Preview
+              VIPM 2026 Q3 f1
             
           </span>
         </div>
@@ -1435,7 +1435,7 @@
   <span class="md-ellipsis">
     
   
-  VIPM 2026 Q3 f1 Preview
+  VIPM 2026 Q3 f1
 
     
   </span>
@@ -1452,7 +1452,7 @@
   <span class="md-ellipsis">
     
   
-  VIPM 2026 Q3 f1 Preview
+  VIPM 2026 Q3 f1
 
     
   </span>
@@ -1476,18 +1476,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#build-4017" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Build 4017
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Build 4017">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#improvements" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1497,8 +1485,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#fixes" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1506,39 +1494,6 @@
       </span>
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-3977" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Build 3977
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Build 3977">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fixes_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Fixes
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2006,18 +1961,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#build-4017" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Build 4017
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Build 4017">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#improvements" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2027,8 +1970,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#fixes" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2036,39 +1979,6 @@
       </span>
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-3977" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Build 3977
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Build 3977">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fixes_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Fixes
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2101,34 +2011,24 @@
   
 
 
-  <h1 id="__skip">VIPM 2026 Q3 f1 Preview</h1>
+  <h1 id="__skip">VIPM 2026 Q3 f1</h1>
 
-<div class="admonition tip">
-<p class="admonition-title">Preview Release</p>
-<p>This is a preview release. See <a href="https://docs.vipm.io/latest/preview/">VIPM Preview</a> for instructions on how to obtain and install this preview build.</p>
-</div>
-<p>VIPM 2026 Q3 f1 is a preview release that builds upon <a href="../2026.3/">VIPM 2026 Q3</a> with SBOM accuracy and CLI reliability improvements, makes the VI Package Builder Save Version preview feature available outside Professional Edition, and continues the Linux file path handling fixes.</p>
-<h2 id="build-4017">Build 4017</h2>
-<h3 id="improvements">Improvements</h3>
+<p>VIPM 2026 Q3 f1 is a maintenance release that builds upon <a href="../2026.3/">VIPM 2026 Q3</a> with SBOM accuracy and CLI reliability improvements, makes the VI Package Builder Save Version preview feature available outside Professional Edition, and fixes to Linux file path handling in VI package builds.</p>
+<h2 id="improvements">Improvements</h2>
 <ul>
 <li><strong>LabVIEW, NIPM, and VIPM versions in SBOMs</strong>: SBOMs generated by <code>vipm sbom</code> now record the LabVIEW, NI Package Manager, and VIPM Desktop versions used to produce them (in the CycloneDX <code>metadata.tools.components</code> section), so each SBOM captures exactly which tool versions produced it. See the <a href="../../sbom/output-reference/">SBOM output reference</a> for details.</li>
 <li><strong>Quieter NI package cache build</strong>: The NI package cache build in <code>vipm sbom</code> and <code>vipm sync</code> now prints a heading and summary instead of one line per installed NI package.</li>
 <li><strong>Errors reported first</strong>: <code>vipm sbom</code> and <code>vipm sync</code> now report errors ahead of progress and status output, so failures are easy to spot; previously an error could land at the bottom of a long run of output.</li>
 </ul>
-<h3 id="fixes">Fixes</h3>
+<h2 id="fixes">Fixes</h2>
 <ul>
+<li><strong>Linux file path handling</strong>: Resolved issues with file path handling on Linux so that building VI packages works correctly — including <code>.vipb</code> files created on Windows that previously lost their path information when opened on Linux, and converting paths between Windows and Linux during VI package building. See the <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/132">tracking issue #132</a>.</li>
+<li><strong>SBOM architecture mismatch</strong>: Resolved an issue where generated SBOMs could attribute LabVIEW library VIs (from <code>vi.lib</code> or <code>instr.lib</code>) to the wrong NIPM package or the wrong architecture (32-bit vs 64-bit). See the <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/133">tracking issue #133</a>.</li>
 <li><strong>"Save Version" available in Community and Pro</strong>: Resolved an issue where the VI Package Builder <strong>Save Version</strong> preview feature always reported a Professional-Edition-only error regardless of your edition, which blocked the feature for everyone. It is now available in <strong>Community Edition</strong> (non-commercial use) and <strong>Professional Edition</strong>. See the <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/136">tracking issue #136</a>.</li>
 <li><strong>Palette browser on Linux and Mac</strong>: The palette browser tree now displays correctly on Linux and Mac; previously it could report errors and fail to show the palette hierarchy.</li>
-<li><strong>Linux path handling (continued)</strong>: Additional fixes for converting paths between Windows and Linux during VI package building, extending the Build 3977 path handling fixes. See the <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/132">tracking issue #132</a>.</li>
-<li><strong>SBOM output folders</strong>: <code>vipm sbom</code> now creates missing <code>--output</code> folders automatically, validates the output location before scanning begins, and reports file errors with the actual path and cause; previously a bad output path failed only after the full project scan, with a misleading disk-space/permissions hint.</li>
+<li><strong>SBOM output folders</strong>: <code>vipm sbom</code> now creates missing <code>--output</code> folders automatically, validates the output location before scanning begins, and reports file errors with the actual path and cause; previously a bad output path failed only after the full project scan, with a misleading disk-space/permissions hint. See <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/139">issue #139</a>.</li>
 <li><strong>LabVIEW addons in SBOMs</strong>: SBOMs now include every LabVIEW addon (LVAddons) that LabVIEW activates, attributing files to the addon version LabVIEW actually loads; previously some NI addons were silently missing from SBOMs, and addons with multiple installed version directories could be attributed to a stale version.</li>
 <li><strong>Long-running package builds</strong>: <code>vipm build</code> now lets long-running VI package builds run to completion; previously a healthy build could be stopped after 60 seconds without visible progress and wrongly reported as VIPM Desktop being stuck.</li>
-</ul>
-<h2 id="build-3977">Build 3977</h2>
-<h3 id="fixes_1">Fixes</h3>
-<ul>
-<li><strong>Linux file path handling</strong>: Resolved issues with file path handling on Linux so that building VI packages works correctly, including <code>.vipb</code> files created on Windows that previously lost their path information when opened on Linux. See the <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/132">tracking issue #132</a>.</li>
-<li><strong>SBOM architecture mismatch</strong>: Resolved an issue where generated SBOMs could attribute LabVIEW library VIs (from <code>vi.lib</code> or <code>instr.lib</code>) to the wrong NIPM package or the wrong architecture (32-bit vs 64-bit). See the <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/133">tracking issue #133</a>.</li>
 </ul>
 <h2 id="tracked-issues">Tracked issues</h2>
 <p>See the <a href="https://github.com/vipm-io/vipm-desktop-issues/milestone/5">2026 Q3 f1 milestone</a> for all issues tracked for this release.</p>
