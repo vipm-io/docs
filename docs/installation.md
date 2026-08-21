@@ -19,25 +19,25 @@ Download VIPM from **[vipm.io/download](https://www.vipm.io/download/)** and run
 **Silent install — PowerShell:**
 
 ``` { .powershell .copy }
-$ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri "https://traffic.libsyn.com/secure/jkinc/vipm-26.3.3954-windows-setup.exe" -OutFile "$env:TEMP\vipm-setup.exe"; Start-Process -Wait -FilePath "$env:TEMP\vipm-setup.exe" -ArgumentList "/exenoui /qn"; Remove-Item "$env:TEMP\vipm-setup.exe" -Force
+$ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri "https://traffic.libsyn.com/secure/jkinc/vipm-26.3.4025-windows-setup.exe" -OutFile "$env:TEMP\vipm-setup.exe"; Start-Process -Wait -FilePath "$env:TEMP\vipm-setup.exe" -ArgumentList "/exenoui /qn"; Remove-Item "$env:TEMP\vipm-setup.exe" -Force
 ```
 
 **Silent install — cmd.exe:**
 
 ``` { .shell .copy }
-curl.exe -L https://traffic.libsyn.com/secure/jkinc/vipm-26.3.3954-windows-setup.exe -o %TEMP%\vipm-setup.exe && start /wait %TEMP%\vipm-setup.exe /quiet /norestart && del %TEMP%\vipm-setup.exe
+curl.exe -L https://traffic.libsyn.com/secure/jkinc/vipm-26.3.4025-windows-setup.exe -o %TEMP%\vipm-setup.exe && start /wait %TEMP%\vipm-setup.exe /quiet /norestart && del %TEMP%\vipm-setup.exe
 ```
 
 **Interactive install — PowerShell:**
 
 ``` { .powershell .copy }
-$ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri "https://traffic.libsyn.com/secure/jkinc/vipm-26.3.3954-windows-setup.exe" -OutFile "$env:TEMP\vipm-setup.exe"; Start-Process -Wait -FilePath "$env:TEMP\vipm-setup.exe"; Remove-Item "$env:TEMP\vipm-setup.exe" -Force
+$ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri "https://traffic.libsyn.com/secure/jkinc/vipm-26.3.4025-windows-setup.exe" -OutFile "$env:TEMP\vipm-setup.exe"; Start-Process -Wait -FilePath "$env:TEMP\vipm-setup.exe"; Remove-Item "$env:TEMP\vipm-setup.exe" -Force
 ```
 
 **Interactive install — cmd.exe:**
 
 ``` { .shell .copy }
-curl.exe -L https://traffic.libsyn.com/secure/jkinc/vipm-26.3.3954-windows-setup.exe -o %TEMP%\vipm-setup.exe && start /wait %TEMP%\vipm-setup.exe && del %TEMP%\vipm-setup.exe
+curl.exe -L https://traffic.libsyn.com/secure/jkinc/vipm-26.3.4025-windows-setup.exe -o %TEMP%\vipm-setup.exe && start /wait %TEMP%\vipm-setup.exe && del %TEMP%\vipm-setup.exe
 ```
 
 ### Linux
@@ -45,7 +45,7 @@ curl.exe -L https://traffic.libsyn.com/secure/jkinc/vipm-26.3.3954-windows-setup
 **Debian-based (Ubuntu, Debian, Linux Mint, and derivatives):**
 
 ``` { .shell .copy }
-wget -O /tmp/vipm.deb https://traffic.libsyn.com/secure/jkinc/vipm_26.3.0-3954_amd64.deb && sudo dpkg -i /tmp/vipm.deb && rm /tmp/vipm.deb
+wget -O /tmp/vipm.deb https://traffic.libsyn.com/secure/jkinc/vipm_26.3.1-4025_amd64.deb && sudo dpkg -i /tmp/vipm.deb && rm /tmp/vipm.deb
 ```
 
 **Red Hat-based (RHEL, Fedora, CentOS, Rocky Linux, and derivatives):**
@@ -53,19 +53,19 @@ wget -O /tmp/vipm.deb https://traffic.libsyn.com/secure/jkinc/vipm_26.3.0-3954_a
 **dnf (RHEL 8+ / Fedora / Rocky Linux / AlmaLinux):**
 
 ``` { .shell .copy }
-wget -O /tmp/vipm.rpm https://traffic.libsyn.com/secure/jkinc/vipm-26.3.0-3954.x86_64.rpm && sudo dnf install -y --nogpgcheck /tmp/vipm.rpm && rm /tmp/vipm.rpm
+wget -O /tmp/vipm.rpm https://traffic.libsyn.com/secure/jkinc/vipm-26.3.1-4025.x86_64.rpm && sudo dnf install -y --nogpgcheck /tmp/vipm.rpm && rm /tmp/vipm.rpm
 ```
 
 **yum (RHEL 7 / CentOS 7):**
 
 ``` { .shell .copy }
-wget -O /tmp/vipm.rpm https://traffic.libsyn.com/secure/jkinc/vipm-26.3.0-3954.x86_64.rpm && sudo yum install -y --nogpgcheck /tmp/vipm.rpm && rm /tmp/vipm.rpm
+wget -O /tmp/vipm.rpm https://traffic.libsyn.com/secure/jkinc/vipm-26.3.1-4025.x86_64.rpm && sudo yum install -y --nogpgcheck /tmp/vipm.rpm && rm /tmp/vipm.rpm
 ```
 
 **zypper (openSUSE):**
 
 ``` { .shell .copy }
-wget -O /tmp/vipm.rpm https://traffic.libsyn.com/secure/jkinc/vipm-26.3.0-3954.x86_64.rpm && sudo zypper --non-interactive install --no-recommends --allow-unsigned-rpm /tmp/vipm.rpm && rm /tmp/vipm.rpm
+wget -O /tmp/vipm.rpm https://traffic.libsyn.com/secure/jkinc/vipm-26.3.1-4025.x86_64.rpm && sudo zypper --non-interactive install --no-recommends --allow-unsigned-rpm /tmp/vipm.rpm && rm /tmp/vipm.rpm
 ```
 
 For more on running VIPM on Linux, see [VIPM on Linux](linux/index.md).
