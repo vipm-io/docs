@@ -181,6 +181,18 @@ If the project has no dependencies, the `dependsOn` field is omitted.
 
 Every component includes a [Package URL (purl)](https://github.com/package-url/purl-spec) that uniquely identifies it. The format depends on the package manager.
 
+### What is a Package URL?
+
+A Package URL is a standardized, tool-neutral identifier for a software package. It has the form `pkg:type/namespace/name@version?qualifiers`, where `type` names the package ecosystem (such as `npm`, `pypi`, or `nuget`) and the rest locates one specific package and version within it. The format is maintained by the [Package-URL project](https://github.com/package-url) and is standardized as [ECMA-427](https://ecma-international.org/publications-and-standards/standards/ecma-427/). CycloneDX, SPDX, and most SBOM scanners use it to match the same component across different tools and databases.
+
+!!! warning "SBOM tools cannot yet look up VIPM and NIPM packages"
+
+    The `vipm` and `nipkg` types used below are not yet on the official list of purl types, so SBOM tools do not recognize them. A proposal to add them to the list is open with the package-url project; see the [tracking issue](https://github.com/vipm-io/vipm-desktop-issues/issues/148) for status.
+
+    In practice, SBOM tools accept and carry these identifiers, but they will not resolve them against vulnerability or license databases until the types are on the list and those databases index them. Expect matching to work within VIPM-generated SBOMs and across tools that pass purls through unchanged, but not automatic CVE or license lookups for VIPM and NIPM packages.
+
+    VIPM will adopt whatever form the list defines once the types are added. The type name or qualifiers may change as a result, so avoid hard-coding the current strings in downstream pipelines.
+
 ### VIPM packages
 
 ```
