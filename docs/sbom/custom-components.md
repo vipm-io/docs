@@ -8,11 +8,11 @@ title: Custom Components
 
 `vipm sbom` automatically discovers VIPM and NIPM packages in your project, but LabVIEW applications can depend on components that neither package manager tracks — DLLs, firmware, hardware modules, and other third-party artifacts.
 
-The recommended approach is to maintain a separate CycloneDX file for these components and merge it with the `vipm sbom` output using standard CycloneDX merge tooling.
+These components appear in your SBOM only because someone records them. The [JKI Security Suite SBOM Helper](helper.md) is the most direct way to do that: it opens the SBOM `vipm sbom` generated, lets you add and describe the components the scan cannot see, and saves a file ready to ship with your product.
 
-## Merge the `vipm sbom` output with a supplemental SBOM
+## Add components with the SBOM Helper
 
-One practical approach is to maintain a hand-crafted CycloneDX JSON file containing your custom components and merge it with the output of `vipm sbom`.
+The SBOM Helper is a Windows desktop application. See [SBOM Helper Desktop App](helper.md) to download and install it, and for what it can record.
 
 **Step 1** — Generate your LabVIEW SBOM as usual:
 
@@ -24,6 +24,26 @@ vipm sbom MyProject.lvproj \
   --product-version 1.0.0 \
   --output build/labview-bom.json
 ```
+
+**Step 2** — Open `build/labview-bom.json` in the SBOM Helper.
+
+**Step 3** — Add a component for each artifact the scan could not find. Point the Helper at the file on disk and it fills in what the file itself declares, or type the details yourself. For each component you can record:
+
+- a **name** — the component's canonical identifier — and a **display name** for the name people recognise
+- a **version** and a **component type** — library, application, device driver, and the other CycloneDX types
+- a **supplier** and a **license**
+- **cryptographic hashes**, read from the file you picked or typed in
+- a **Package URL (purl)** — or none, when no package ecosystem describes the component
+
+**Step 4** — Save. The result is one CycloneDX file holding both the discovered packages and the components you added.
+
+Because the Helper edits the generated SBOM in place, there is no second file to keep in step and no merge step to run.
+
+## Maintaining a supplemental SBOM by hand
+
+Editing the generated SBOM suits a person working through a release. A build with nobody at the keyboard needs its components to come from a file under version control instead, so the supplemental-file approach below remains the right answer for automated pipelines — and for anything the Helper does not cover.
+
+**Step 1** — Generate your LabVIEW SBOM as shown above.
 
 **Step 2** — Create a supplemental SBOM file (`custom-components.json`) with your additional components:
 

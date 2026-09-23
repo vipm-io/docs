@@ -80,6 +80,7 @@ nav:
   - Guides:
     - Software Bill of Materials (SBOM):
       - sbom/index.md
+      - sbom/helper.md
       - sbom/getting-started.md
       - sbom/workflows.md
       - sbom/output-reference.md
