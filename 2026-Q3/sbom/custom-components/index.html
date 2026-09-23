@@ -475,6 +475,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../helper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SBOM Helper Desktop App
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../getting-started/" class="md-nav__link">
         
   
@@ -626,15 +653,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#merge-the-vipm-sbom-output-with-a-supplemental-sbom" class="md-nav__link">
+  <a href="#add-components-with-the-sbom-helper" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Merge the <code>vipm sbom</code> output with a supplemental SBOM
+        Add components with the SBOM Helper
       </span>
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Merge the vipm sbom output with a supplemental SBOM">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maintaining-a-supplemental-sbom-by-hand" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Maintaining a supplemental SBOM by hand
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Maintaining a supplemental SBOM by hand">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1997,15 +2035,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#merge-the-vipm-sbom-output-with-a-supplemental-sbom" class="md-nav__link">
+  <a href="#add-components-with-the-sbom-helper" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Merge the <code>vipm sbom</code> output with a supplemental SBOM
+        Add components with the SBOM Helper
       </span>
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Merge the vipm sbom output with a supplemental SBOM">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maintaining-a-supplemental-sbom-by-hand" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Maintaining a supplemental SBOM by hand
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Maintaining a supplemental SBOM by hand">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2056,9 +2105,9 @@
 <h1 id="adding-custom-components-to-your-sbom">Adding Custom Components to Your SBOM</h1>
 <h2 id="background">Background</h2>
 <p><code>vipm sbom</code> automatically discovers VIPM and NIPM packages in your project, but LabVIEW applications can depend on components that neither package manager tracks — DLLs, firmware, hardware modules, and other third-party artifacts.</p>
-<p>The recommended approach is to maintain a separate CycloneDX file for these components and merge it with the <code>vipm sbom</code> output using standard CycloneDX merge tooling.</p>
-<h2 id="merge-the-vipm-sbom-output-with-a-supplemental-sbom">Merge the <code>vipm sbom</code> output with a supplemental SBOM</h2>
-<p>One practical approach is to maintain a hand-crafted CycloneDX JSON file containing your custom components and merge it with the output of <code>vipm sbom</code>.</p>
+<p>These components appear in your SBOM only because someone records them. The <a href="../helper/">JKI Security Suite SBOM Helper</a> is the most direct way to do that: it opens the SBOM <code>vipm sbom</code> generated, lets you add and describe the components the scan cannot see, and saves a file ready to ship with your product.</p>
+<h2 id="add-components-with-the-sbom-helper">Add components with the SBOM Helper</h2>
+<p>The SBOM Helper is a Windows desktop application. See <a href="../helper/">SBOM Helper Desktop App</a> to download and install it, and for what it can record.</p>
 <p><strong>Step 1</strong> — Generate your LabVIEW SBOM as usual:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>MyProject.lvproj<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span><span class="se">\</span>
@@ -2067,6 +2116,20 @@
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>--product-version<span class="w"> </span><span class="m">1</span>.0.0<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span>--output<span class="w"> </span>build/labview-bom.json
 </code></pre></div>
+<p><strong>Step 2</strong> — Open <code>build/labview-bom.json</code> in the SBOM Helper.</p>
+<p><strong>Step 3</strong> — Add a component for each artifact the scan could not find. Point the Helper at the file on disk and it fills in what the file itself declares, or type the details yourself. For each component you can record:</p>
+<ul>
+<li>a <strong>name</strong> — the component's canonical identifier — and a <strong>display name</strong> for the name people recognise</li>
+<li>a <strong>version</strong> and a <strong>component type</strong> — library, application, device driver, and the other CycloneDX types</li>
+<li>a <strong>supplier</strong> and a <strong>license</strong></li>
+<li><strong>cryptographic hashes</strong>, read from the file you picked or typed in</li>
+<li>a <strong>Package URL (purl)</strong> — or none, when no package ecosystem describes the component</li>
+</ul>
+<p><strong>Step 4</strong> — Save. The result is one CycloneDX file holding both the discovered packages and the components you added.</p>
+<p>Because the Helper edits the generated SBOM in place, there is no second file to keep in step and no merge step to run.</p>
+<h2 id="maintaining-a-supplemental-sbom-by-hand">Maintaining a supplemental SBOM by hand</h2>
+<p>Editing the generated SBOM suits a person working through a release. A build with nobody at the keyboard needs its components to come from a file under version control instead, so the supplemental-file approach below remains the right answer for automated pipelines — and for anything the Helper does not cover.</p>
+<p><strong>Step 1</strong> — Generate your LabVIEW SBOM as shown above.</p>
 <p><strong>Step 2</strong> — Create a supplemental SBOM file (<code>custom-components.json</code>) with your additional components:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;bomFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CycloneDX&quot;</span><span class="p">,</span>

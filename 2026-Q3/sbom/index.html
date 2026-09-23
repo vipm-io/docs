@@ -14,7 +14,7 @@
         <link rel="prev" href="../experimental/">
       
       
-        <link rel="next" href="./getting-started/">
+        <link rel="next" href="./helper/">
       
       
         
@@ -529,6 +529,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#generating-from-labview" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Generating from LabVIEW
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editing-an-sbom" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Editing an SBOM
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#supported-inputs" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -576,6 +598,33 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./helper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SBOM Helper Desktop App
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -2024,6 +2073,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#generating-from-labview" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Generating from LabVIEW
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editing-an-sbom" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Editing an SBOM
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#supported-inputs" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2103,6 +2174,14 @@
 <li><strong>Cryptographic hashes</strong> — checksums for each component</li>
 <li><strong>Product metadata</strong> — your application's name, version, and component type</li>
 </ul>
+<h2 id="generating-from-labview">Generating from LabVIEW</h2>
+<p>The LabVIEW Application Builder can generate an SBOM for a build specification, and it does so by calling <code>vipm sbom</code> under the hood. The CLI and the Application Builder option are the same generator reached two ways, so an SBOM built from a build specification contains what this section describes, and the reference pages here apply to both.</p>
+<p>This path requires <strong>LabVIEW 2026 Q3 or later</strong>. See <a href="https://www.ni.com/docs/en-US/bundle/labview/page/generate-sbom.html">Generate an SBOM from LabVIEW</a> in the LabVIEW help for the build specification settings.</p>
+<p>To run the same generation yourself — from a script, a CI job, or to narrow the SBOM to one build specification — see <a href="workflows/">Workflows</a>. Running <code>vipm sbom</code> directly has different LabVIEW requirements, described under <a href="#supported-inputs">Supported inputs</a> below.</p>
+<h2 id="editing-an-sbom">Editing an SBOM</h2>
+<p>Some components no scan can find: DLLs, firmware, hardware modules, and other artifacts that no package manager tracks. The <strong>JKI Security Suite SBOM Helper</strong> opens a generated SBOM, lets you add and describe those components, and saves a file ready to ship with your product.</p>
+<p><a class="md-button md-button--primary" href="helper/">Get the JKI Security Suite SBOM Helper desktop app</a></p>
+<p>See <a href="custom-components/">Custom Components</a> for the full workflow, including the file-based alternative suited to automated builds.</p>
 <h2 id="supported-inputs">Supported inputs</h2>
 <table>
 <thead>
@@ -2154,6 +2233,7 @@
 <ul>
 <li><strong><a href="getting-started/">Getting Started</a></strong> — generate your first SBOM in a few minutes</li>
 <li><strong><a href="workflows/">Workflows</a></strong> — choose the right approach for your project and environment</li>
+<li><strong><a href="custom-components/">Custom Components</a></strong> — record the components no scan can discover</li>
 <li><strong><a href="output-reference/">Output Reference</a></strong> — understand the CycloneDX fields, data sources, and enrichment in your SBOM</li>
 <li><strong><a href="../cli/command-reference/#vipm-sbom">CLI Command Reference</a></strong> — full parameter reference for <code>vipm sbom</code></li>
 </ul>
