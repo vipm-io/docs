@@ -2158,6 +2158,7 @@
 
 <h1 id="software-bill-of-materials-sbom">Software Bill of Materials (SBOM)</h1>
 <p>A Software Bill of Materials (SBOM) is a machine-readable inventory of every software component in your product — including package names, versions, suppliers, licenses, and cryptographic hashes. SBOMs give you and your customers visibility into exactly what ships in your software.</p>
+<p><a class="md-button md-button--primary" href="helper/">Get the JKI Security Suite SBOM Helper desktop app</a></p>
 <h2 id="why-sboms-matter">Why SBOMs matter</h2>
 <p>Regulations such as the <a href="https://jki.net/cra/">EU Cyber Resilience Act (CRA)</a> and <a href="https://www.nist.gov/itl/executive-order-14028-improving-nations-cybersecurity">US Executive Order 14028</a> are making SBOMs a requirement for software products in regulated markets. Beyond compliance, SBOMs support practical goals like license auditing, vulnerability tracking, and supply chain transparency.</p>
 <div class="admonition tip">
@@ -2179,8 +2180,7 @@
 <p>This path requires <strong>LabVIEW 2026 Q3 or later</strong>. See <a href="https://www.ni.com/docs/en-US/bundle/labview/page/generate-sbom.html">Generate an SBOM from LabVIEW</a> in the LabVIEW help for the build specification settings.</p>
 <p>To run the same generation yourself — from a script, a CI job, or to narrow the SBOM to one build specification — see <a href="workflows/">Workflows</a>. Running <code>vipm sbom</code> directly has different LabVIEW requirements, described under <a href="#supported-inputs">Supported inputs</a> below.</p>
 <h2 id="editing-an-sbom">Editing an SBOM</h2>
-<p>Some components no scan can find: DLLs, firmware, hardware modules, and other artifacts that no package manager tracks. The <strong>JKI Security Suite SBOM Helper</strong> opens a generated SBOM, lets you add and describe those components, and saves a file ready to ship with your product.</p>
-<p><a class="md-button md-button--primary" href="helper/">Get the JKI Security Suite SBOM Helper desktop app</a></p>
+<p>Some components no scan can find: DLLs, firmware, hardware modules, and other artifacts that no package manager tracks. The <a href="helper/">SBOM Helper Desktop App</a> opens a generated SBOM, lets you add and describe those components, and saves a file ready to ship with your product.</p>
 <p>See <a href="custom-components/">Custom Components</a> for the full workflow, including the file-based alternative suited to automated builds.</p>
 <h2 id="supported-inputs">Supported inputs</h2>
 <table>
