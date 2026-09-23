@@ -6,6 +6,8 @@ title: SBOM Overview
 
 A Software Bill of Materials (SBOM) is a machine-readable inventory of every software component in your product — including package names, versions, suppliers, licenses, and cryptographic hashes. SBOMs give you and your customers visibility into exactly what ships in your software.
 
+[Get the JKI Security Suite SBOM Helper desktop app](helper.md){ .md-button .md-button--primary }
+
 ## Why SBOMs matter
 
 Regulations such as the [EU Cyber Resilience Act (CRA)](https://jki.net/cra/) and [US Executive Order 14028](https://www.nist.gov/itl/executive-order-14028-improving-nations-cybersecurity) are making SBOMs a requirement for software products in regulated markets. Beyond compliance, SBOMs support practical goals like license auditing, vulnerability tracking, and supply chain transparency.
@@ -32,9 +34,7 @@ To run the same generation yourself — from a script, a CI job, or to narrow th
 
 ## Editing an SBOM
 
-Some components no scan can find: DLLs, firmware, hardware modules, and other artifacts that no package manager tracks. The **JKI Security Suite SBOM Helper** opens a generated SBOM, lets you add and describe those components, and saves a file ready to ship with your product.
-
-[Get the JKI Security Suite SBOM Helper desktop app](helper.md){ .md-button .md-button--primary }
+Some components no scan can find: DLLs, firmware, hardware modules, and other artifacts that no package manager tracks. The [SBOM Helper Desktop App](helper.md) opens a generated SBOM, lets you add and describe those components, and saves a file ready to ship with your product.
 
 See [Custom Components](custom-components.md) for the full workflow, including the file-based alternative suited to automated builds.
 
