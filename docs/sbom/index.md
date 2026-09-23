@@ -22,6 +22,22 @@ The VIPM CLI generates [CycloneDX](https://cyclonedx.org/) 1.5 SBOMs in JSON for
 - **Cryptographic hashes** — checksums for each component
 - **Product metadata** — your application's name, version, and component type
 
+## Generating from LabVIEW
+
+The LabVIEW Application Builder can generate an SBOM for a build specification, and it does so by calling `vipm sbom` under the hood. The CLI and the Application Builder option are the same generator reached two ways, so an SBOM built from a build specification contains what this section describes, and the reference pages here apply to both.
+
+This path requires **LabVIEW 2026 Q3 or later**. See [Generate an SBOM from LabVIEW](https://www.ni.com/docs/en-US/bundle/labview/page/generate-sbom.html) in the LabVIEW help for the build specification settings.
+
+To run the same generation yourself — from a script, a CI job, or to narrow the SBOM to one build specification — see [Workflows](workflows.md). Running `vipm sbom` directly has different LabVIEW requirements, described under [Supported inputs](#supported-inputs) below.
+
+## Editing an SBOM
+
+Some components no scan can find: DLLs, firmware, hardware modules, and other artifacts that no package manager tracks. The **JKI Security Suite SBOM Helper** opens a generated SBOM, lets you add and describe those components, and saves a file ready to ship with your product.
+
+[Get the JKI Security Suite SBOM Helper desktop app](helper.md){ .md-button .md-button--primary }
+
+See [Custom Components](custom-components.md) for the full workflow, including the file-based alternative suited to automated builds.
+
 ## Supported inputs
 
 | Input type | Description | LabVIEW required? |
@@ -54,6 +70,7 @@ vipm --version
 
 - **[Getting Started](getting-started.md)** — generate your first SBOM in a few minutes
 - **[Workflows](workflows.md)** — choose the right approach for your project and environment
+- **[Custom Components](custom-components.md)** — record the components no scan can discover
 - **[Output Reference](output-reference.md)** — understand the CycloneDX fields, data sources, and enrichment in your SBOM
 - **[CLI Command Reference](../cli/command-reference.md#vipm-sbom)** — full parameter reference for `vipm sbom`
 
