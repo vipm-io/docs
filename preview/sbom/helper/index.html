@@ -6,17 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Fix release for Windows addressing build, migration, and quick search issues.">
       
       
-      
-        <link rel="canonical" href="https://docs.vipm.io/preview/release-notes/2025.3.1/">
-      
-      
-        <link rel="prev" href="../2026.1/">
+        <link rel="canonical" href="https://docs.vipm.io/preview/sbom/helper/">
       
       
-        <link rel="next" href="../2025.3/">
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../getting-started/">
       
       
         
@@ -27,7 +25,7 @@
     
     
       
-        <title>VIPM 2025 Q3 f1 - Developer Docs</title>
+        <title>SBOM Helper Desktop App - Developer Docs</title>
       
     
     
@@ -85,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fixes" class="md-skip">
+        <a href="#jki-security-suite-sbom-helper" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VIPM 2025 Q3 f1
+              SBOM Helper Desktop App
             
           </span>
         </div>
@@ -353,18 +351,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -384,7 +384,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -398,18 +398,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
         
           
           <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
@@ -429,7 +431,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -446,7 +448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sbom/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -470,10 +472,36 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../sbom/helper/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SBOM Helper Desktop App
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -488,6 +516,93 @@
   
 
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-you-need-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Why you need it
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-can-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What you can do
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-note-on-package-urls" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A note on Package URLs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hashes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Hashes
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Next steps
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Need Help?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -500,7 +615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sbom/getting-started/" class="md-nav__link">
+      <a href="../getting-started/" class="md-nav__link">
         
   
   
@@ -527,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sbom/workflows/" class="md-nav__link">
+      <a href="../workflows/" class="md-nav__link">
         
   
   
@@ -554,7 +669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sbom/output-reference/" class="md-nav__link">
+      <a href="../output-reference/" class="md-nav__link">
         
   
   
@@ -581,7 +696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sbom/custom-components/" class="md-nav__link">
+      <a href="../custom-components/" class="md-nav__link">
         
   
   
@@ -1371,20 +1486,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -1404,7 +1517,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1421,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../release-notes/" class="md-nav__link">
         
   
   
@@ -1448,7 +1561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2026.3.1/" class="md-nav__link">
+      <a href="../../release-notes/2026.3.1/" class="md-nav__link">
         
   
   
@@ -1475,7 +1588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2026.3/" class="md-nav__link">
+      <a href="../../release-notes/2026.3/" class="md-nav__link">
         
   
   
@@ -1502,7 +1615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2026.1/" class="md-nav__link">
+      <a href="../../release-notes/2026.1/" class="md-nav__link">
         
   
   
@@ -1526,34 +1639,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  VIPM 2025 Q3 f1
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../release-notes/2025.3.1/" class="md-nav__link">
         
   
   
@@ -1568,47 +1657,6 @@
   
 
       </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#fixes" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Fixes
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tracked-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Tracked issues
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1621,7 +1669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2025.3/" class="md-nav__link">
+      <a href="../../release-notes/2025.3/" class="md-nav__link">
         
   
   
@@ -1648,7 +1696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2024.3/" class="md-nav__link">
+      <a href="../../release-notes/2024.3/" class="md-nav__link">
         
   
   
@@ -1675,7 +1723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2024.1/" class="md-nav__link">
+      <a href="../../release-notes/2024.1/" class="md-nav__link">
         
   
   
@@ -1702,7 +1750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2023.3/" class="md-nav__link">
+      <a href="../../release-notes/2023.3/" class="md-nav__link">
         
   
   
@@ -1729,7 +1777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2023.1/" class="md-nav__link">
+      <a href="../../release-notes/2023.1/" class="md-nav__link">
         
   
   
@@ -1954,6 +2002,8 @@
                     
                     
                     
+                      
+                    
                     
                       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
                       <div class="md-sidebar-button__wrapper">
@@ -1969,6 +2019,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1977,10 +2029,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#fixes" class="md-nav__link">
+  <a href="#why-you-need-it" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Fixes
+        Why you need it
       </span>
     </span>
   </a>
@@ -1988,10 +2040,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tracked-issues" class="md-nav__link">
+  <a href="#what-you-can-do" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Tracked issues
+        What you can do
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-note-on-package-urls" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A note on Package URLs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hashes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Hashes
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Next steps
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Need Help?
       </span>
     </span>
   </a>
@@ -2016,20 +2112,62 @@
   
 
 
-  <h1 id="__skip">VIPM 2025 Q3 f1</h1>
-
-<p>VIPM 2025Q3 Fix 1 is a fix release for Windows that fixes a build and LabVIEW target migration issue.</p>
-<blockquote>
-<p>Note: You will need an active VIPM Pro subscription in order to activate VIPM 2025Q3 F1 into Pro Edition.</p>
-</blockquote>
-<h2 id="fixes">Fixes</h2>
+<h1 id="jki-security-suite-sbom-helper">JKI Security Suite SBOM Helper</h1>
+<p>The SBOM Helper opens a CycloneDX SBOM generated by VIPM, lets you add and describe the components no scan can discover, and saves a file ready to ship with your product.</p>
+<p><a class="md-button md-button--primary" href="https://packages.jki.net/jki-security-suite/release/jki-security-suite-sbom-helper_0.4.0.21_windows_x64.nipkg">Download the SBOM Helper</a></p>
+<p>The download is an NI package. Install it with <strong>NI Package Manager</strong>, which adds the Helper to your Start menu.</p>
+<div class="admonition info">
+<p class="admonition-title">Prerequisites</p>
+<p>To run the SBOM Helper:</p>
 <ul>
-<li><strong>Build Issue</strong>: Resolved an issue where packages containing support files would fail to build correctly, ensuring that all support files are now properly handled and included during the package build process. More information.</li>
-<li><strong>Migration</strong>: Resolved an issue where VIPM would not recognize previously installed packages after updating LabVIEW from the Q1 to Q3 release. This fix specifically addresses migration from Q1 to Q3 (reverse migration from Q3 to Q1 will be supported in a future release).</li>
-<li><strong>Quick Search</strong>: Resolved an issue where the new search algorithm (preview feature) wouldn't respond to column sorting.</li>
+<li><strong>Windows</strong> — the SBOM Helper is a Windows desktop application</li>
+<li><strong>NI Package Manager</strong> — installs the download above</li>
 </ul>
-<h2 id="tracked-issues">Tracked issues</h2>
-<p>See the <a href="https://github.com/vipm-io/vipm-desktop-issues/milestone/9">2025 Q3 f1 milestone</a> for all issues tracked for this release.</p>
+<p>To generate the SBOMs it edits:</p>
+<ul>
+<li><strong>VIPM 2026 Q3</strong> or later</li>
+<li><strong>LabVIEW 2026 Q3</strong> or later — to generate from the LabVIEW Application Builder</li>
+</ul>
+</div>
+<p><img alt="The SBOM Helper start screen, with an Open SBOM button and a drop target" src="../helper/jki-security-suite-sbom-helper-app-start-page.png" /></p>
+<h2 id="why-you-need-it">Why you need it</h2>
+<p><code>vipm sbom</code> discovers what the package managers know about: VIPM packages, NI packages, and the dependencies your LabVIEW project links. It cannot discover a DLL you ship alongside your application, a firmware image loaded onto hardware, or a vendor SDK that arrived as a zip file. Those components exist in your SBOM only because a person records them — and a component missing from an SBOM is the one that will not be checked when a vulnerability is announced.</p>
+<p>The Helper is where that recording happens, against the SBOM you already generated rather than a second file kept in step by hand.</p>
+<h2 id="what-you-can-do">What you can do</h2>
+<p><strong>Open and review.</strong> Open an SBOM generated by VIPM — or drop the file onto the start screen — and browse what it lists. <strong>Components</strong> are the software your product contains or depends on; <strong>Tools</strong> are the software that produced the SBOM, listed automatically and not edited here. Each row opens to show the facts recorded for it.</p>
+<p><img alt="An open SBOM showing the product, its components, and the tools that generated it" src="../helper/jki-security-suite-sbom-helper-app-document-page.png" /></p>
+<p><strong>Add a component from a file.</strong> Point the Helper at a file on disk and it reads what the file declares about itself: its product name becomes the display name, its own recorded name becomes the name, and the type follows the extension — <code>.exe</code> to application, <code>.dll</code> to library, <code>.sys</code> to device driver. The file's SHA-256 and MD5 are computed for you. A file with no version information leaves those fields for you to fill.</p>
+<p>The file's path is not recorded in the saved SBOM. The hash that identifies it is.</p>
+<p><strong>Add a component by hand.</strong> Type the details yourself for anything you cannot point at — firmware running on a device, a hardware module, a component described by a supplier's paperwork.</p>
+<p><img alt="The Add Component form, with required fields marked and each field explained beneath it" src="../helper/jki-security-suite-sbom-helper-app-add-component-form.png" /></p>
+<p><strong>Name</strong>, <strong>Version</strong> and <strong>Type</strong> are required; everything else is optional. Each field explains itself beneath the box, so the form is also the reference for what belongs in it.</p>
+<p>Two of them are easy to confuse, and the distinction is worth knowing before you start:</p>
+<ul>
+<li><strong>Name</strong> is the component's canonical identifier — the unique name a package ecosystem or a file uses, often lowercase with hyphens, such as <code>jki-security-suite</code> or a DLL's own file name.</li>
+<li><strong>Display Name</strong> is the name a person recognises, such as <code>JKI Security Suite</code>. It is what the components list shows as the row's title.</li>
+</ul>
+<p>Beyond those, you can record a supplier, a license, a download URL and a description, and — under <strong>Advanced</strong> — SHA-256 and MD5 hashes and a Package URL.</p>
+<p><strong>Edit what you added.</strong> Components the Helper added can be edited or deleted. Name, version, type, supplier, license, download URL, description, and purl are yours to change.</p>
+<p><strong>Add a runtime that something deploys with.</strong> When the SBOM lists software that ships with a runtime the SBOM does not yet list, that row offers <strong>Add Runtime Component</strong> — LabVIEW and the LabVIEW Runtime, or an NI-DAQmx support package and the NI-DAQmx Runtime. The details come from your local NI feed: the runtime's exact version, NI's display name and description, its supplier, SHA-256, download location, and its own <code>pkg:nipkg</code> Package URL, all shown for review before anything is added.</p>
+<p>This matters more than it looks. The runtime is what your application actually loads on a customer's machine, and it is the component most likely to carry a published vulnerability — yet nothing in the project file mentions it, so no scan can find it.</p>
+<h2 id="a-note-on-package-urls">A note on Package URLs</h2>
+<p>The Helper does not invent a Package URL. The <code>purl</code> field starts empty and is saved exactly as typed, because a purl asserts that a component can be found in a package ecosystem — and a purl that resolves to nothing is worse than no purl at all. When a component genuinely comes from an ecosystem, type its purl; when it does not, leave the field empty.</p>
+<p>A runtime added from the NI feed brings that package's own purl, which is a real one.</p>
+<h2 id="hashes">Hashes</h2>
+<p><code>SHA-256</code> and <code>MD5</code> under <strong>Advanced</strong> are filled in automatically when you add a component from a file, and can be typed or pasted otherwise.</p>
+<p>Each field expects a whole hexadecimal digest. Paste a truncated value, a <code>sha256:</code> prefix, or a line of output from a checksum tool and the field says what it expects; Add and Apply wait until it is a digest.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><strong><a href="../custom-components/">Custom Components</a></strong> — the full workflow, and the file-based alternative for automated builds</li>
+<li><strong><a href="../">SBOM Overview</a></strong> — what <code>vipm sbom</code> generates and how to generate it</li>
+<li><strong><a href="../output-reference/">Output Reference</a></strong> — the CycloneDX fields the SBOM contains</li>
+</ul>
+<h2 id="need-help">Need Help?</h2>
+<ul>
+<li>Report issues on <a href="https://github.com/vipm-io/vipm-desktop-issues/issues">GitHub</a></li>
+<li>Join our community on <a href="https://discord.gg/uyXwAz4B63">Discord</a></li>
+<li>Check the <a href="/support.md">Support page</a> for additional resources</li>
+</ul>
 
 
 
