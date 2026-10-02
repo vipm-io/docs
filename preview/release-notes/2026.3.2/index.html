@@ -6,17 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Preview features page, version compatibility alerts, quick search, and LabVIEW 2025 Q3 support.">
+        <meta name="description" content="Maintenance release that fixes SBOM generation errors and missing components, improves LabVIEW startup timeout handling, and improves how packages with release-suffixed versions are read and how package versions are ordered when listed.">
       
       
       
-        <link rel="canonical" href="https://docs.vipm.io/preview/release-notes/2025.3/">
+        <link rel="canonical" href="https://docs.vipm.io/preview/release-notes/2026.3.2/">
       
       
-        <link rel="prev" href="../2025.3.1/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../2024.3/">
+        <link rel="next" href="../2026.3.1/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>VIPM 2025 Q3 - Developer Docs</title>
+        <title>VIPM 2026 Q3 f2 - Developer Docs</title>
       
     
     
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vipm-20253-for-windows-release-notes" class="md-skip">
+        <a href="#improvements" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VIPM 2025 Q3
+              VIPM 2026 Q3 f2
             
           </span>
         </div>
@@ -1445,10 +1445,34 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../2026.3.2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VIPM 2026 Q3 f2
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1463,6 +1487,58 @@
   
 
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Improvements
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Fixes
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tracked-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Tracked issues
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1580,36 +1656,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  VIPM 2025 Q3
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../2025.3/" class="md-nav__link">
         
   
   
@@ -1624,93 +1674,6 @@
   
 
       </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#whats-new" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        What's New
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Download
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#questions-or-comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Questions or Comments?
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#found-a-bug" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Found a Bug?
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#details" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Details
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tracked-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Tracked issues
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2029,8 +1992,6 @@
                     
                     
                     
-                      
-                    
                     
                       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
                       <div class="md-sidebar-button__wrapper">
@@ -2046,8 +2007,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2056,10 +2015,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#whats-new" class="md-nav__link">
+  <a href="#improvements" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        What's New
+        Improvements
       </span>
     </span>
   </a>
@@ -2067,43 +2026,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#download" class="md-nav__link">
+  <a href="#fixes" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Download
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#questions-or-comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Questions or Comments?
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#found-a-bug" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Found a Bug?
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#details" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Details
+        Fixes
       </span>
     </span>
   </a>
@@ -2139,30 +2065,28 @@
   
 
 
-<h1 id="vipm-20253-for-windows-release-notes">VIPM 2025.3 for Windows - Release Notes</h1>
-<h2 id="whats-new">What's New</h2>
+  <h1 id="__skip">VIPM 2026 Q3 f2</h1>
+
+<p>VIPM 2026 Q3 f2 is a maintenance release that builds upon <a href="../2026.3/">VIPM 2026 Q3</a> and <a href="../2026.3.1/">VIPM 2026 Q3 f1</a>. It fixes some cases where SBOM generation returned an error, and others where components used in the project were not present in the output SBOM. It also improves LabVIEW startup timeout handling (and reduces occurrences of timeouts), improves how packages with release-suffixed versions (like some older OpenG packages) are read, and improves how package versions are ordered when listed.</p>
+<h2 id="improvements">Improvements</h2>
 <ul>
-<li><strong>Preview Features Page</strong>: New options window section allowing users to opt-in to experimental features and provide early feedback on upcoming functionality.</li>
-<li>[Preview] <strong>Version Compatibility Alert</strong>: Displays a warning during the build process when a package's source code requires a higher LabVIEW version than the package target version set in VIPM, with detailed information to help resolve the issue.</li>
-<li>[Preview] <strong>Quick Search</strong>: Enhanced search algorithm with typo tolerance for faster, more accurate results, plus an upgraded package selection user interface.</li>
-<li>[Preview] <strong>Fixed Place Folder Contents</strong>: Fixed the "Place Folder Contents in Destination" option in VIPB Source File Settings, which was not working correctly for .lvproj files, text files, and other non-LabVIEW file types.</li>
-<li>[Preview] <strong>Fixed Pre-Uninstall Execution Order</strong>: Corrected timing issue where Pre-Uninstall Custom Action.vi was executing AFTER files were deleted instead of BEFORE as intended.</li>
-<li>Fully compatible with LabVIEW 2025 Q3 and earlier.</li>
-<li><strong>Fixed &lt;2013 Builds Error 1003</strong>: Resolved package build failure affecting LabVIEW 2013 and earlier versions.</li>
+<li><strong>Startup timeouts are reported as timeouts</strong>: When LabVIEW takes too long to start, the command now reports a timeout (exit code <code>124</code>), and the message names the limit that was reached and how to increase the timeout value; previously this was reported as a different error (exit code <code>24</code> or <code>11</code>). Scripts that test for the earlier exit codes should be updated.</li>
+<li><strong>Pre-release version ordering</strong>: Pre-release versions (like <code>1.0.0beta01-1</code>) now sort below their release version (<code>1.0.0</code>) and no longer satisfy a constraint like <code>&gt;= 1.0.0</code>. Pre-release tags are ordered by letters, then by number: <code>1.0.0alpha2</code>, <code>1.0.0alpha12</code>, <code>1.0.0beta01</code>, <code>1.0.0</code>.</li>
+<li><strong>Faster package cache builds</strong>: <code>vipm refresh</code> now builds a fresh package cache faster; some minor performance improvements were made when working with packages with release-suffixed versions.</li>
 </ul>
-<p>See <a href="#details">details</a> below.</p>
-<h2 id="download">Download</h2>
-<p>Visit <a href="https://www.vipm.io/desktop/">vipm.io/desktop/</a> for download and installation instructions.</p>
-<h2 id="questions-or-comments">Questions or Comments?</h2>
-<p>Please post any questions or comments in the <a href="https://forums.vipm.io">Discussion Forum</a> or on our <a href="https://discord.gg/uyXwAz4B63">Discord Server</a>.</p>
-<h2 id="found-a-bug">Found a Bug?</h2>
-<p>Please report it in the <a href="https://github.com/vipm-io/vipm-desktop-issues">VIPM Desktop Issue Tracker</a>.</p>
-<h2 id="details">Details</h2>
+<h2 id="fixes">Fixes</h2>
 <ul>
-<li>JKI is significantly reinvesting in VIPM with expanded engineering resources dedicated to faster issue resolution, enhanced support infrastructure for better community assistance, and strategic technology investments to drive innovation. This release marks the beginning of an exciting new chapter, with the new Settings page preview being just the first of many modernization improvements coming to VIPM.</li>
+<li><strong>"Unsaved changes" on an unedited project</strong>: SBOM generation now refuses only real unsaved edits to the project (<code>.lvproj</code>), and the message says what differs; previously it sometimes failed with "unsaved changes" (exit code <code>23</code>) on a project that had not been edited, often in projects with NI driver dependencies. See <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/146">issue #146</a>.</li>
+<li><strong>.NET assemblies called by name</strong>: SBOM generation now succeeds on projects that call a .NET assembly by name, like <code>System.Windows.Forms</code> from the Global Assembly Cache; previously it failed with a "missing file" error (exit code <code>18</code>). See <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/149">issue #149</a>.</li>
+<li><strong>Wildcard shared library names</strong>: SBOM generation now resolves a shared library that a Call Library Function Node names with LabVIEW's wildcard pattern, like <code>lvzlib*.*</code>, to the library LabVIEW actually loads, and attributes that library to its package in the SBOM; previously it failed with a "missing file" error (exit code <code>18</code>) or silently left the library out of the SBOM. See <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/150">issue #150</a>.</li>
+<li><strong>OpenG-format packages in SBOMs</strong>: SBOM generation now reads packages correctly when they use the OpenG package format or have a release-suffixed version, like <code>oglib_lvzip 5.0.9-1</code>, and lists them in the SBOM with license, supplier, and hashes; previously it reported them as not installed or as a version mismatch and could leave them out of the SBOM. See <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/151">issue #151</a>.</li>
+<li><strong>LabVIEW startup time</strong>: Commands that start LabVIEW now wait up to 120 seconds for it to start, and the <a href="../../cli/environment-variables/#vipm_labview_launch_timeout"><code>VIPM_LABVIEW_LAUNCH_TIMEOUT</code></a> environment variable (in seconds) allows a longer wait; previously they failed when LabVIEW took more than 30 seconds to start, which is common on VMs and CI runners. See <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/100">issue #100</a>.</li>
+<li><strong>Release-suffixed package versions</strong>: Packages with release-suffixed versions (like the <code>-1</code> in <code>oglib_lvzip 5.0.9-1</code>) are now handled correctly by <code>vipm sbom</code>, <code>vipm uninstall</code>, <code>vipm info</code>, and <code>vipm search</code>, and in <code>.dragon</code> and <code>.vipc</code> files; previously they caused problems in some cases.</li>
+<li><strong>Installing from a package file</strong>: <code>vipm install</code> from a package file now works for packages with release-suffixed versions (like the <code>-1</code> in <code>oglib_msgqueue 3.0-1</code>); previously it failed with "No Package Info found" or "Missing Name in Package section".</li>
+<li><strong>Version ordering in search and list</strong>: <code>vipm search</code> and <code>vipm list</code> now order versions numerically, and search shows each package's latest matching version; previously they could show an older version of a package as the latest, because versions were compared as text (so <code>5.0.9</code> ranked above <code>5.0.10</code>).</li>
 </ul>
 <h2 id="tracked-issues">Tracked issues</h2>
-<p>See the <a href="https://github.com/vipm-io/vipm-desktop-issues/milestone/8">2025 Q3 milestone</a> for all issues tracked for this release.</p>
+<p>See the <a href="https://github.com/vipm-io/vipm-desktop-issues/milestone/11">2026 Q3 f2 milestone</a> for all issues tracked for this release.</p>
 
 
 

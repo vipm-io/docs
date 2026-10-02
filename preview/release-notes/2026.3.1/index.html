@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://docs.vipm.io/preview/release-notes/2026.3.1/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../2026.3.2/">
       
       
         <link rel="next" href="../2026.3/">
@@ -1445,6 +1445,33 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../2026.3.2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VIPM 2026 Q3 f2
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1518,6 +1545,17 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         Fixes
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#newer-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Newer releases
       </span>
     </span>
   </a>
@@ -2010,6 +2048,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#newer-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Newer releases
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tracked-issues" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2056,6 +2105,10 @@
 <li><strong>SBOM output folders</strong>: <code>vipm sbom</code> now creates missing <code>--output</code> folders automatically, validates the output location before scanning begins, and reports file errors with the actual path and cause; previously a bad output path failed only after the full project scan, with a misleading disk-space/permissions hint. See <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/139">issue #139</a>.</li>
 <li><strong>LabVIEW addons in SBOMs</strong>: SBOMs now include every LabVIEW addon (LVAddons) that LabVIEW activates, attributing files to the addon version LabVIEW actually loads; previously some NI addons were silently missing from SBOMs, and addons with multiple installed version directories could be attributed to a stale version.</li>
 <li><strong>Long-running package builds</strong>: <code>vipm build</code> now lets long-running VI package builds run to completion; previously a healthy build could be stopped after 60 seconds without visible progress and wrongly reported as VIPM Desktop being stuck.</li>
+</ul>
+<h2 id="newer-releases">Newer releases</h2>
+<ul>
+<li><a href="../2026.3.2/">VIPM 2026 Q3 f2</a> — maintenance release that fixes SBOM generation errors and missing components, improves LabVIEW startup timeout handling, and improves how packages with release-suffixed versions are read and how package versions are ordered when listed.</li>
 </ul>
 <h2 id="tracked-issues">Tracked issues</h2>
 <p>See the <a href="https://github.com/vipm-io/vipm-desktop-issues/milestone/5">2026 Q3 f1 milestone</a> for all issues tracked for this release.</p>
