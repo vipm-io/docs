@@ -105,6 +105,26 @@ export VIPM_TIMEOUT=300   # 5 minutes
 vipm install project.vipc
 ```
 
+### `VIPM_LABVIEW_LAUNCH_TIMEOUT`
+
+Sets how long a command waits, in seconds, for a LabVIEW it started to become ready.
+The default is 120 seconds. LabVIEW reports no progress while it starts, so this is a
+fixed limit and not a liveliness timeout.
+
+Set this to a larger value when LabVIEW starts slowly, for example on a virtual
+machine or a CI runner, or to a negative value to remove the limit.
+
+```bash
+export VIPM_LABVIEW_LAUNCH_TIMEOUT=300
+vipm sbom MyProject.lvproj
+```
+
+A total timeout set with `VIPM_TIMEOUT` or `--timeout` that is shorter than the launch
+timeout still ends the wait. A longer total does not extend it.
+
+When the limit is reached, the command exits with code `124` (`TIMEOUT`), and the
+message names the limit that was reached.
+
 ### `VIPM_DESKTOP_LIVELINESS_TIMEOUT`
 
 Sets how long the CLI waits, in seconds, without a progress update from VIPM Desktop
