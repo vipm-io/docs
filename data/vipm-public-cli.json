@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0-public",
   "cli_version": "dev",
-  "generated_on": "2026-06-18",
+  "generated_on": "2026-10-01",
   "global_options": [
     {
       "name": "labview_version",
@@ -2196,7 +2196,12 @@
     {
       "code": 24,
       "name": "LABVIEW_VI_SERVER_UNAVAILABLE",
-      "description": "LabVIEW VI Server is disabled or not reachable on the resolved target port"
+      "description": "LabVIEW VI Server is disabled, or a VI Server connection could not be established on the resolved target port"
+    },
+    {
+      "code": 25,
+      "name": "CHECK_FAILED",
+      "description": "Source checking did not satisfy the requested gate"
     },
     {
       "code": 124,
