@@ -52,7 +52,7 @@ ni-daqmx = { version = "24.5.0", feed = "ni-daqmx-feed" }
 Use `[nipm.dev-dependencies]` for packages only needed during development or testing.
 
 !!! note
-    NIPM dependencies require explicit version numbers. Unlike VIPM packages, version auto-resolution is not available for NIPM packages.
+    NIPM dependencies require explicit version numbers. Unlike VIPM packages, version auto-resolution is not available for NIPM packages. An empty version, in either format, is rejected when the manifest is loaded: `Empty version strings are not allowed; specify an exact version (e.g. "1.2.3") for: ni-daqmx`.
 
 ## Workflow
 

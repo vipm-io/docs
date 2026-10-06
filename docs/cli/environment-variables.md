@@ -98,7 +98,10 @@ only after it stops making progress.
 
 ### `VIPM_TIMEOUT`
 
-Overrides the default operation timeout (in seconds). When set, this takes precedence over the `--timeout` flag and any CI-adjusted defaults.
+Sets a total timeout, in seconds, for the whole command. There is no total timeout
+unless you set one, with this variable or with the `--timeout` flag, and the value is
+not adjusted for CI. When both are set, `--timeout` wins. A negative value means wait
+indefinitely.
 
 ```bash
 export VIPM_TIMEOUT=300   # 5 minutes
@@ -182,7 +185,12 @@ export NO_COLOR=1
 
 ### `SOURCE_DATE_EPOCH`
 
-When set, VIPM uses this Unix timestamp for timestamps in structured output instead of the current time. This supports [reproducible builds](https://reproducible-builds.org/specs/source-date-epoch/).
+When set, `vipm sbom` records this Unix timestamp (an integer number of seconds since
+the epoch) as the SBOM's `metadata.timestamp` instead of the generation time, following
+the [reproducible builds](https://reproducible-builds.org/specs/source-date-epoch/)
+convention. The `--document-timestamp` flag overrides it. See
+[Reproducible SBOMs](../sbom/workflows.md#reproducible-sboms) for how to make
+regenerated SBOMs byte-identical.
 
 ```bash
 export SOURCE_DATE_EPOCH=1710000000

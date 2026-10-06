@@ -263,7 +263,7 @@ To bypass verification for a single invocation, pass `--allow-package-drift`. Th
 
 ### Exit Codes
 
-See [Exit Codes](#exit-codes) for the canonical reference. `vipm build` uses codes `0`–`8`, `11`–`15`, `17`, `19`, and `20`. Any non-zero exit means the build artifact was **not** produced.
+See [Exit Codes](#exit-codes) for the canonical reference. Any non-zero exit means the build artifact was **not** produced.
 
 ### Common Issues
 
@@ -355,7 +355,7 @@ SBOM written to build/bom.json
 
 ### Exit Codes
 
-See [Exit Codes](#exit-codes) for the canonical reference. `vipm sbom` uses codes `0`–`8`, `12`–`15`, and `17`–`20`. Any non-zero exit means the SBOM was **not** produced — the `--output` file is only written on exit code `0`.
+See [Exit Codes](#exit-codes) for the canonical reference. Any non-zero exit means the SBOM was **not** produced — the `--output` file is only written on exit code `0`.
 
 On failure, stderr contains a human-readable error message. When a requested LabVIEW version is not installed, the available versions are listed inline. Example:
 
@@ -475,7 +475,7 @@ vipm sync --from MyProject.lvproj --dry-run
 
 ### Exit Codes
 
-See [Exit Codes](#exit-codes) for the canonical reference. `vipm sync` uses codes `0`–`8`, `13`–`15`, and `18`–`20`.
+See [Exit Codes](#exit-codes) for the canonical reference.
 
 ### Common Issues
 

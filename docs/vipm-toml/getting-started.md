@@ -138,6 +138,14 @@ jki_lib_state_machine = "2.0.0.50"
 caraya = "1.4.5.165"
 ```
 
+Every dependency names an exact version. An empty or whitespace-only version (`oglib_array = ""`) is rejected when the file is loaded, in all four dependency tables, with:
+
+```text
+Empty version strings are not allowed; specify an exact version (e.g. "1.2.3") for: oglib_array
+```
+
+To take the current latest version of a package, run `vipm add <name>` without a version: it resolves the version and writes the exact number into `vipm.toml`.
+
 #### Notes on `vipm add`
 
 - Requires an existing `vipm.toml` file (use `vipm init` first)

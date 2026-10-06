@@ -39,6 +39,8 @@ The `metadata` object describes your product and how the SBOM was created.
 
 ISO 8601 UTC timestamp recording when the SBOM was generated. Example: `"2026-03-18T14:30:00.000Z"`.
 
+Pin it with `--document-timestamp <ISO 8601 instant>` or the `SOURCE_DATE_EPOCH` environment variable (the flag wins when both are set) when regenerated SBOMs must be byte-identical; see [Reproducible SBOMs](workflows.md#reproducible-sboms). Whatever the source, the value is rendered in UTC in the shape shown above.
+
 ### `metadata.tools`
 
 Identifies the toolchain behind the SBOM's contents:
