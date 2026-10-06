@@ -176,6 +176,24 @@ Add an SBOM generation step to your workflow (see [GitHub Actions and CI/CD](../
 
 Check the exit code to determine success. Exit code `0` means the SBOM was written; any non-zero code means it was not produced. See the [exit codes table](../cli/command-reference.md#vipm-sbom) for the full list.
 
+### Reproducible SBOMs
+
+A committed `vipm.lock` makes the *dependency set* reproducible, and the CLI writes arrays whose order carries no meaning in a stable sorted order. Two SBOMs generated from the same inputs still differ in two document-metadata fields that change on every run: `serialNumber`, a fresh UUID, and `metadata.timestamp`, the generation time.
+
+Pin both to get byte-identical output, so a stored SBOM changes only when something real changes:
+
+- `--document-serial-number <urn:uuid:...>` fixes the serial number.
+- `--document-timestamp <ISO 8601 instant>` fixes the timestamp, or set the `SOURCE_DATE_EPOCH` environment variable to an integer number of seconds since the Unix epoch, the convention many CI systems already follow. When both are given, the flag wins; when neither is, the timestamp is the generation time.
+
+```bash
+export SOURCE_DATE_EPOCH=1710000000   # or pass --document-timestamp 2024-03-09T16:00:00Z
+vipm sbom vipm.toml \
+  --document-serial-number urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79 \
+  --output build/bom.json
+```
+
+With both pinned, regenerating from unchanged inputs (the same CLI version and the same resolved packages) produces the same bytes.
+
 ## Understanding the CycloneDX output
 
 The generated JSON follows the [CycloneDX 1.5 specification](https://cyclonedx.org/docs/1.5/json/). Here's an overview of the key sections:
@@ -184,7 +202,7 @@ The generated JSON follows the [CycloneDX 1.5 specification](https://cyclonedx.o
 
 Contains information about the SBOM itself:
 
-- **`metadata.timestamp`** — when the SBOM was generated (ISO 8601)
+- **`metadata.timestamp`** — when the SBOM was generated (ISO 8601), unless pinned for [reproducible output](#reproducible-sboms)
 - **`metadata.tools`** — identifies the generating toolchain: VIPM CLI, plus VIPM Desktop, LabVIEW, and NI Package Manager when they took part in producing the SBOM's contents
 - **`metadata.component`** — your product: the name, version, and type set via `--product-name`, `--product-version`, and `--product-type`
 
@@ -205,7 +223,7 @@ An array of dependencies found in your project. Each component includes:
 
 ### `serialNumber` and `version`
 
-Each SBOM has a unique serial number (`urn:uuid:...`) and a document version (starting at 1). These support tracking multiple revisions of the same SBOM over time. You can set them explicitly with `--document-serial-number` and `--document-version`, or let the CLI auto-generate them.
+Each SBOM has a unique serial number (`urn:uuid:...`) and a document version (starting at 1). These support tracking multiple revisions of the same SBOM over time. You can set them explicitly with `--document-serial-number` and `--document-version`, or let the CLI auto-generate them. Reuse the serial number across revisions of the same SBOM, and pin it together with the timestamp when you need [byte-identical output](#reproducible-sboms).
 
 ### `dependencies`
 
