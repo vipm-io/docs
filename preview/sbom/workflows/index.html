@@ -721,6 +721,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#reproducible-sboms" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reproducible SBOMs
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2334,6 +2345,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#reproducible-sboms" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reproducible SBOMs
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2546,12 +2568,25 @@ while the SBOM reports what contributes code to the deliverable.</p>
 </code></pre></div>
 <h3 id="verifying-success-in-automation">Verifying success in automation</h3>
 <p>Check the exit code to determine success. Exit code <code>0</code> means the SBOM was written; any non-zero code means it was not produced. See the <a href="../../cli/command-reference/#vipm-sbom">exit codes table</a> for the full list.</p>
+<h3 id="reproducible-sboms">Reproducible SBOMs</h3>
+<p>A committed <code>vipm.lock</code> makes the <em>dependency set</em> reproducible, and the CLI writes arrays whose order carries no meaning in a stable sorted order. Two SBOMs generated from the same inputs still differ in two document-metadata fields that change on every run: <code>serialNumber</code>, a fresh UUID, and <code>metadata.timestamp</code>, the generation time.</p>
+<p>Pin both to get byte-identical output, so a stored SBOM changes only when something real changes:</p>
+<ul>
+<li><code>--document-serial-number &lt;urn:uuid:...&gt;</code> fixes the serial number.</li>
+<li><code>--document-timestamp &lt;ISO 8601 instant&gt;</code> fixes the timestamp, or set the <code>SOURCE_DATE_EPOCH</code> environment variable to an integer number of seconds since the Unix epoch, the convention many CI systems already follow. When both are given, the flag wins; when neither is, the timestamp is the generation time.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SOURCE_DATE_EPOCH</span><span class="o">=</span><span class="m">1710000000</span><span class="w">   </span><span class="c1"># or pass --document-timestamp 2024-03-09T16:00:00Z</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>vipm<span class="w"> </span>sbom<span class="w"> </span>vipm.toml<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span>--document-serial-number<span class="w"> </span>urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span>--output<span class="w"> </span>build/bom.json
+</code></pre></div>
+<p>With both pinned, regenerating from unchanged inputs (the same CLI version and the same resolved packages) produces the same bytes.</p>
 <h2 id="understanding-the-cyclonedx-output">Understanding the CycloneDX output</h2>
 <p>The generated JSON follows the <a href="https://cyclonedx.org/docs/1.5/json/">CycloneDX 1.5 specification</a>. Here's an overview of the key sections:</p>
 <h3 id="metadata"><code>metadata</code></h3>
 <p>Contains information about the SBOM itself:</p>
 <ul>
-<li><strong><code>metadata.timestamp</code></strong> — when the SBOM was generated (ISO 8601)</li>
+<li><strong><code>metadata.timestamp</code></strong> — when the SBOM was generated (ISO 8601), unless pinned for <a href="#reproducible-sboms">reproducible output</a></li>
 <li><strong><code>metadata.tools</code></strong> — identifies the generating toolchain: VIPM CLI, plus VIPM Desktop, LabVIEW, and NI Package Manager when they took part in producing the SBOM's contents</li>
 <li><strong><code>metadata.component</code></strong> — your product: the name, version, and type set via <code>--product-name</code>, <code>--product-version</code>, and <code>--product-type</code></li>
 </ul>
@@ -2600,7 +2635,7 @@ while the SBOM reports what contributes code to the deliverable.</p>
 </tbody>
 </table>
 <h3 id="serialnumber-and-version"><code>serialNumber</code> and <code>version</code></h3>
-<p>Each SBOM has a unique serial number (<code>urn:uuid:...</code>) and a document version (starting at 1). These support tracking multiple revisions of the same SBOM over time. You can set them explicitly with <code>--document-serial-number</code> and <code>--document-version</code>, or let the CLI auto-generate them.</p>
+<p>Each SBOM has a unique serial number (<code>urn:uuid:...</code>) and a document version (starting at 1). These support tracking multiple revisions of the same SBOM over time. You can set them explicitly with <code>--document-serial-number</code> and <code>--document-version</code>, or let the CLI auto-generate them. Reuse the serial number across revisions of the same SBOM, and pin it together with the timestamp when you need <a href="#reproducible-sboms">byte-identical output</a>.</p>
 <h3 id="dependencies"><code>dependencies</code></h3>
 <p>The dependency graph showing which packages your product depends on. See the <a href="../output-reference/#dependencies-array">Output Reference</a> for details.</p>
 <p>For a complete field-by-field breakdown of the CycloneDX output — including data sources, enrichment behavior, and an annotated example — see the <strong><a href="../output-reference/">Output Reference</a></strong>.</p>

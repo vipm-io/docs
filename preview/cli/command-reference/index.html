@@ -3929,7 +3929,7 @@
 <p>Bare <code>.lvproj</code>/<code>.vipb</code> builds (no <code>vipm.toml</code>) skip this check; there's no manifest to verify against.</p>
 <p>To bypass verification for a single invocation, pass <code>--allow-package-drift</code>. The check still runs but failures become stderr warnings instead of hard errors, and the warning lists each drifted package so you see what you're accepting. There is no manifest field for this — the bypass is CLI-only by design.</p>
 <h3 id="exit-codes_1">Exit Codes</h3>
-<p>See <a href="#exit-codes">Exit Codes</a> for the canonical reference. <code>vipm build</code> uses codes <code>0</code>–<code>8</code>, <code>11</code>–<code>15</code>, <code>17</code>, <code>19</code>, and <code>20</code>. Any non-zero exit means the build artifact was <strong>not</strong> produced.</p>
+<p>See <a href="#exit-codes">Exit Codes</a> for the canonical reference. Any non-zero exit means the build artifact was <strong>not</strong> produced.</p>
 <h3 id="common-issues_4">Common Issues</h3>
 <ul>
 <li><strong>Linux build limitations</strong>: Review the <a href="../../preview/">VIPM Preview docs</a> for current platform support notes.</li>
@@ -4087,7 +4087,7 @@ for now, use <code>--lvproj-target</code> to scope to the containing target.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>SBOM written to build/bom.json
 </code></pre></div>
 <h3 id="exit-codes_2">Exit Codes</h3>
-<p>See <a href="#exit-codes">Exit Codes</a> for the canonical reference. <code>vipm sbom</code> uses codes <code>0</code>–<code>8</code>, <code>12</code>–<code>15</code>, and <code>17</code>–<code>20</code>. Any non-zero exit means the SBOM was <strong>not</strong> produced — the <code>--output</code> file is only written on exit code <code>0</code>.</p>
+<p>See <a href="#exit-codes">Exit Codes</a> for the canonical reference. Any non-zero exit means the SBOM was <strong>not</strong> produced — the <code>--output</code> file is only written on exit code <code>0</code>.</p>
 <p>On failure, stderr contains a human-readable error message. When a requested LabVIEW version is not installed, the available versions are listed inline. Example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>error: 2024 (64-bit). Available versions: 2021 (64-bit), 2024 (32-bit)
 </code></pre></div>
@@ -4264,7 +4264,7 @@ for now, use <code>--lvproj-target</code> to scope to the containing target.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>vipm<span class="w"> </span>sync<span class="w"> </span>--from<span class="w"> </span>MyProject.lvproj<span class="w"> </span>--dry-run
 </code></pre></div>
 <h3 id="exit-codes_3">Exit Codes</h3>
-<p>See <a href="#exit-codes">Exit Codes</a> for the canonical reference. <code>vipm sync</code> uses codes <code>0</code>–<code>8</code>, <code>13</code>–<code>15</code>, and <code>18</code>–<code>20</code>.</p>
+<p>See <a href="#exit-codes">Exit Codes</a> for the canonical reference.</p>
 <h3 id="common-issues_8">Common Issues</h3>
 <ul>
 <li><strong>No vipm.toml found</strong>: Either specify the target path explicitly or run the command from a directory that contains (or is a child of a directory that contains) a <code>vipm.toml</code>.</li>

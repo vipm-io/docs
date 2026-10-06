@@ -2778,6 +2778,7 @@
 <p>The <code>metadata</code> object describes your product and how the SBOM was created.</p>
 <h3 id="metadatatimestamp"><code>metadata.timestamp</code></h3>
 <p>ISO 8601 UTC timestamp recording when the SBOM was generated. Example: <code>"2026-03-18T14:30:00.000Z"</code>.</p>
+<p>Pin it with <code>--document-timestamp &lt;ISO 8601 instant&gt;</code> or the <code>SOURCE_DATE_EPOCH</code> environment variable (the flag wins when both are set) when regenerated SBOMs must be byte-identical; see <a href="../workflows/#reproducible-sboms">Reproducible SBOMs</a>. Whatever the source, the value is rendered in UTC in the shape shown above.</p>
 <h3 id="metadatatools"><code>metadata.tools</code></h3>
 <p>Identifies the toolchain behind the SBOM's contents:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
