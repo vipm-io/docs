@@ -2778,6 +2778,7 @@
 <p>The <code>metadata</code> object describes your product and how the SBOM was created.</p>
 <h3 id="metadatatimestamp"><code>metadata.timestamp</code></h3>
 <p>ISO 8601 UTC timestamp recording when the SBOM was generated. Example: <code>"2026-03-18T14:30:00.000Z"</code>.</p>
+<p>Pin it with <code>--document-timestamp &lt;ISO 8601 instant&gt;</code> or the <code>SOURCE_DATE_EPOCH</code> environment variable (the flag wins when both are set) when regenerated SBOMs must be byte-identical; see <a href="../workflows/#reproducible-sboms">Reproducible SBOMs</a>. Whatever the source, the value is rendered in UTC in the shape shown above.</p>
 <h3 id="metadatatools"><code>metadata.tools</code></h3>
 <p>Identifies the toolchain behind the SBOM's contents:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -2973,8 +2974,9 @@
 <div class="admonition warning">
 <p class="admonition-title">SBOM tools cannot yet look up VIPM and NIPM packages</p>
 <p>The <code>vipm</code> and <code>nipkg</code> types used below are not yet on the official list of purl types, so SBOM tools do not recognize them. A proposal to add them to the list is open with the package-url project; see the <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/148">tracking issue</a> for status.</p>
-<p>In practice, SBOM tools accept and carry these identifiers, but they will not resolve them against vulnerability or license databases until the types are on the list and those databases index them. Expect matching to work within VIPM-generated SBOMs and across tools that pass purls through unchanged, but not automatic CVE or license lookups for VIPM and NIPM packages.</p>
+<p>In practice, results vary by tool. Some scanners carry the identifiers through without matching them; others, such as OSV-Scanner, reject components whose purl type they do not know. None will resolve them against vulnerability or license databases until the types are on the list and those databases index them. Expect matching to work within VIPM-generated SBOMs and across tools that pass purls through unchanged, but not automatic CVE or license lookups for VIPM and NIPM packages.</p>
 <p>VIPM will adopt whatever form the list defines once the types are added. The type name or qualifiers may change as a result, so avoid hard-coding the current strings in downstream pipelines.</p>
+<p>Separately, purls for packages whose names contain <code>.</code> or other punctuation do not currently carry the real name; see <a href="https://github.com/vipm-io/vipm-desktop-issues/issues/154">the issue</a> for details and a workaround.</p>
 </div>
 <h3 id="vipm-packages">VIPM packages</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>pkg:vipm/&lt;package-name&gt;@&lt;version&gt;

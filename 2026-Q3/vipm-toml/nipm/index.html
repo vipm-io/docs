@@ -2349,7 +2349,7 @@
 <p>Use <code>[nipm.dev-dependencies]</code> for packages only needed during development or testing.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>NIPM dependencies require explicit version numbers. Unlike VIPM packages, version auto-resolution is not available for NIPM packages.</p>
+<p>NIPM dependencies require explicit version numbers. Unlike VIPM packages, version auto-resolution is not available for NIPM packages. An empty version, in either format, is rejected when the manifest is loaded: <code>Empty version strings are not allowed; specify an exact version (e.g. "1.2.3") for: ni-daqmx</code>.</p>
 </div>
 <h2 id="workflow">Workflow</h2>
 <h3 id="adding-nipm-dependencies">Adding NIPM dependencies</h3>

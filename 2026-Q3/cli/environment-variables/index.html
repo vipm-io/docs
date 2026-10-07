@@ -2639,7 +2639,10 @@
 limits the complete command duration, while a liveliness timeout stops an operation
 only after it stops making progress.</p>
 <h3 id="vipm_timeout"><code>VIPM_TIMEOUT</code></h3>
-<p>Overrides the default operation timeout (in seconds). When set, this takes precedence over the <code>--timeout</code> flag and any CI-adjusted defaults.</p>
+<p>Sets a total timeout, in seconds, for the whole command. There is no total timeout
+unless you set one, with this variable or with the <code>--timeout</code> flag, and the value is
+not adjusted for CI. When both are set, <code>--timeout</code> wins. A negative value means wait
+indefinitely.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VIPM_TIMEOUT</span><span class="o">=</span><span class="m">300</span><span class="w">   </span><span class="c1"># 5 minutes</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>vipm<span class="w"> </span>install<span class="w"> </span>project.vipc
 </code></pre></div>
@@ -2690,7 +2693,12 @@ to disable this liveliness timeout.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">NO_COLOR</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
 <h3 id="source_date_epoch"><code>SOURCE_DATE_EPOCH</code></h3>
-<p>When set, VIPM uses this Unix timestamp for timestamps in structured output instead of the current time. This supports <a href="https://reproducible-builds.org/specs/source-date-epoch/">reproducible builds</a>.</p>
+<p>When set, <code>vipm sbom</code> records this Unix timestamp (an integer number of seconds since
+the epoch) as the SBOM's <code>metadata.timestamp</code> instead of the generation time, following
+the <a href="https://reproducible-builds.org/specs/source-date-epoch/">reproducible builds</a>
+convention. The <code>--document-timestamp</code> flag overrides it. See
+<a href="../../sbom/workflows/#reproducible-sboms">Reproducible SBOMs</a> for how to make
+regenerated SBOMs byte-identical.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SOURCE_DATE_EPOCH</span><span class="o">=</span><span class="m">1710000000</span>
 </code></pre></div>
 <h2 id="edition">Edition</h2>
