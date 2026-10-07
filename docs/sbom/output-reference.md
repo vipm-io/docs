@@ -191,9 +191,11 @@ A Package URL is a standardized, tool-neutral identifier for a software package.
 
     The `vipm` and `nipkg` types used below are not yet on the official list of purl types, so SBOM tools do not recognize them. A proposal to add them to the list is open with the package-url project; see the [tracking issue](https://github.com/vipm-io/vipm-desktop-issues/issues/148) for status.
 
-    In practice, SBOM tools accept and carry these identifiers, but they will not resolve them against vulnerability or license databases until the types are on the list and those databases index them. Expect matching to work within VIPM-generated SBOMs and across tools that pass purls through unchanged, but not automatic CVE or license lookups for VIPM and NIPM packages.
+    In practice, results vary by tool. Some scanners carry the identifiers through without matching them; others, such as OSV-Scanner, reject components whose purl type they do not know. None will resolve them against vulnerability or license databases until the types are on the list and those databases index them. Expect matching to work within VIPM-generated SBOMs and across tools that pass purls through unchanged, but not automatic CVE or license lookups for VIPM and NIPM packages.
 
     VIPM will adopt whatever form the list defines once the types are added. The type name or qualifiers may change as a result, so avoid hard-coding the current strings in downstream pipelines.
+
+    Separately, purls for packages whose names contain `.` or other punctuation do not currently carry the real name; see [the issue](https://github.com/vipm-io/vipm-desktop-issues/issues/154) for details and a workaround.
 
 ### VIPM packages
 
